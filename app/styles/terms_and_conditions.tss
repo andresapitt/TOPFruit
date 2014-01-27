@@ -1,0 +1,49 @@
+".container": {
+	backgroundColor:"#eee",
+	//width:"90%",
+	//height:"85%"
+},
+"#scrollText":{
+	layout:"vertical",
+	bottom:"40dp",
+	width:Ti.UI.FILL,
+	contentWidth:"auto",
+	disableBounce:true
+},
+"#close_Btn":{
+	bottom:"0dp",
+	height:"40dp",
+	width:Ti.UI.FILL,
+	color: "#fff",
+	backgroundColor: Alloy.Globals.PrimaryColor,
+},
+"#TandC_Title":{
+	top:"10dp",
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: Alloy.Globals.PrimaryColor,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+        fontSize: '18dp',
+        fontFamily: Alloy.Globals.BoldFont,
+    }
+},
+"#TandC_Text":{
+	//left:"5dp",
+	//right:"5dp",
+	top:"10dp",
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: Alloy.Globals.PrimaryColor,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	font: {
+        fontSize: '10dp',
+        fontFamily: Alloy.Globals.Mainfont,
+    }
+},
+"#drinkaware_img":{
+	bottom:"0dp",
+	height:"60dp",
+	width:Ti.UI.SIZE,
+	left:"0dp"
+}

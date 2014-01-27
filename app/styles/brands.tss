@@ -1,0 +1,84 @@
+".container": {
+	backgroundColor:"white",
+	titleAttributes:{
+		color:Alloy.Globals.PrimaryColor,
+		font: {
+			fontFamily:Alloy.Globals.MainFont, 
+			fontSize:"18dp"
+		}
+	},
+	barColor:"#fff",
+	layout:'vertical',
+	tintColor:Alloy.Globals.PrimaryColor,
+	navTintColor:Alloy.Globals.PrimaryColor
+},
+".scrollView":{
+	layout:"vertical",
+	bottom:"40dp",
+	width:Ti.UI.FILL,
+	contentWidth:"auto",
+	disableBounce:true,
+	showVerticalScrollIndicator:true,
+	showHorizontalScrollIndicator:false,
+	backgroundColor:"#fff"
+},
+".search_table":{
+	hideSearchOnSelection :false,
+	filterAttribute:'title',
+	height:Ti.UI.FILL, 
+	width:Ti.UI.FILL, 
+	searchHidden:false,
+	separatorInsets:{
+		left:0, 
+		right:0
+	},
+	style:Ti.UI.iPhone.TableViewStyle.PLAIN
+},
+".table_header":{
+	backgroundColor:"#efefef",
+	layout:'vertical',
+	height:"22dp"
+},
+".table_header_label":{
+	color:"#757575",
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"16dp"
+	},
+	textAlign: Ti.UI.LEFT,
+	left:"12dp",
+	height:Ti.UI.SIZE
+},
+".row_label":{
+	left:"76dp",
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"14dp"
+	},
+	color:Alloy.Globals.PrimaryColor
+},
+".row_brand_image":{
+	width:"70dp",
+	height:"40dp",
+	left:"0dp"
+},
+".row_view":{
+	height:"40dp",
+	width:Ti.UI.FILL
+},
+"#searchbar":{
+	backgroundColor:"#efefef",
+	barColor:"#cbcbcb"
+},
+".table_separator":{
+	 width:Ti.UI.FILL, 
+	 height:"1dp",
+	 backgroundColor:"#cbcbcb"
+},
+".top":{
+	top:"0dp"
+},
+".bottom":{
+	bottom:"0dp"
+}
+

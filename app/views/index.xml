@@ -1,0 +1,45 @@
+<Alloy>
+	<NavigationWindow id="win1" platform="ios" class="win1">
+		<Window class="container" title="HOME" id="home_window">
+			<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundColor="#f00" backgroundImage="/images/common/color_sep.png" />
+			<View height="202dp" backgroundColor="#ddd" backgroundImage="/images/home_screen/mix_month_bg.png">
+				<Label id="mix_title">Mix of the Month</Label>
+				<Label id="mix_desc">Absolut Citron & Tonic</Label>
+			</View>
+			<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundColor="#f00" backgroundImage="/images/common/color_sep.png" />
+			<View height="100dp" backgroundColor="#ddd" layout="horizontal" width="100%">
+				<View class="home_menu_btn">
+					<ImageView image="/images/icons/drinks.png" class="menu_image" />
+					<Label class="menu_title">Drinks</Label>
+				</View>
+				<View class="home_menu_btn" onClick="openSearch">
+					<ImageView image="/images/icons/search.png" class="menu_image" />
+					<Label class="menu_title">Search</Label>
+				</View>
+			</View>
+			<View height="100dp" backgroundColor="#fff" layout="horizontal" width="100%">
+				<View class="home_menu_btn" onClick="openTips">
+					<ImageView image="/images/icons/tips.png" class="menu_image" />
+					<Label class="menu_title">Top Tips</Label>
+				</View>
+				<View class="home_menu_btn">
+					<ImageView image="/images/icons/fav.png" class="menu_image" />
+					<Label class="menu_title">Favourites</Label>
+				</View>
+			</View>
+			<View height="100dp" backgroundColor="#fff" layout="horizontal" width="100%">
+				<View class="home_menu_btn" onClick="openNews">
+					<ImageView image="/images/icons/news.png" class="menu_image" />
+					<Label class="menu_title">News</Label>
+				</View>
+				<View class="home_menu_btn" onClick="openBrands">
+					<ImageView image="/images/icons/ourbrands.png" class="menu_image" />
+					<Label class="menu_title">Our Brands</Label>
+				</View>
+			</View>
+		<LeftNavButton>
+        	<Button image="/images/icons/tandc.png" onClick="openTandCs" />
+		</LeftNavButton>
+		</Window>
+	</NavigationWindow>
+</Alloy>

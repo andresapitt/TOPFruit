@@ -1,0 +1,43 @@
+<Alloy>
+	<Window class="container" height="100%">
+		<View class="vertical_view" id="age_gate_view" >
+			<ImageView id="banner_img" image="/images/age_gate/age_gate_banner.png" />
+			<Label class="bold_prompt">TO DISCOVER THE PERFECT MIX \nWE FIRST NEED TO CHECK YOUR AGE</Label>
+			<Button id="facebookBtn" image="/images/age_gate/facebook_Icon.png" onClick="facebookBtnHandler" title="Login with Facebook" />
+			<Label class="bold_prompt dob_prompt">OR ENTER YOUR DOB</Label>
+			<View id="dob_picker" >
+				<View class="dropdownbox" width="60dp" left="15dp" onClick="dateBtnHandler">
+					<Label class="dob_fields"  id="date_birth">Day</Label>
+					<ImageView class="arrow" image="/images/age_gate/arrow.png" />
+				</View>
+				<View class="dropdownbox" width="135dp" left="10dp" onClick="dateBtnHandler">
+					<Label class="dob_fields" id="month_birth">Month</Label>
+					<ImageView class="arrow" image="/images/age_gate/arrow.png" />
+				</View>
+				<View class="dropdownbox" width="70dp" left="10dp" onClick="dateBtnHandler">
+					<Label class="dob_fields" id="year_birth">Year</Label>
+					<ImageView class="arrow" image="/images/age_gate/arrow.png" />
+				</View>
+			</View>
+			<Button id="submitBtn" onClick="submitBtnHandler" title="Submit" />
+			<View id="TandC_View" >
+				<Label class="bold_prompt tandc_prompt">By entering the app you agree to our</Label>
+				<View height="Ti.UI.SIZE" width="110dp">
+					<Label class="bold_prompt tandc_prompt" width="Ti.UI.SIZE" onClick="TandCBtnHandler">terms & conditions</Label>
+					<View height="1dp" backgroundColor="#898989" bottom="1" />
+				</View>
+			</View>
+		</View>
+		<ImageView id="drinkaware_img" image="/images/age_gate/drinkaware.png" />
+		<View id="picker_view">
+			<View id="picker_bg" />
+			<View layout="vertical" bottom="0dp" height=Ti.UI.SIZE >
+			<!--	<View id="picker_dob_submit">-->
+					<Button id="picker_dob_submit" class="bold_prompt" onClick="closeDateHandler">TAP TO CLOSE</Button>
+				<!--</View>-->
+				<Picker id="picker" selectionIndicator="true" useSpinner="true" type="Ti.UI.PICKER_TYPE_DATE" >
+	        </Picker>
+		</View>
+		</View>
+	</Window>
+</Alloy>

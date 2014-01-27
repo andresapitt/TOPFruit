@@ -1,0 +1,16 @@
+{
+  "version_date": "02-11-2014",
+  "brands": [{"title": "Jameson Whiskey", "twitter":null, "facebook":null, "website":null, "desc":"Jameson object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"},
+    {"title": "Powers","twitter":null, "facebook":null, "website":null, "desc":"Powers object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"},
+    {"title": "Malibu","twitter":null, "facebook":null, "website":null, "desc":"Malibu object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"},
+    {"title": "Absolute Vodka","twitter":null, "facebook":null, "website":null, "desc":"Absolute Vodka object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"},
+    {"title": "Beefeater","twitter":null, "facebook":null, "website":null, "desc":"Beefeater object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"},
+    {"title": "Brancott estate","twitter":null, "facebook":null, "website":null, "desc":"Brancott estate object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"},
+    {"title": "Campo viejo","twitter":null, "facebook":null, "website":null, "desc":"Campo viejo object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"},
+    {"title": "Cork Dry Gin","twitter":null, "facebook":null, "website":null, "desc":"Cork Dry Gin object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"},
+    {"title": "Chivas Regal 12 Year old","twitter":null, "facebook":null, "website":null, "desc":"Chivas object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"},
+    {"title": "Havana Club","twitter":null, "facebook":null, "website":null, "desc":"Havana Club object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"},
+    {"title": "Jacob's Creek","twitter":null, "facebook":null, "website":null, "desc":"Jacob's Creek object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"},
+    {"title": "Kahlua","twitter":null, "facebook":null, "website":null, "desc":"Kahlua object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"}
+  ]
+}

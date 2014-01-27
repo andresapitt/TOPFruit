@@ -1,0 +1,13 @@
+<Alloy>
+	<Window class="container" title="OFFERS">
+		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" />
+		<ScrollView class="scrollView" >
+		</ScrollView>
+		<RightNavButton>
+        	<Button image="/images/icons/home.png" onClick="goToHome" />
+		</RightNavButton>
+		<LeftNavButton>
+        	<Button image="/images/icons/back.png" onClick="closeWindow" />
+		</LeftNavButton>
+	</Window>
+</Alloy>

@@ -1,0 +1,24 @@
+".container": {
+	backgroundColor:"white",
+	titleAttributes:{
+		color:Alloy.Globals.PrimaryColor,
+		font: {
+			fontFamily:Alloy.Globals.MainFont, 
+			fontSize:"18dp"
+		}
+	},
+	barColor:"#fff",
+	layout:'vertical',
+	tintColor:Alloy.Globals.PrimaryColor,
+	navTintColor:Alloy.Globals.PrimaryColor
+},
+".scrollView":{
+	layout:"vertical",
+	bottom:"40dp",
+	width:Ti.UI.FILL,
+	contentWidth:"auto",
+	disableBounce:true,
+	showVerticalScrollIndicator:true,
+	showHorizontalScrollIndicator:false,
+	backgroundColor:"#efefef"
+}
