@@ -8,7 +8,7 @@
 			</View>
 			<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundColor="#f00" backgroundImage="/images/common/color_sep.png" />
 			<View height="100dp" backgroundColor="#ddd" layout="horizontal" width="100%">
-				<View class="home_menu_btn">
+				<View class="home_menu_btn" onClick="openDrinks">
 					<ImageView image="/images/icons/drinks.png" class="menu_image" />
 					<Label class="menu_title">Drinks</Label>
 				</View>
@@ -22,7 +22,7 @@
 					<ImageView image="/images/icons/tips.png" class="menu_image" />
 					<Label class="menu_title">Top Tips</Label>
 				</View>
-				<View class="home_menu_btn">
+				<View class="home_menu_btn" onClick="openFavourites">
 					<ImageView image="/images/icons/fav.png" class="menu_image" />
 					<Label class="menu_title">Favourites</Label>
 				</View>

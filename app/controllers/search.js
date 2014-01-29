@@ -1,37 +1,37 @@
-var readFile = Titanium.Filesystem.getFile(Ti.Filesystem.resourcesDirectory , "data/Brands.txt");  
+var readFile = Titanium.Filesystem.getFile(Ti.Filesystem.resourcesDirectory , "data/Drinks.txt");  
  
-var brands_json_text = ""; 
+var drinks_json_text = ""; 
  
 // If the file exists
 if (readFile.exists()){  
 	Ti.API.info("Cocktail json local text file exists");
-	brands_json_text = readFile.read();
+	drinks_json_text = readFile.read();
 }
 else{
 	alert("Cocktail json local text file not found");
 }
 
-var brands_json = JSON.parse(brands_json_text);
+var drinks_json = JSON.parse(drinks_json_text);
 
-Ti.API.info("Cocktail json: " + brands_json);
-Ti.API.info("Cocktail json brands: " + brands_json.brands);
-Ti.API.info("Cocktail json length: " + brands_json.brands.length);
+Ti.API.info("Cocktail json: " + drinks_json);
+Ti.API.info("Cocktail json brands: " + drinks_json.cocktails);
+Ti.API.info("Cocktail json length: " + drinks_json.cocktails.length);
 
-for(var i = 0; i < brands_json.brands.length; i++)
+for(var i = 0; i < drinks_json.cocktails.length; i++)
 {
-	Ti.API.info("Cocktail " + i + " Title: " + brands_json.brands[i].title);
+	Ti.API.info("Cocktail " + i + " Title: " + drinks_json.cocktails[i].title);
 }
 	
-brands_json.brands.sort(function(a, b) {
+drinks_json.cocktails.sort(function(a, b) {
     var textA = a.title.toUpperCase();
     var textB = b.title.toUpperCase();
     return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
 });
 	
 Ti.API.info("AFTER SORT ");
-for(var i = 0; i < brands_json.brands.length; i++)
+for(var i = 0; i < drinks_json.cocktails.length; i++)
 {
-	Ti.API.info("Cocktail " + i + " Title: " + brands_json.brands[i].title);
+	Ti.API.info("Cocktail " + i + " Title: " + drinks_json.cocktails[i].title);
 }
 
 //iterate through alphabet and see what letters are active
@@ -41,9 +41,9 @@ for(var i=0; i<str.length; i++)
 	var is_letter_active = false;
 	var nextChar = str.charAt(i);
 	//Ti.API.info(" alphbet loop: " + nextChar);
-	for(var y = 0; y < brands_json.brands.length; y++)
+	for(var y = 0; y < drinks_json.cocktails.length; y++)
 	{
-		var first_char_brand = brands_json.brands[y].title.charAt(0);
+		var first_char_brand = drinks_json.cocktails[y].title.charAt(0);
 		if(nextChar == first_char_brand)
 		{
 			is_letter_active = true;
@@ -91,24 +91,24 @@ for(var i=0; i<str.length; i++)
         	classes: ["row_brand_image"],
   		});
 		
-		for(var y = 0; y < brands_json.brands.length; y++)
+		for(var y = 0; y < drinks_json.cocktails.length; y++)
 		{
-			var first_char_brand = brands_json.brands[y].title.charAt(0);
+			var first_char_brand = drinks_json.cocktails[y].title.charAt(0);
 			if(nextChar == first_char_brand)
 			{
 				//is_letter_active = true;
 				//Ti.API.info("Char active: " + nextChar);
 				var brand_row = Ti.UI.createTableViewRow(/*{title:brands_json.brands[y].title}*/);
 				var brand_row_view = Ti.UI.createView();
-				var brand_row_label = Ti.UI.createLabel({text:brands_json.brands[y].title.toUpperCase()});
+				var brand_row_label = Ti.UI.createLabel({text:drinks_json.cocktails[y].title.toUpperCase()});
 				brand_row_label.applyProperties(row_label_style);
 				brand_row_view.add(brand_row_label);
-				var brand_image = Ti.UI.createImageView({image:brands_json.brands[y].thumb_image_url});
+				var brand_image = Ti.UI.createImageView({image:drinks_json.cocktails[y].search_thumb_url});
 				brand_image.applyProperties(row_image_style);
 				brand_row_view.add(brand_image);
 				brand_row_view.applyProperties(row_view_style);
 				brand_row.add(brand_row_view);
-				brand_row.cocktail_name = brands_json.brands[y].title;
+				brand_row.cocktail_name = drinks_json.cocktails[y].title;
 				table_view_section.add(brand_row);
 			}
 		}

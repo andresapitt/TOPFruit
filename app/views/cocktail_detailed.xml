@@ -1,0 +1,60 @@
+<Alloy>
+	<Window class="container" title="RECIPE">
+		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" />
+		<ScrollView class="scrollView" >
+			<Label id="recipe_title_label" class="recipe_title"></Label>
+			<View id="how_to_make_it" class="recipe_container">
+				<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" >How to make it</Label>
+				<View height="1" width="140dp" backgroundColor="#d1d1d1" />
+				<View height="Ti.UI.SIZE">
+					<!-- THIS IS THE IMAGE VIEW ON THE LEFT SIDE -->
+					<View id="recipe_image_ani_view" left="-115dp" width="115dp" height="100dp" backgroundColor="#444">
+						
+					</View>
+					<!-- THIS IS THE INGREDIENTS VIEW ON THE RIGHT SIDE -->
+					<View layout="vertical" height="Ti.UI.SIZE" left="115dp">
+						<View id="glassware_container" layout="vertical" height="Ti.UI.SIZE" >
+							<Label class="recipe_subtitle">Glassware</Label>
+							<Label class="recipe_subtext">Glassware info</Label>
+						</View>
+						<View id="ingredients_container" layout="vertical" height="Ti.UI.SIZE" >
+							<Label class="recipe_subtitle">Ingredients</Label>
+							<Label class="recipe_subtext">Ingredients info</Label>
+						</View>
+						<View id="method_container" layout="vertical" height="Ti.UI.SIZE" >
+							<Label class="recipe_subtitle">Method</Label>
+							<Label class="recipe_subtext">Method info</Label>
+						</View>
+						<View id="garnish_container" layout="vertical" height="Ti.UI.SIZE">
+							<Label class="recipe_subtitle">Garnish</Label>
+							<Label class="recipe_subtext">Garnish info</Label>
+						</View>
+					</View>
+				</View>
+				<View height="10dp" width="140dp" />
+				
+			</View>
+			<View class="recipe_container">
+				<Label class="recipe_title">VIDEO</Label>
+			</View>
+			<View class="recipe_container">
+				<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">Rate this recipe</Label>
+				<View height="1" width="140dp" backgroundColor="#d1d1d1" />
+				
+				<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">Comments</Label>
+				<View height="1" width="140dp" backgroundColor="#d1d1d1" />
+				<Button class="commentBtn" onClick="submitCommentBtnHandler" title="Add Comments / Review" />
+			
+				<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">Social</Label>
+				<View height="1" width="140dp" backgroundColor="#d1d1d1" />
+				<View height="10dp" width="140dp" />
+			</View>
+		</ScrollView>
+		<RightNavButton>
+        	<Button image="/images/icons/home.png" onClick="goToHome" />
+		</RightNavButton>
+		<LeftNavButton>
+        	<Button image="/images/icons/back.png" onClick="closeWindow" />
+		</LeftNavButton>
+	</Window>
+</Alloy>

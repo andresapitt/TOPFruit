@@ -22,13 +22,65 @@
 	showHorizontalScrollIndicator:false,
 	backgroundColor:"#efefef"
 },
-".event_item":{
+"#event_item_container":{
 	backgroundColor:"#fff",
-	height:"67dp",
+	height:Ti.UI.SIZE,
 	borderRadius:0,
 	borderColor: "#d1d1d1",
 	borderWidth: 1,
 	top:"10dp",
+	left:"5dp",
+	right:"5dp",
+	layout:"vertical",
+	bottom:"10dp"
+},
+".event_item":{
+	backgroundColor:"#fff",
+	height:"67dp",
+	//borderRadius:0,
+	//borderColor: "#d1d1d1",
+	//borderWidth: 1,
+	top:"10dp",
+	bottom:"10dp",
 	left:"10dp",
 	right:"10dp"
+},
+".event_title":{
+	left:"72dp",
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"14dp"
+	},
+	color:Alloy.Globals.PrimaryColor,
+	top:"2dp",
+	touchEnabled:false
+},
+".event_separator":{
+	height:1,
+	width:Ti.UI.FILL,
+	backgroundColor:"#cbcbcb",
+},
+".event_image":{
+	height:"60dp", 
+	width:"60dp",
+	left:"0dp",
+	borderRadius:0,
+	borderColor: "#d1d1d1",
+	borderWidth: 1,
+	touchEnabled:false
+},
+".event_arrow":{
+	right:"0dp",
+	touchEnabled:false
+},
+".event_time":{
+	left:"72dp",
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"14dp"
+	},
+	//color:Alloy.Globals.PrimaryColor,
+	color:"#e87722",
+	top:"20dp",
+	touchEnabled:false
 }

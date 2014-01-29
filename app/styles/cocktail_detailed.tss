@@ -1,0 +1,84 @@
+".container": {
+	backgroundColor:"white",
+	titleAttributes:{
+		color:Alloy.Globals.PrimaryColor,
+		font: {
+			fontFamily:Alloy.Globals.MainFont, 
+			fontSize:"18dp"
+		}
+	},
+	barColor:"#fff",
+	layout:'vertical',
+	tintColor:Alloy.Globals.PrimaryColor,
+	navTintColor:Alloy.Globals.PrimaryColor
+},
+".scrollView":{
+	layout:"vertical",
+	bottom:"40dp",
+	width:Ti.UI.FILL,
+	contentWidth:"auto",
+	disableBounce:true,
+	showVerticalScrollIndicator:true,
+	showHorizontalScrollIndicator:false,
+	backgroundColor:"#efefef"
+},
+".recipe_container":{
+	left:"5dp", 
+	right:"5dp", 
+	width:Ti.UI.FILL, 
+	height:Ti.UI.SIZE, 
+	backgroundColor:"#fff",
+	borderRadius:"4dp",
+	borderColor: "#d1d1d1",
+	borderWidth: 1,
+	layout:"vertical",
+	top:"10dp",
+},
+".recipe_title":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"18dp"
+	},
+	top:"15dp",
+	left:"5dp",
+	right:"5dp",
+	width:Ti.UI.FILL,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+},
+".recipe_subtitle":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"14dp"
+	},
+	top:"10dp",
+	left:"5dp",
+	right:"5dp",
+	width:Ti.UI.FILL,
+	textAlign: Ti.UI.LEFT,
+},
+".recipe_subtext":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"11dp"
+	},
+	top:"2dp",
+	left:"5dp",
+	right:"5dp",
+	width:Ti.UI.FILL,
+	textAlign: Ti.UI.LEFT,
+},
+".commentBtn":{
+	top:"10dp",
+	color:"#fff",
+	backgroundColor: Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"14dp"
+	},
+	width:"160dp",
+	height:"33dp",
+	borderRadius:"4dp",
+}

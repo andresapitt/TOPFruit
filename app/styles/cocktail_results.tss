@@ -22,27 +22,31 @@
 	showHorizontalScrollIndicator:false,
 	backgroundColor:"#efefef"
 },
-".news_item":{
-	backgroundColor:"#fff",
-	height:"67dp",
+".result_item":{
+	width:"152dp",
+	height:"147dp", 
+	backgroundColor:"#fff", 
 	borderRadius:0,
 	borderColor: "#d1d1d1",
 	borderWidth: 1,
-	top:"10dp",
-	left:"5dp",
-	right:"5dp"
+	left:"5dp"
 },
-".news_title":{
+".result_title":{
 	color:Alloy.Globals.PrimaryColor,
 	font: {
 		fontFamily:Alloy.Globals.BoldFont, 
-		fontSize:"18dp"
+		fontSize:"14dp"
 	},
-	left:"85dp"
+	bottom:"1dp",
+	width:Ti.UI.FILL,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	left:"5dp",
+	right:"5dp",
+	touchEnabled:false
 },
-".news_image":{
-	left:"20dp"
-},
-".news_arrow":{
-	right:"10dp"
+".horizontal_results_nav_view":{
+	layout:'horizontal',
+	width:Ti.UI.FILL, 
+	height:"147dp",
+	top:"10dp",
 }

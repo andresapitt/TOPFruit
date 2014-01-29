@@ -1,0 +1,30 @@
+<Alloy>
+	<Window class="container" title="ABOUT">
+		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" />
+		<ScrollView class="scrollView" >
+			<View class="brand_item">
+				<ImageView image="/images/brands/jameson_banner.png" class="brand_image" height="158dp" bottom="5dp" />
+				<Label id="brand_title">...</Label>
+				<Label id="brand_desc_text">...</Label>
+				<View layout="horizontal" id="social_hor_view" height="Ti.UI.SIZE" bottom="10dp" >
+					<View class="socialBtn_view" id="twitterParent">
+						<Button id="twitterBtn" image="/images/icons/twitterbird.png" class="socialBtn twitter" title="Twitter" />
+					</View>
+					<View class="socialBtn_view" id="facebookParent">
+						<Button id="facebookBtn" image="/images/icons/facebookIcon.png" class="socialBtn facebook" title="Facebook" />
+					</View>
+					<View class="socialBtn_view" id="websiteParent">
+						<Button id="websiteBtn" image="/images/icons/websiteIcon.png" class="socialBtn website" title="Website" />
+					</View>
+				</View>
+				<!--<ImageView image="/images/common/chevron.png" class="news_arrow" />-->
+			</View>
+		</ScrollView>
+		<RightNavButton>
+        	<Button image="/images/icons/home.png" onClick="goToHome" />
+		</RightNavButton>
+		<LeftNavButton>
+        	<Button image="/images/icons/back.png" onClick="closeWindow" />
+		</LeftNavButton>
+	</Window>
+</Alloy>   

@@ -1,6 +1,6 @@
 {
   "version_date": "02-11-2014",
-  "brands": [{"title": "Jameson Whiskey", "twitter":null, "facebook":null, "website":null, "desc":"Jameson object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"},
+  "brands": [{"title": "Jameson Whiskey", "twitter":"JAMESONPARTY", "facebook":"7947488730", "website":"http://www.jameson.com", "desc":"Jameson object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"},
     {"title": "Powers","twitter":null, "facebook":null, "website":null, "desc":"Powers object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"},
     {"title": "Malibu","twitter":null, "facebook":null, "website":null, "desc":"Malibu object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"},
     {"title": "Absolute Vodka","twitter":null, "facebook":null, "website":null, "desc":"Absolute Vodka object description", "banner_img_url":"images/jameson", "thumb_image_url":"images/brands/absolut_vodka.png", "version_date":"02-11-2014"},

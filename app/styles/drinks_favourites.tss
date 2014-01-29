@@ -21,28 +21,4 @@
 	showVerticalScrollIndicator:true,
 	showHorizontalScrollIndicator:false,
 	backgroundColor:"#efefef"
-},
-".news_item":{
-	backgroundColor:"#fff",
-	height:"67dp",
-	borderRadius:0,
-	borderColor: "#d1d1d1",
-	borderWidth: 1,
-	top:"10dp",
-	left:"5dp",
-	right:"5dp"
-},
-".news_title":{
-	color:Alloy.Globals.PrimaryColor,
-	font: {
-		fontFamily:Alloy.Globals.BoldFont, 
-		fontSize:"18dp"
-	},
-	left:"85dp"
-},
-".news_image":{
-	left:"20dp"
-},
-".news_arrow":{
-	right:"10dp"
 }

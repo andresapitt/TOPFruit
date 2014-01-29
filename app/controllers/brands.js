@@ -99,6 +99,7 @@ for(var i=0; i<str.length; i++)
 				//is_letter_active = true;
 				//Ti.API.info("Char active: " + nextChar);
 				var brand_row = Ti.UI.createTableViewRow(/*{title:brands_json.brands[y].title}*/);
+				brand_row.brand_data = brands_json.brands[y];
 				var brand_row_view = Ti.UI.createView();
 				var brand_row_label = Ti.UI.createLabel({text:brands_json.brands[y].title.toUpperCase()});
 				brand_row_label.applyProperties(row_label_style);
@@ -117,6 +118,13 @@ for(var i=0; i<str.length; i++)
 }
 
 $.brand_table.filterAttribute="brand_name";
+
+$.brand_table.addEventListener('click', function(e){
+	//alert('Row clicked, index: ' + e.index + ", brand data: " + e.row.brand_data.title);
+	
+	var brand_desc_Win = Alloy.createController('brand_desc', e.row.brand_data).getView();
+    Alloy.Globals.parent.openWindow(brand_desc_Win);
+});
 
 function closeWindow(e)
 {

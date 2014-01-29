@@ -3,31 +3,31 @@ Ti.API.info("Opening News Page");
 function openEvents(e)
 {
 	var eventsWin = Alloy.createController('events').getView();
-    Alloy.Globals.parent .openWindow(eventsWin);
+    Alloy.Globals.parent.openWindow(eventsWin);
 }
 
 function openBestBars(e)
 {
 	var bestBarsWin = Alloy.createController('best_bars').getView();
-    Alloy.Globals.parent .openWindow(bestBarsWin);
+    Alloy.Globals.parent.openWindow(bestBarsWin);
 }
 
 function openBarSmarts(e)
 {
 	var barSmartsWin = Alloy.createController('bar_smarts').getView();
-    Alloy.Globals.parent .openWindow(barSmartsWin);
+    Alloy.Globals.parent.openWindow(barSmartsWin);
 }
 
 function openCompetitions(e)
 {
 	var compWin = Alloy.createController('competitions').getView();
-    Alloy.Globals.parent .openWindow(compWin);
+    Alloy.Globals.parent.openWindow(compWin);
 }
 
 function openOffers(e)
 {
 	var offersWin = Alloy.createController('offers').getView();
-    Alloy.Globals.parent .openWindow(offersWin);
+    Alloy.Globals.parent.openWindow(offersWin);
 }
 
 

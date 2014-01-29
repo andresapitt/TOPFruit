@@ -1,0 +1,81 @@
+".container": {
+	backgroundColor:"white",
+	titleAttributes:{
+		color:Alloy.Globals.PrimaryColor,
+		font: {
+			fontFamily:Alloy.Globals.MainFont, 
+			fontSize:"18dp"
+		}
+	},
+	barColor:"#fff",
+	layout:'vertical',
+	tintColor:Alloy.Globals.PrimaryColor,
+	navTintColor:Alloy.Globals.PrimaryColor
+},
+".scrollView":{
+	layout:"vertical",
+	bottom:"40dp",
+	width:Ti.UI.FILL,
+	contentWidth:"auto",
+	disableBounce:true,
+	showVerticalScrollIndicator:true,
+	showHorizontalScrollIndicator:false,
+	backgroundColor:"#efefef"
+},
+".drink_item":{
+	width:"90dp",
+	height:"120dp",
+	backgroundColor:"#fff"
+},
+".search_button":{
+	backgroundColor:Alloy.Globals.PrimaryColor,
+	color:"#fff",
+	font: {
+			fontFamily:Alloy.Globals.MainFont, 
+			fontSize:"16dp"
+	},
+	width:"220dp",
+	height:"40dp",
+	borderRadius:"4dp",
+	 tintColor:"#fff",
+	 top:"10dp"
+},
+".search_desc_text":{
+	color: "#747474",
+	font: {
+			fontFamily:Alloy.Globals.MainFont, 
+			fontSize:"16dp"
+	},
+	top:"10dp"
+},
+".horizontal_drinks_nav_view":{
+	layout:'horizontal',
+	width:Ti.UI.FILL, 
+	height:"120dp",
+	top:"10dp",
+	left:"10dp",
+	right:"10dp",
+},
+".drink_single_view":{
+	height:"120dp",
+	width:"90dp",
+	left:"5dp",
+	right:"5dp"
+},
+".drink_image":{
+	height:"95dp",
+	width:"90dp",
+	top:"0dp",
+	image:"images/common/highlight_circle.png",
+	touchEnabled:false
+},
+".drink_title":{
+	color: Alloy.Globals.PrimaryColor,
+	font: {
+			fontFamily:Alloy.Globals.MainFont, 
+			fontSize:"16dp"
+	},
+	top:"97dp",
+	touchEnabled:false
+}
+

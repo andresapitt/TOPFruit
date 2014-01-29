@@ -35,5 +35,7 @@ Alloy.Globals.permissions = ["email"];
 
 Alloy.Globals.windowStack = new Array();
 
+
+
 //var winStack = [];
 //Ti.App.Properties.setList('Stack', winStack);

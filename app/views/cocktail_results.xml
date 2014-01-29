@@ -1,11 +1,9 @@
 <Alloy>
-	<Window class="container" title="UPCOMING EVENTS">
+	<Window class="container" title="COCKTAILS">
 		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" />
-		<ScrollView class="scrollView" id="event_view" >
-			<View id="event_item_container">
-				<!--<ImageView image="/images/icons/events.png" class="news_image" />
-				<Label class="news_title">UPCOMING EVENTS</Label>
-				<ImageView image="/images/common/chevron.png" class="news_arrow" />-->
+		<ScrollView class="scrollView" >
+			<View id="drink_results" layout="vertical" height="Ti.UI.SIZE" bottom="10dp">
+				
 			</View>
 		</ScrollView>
 		<RightNavButton>

@@ -22,6 +22,16 @@ else //open home page of app
 	$.win1.open();
 }
 
+function openFavourites(e){
+	var drinksFavWin = Alloy.createController('drinks_favourites').getView();
+    $.win1.openWindow(drinksFavWin);
+}
+
+function openDrinks(e){
+	var drinksWin = Alloy.createController('drinks_categories').getView();
+    $.win1.openWindow(drinksWin);
+}
+
 function openSearch(e){
 	var searchWin = Alloy.createController('search').getView();
     $.win1.openWindow(searchWin);
@@ -32,12 +42,10 @@ function openTips(e){
     $.win1.openWindow(tipsWin);
 }
 
-
 function openBrands(e){
 	var brandsWin = Alloy.createController('brands').getView();
     $.win1.openWindow(brandsWin);
 }
-
 
 function openNews(e){
 	var newsWin = Alloy.createController('news').getView();
