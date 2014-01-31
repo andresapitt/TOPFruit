@@ -1,7 +1,19 @@
 var readFile = Titanium.Filesystem.getFile(Ti.Filesystem.resourcesDirectory , "data/Drinks.txt");  
  
 var drinks_json_text = ""; 
- 
+
+var drinks_categories_images = {
+		whiskey: "images/category_images/whiskey.png", 
+		vodka:"images/category_images/vodka.png", 
+		champagne:"images/category_images/champ.png",
+		rum:"images/category_images/rum.png", 
+		gin:"images/category_images/gin.png", 
+		generics:"images/category_images/generics.png", 
+		classics:"images/category_images/malibu.png", 
+		other:"images/category_images/other.png", 
+		tequila:"images/category_images/tequila.png"
+		};
+
 // If the file exists
 if (readFile.exists()){  
 	Ti.API.info("Drinks json local text file exists");
@@ -25,6 +37,10 @@ var single_drink_image_style = $.createStyle({
 var single_drink_title_style = $.createStyle({
 	classes: ["drink_title"],
 });
+var single_drink_image_style_bottle = $.createStyle({
+	classes: ["drink_image_bottle"],
+});
+
 
 
 for(var i = 0; i < drinks_json.drinks.length; i += 3)
@@ -41,9 +57,50 @@ for(var i = 0; i < drinks_json.drinks.length; i += 3)
 		single_drink_view.applyProperties(single_drink_view_style);
 		horizontal_drink_view.add(single_drink_view);
 		
-		var drink_image = Ti.UI.createImageView();
+		var drink_image = Ti.UI.createImageView({image:"images/common/highlight_circle.png"});
 		drink_image.applyProperties(single_drink_image_style);
 		single_drink_view.add(drink_image);
+		
+		var overlay_drink_image = Ti.UI.createImageView();
+		
+		overlay_drink_image.applyProperties(single_drink_image_style_bottle);
+		/*
+		if(drinks_json.drinks[y].title.toUpperCase() == "WHISKEY")
+			{ overlay_drink_image.image = drinks_categories_images.whiskey; }
+		else if(drinks_json.drinks[y].title.toUpperCase() == "GIN")
+			{ overlay_drink_image.image = drinks_categories_images.gin; }
+		else if(drinks_json.drinks[y].title.toUpperCase() == "RUM")
+			{ overlay_drink_image.image = drinks_categories_images.rum; }
+		else if(drinks_json.drinks[y].title.toUpperCase() == "TEQUILA")
+			{ overlay_drink_image.image = drinks_categories_images.tequila; }
+		else if(drinks_json.drinks[y].title.toUpperCase() == "VODKA")
+			{ overlay_drink_image.image = drinks_categories_images.vodka; }
+		else if(drinks_json.drinks[y].title.toUpperCase() == "CHAMPAGNE")
+			{ overlay_drink_image.image = drinks_categories_images.champagne; }
+		else if(drinks_json.drinks[y].title.toUpperCase() == "CLASSICS")
+			{ overlay_drink_image.image = drinks_categories_images.classics; }
+		else if(drinks_json.drinks[y].title.toUpperCase() == "OTHER")
+			{ overlay_drink_image.image = drinks_categories_images.other; }
+		else
+			{ overlay_drink_image.image = drinks_categories_images.generics; }
+			*/
+		
+		if( Ti.Platform.displayCaps.density == 'high')
+		{
+	    	var image_url = drinks_json.drinks[y].image_thumb;
+	    	var basename = image_url.replace(/\\/g,'/').replace( /.*\//, '' );
+            var segment = basename.split('.');
+            image_url = image_url.replace(basename, segment[0]+'@2x.'+segment[1]);
+            Ti.API.info("full image path: " + image_url);
+            overlay_drink_image.image =	image_url;
+	    }
+	    else{
+			overlay_drink_image.image =	drinks_json.drinks[y].image_thumb;
+	    }
+		
+		overlay_drink_image.defaultImage = "images/category_images/generic.png";	
+		
+		single_drink_view.add(overlay_drink_image);
 		
 		var drink_single_label = Ti.UI.createLabel({text:drinks_json.drinks[y].title});
 		drink_single_label.applyProperties(single_drink_title_style);
@@ -61,12 +118,14 @@ function openDrinks(e){
 	Ti.API.info("Drink selection made: " + e.source.drinkData.title );
 	if(e.source.drinkData.subcategories.length <= 0){
 		Ti.API.info('No drink sub category, open cocktail display');
-		var resultsWin = Alloy.createController('cocktail_results', { category : e.source.drinkData.ID }).getView();
+		var resultsWin = Alloy.createController('cocktail_results',  e.source.drinkData ).getView();
     	Alloy.Globals.parent.openWindow(resultsWin);
 	}
 	else
 	{
 		Ti.API.info('There are drink sub categories, open more options');
+		var sub_categoryWin = Alloy.createController('drinks_sub_category', e.source.drinkData ).getView();
+    	Alloy.Globals.parent.openWindow(sub_categoryWin);
 	}
 }
 

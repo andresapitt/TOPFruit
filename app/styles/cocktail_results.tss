@@ -31,22 +31,52 @@
 	borderWidth: 1,
 	left:"5dp"
 },
+".cocktail_image_glass":{
+	width:Ti.UI.SIZE,
+	height:Ti.UI.SIZE,
+	touchEnabled:false
+},
 ".result_title":{
 	color:Alloy.Globals.PrimaryColor,
 	font: {
 		fontFamily:Alloy.Globals.BoldFont, 
 		fontSize:"14dp"
 	},
-	bottom:"1dp",
+	//bottom:"1dp",
 	width:Ti.UI.FILL,
 	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 	left:"5dp",
 	right:"5dp",
 	touchEnabled:false
 },
+".no_results_title":{
+	font: {
+		fontSize:"18dp",
+		fontFamily:Alloy.Globals.BoldFont, 
+	},
+	height:Ti.UI.FILL
+},
+".white_banner":{
+	width:Ti.UI.FILL, 
+	height:"34dp",
+	bottom:"0dp",
+	backgroundColor:"#fff",
+	opacity:0.5
+},
 ".horizontal_results_nav_view":{
 	layout:'horizontal',
 	width:Ti.UI.FILL, 
 	height:"147dp",
 	top:"10dp",
+},
+".no_results":{
+	top:"10dp",
+	width:Ti.UI.FILL,
+	height:"147dp", 
+	backgroundColor:"#fff", 
+	borderRadius:0,
+	borderColor: "#d1d1d1",
+	borderWidth: 1,
+	left:"5dp",
+	right:"5dp"
 }

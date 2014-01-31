@@ -43,13 +43,18 @@ $.cocktail_detailed.addEventListener('open', function(e){
 	
 	var animation = Titanium.UI.createAnimation();
 	animation.left = "0dp";
-	animation.duration = 600;
-	animation.curve = Ti.UI.ANIMATION_CURVE_EASE_OUT;
+	animation.duration = 700;
+	animation.curve = Ti.UI.ANIMATION_CURVE_EASE_IN_OUT;
 	/*var animationHandler = function() {
 	  animation.removeEventListener('complete',animationHandler);
 	  animation.backgroundColor = 'orange';
 	  view.animate(animation);
 	};
 	animation.addEventListener('complete',animationHandler);*/
-	$.recipe_image_ani_view.animate(animation);
+	
+	setTimeout(function(){
+	   $.recipe_image_ani_view.animate(animation);
+	}, 700);
+
+	
 });

@@ -108,7 +108,8 @@ for(var i=0; i<str.length; i++)
 				brand_row_view.add(brand_image);
 				brand_row_view.applyProperties(row_view_style);
 				brand_row.add(brand_row_view);
-				brand_row.cocktail_name = drinks_json.cocktails[y].title;
+				brand_row.cocktailData = drinks_json.cocktails[y];
+				brand_row.addEventListener('click', openRecipe);
 				table_view_section.add(brand_row);
 			}
 		}
@@ -117,6 +118,14 @@ for(var i=0; i<str.length; i++)
 
 
 $.search_table.filterAttribute="cocktail_name";
+
+
+function openRecipe(e){
+	Ti.API.info("Open detailed recipe! " + e.row.cocktailData.title);
+	
+	var recipeWin = Alloy.createController('cocktail_detailed', e.row.cocktailData).getView();
+    Alloy.Globals.parent.openWindow(recipeWin);
+}
 
 function closeWindow(e)
 {

@@ -2,9 +2,11 @@ Ti.API.info("In cocktails result section");
 
 
 var args = arguments[0] || {};
-var cocktail_category = args.category || 'Category not received';
+var cocktail_category = args.ID || 'Category not received';
 //$.recipeTitle.text = args.title || 'Title not received';
 Ti.API.info("Cocktail category: " + cocktail_category);
+
+$.cocktail_results.title = args.title.toUpperCase();
 
 var readFile = Titanium.Filesystem.getFile(Ti.Filesystem.resourcesDirectory , "data/Drinks.txt");  
  
@@ -49,29 +51,77 @@ for(var i = 0; i < all_cocktails.length; i++)
 	}
 }
 
-Ti.API.info("relevant cocktail count: " + rel_cocktails.length);
-for(var i = 0; i < rel_cocktails.length; i += 2)
+
+if( rel_cocktails.length > 0)
 {
-	var horizontal_results_view = Ti.UI.createView();
-	horizontal_results_view.applyProperties(horizontal_results_view_style);
-	$.drink_results.add(horizontal_results_view);
+	Ti.API.info("relevant cocktail count: " + rel_cocktails.length);
 	
-	for(y = i; y < i+2 && y < rel_cocktails.length; y++ )
+	var cocktail_image_style_bottle = $.createStyle({
+		classes: ["cocktail_image_glass"],
+	});
+	var cocktail_item_white_banner_style = $.createStyle({
+		classes: ["white_banner"],
+	});
+	
+	
+	for(var i = 0; i < rel_cocktails.length; i += 2)
 	{
-		var single_result_item_view = Ti.UI.createView();
-		single_result_item_view.applyProperties(result_item_view_style);
+		var horizontal_results_view = Ti.UI.createView();
+		horizontal_results_view.applyProperties(horizontal_results_view_style);
+		$.drink_results.add(horizontal_results_view);
 		
-		
-		var result_item_title = Ti.UI.createLabel({text:rel_cocktails[y].title.toUpperCase()});
-		result_item_title.applyProperties(result_item_title_style);
-		single_result_item_view.add(result_item_title);
-		
-		single_result_item_view.cocktailData = rel_cocktails[y];
-		single_result_item_view.addEventListener('click', openRecipeDetailed);
-		
-		horizontal_results_view.add(single_result_item_view);
-		
+		for(y = i; y < i+2 && y < rel_cocktails.length; y++ )
+		{
+			var single_result_item_view = Ti.UI.createView();
+			single_result_item_view.applyProperties(result_item_view_style);
+			
+			var cocktail_image = Ti.UI.createImageView({image:"images/cocktails/glass.png"});
+			cocktail_image.applyProperties(cocktail_image_style_bottle);
+			single_result_item_view.add(cocktail_image);
+			
+			var result_bottom_container = Ti.UI.createView();
+			result_bottom_container.height = Ti.UI.SIZE;
+			result_bottom_container.width = Ti.UI.FILL;
+			result_bottom_container.bottom = "0dp";
+			result_bottom_container.touchEnabled = false;
+			single_result_item_view.add(result_bottom_container);
+			
+			var banner_bottom_view = Ti.UI.createView();
+			banner_bottom_view.applyProperties(cocktail_item_white_banner_style);
+			result_bottom_container.add(banner_bottom_view);
+			
+			var result_item_title = Ti.UI.createLabel({text:rel_cocktails[y].title.toUpperCase()});
+			result_item_title.applyProperties(result_item_title_style);
+			result_bottom_container.add(result_item_title);
+			
+			
+			single_result_item_view.cocktailData = rel_cocktails[y];
+			single_result_item_view.addEventListener('click', openRecipeDetailed);
+			
+			horizontal_results_view.add(single_result_item_view);
+			
+		}
 	}
+}
+else
+{
+	Ti.API.info("No relevant cocktails found");
+	var no_results_style = $.createStyle({
+		classes: ["no_results"],
+	});
+	
+	var no_results_title_style = $.createStyle({
+		classes: ["no_results_title"],
+	});
+	
+	var no_result_item_view = Ti.UI.createView();
+	no_result_item_view.applyProperties(no_results_style);
+	
+	var result_item_title = Ti.UI.createLabel({text:"Sorry, no results were found. \nPlease try another category."});
+	result_item_title.applyProperties(no_results_title_style);
+	no_result_item_view.add(result_item_title);
+			
+	$.drink_results.add(no_result_item_view);
 }
 
 function openRecipeDetailed(e){

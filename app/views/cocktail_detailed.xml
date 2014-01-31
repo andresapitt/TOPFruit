@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class="container" title="RECIPE">
+	<Window class="container" title="DRINK RECIPE">
 		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" />
 		<ScrollView class="scrollView" >
 			<Label id="recipe_title_label" class="recipe_title"></Label>
@@ -8,31 +8,30 @@
 				<View height="1" width="140dp" backgroundColor="#d1d1d1" />
 				<View height="Ti.UI.SIZE">
 					<!-- THIS IS THE IMAGE VIEW ON THE LEFT SIDE -->
-					<View id="recipe_image_ani_view" left="-115dp" width="115dp" height="100dp" backgroundColor="#444">
+					<View id="recipe_image_ani_view" left="-115dp" width="115dp" height="160dp" backgroundColor="#444">
 						
 					</View>
 					<!-- THIS IS THE INGREDIENTS VIEW ON THE RIGHT SIDE -->
 					<View layout="vertical" height="Ti.UI.SIZE" left="115dp">
 						<View id="glassware_container" layout="vertical" height="Ti.UI.SIZE" >
-							<Label class="recipe_subtitle">Glassware</Label>
-							<Label class="recipe_subtext">Glassware info</Label>
+							<Label class="recipe_subtitle" left="12dp">Glassware</Label>
+							<Label class="recipe_subtext" left="12dp">Glassware info</Label>
 						</View>
 						<View id="ingredients_container" layout="vertical" height="Ti.UI.SIZE" >
-							<Label class="recipe_subtitle">Ingredients</Label>
-							<Label class="recipe_subtext">Ingredients info</Label>
+							<Label class="recipe_subtitle" left="12dp">Ingredients</Label>
+							<Label class="recipe_subtext" left="12dp">Ingredients info</Label>
 						</View>
 						<View id="method_container" layout="vertical" height="Ti.UI.SIZE" >
-							<Label class="recipe_subtitle">Method</Label>
-							<Label class="recipe_subtext">Method info</Label>
+							<Label class="recipe_subtitle" left="12dp">Method</Label>
+							<Label class="recipe_subtext" left="12dp">Method info</Label>
 						</View>
 						<View id="garnish_container" layout="vertical" height="Ti.UI.SIZE">
-							<Label class="recipe_subtitle">Garnish</Label>
-							<Label class="recipe_subtext">Garnish info</Label>
+							<Label class="recipe_subtitle" left="12dp">Garnish</Label>
+							<Label class="recipe_subtext" left="12dp">Garnish info</Label>
 						</View>
 					</View>
 				</View>
 				<View height="10dp" width="140dp" />
-				
 			</View>
 			<View class="recipe_container">
 				<Label class="recipe_title">VIDEO</Label>
@@ -47,8 +46,18 @@
 			
 				<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">Social</Label>
 				<View height="1" width="140dp" backgroundColor="#d1d1d1" />
+				
+				<View layout="horizontal" id="social_hor_view_recipe" width="240dp" height="Ti.UI.SIZE" top="10dp" >
+					<View class="socialBtn_view" id="twitterParent_recipe">
+						<Button id="twitterBtn_recipe" image="/images/icons/twitterbird.png" class="socialBtn twitter" title="Twitter" />
+					</View>
+					<View class="socialBtn_view" id="facebookParent_recipe">
+						<Button id="facebookBtn_recipe" image="/images/icons/facebookIcon.png" class="socialBtn facebook" title="Facebook" />
+					</View>
+				</View>
 				<View height="10dp" width="140dp" />
 			</View>
+			<View height="10dp" width="140dp" />
 		</ScrollView>
 		<RightNavButton>
         	<Button image="/images/icons/home.png" onClick="goToHome" />

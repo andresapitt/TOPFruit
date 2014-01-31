@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class="container" title="DRINKS">
+	<Window class="container" title="COCKTAILS">
 		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" />
 		<ScrollView class="scrollView" >
 			<View id="drink_types" layout="vertical" height="Ti.UI.SIZE">

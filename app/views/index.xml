@@ -10,7 +10,7 @@
 			<View height="100dp" backgroundColor="#ddd" layout="horizontal" width="100%">
 				<View class="home_menu_btn" onClick="openDrinks">
 					<ImageView image="/images/icons/drinks.png" class="menu_image" />
-					<Label class="menu_title">Drinks</Label>
+					<Label class="menu_title">Cocktails</Label>
 				</View>
 				<View class="home_menu_btn" onClick="openSearch">
 					<ImageView image="/images/icons/search.png" class="menu_image" />

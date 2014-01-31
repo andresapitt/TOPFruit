@@ -22,66 +22,6 @@
 	showHorizontalScrollIndicator:false,
 	backgroundColor:"#efefef"
 },
-".recipe_container":{
-	left:"5dp", 
-	right:"5dp", 
-	width:Ti.UI.FILL, 
-	height:Ti.UI.SIZE, 
-	backgroundColor:"#fff",
-	borderRadius:"4dp",
-	borderColor: "#d1d1d1",
-	borderWidth: 1,
-	layout:"vertical",
-	top:"10dp",
-},
-".recipe_title":{
-	color:Alloy.Globals.PrimaryColor,
-	font: {
-		fontFamily:Alloy.Globals.BoldFont, 
-		fontSize:"18dp"
-	},
-	top:"15dp",
-	left:"5dp",
-	right:"5dp",
-	width:Ti.UI.FILL,
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-},
-".recipe_subtitle":{
-	color:Alloy.Globals.PrimaryColor,
-	font: {
-		fontFamily:Alloy.Globals.BoldFont, 
-		fontSize:"14dp"
-	},
-	top:"10dp",
-	left:"5dp",
-	right:"5dp",
-	width:Ti.UI.FILL,
-	textAlign: Ti.UI.LEFT,
-},
-".recipe_subtext":{
-	color:Alloy.Globals.PrimaryColor,
-	font: {
-		fontFamily:Alloy.Globals.MainFont, 
-		fontSize:"11dp"
-	},
-	top:"2dp",
-	left:"5dp",
-	right:"5dp",
-	width:Ti.UI.FILL,
-	textAlign: Ti.UI.LEFT,
-},
-".commentBtn":{
-	top:"10dp",
-	color:"#fff",
-	backgroundColor: Alloy.Globals.PrimaryColor,
-	font: {
-		fontFamily:Alloy.Globals.BoldFont, 
-		fontSize:"14dp"
-	},
-	width:"160dp",
-	height:"33dp",
-	borderRadius:"4dp",
-},
 ".socialBtn_view":{
 	width:Ti.UI.SIZE,
 	height:Ti.UI.SIZE
@@ -116,4 +56,44 @@
         colors: [ { color: '#4b69a5', offset: 0.0}, { color: '#253d7d', offset: 1.0 } ]
       },
       left:"30dp"
+},
+".horizontal_drinks_nav_view":{
+	layout:'horizontal',
+	width:Ti.UI.FILL, 
+	height:"130dp",
+	top:"10dp",
+	left:"10dp",
+	right:"10dp",
+	//backgroundColor:"#fff"
+},
+".drink_single_view":{
+	height:"130dp",
+	width:"90dp",
+	left:"5dp",
+	right:"5dp"
+},
+".drink_image":{
+	height:"95dp",
+	width:"90dp",
+	top:"0dp",
+//	image:"images/common/highlight_circle.png",
+	touchEnabled:false
+},
+".drink_image_bottle":{
+	height:"95dp",
+	width:Ti.UI.SIZE,
+	top:"0dp",
+//	image:"images/common/highlight_circle.png",
+	touchEnabled:false
+},
+".drink_title":{
+	color: Alloy.Globals.PrimaryColor,
+	font: {
+			fontFamily:Alloy.Globals.MainFont, 
+			fontSize:"14dp"
+	},
+	top:"97dp",
+	touchEnabled:false,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	//bottom:'0dp'
 }
