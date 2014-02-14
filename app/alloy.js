@@ -13,6 +13,8 @@
 
 Ti.API.info("in the alloy.js file");
 
+//Ti.App.Properties.setBool('over18', false);
+
 Alloy.Globals.PrimaryColor = "#313646";
 Alloy.Globals.FacebookColor = "#3b5998";
 if(Ti.Platform.osname == "iphone")
@@ -49,19 +51,38 @@ Alloy.Globals.Utils = {
     var md5;
     var needsToSave = false;
     var savedFile;
-    if(a.image){
-      md5 = Ti.Utils.md5HexDigest(a.image)+this._getExtension(a.image);
-      savedFile = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,md5);
-      if(savedFile.exists()){
-        a.image = savedFile;
-      } else {
-        needsToSave = true;
-      }
+     Ti.API.info("image link string : " + a.image);
+	if(a.image){
+		if(a.checkRetina != false)
+		{
+			if( Ti.Platform.displayCaps.density == 'high')
+			{
+		    	var image_url = a.image;
+		    	var basename = image_url.replace(/\\/g,'/').replace( /.*\//, '' );
+		        var segment = basename.split('.');
+		        image_url = image_url.replace(basename, segment[0]+'@2x.'+segment[1]);
+		        Ti.API.info("full image path: " + image_url);
+		        a.image =	image_url;
+		    }
+		}
+		md5 = Ti.Utils.md5HexDigest(a.image)+this._getExtension(a.image);
+		  
+		Ti.API.info("MD% string return: " + md5);
+		savedFile = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,md5);
+		if(savedFile.exists()){
+			Ti.API.info("Image file already cached" );
+			a.image = savedFile;
+		} else {
+			Ti.API.info("Image file needs to be downloaded" );
+			needsToSave = true;
+		}
     }
     var image = Ti.UI.createImageView(a);
     if(needsToSave === true){
       function saveImage(e){
         image.removeEventListener('load',saveImage);
+        //load high/low res version of image
+         Ti.API.info("image link string : " + image.image);
         savedFile.write(
           Ti.UI.createImageView({image:image.image,width:'auto',height:'auto'}).toImage()
         );

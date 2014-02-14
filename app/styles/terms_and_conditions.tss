@@ -7,7 +7,7 @@
 	layout:"vertical",
 	bottom:"40dp",
 	width:Ti.UI.FILL,
-	contentWidth:"auto",
+	contentWidth:Ti.UI.FILL,
 	disableBounce:true
 },
 "#close_Btn":{
@@ -18,7 +18,7 @@
 	backgroundColor: Alloy.Globals.PrimaryColor,
 },
 "#TandC_Title":{
-	top:"10dp",
+	top:"30dp",
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
 	color: Alloy.Globals.PrimaryColor,
@@ -34,6 +34,8 @@
 	top:"10dp",
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
+	left:"10dp",
+	right:"10dp",
 	color: Alloy.Globals.PrimaryColor,
 	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
 	font: {

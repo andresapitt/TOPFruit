@@ -10,17 +10,19 @@
 	barColor:"#fff",
 	layout:'vertical',
 	tintColor:Alloy.Globals.PrimaryColor,
-	navTintColor:Alloy.Globals.PrimaryColor
+	navTintColor:Alloy.Globals.PrimaryColor,
+	height: Ti.UI.FILL
 },
 ".scrollView":{
 	layout:"vertical",
-	bottom:"40dp",
-	width:Ti.UI.FILL,
-	contentWidth:"auto",
+	bottom:"0dp",
+	width:"320dp",
+	contentWidth:"320dp",
 	disableBounce:true,
 	showVerticalScrollIndicator:true,
 	showHorizontalScrollIndicator:false,
-	backgroundColor:"#efefef"
+	backgroundColor:"#efefef",
+	height:Ti.UI.FILL
 },
 ".recipe_container":{
 	left:"5dp", 
@@ -65,10 +67,11 @@
 		fontSize:"11dp"
 	},
 	top:"2dp",
-	left:"5dp",
+	left:"12dp",
 	right:"5dp",
-	width:Ti.UI.FILL,
+	//width:Ti.UI.FILL,
 	textAlign: Ti.UI.LEFT,
+	touchEnabled:false
 },
 ".commentBtn":{
 	top:"10dp",
@@ -116,4 +119,32 @@
         colors: [ { color: '#4b69a5', offset: 0.0}, { color: '#253d7d', offset: 1.0 } ]
       },
       left:"30dp"
+},
+"#rating_picker":{
+	height:"240dp",
+	bottom:"-240dp",
+	width:Ti.UI.FILL,
+	backgroundColor:'#fff'
+},
+".tap_to_close":{
+	height:"40dp",
+	backgroundColor: "#eee",
+	borderRadius:0,
+	borderColor: "#898989",
+	borderWidth: 1,
+	width: Ti.UI.FILL,
+	color: Alloy.Globals.PrimaryColor,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+        fontSize: '16dp',
+        fontFamily: Alloy.Globals.BoldFont,
+    }
+},
+"#rating_title":{
+	top:"10dp",
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"16dp"
+	}
 }

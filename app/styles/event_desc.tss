@@ -14,9 +14,11 @@
 },
 ".scrollView":{
 	layout:"vertical",
-	bottom:"40dp",
+	//bottom:"40dp",
 	width:Ti.UI.FILL,
-	contentWidth:"auto",
+	contentWidth:Ti.UI.FILL,
+	height:Ti.UI.FILL, 
+	contentHeight:Ti.UI.SIZE, 
 	disableBounce:true,
 	showVerticalScrollIndicator:true,
 	showHorizontalScrollIndicator:false,
@@ -32,17 +34,36 @@
 	left:"5dp",
 	right:"5dp",
 	layout:"vertical",
+	bottom:"10dp"
 },
-"#event_title":{
-	color:Alloy.Globals.PrimaryColor,
+".event_title_style":{color:Alloy.Globals.PrimaryColor,
 	font: {
 		fontFamily:Alloy.Globals.BoldFont, 
 		fontSize:"18dp"
 	},
 	left:"15dp",
-	bottom:"10dp",
-	top:"10dp",
+	bottom:"0dp",
+	top:"5dp",
 	height:Ti.UI.SIZE
+},
+"#event_title":{
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	left:"5dp",
+	right:"5dp",
+	width:Ti.UI.FILL,
+	top:"10dp"
+},
+".event_desc_style":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"14dp"
+	},
+	top:"2dp",
+	bottom:"5dp",
+	height:Ti.UI.SIZE,
+	left:"15dp",
+	textAlign: Ti.UI.LEFT,
 },
 "#event_desc_text":{
 	color:Alloy.Globals.PrimaryColor,
@@ -59,7 +80,20 @@
 	right:"10dp",
 	width:Ti.UI.SIZE,
 	height:Ti.UI.SIZE
-}
+},
+".visitSiteBtn":{
+	top:"10dp",
+	color:"#fff",
+	backgroundColor: Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"14dp"
+	},
+	width:"160dp",
+	height:"33dp",
+	borderRadius:"4dp",
+	bottom:"10dp"
+},
 ".socialBtn":{
 	width:"83dp",
 	height:"34dp",

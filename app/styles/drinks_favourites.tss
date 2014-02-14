@@ -21,4 +21,16 @@
 	showVerticalScrollIndicator:true,
 	showHorizontalScrollIndicator:false,
 	backgroundColor:"#efefef"
+},
+".cocktail_image_glass":{
+	width:Ti.UI.SIZE,
+	height:Ti.UI.SIZE,
+	touchEnabled:false
+},
+".white_banner":{
+	width:Ti.UI.FILL, 
+	height:"34dp",
+	bottom:"0dp",
+	backgroundColor:"#fff",
+	opacity:0.5
 }

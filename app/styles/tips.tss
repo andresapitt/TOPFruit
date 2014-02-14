@@ -12,6 +12,13 @@
 	tintColor:Alloy.Globals.PrimaryColor,
 	navTintColor:Alloy.Globals.PrimaryColor
 },
+"#tip_item_container":{
+	height:Ti.UI.SIZE,
+	left:"5dp",
+	right:"5dp",
+	layout:"vertical",
+	bottom:"10dp"
+},
 ".scrollView":{
 	layout:"vertical",
 	bottom:"40dp",
@@ -21,4 +28,55 @@
 	showVerticalScrollIndicator:true,
 	showHorizontalScrollIndicator:false,
 	backgroundColor:"#efefef"
+},
+".tip_item":{
+	backgroundColor:"#fff",
+	height:Ti.UI.SIZE,
+	borderRadius:0,
+	borderColor: "#d1d1d1",
+	borderWidth: 1,
+	top:"10dp",
+},
+".tip_text_view":{
+	left:"72dp",
+	height:Ti.UI.SIZE,
+	layout:"vertical",
+	top:"2dp", 
+	bottom:"10dp"
+},
+".tip_title":{
+	//left:"72dp",
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"14dp"
+	},
+	color:Alloy.Globals.PrimaryColor,
+	top:"2dp",
+	touchEnabled:false,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	width:Ti.UI.FILL
+},
+".tip_image":{
+	height:"60dp", 
+	width:"60dp",
+	left:"5dp",
+	borderRadius:0,
+	borderColor: "#d1d1d1",
+	borderWidth: 1,
+	touchEnabled:false,
+	top:"10dp",
+	bottom:"10dp"
+},
+".tip_desc":{
+//	left:"72dp",
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"12dp"
+	},
+	color:Alloy.Globals.PrimaryColor,
+	//color:"#e87722",
+	top:"2dp",
+	touchEnabled:false,	
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	width:Ti.UI.FILL
 }

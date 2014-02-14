@@ -48,6 +48,7 @@ for(var i = 0; i < sub_category.subcategories.length; i += 3)
 		drink_image.applyProperties(single_drink_image_style);
 		single_drink_view.add(drink_image);
 		
+		/*
 		var overlay_drink_image = Ti.UI.createImageView();
 		overlay_drink_image.applyProperties(single_drink_image_style_bottle);
 		
@@ -65,6 +66,14 @@ for(var i = 0; i < sub_category.subcategories.length; i += 3)
 	    }
 	    
 		overlay_drink_image.defaultImage = "images/category_images/generic.png";	
+		*/
+		
+		var overlay_drink_image = Alloy.Globals.Utils.RemoteImage({
+		  image: sub_category.subcategories[y].image_thumb,
+		  defaultImage:'images/category_images/generic.png'
+		});
+		overlay_drink_image.applyProperties(single_drink_image_style_bottle);
+		
 		single_drink_view.add(overlay_drink_image);
 		
 		var drink_single_label = Ti.UI.createLabel({text:sub_category.subcategories[y].title});

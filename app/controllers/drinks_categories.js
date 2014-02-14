@@ -61,30 +61,10 @@ for(var i = 0; i < drinks_json.drinks.length; i += 3)
 		drink_image.applyProperties(single_drink_image_style);
 		single_drink_view.add(drink_image);
 		
-		var overlay_drink_image = Ti.UI.createImageView();
+		/*var overlay_drink_image = Ti.UI.createImageView();
 		
 		overlay_drink_image.applyProperties(single_drink_image_style_bottle);
-		/*
-		if(drinks_json.drinks[y].title.toUpperCase() == "WHISKEY")
-			{ overlay_drink_image.image = drinks_categories_images.whiskey; }
-		else if(drinks_json.drinks[y].title.toUpperCase() == "GIN")
-			{ overlay_drink_image.image = drinks_categories_images.gin; }
-		else if(drinks_json.drinks[y].title.toUpperCase() == "RUM")
-			{ overlay_drink_image.image = drinks_categories_images.rum; }
-		else if(drinks_json.drinks[y].title.toUpperCase() == "TEQUILA")
-			{ overlay_drink_image.image = drinks_categories_images.tequila; }
-		else if(drinks_json.drinks[y].title.toUpperCase() == "VODKA")
-			{ overlay_drink_image.image = drinks_categories_images.vodka; }
-		else if(drinks_json.drinks[y].title.toUpperCase() == "CHAMPAGNE")
-			{ overlay_drink_image.image = drinks_categories_images.champagne; }
-		else if(drinks_json.drinks[y].title.toUpperCase() == "CLASSICS")
-			{ overlay_drink_image.image = drinks_categories_images.classics; }
-		else if(drinks_json.drinks[y].title.toUpperCase() == "OTHER")
-			{ overlay_drink_image.image = drinks_categories_images.other; }
-		else
-			{ overlay_drink_image.image = drinks_categories_images.generics; }
-			*/
-		
+
 		if( Ti.Platform.displayCaps.density == 'high')
 		{
 	    	var image_url = drinks_json.drinks[y].image_thumb;
@@ -99,7 +79,12 @@ for(var i = 0; i < drinks_json.drinks.length; i += 3)
 	    }
 		
 		overlay_drink_image.defaultImage = "images/category_images/generic.png";	
-		
+		*/
+		var overlay_drink_image = Alloy.Globals.Utils.RemoteImage({
+		  image: drinks_json.drinks[y].image_thumb,
+		  defaultImage:'images/category_images/generic.png'
+		});
+		overlay_drink_image.applyProperties(single_drink_image_style_bottle);
 		single_drink_view.add(overlay_drink_image);
 		
 		var drink_single_label = Ti.UI.createLabel({text:drinks_json.drinks[y].title});

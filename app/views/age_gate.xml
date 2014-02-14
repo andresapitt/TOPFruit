@@ -33,7 +33,7 @@
 			<View id="picker_bg" />
 			<View layout="vertical" bottom="0dp" height=Ti.UI.SIZE >
 			<!--	<View id="picker_dob_submit">-->
-					<Button id="picker_dob_submit" class="bold_prompt" onClick="closeDateHandler">TAP TO CLOSE</Button>
+				<Button id="picker_dob_submit" class="bold_prompt" onClick="closeDateHandler">TAP TO CLOSE</Button>
 				<!--</View>-->
 				<Picker id="picker" selectionIndicator="true" useSpinner="true" type="Ti.UI.PICKER_TYPE_DATE" >
 	        </Picker>

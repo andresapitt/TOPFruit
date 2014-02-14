@@ -52,8 +52,15 @@ for(var i = 0; i < events_json.events.length; i++)
 	event_time_label.applyProperties(event_time_style);
 	event_item_view.add(event_time_label);
 	
-	var event_image_view = Ti.UI.createImageView();
+	/*var event_image_view = Ti.UI.createImageView();
 	event_image_view.image = "/images/placeholders/ph_events.png";
+	event_image_view.applyProperties(event_image_style);
+	event_item_view.add(event_image_view);*/
+	
+	var event_image_view = Alloy.Globals.Utils.RemoteImage({
+	  image: events_json.events[i].thumb_image_url,
+	  defaultImage:'/images/placeholders/ph_events.png'
+	});
 	event_image_view.applyProperties(event_image_style);
 	event_item_view.add(event_image_view);
 	

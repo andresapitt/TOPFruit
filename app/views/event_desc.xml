@@ -1,11 +1,28 @@
 <Alloy>
 	<Window class="container" title="ABOUT EVENT">
 		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" />
-		<ScrollView class="scrollView" >
-			<View class="event_item">
-				<ImageView image="/images/brands/jameson_banner.png" class="event_image" height="158dp" bottom="5dp" />
-				<Label id="event_title">...</Label>
-				<Label id="event_desc_text">...</Label>
+		<ScrollView id="event_decs_scrollview" class="scrollView" >
+			<Label id="event_title" class="event_title_style">...</Label>
+			<View id="event_desc_parent" class="event_item">
+				<View id="event_banner_image" height="158dp" bottom="5dp" width="Ti.UI.FILL"></View>
+				<!--<ImageView image="/images/brands/jameson_banner.png" class="event_image" height="158dp" bottom="5dp" />-->
+				<View id="event_where_view" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL">
+					<Label class="event_title_style">WHERE</Label>
+					<Label id="event_where_text" class="event_desc_style">Jameson Factory, Smithfield, Dublin 2</Label>
+				</View>
+				<View id="event_when_view" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL">
+					<Label class="event_title_style">WHEN</Label>
+					<Label id="event_when_text" class="event_desc_style">Thurs 4th - 6th Sun</Label>
+				</View>
+				<View id="event_admission_view" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL">
+					<Label class="event_title_style">ADMISSION</Label>
+					<Label id="event_admission_text" class="event_desc_style">$0.00</Label>
+				</View>
+				<View id="event_desc_view" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL">
+					<Label class="event_title_style">DESC.</Label>
+					<Label id="event_desc_text" class="event_desc_style">This is the description</Label>
+				</View>
+				<Button class="visitSiteBtn" onClick="visitSiteBtnHandler" title="VISIT SITE" />
 				<!--<View layout="horizontal" id="social_hor_view" height="Ti.UI.SIZE" bottom="10dp" >
 					<View class="socialBtn_view" id="twitterParent">
 						<Button id="twitterBtn" image="/images/icons/twitterbird.png" class="socialBtn twitter" title="Twitter" />
@@ -17,6 +34,9 @@
 						<Button id="websiteBtn" image="/images/icons/websiteIcon.png" class="socialBtn website" title="Website" />
 					</View>
 			</View>-->
+		</View>
+		<View id="event_map_view" class="event_item">
+			<Label class="event_title_style">I'M A MAP</Label>
 		</View>
 		</ScrollView>
 		<RightNavButton>

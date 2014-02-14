@@ -14,9 +14,10 @@
 },
 ".scrollView":{
 	layout:"vertical",
-	bottom:"40dp",
 	width:Ti.UI.FILL,
-	contentWidth:"auto",
+	contentWidth:Ti.UI.FILL,
+	height:Ti.UI.FILL, 
+	contentHeight:Ti.UI.SIZE, 
 	disableBounce:true,
 	showVerticalScrollIndicator:true,
 	showHorizontalScrollIndicator:false,
@@ -80,7 +81,8 @@
 		fontSize:"14dp"
 	},
 	//color:Alloy.Globals.PrimaryColor,
-	color:"#e87722",
+	//color:"#e87722",
+	color:Alloy.Globals.PrimaryColor,
 	top:"20dp",
 	touchEnabled:false
 }

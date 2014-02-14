@@ -6,7 +6,6 @@ function doClick(e) {
     alert($.label.text);
 }
 
-//Ti.App.Properties.setBool('over18', false);
 
 var ageGaitSuccess = Ti.App.Properties.getBool('over18', false);
 
@@ -23,8 +22,12 @@ else //open home page of app
 }
 
 function openFavourites(e){
-	var drinksFavWin = Alloy.createController('drinks_favourites').getView();
+	//var drinksFavWin = Alloy.createController('drinks_favourites').getView();
+    //$.win1.openWindow(drinksFavWin);
+    
+    var drinksFavWin = Alloy.createController('cocktail_results',  {ID:"favourites"} ).getView();
     $.win1.openWindow(drinksFavWin);
+    	
 }
 
 function openDrinks(e){

@@ -1,45 +1,53 @@
 <Alloy>
-	<Window class="container" title="DRINK RECIPE">
-		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" />
-		<ScrollView class="scrollView" >
+	<Window class="container" title="DRINK RECIPE" layout="composite">
+		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="0dp" />
+
+		<ScrollView class="scrollView" id="cocktail_scroll" top="1dp">
 			<Label id="recipe_title_label" class="recipe_title"></Label>
 			<View id="how_to_make_it" class="recipe_container">
-				<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" >How to make it</Label>
-				<View height="1" width="140dp" backgroundColor="#d1d1d1" />
+				<View height="Ti.UI.SIZE">
+					<ImageView id="fav_heart" image="/images/favs/heart_outline.png" top="10dp" right="10dp" width="25dp" onClick="fav_clicked" />
+					
+					<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" >How to make it</Label>
+					<View height="1" width="140dp" backgroundColor="#d1d1d1" bottom="0dp" />
+				</View>
 				<View height="Ti.UI.SIZE">
 					<!-- THIS IS THE IMAGE VIEW ON THE LEFT SIDE -->
-					<View id="recipe_image_ani_view" left="-115dp" width="115dp" height="160dp" backgroundColor="#444">
+					<View id="recipe_image_ani_view" left="-115dp" width="115dp" height="160dp" top="10dp" >
 						
 					</View>
 					<!-- THIS IS THE INGREDIENTS VIEW ON THE RIGHT SIDE -->
-					<View layout="vertical" height="Ti.UI.SIZE" left="115dp">
-						<View id="glassware_container" layout="vertical" height="Ti.UI.SIZE" >
+					<View layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL" left="115dp" top="0dp" id="how_to_view">
+						<View id="glassware_container" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL" >
 							<Label class="recipe_subtitle" left="12dp">Glassware</Label>
-							<Label class="recipe_subtext" left="12dp">Glassware info</Label>
+							<Label class="recipe_subtext" id="glassware" >Glassware info</Label>
 						</View>
-						<View id="ingredients_container" layout="vertical" height="Ti.UI.SIZE" >
+						<View id="ingredients_container" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL" >
 							<Label class="recipe_subtitle" left="12dp">Ingredients</Label>
-							<Label class="recipe_subtext" left="12dp">Ingredients info</Label>
+							<Label class="recipe_subtext" id="ingredients" >Ingredients info</Label>
 						</View>
-						<View id="method_container" layout="vertical" height="Ti.UI.SIZE" >
+						<View id="method_container" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL" >
 							<Label class="recipe_subtitle" left="12dp">Method</Label>
-							<Label class="recipe_subtext" left="12dp">Method info</Label>
+							<Label class="recipe_subtext" id="method">Method info</Label>
 						</View>
-						<View id="garnish_container" layout="vertical" height="Ti.UI.SIZE">
+						<View id="garnish_container" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL">
 							<Label class="recipe_subtitle" left="12dp">Garnish</Label>
-							<Label class="recipe_subtext" left="12dp">Garnish info</Label>
+							<Label class="recipe_subtext" id="garnish">Garnish info</Label>
 						</View>
 					</View>
 				</View>
 				<View height="10dp" width="140dp" />
 			</View>
-			<View class="recipe_container">
-				<Label class="recipe_title">VIDEO</Label>
+			<View class="recipe_container" id="video_container" layout="composite">
+				<!--<Label class="recipe_subtext" id="video_url_link">VIDEO</Label>-->
 			</View>
 			<View class="recipe_container">
-				<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">Rate this recipe</Label>
+				<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">Rating</Label>
 				<View height="1" width="140dp" backgroundColor="#d1d1d1" />
-				
+				<View layout="vertical" height="Ti.UI.SIZE">
+					<View id="rating_view" layout="horizontal" height="Ti.UI.SIZE" width="Ti.UI.SIZE" top="5dp"></View>
+					<Label class="recipe_subtext" id="rating_cta" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" top="5dp">Rate this recipe</Label>
+				</View>
 				<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">Comments</Label>
 				<View height="1" width="140dp" backgroundColor="#d1d1d1" />
 				<Button class="commentBtn" onClick="submitCommentBtnHandler" title="Add Comments / Review" />
@@ -59,6 +67,24 @@
 			</View>
 			<View height="10dp" width="140dp" />
 		</ScrollView>
+		
+		<View id="rating_picker">
+			<!--<Label class="recipe_subtitle" left="12dp">Inside the rating picker</Label>-->
+			<View layout="vertical" top="0dp" height="Ti.UI.SIZE" >
+					<Button class="tap_to_close bold_prompt" onClick="closeRatingHandler">TAP TO CLOSE</Button>
+					<Label id="rating_title" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" top="30dp">Tap a star to rate</Label>
+					<View layout="horizontal" height="Ti.UI.SIZE" width="Ti.UI.SIZE" top="20dp" bottom="20dp">
+						<ImageView id="star_1" image="/images/common/empty_star.png" left="4dp" right="4dp" width="25dp" star_id="1" onClick="star_clicked" />
+						<ImageView id="star_2" image="/images/common/empty_star.png" left="4dp" right="4dp" width="25dp" star_id="2" onClick="star_clicked" />
+						<ImageView id="star_3" image="/images/common/empty_star.png" left="4dp" right="4dp" width="25dp" star_id="3" onClick="star_clicked" />
+						<ImageView id="star_4" image="/images/common/empty_star.png" left="4dp" right="4dp" width="25dp" star_id="4" onClick="star_clicked" />
+						<ImageView id="star_5" image="/images/common/empty_star.png" left="4dp" right="4dp" width="25dp" star_id="5" onClick="star_clicked" />
+					</View>
+					<Button class="commentBtn" onClick="submitRatingBtnHandler" title="Submit Rating" />
+			</View>
+		</View>
+		
+		
 		<RightNavButton>
         	<Button image="/images/icons/home.png" onClick="goToHome" />
 		</RightNavButton>

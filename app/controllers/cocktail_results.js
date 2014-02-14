@@ -1,12 +1,18 @@
 Ti.API.info("In cocktails result section");
 
-
 var args = arguments[0] || {};
 var cocktail_category = args.ID || 'Category not received';
 //$.recipeTitle.text = args.title || 'Title not received';
 Ti.API.info("Cocktail category: " + cocktail_category);
 
-$.cocktail_results.title = args.title.toUpperCase();
+if(cocktail_category != "favourites")
+{
+	$.cocktail_results.title = args.title.toUpperCase();
+}
+else if(cocktail_category == "favourites")
+{
+	$.cocktail_results.title = "FAVOURITES";
+}
 
 var readFile = Titanium.Filesystem.getFile(Ti.Filesystem.resourcesDirectory , "data/Drinks.txt");  
  
@@ -24,6 +30,7 @@ else{
 var drinks_json = JSON.parse(drinks_json_text);
 var all_cocktails = drinks_json.cocktails;
 var rel_cocktails = [];
+var cocktailViews = [];
 
 var result_item_view_style = $.createStyle({
 	classes: ["result_item"],
@@ -36,23 +43,50 @@ var result_item_title_style = $.createStyle({
 	classes: ["result_title"],
 });
 
-
-for(var i = 0; i < all_cocktails.length; i++)
+//if not favourites 
+if(cocktail_category != "favourites")
 {
-	Ti.API.info("Cocktail " + i + " Title: " + all_cocktails[i].title);
-	var isMatch = false;
-	for(var y = 0; y < all_cocktails[i].categories.length; y++)
+	for(var i = 0; i < all_cocktails.length; i++)
 	{
-		if(cocktail_category == all_cocktails[i].categories[y])
+		Ti.API.info("Cocktail " + i + " Title: " + all_cocktails[i].title);
+		for(var y = 0; y < all_cocktails[i].categories.length; y++)
 		{
-			Ti.API.info("match is true for cocktail: " + all_cocktails[i].title);
-			rel_cocktails.push(all_cocktails[i]);
+			if(cocktail_category == all_cocktails[i].categories[y])
+			{
+				Ti.API.info("match is true for cocktail: " + all_cocktails[i].title);
+				rel_cocktails.push(all_cocktails[i]);
+			}
+		}
+	}
+}
+else
+{
+	Ti.API.info("favourites display");
+	
+	var currentFavs = Titanium.App.Properties.getList('favs', new Array());
+	if(currentFavs.length == 0)
+	{
+		Ti.API.info("No favourites found");
+	}
+	else
+	{
+		Ti.API.info(currentFavs.length + " favourites found");
+		for(var i = 0; i < currentFavs.length; i ++)
+		{
+			for(var y = 0; y < all_cocktails.length; y++)
+			{
+				if( all_cocktails[y].ID == currentFavs[i].id)
+				{
+					Ti.API.info("Fav cocktail: " + all_cocktails[y].title);
+					rel_cocktails.push(all_cocktails[y]);
+				}
+			}
 		}
 	}
 }
 
 
-if( rel_cocktails.length > 0)
+if(rel_cocktails.length > 0 )
 {
 	Ti.API.info("relevant cocktail count: " + rel_cocktails.length);
 	
@@ -75,7 +109,14 @@ if( rel_cocktails.length > 0)
 			var single_result_item_view = Ti.UI.createView();
 			single_result_item_view.applyProperties(result_item_view_style);
 			
-			var cocktail_image = Ti.UI.createImageView({image:"images/cocktails/glass.png"});
+			/*var cocktail_image = Ti.UI.createImageView({image:"images/cocktails/glass.png"});
+			cocktail_image.applyProperties(cocktail_image_style_bottle);
+			single_result_item_view.add(cocktail_image);*/
+			
+			var cocktail_image = Alloy.Globals.Utils.RemoteImage({
+			  image: rel_cocktails[y].image_thumb,
+			  defaultImage:'images/cocktails/glass.png'
+			});
 			cocktail_image.applyProperties(cocktail_image_style_bottle);
 			single_result_item_view.add(cocktail_image);
 			
@@ -97,6 +138,22 @@ if( rel_cocktails.length > 0)
 			
 			single_result_item_view.cocktailData = rel_cocktails[y];
 			single_result_item_view.addEventListener('click', openRecipeDetailed);
+			
+			
+			if(cocktail_category == "favourites")
+			{
+				single_result_item_view.ID = rel_cocktails[y].ID;
+				var brokenHeart_image = Ti.UI.createImageView();
+				brokenHeart_image.image = "/images/favs/heart_broken.png";
+				brokenHeart_image.touchEnabled = false;
+				brokenHeart_image.right = "6dp";
+				brokenHeart_image.width = "21dp";
+				brokenHeart_image.top = "6dp";
+				brokenHeart_image.opacity = 0.0;
+				single_result_item_view.broken_heart_image = brokenHeart_image;
+				single_result_item_view.add(brokenHeart_image);
+			}
+			cocktailViews.push(single_result_item_view);
 			
 			horizontal_results_view.add(single_result_item_view);
 			
@@ -132,6 +189,58 @@ function openRecipeDetailed(e){
     
 }
 
+
+$.cocktail_results.addEventListener('focus', function(e){
+	Ti.API.info("Results window gained focus");
+	if(cocktail_category == "favourites")
+	{
+		Ti.API.info("favourites page has regained focus");
+		var currentFavs = Titanium.App.Properties.getList('favs', new Array());
+		for(var i = 0; i < cocktailViews.length; i ++)
+		{
+			Ti.API.info("Fav cocktail View: " + i);
+			if(currentFavs.length == 0)
+			{
+				Ti.API.info("Fav cocktail View: " + i + " no longer a favourite" );
+				//cocktailViews[i].broken_heart_image.image = "/images/favs/heart_broken.png";
+				var animation = Titanium.UI.createAnimation();
+				animation.opacity = 0.5;
+				animation.duration = 300;
+				animation.curve = Ti.UI.ANIMATION_CURVE_EASE_OUT;
+				cocktailViews[i].broken_heart_image.animate(animation);
+			}
+			else
+			{
+				Ti.API.info(currentFavs.length + " favourites found");
+				var isFav = false;
+				for(var y = 0; y < currentFavs.length; y ++)
+				{
+					if( cocktailViews[i].ID == currentFavs[y].id)
+					{
+						Ti.API.info("Cocktail View: " + i + " is a fav");
+						//cocktailViews[i].broken_heart_image.opacity = 0;
+						var animation = Titanium.UI.createAnimation();
+						animation.opacity = 0;
+						animation.duration = 300;
+						animation.curve = Ti.UI.ANIMATION_CURVE_EASE_IN;
+						cocktailViews[i].broken_heart_image.animate(animation);
+						isFav = true;
+					}
+				}
+				if(!isFav)
+				{
+					Ti.API.info("Fav cocktail View: " + i + " no longer a favourite" );
+					//cocktailViews[i].broken_heart_image.image = "/images/favs/heart_broken.png";
+					var animation = Titanium.UI.createAnimation();
+					animation.opacity = 0.5;
+					animation.duration = 300;
+					animation.curve = Ti.UI.ANIMATION_CURVE_EASE_OUT;
+					cocktailViews[i].broken_heart_image.animate(animation);
+				}
+			}
+		}
+	}
+});
 
 function closeWindow(e)
 {
