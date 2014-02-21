@@ -7,6 +7,14 @@ Ti.API.info("Brand title: " + brandName);
 $.brand_title.text = args.title || 'Title not received';
 $.brand_desc_text.text = args.desc || 'Description not received';
 
+if(args.banner_img_url != null && args.banner_img_url != "")
+{
+	var brand_image_view = Alloy.Globals.Utils.RemoteImage({
+	  image: args.banner_img_url,
+	  defaultImage:'/images/placeholders/ph_events.png'
+	});
+	$.brand_banner_image.add(brand_image_view);
+}
 
 //Twitter btn
 if(args.twitter != null && args.twitter != "" )

@@ -12,11 +12,11 @@
       "version_date": "1390907569",
       "admission_fee": "£3.00 for adults, £2.00 for students",
       "more_info_url": "http://www.google.com",
-      "longitude": -6.153,
-      "latitude": -7.684
+      "longitude": -6.271925,
+      "latitude": 53.340164
     },
     {
-      "title": "Event two title",
+      "title": "Event two title bloop bloop blop blooop bloop",
       "where": "",
       "when": "wed 15th - fri 25th",
       "desc": "event two description text goes here",
@@ -26,8 +26,8 @@
       "version_date": "1390907569",
       "admission_fee": "£5.00 for adults, £3.50 for students",
       "more_info_url": "http://www.google.com",
-      "longitude": null,
-      "latitude": -7.684
+      "longitude": -6.271925,
+      "latitude": 53.340164
     },
     {
       "title": "Event three title",
@@ -40,8 +40,8 @@
       "version_date": "1390907569",
       "admission_fee": "£5.00 for adults, £3.50 for students",
       "more_info_url": "http://www.google.com",
-      "longitude": -6.153,
-      "latitude": -7.684
+      "longitude": -6.271925,
+      "latitude": 53.340164
     },
     {
       "title": "Event four title",
@@ -54,8 +54,8 @@
       "version_date": "1390907569",
       "admission_fee": "£5.00 for adults, £3.50 for students",
       "more_info_url": "http://www.google.com",
-      "longitude": -6.153,
-      "latitude": -7.684
+      "longitude": -6.271925,
+      "latitude": 53.340164
     },
     {
       "title": "Event five title",
@@ -68,8 +68,8 @@
       "version_date": "1390907569",
       "admission_fee": "£5.00 for adults, £3.50 for students",
       "more_info_url": "http://www.google.com",
-      "longitude": -6.153,
-      "latitude": -7.684
+     "longitude": -6.271925,
+      "latitude": 53.340164
     },
     {
       "title": "Event six title",
@@ -82,8 +82,8 @@
       "version_date": "1390907569",
       "admission_fee": "",
       "more_info_url": "http://www.google.com",
-      "longitude": -6.153,
-      "latitude": -7.684
+      "longitude": -6.271925,
+      "latitude": 53.340164
     },
     {
       "title": "Event seven title",
@@ -96,8 +96,8 @@
       "version_date": "1390907569",
       "admission_fee": "£5.00 for adults, £3.50 for students",
       "more_info_url": "http://www.google.com",
-      "longitude": -6.153,
-      "latitude": -7.684
+      "longitude": -6.271925,
+      "latitude": 53.340164
     },
     {
       "title": "Event eight title",
@@ -110,8 +110,8 @@
       "version_date": "1390907569",
       "admission_fee": "£5.00 for adults, £3.50 for students",
       "more_info_url": "http://www.google.com",
-      "longitude": -6.153,
-      "latitude": -7.684
+      "longitude": -6.271925,
+      "latitude": 53.340164
     },
     {
       "title": "Event nine title",
@@ -124,8 +124,8 @@
       "version_date": "1390907569",
       "admission_fee": "£5.00 for adults, £3.50 for students",
       "more_info_url": "http://www.google.com",
-      "longitude": -6.153,
-      "latitude": -7.684
+      "longitude": -6.271925,
+      "latitude": 53.340164
     }
   ]
 }

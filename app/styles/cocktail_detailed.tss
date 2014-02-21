@@ -24,6 +24,17 @@
 	backgroundColor:"#efefef",
 	height:Ti.UI.FILL
 },
+".scrollView[platform=android]":{
+	layout:"vertical",
+	bottom:"0dp",
+	width:Ti.UI.FILL,
+	contentWidth:Ti.UI.FILL,
+	disableBounce:true,
+	showVerticalScrollIndicator:true,
+	showHorizontalScrollIndicator:false,
+	backgroundColor:"#efefef",
+	height:Ti.UI.FILL
+},
 ".recipe_container":{
 	left:"5dp", 
 	right:"5dp", 
@@ -31,6 +42,18 @@
 	height:Ti.UI.SIZE, 
 	backgroundColor:"#fff",
 	borderRadius:"4dp",
+	borderColor: "#d1d1d1",
+	borderWidth: 1,
+	layout:"vertical",
+	top:"10dp",
+},
+".recipe_container[platform=android]":{
+	left:"5%", 
+	right:"5%", 
+	width:Ti.UI.FILL, 
+	height:Ti.UI.SIZE, 
+	backgroundColor:"#fff",
+	borderRadius:8,
 	borderColor: "#d1d1d1",
 	borderWidth: 1,
 	layout:"vertical",
@@ -48,11 +71,35 @@
 	width:Ti.UI.FILL,
 	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 },
+".recipe_title[platform=android formFactor=tablet]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"32dp"
+	},
+	top:"10dp",
+	left:"5dp",
+	right:"5dp",
+	width:Ti.UI.FILL,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+},
 ".recipe_subtitle":{
 	color:Alloy.Globals.PrimaryColor,
 	font: {
 		fontFamily:Alloy.Globals.BoldFont, 
 		fontSize:"14dp"
+	},
+	top:"10dp",
+	left:"5dp",
+	right:"5dp",
+	width:Ti.UI.FILL,
+	textAlign: Ti.UI.LEFT,
+},
+".recipe_subtitle[platform=android formFactor=tablet]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"24dp"
 	},
 	top:"10dp",
 	left:"5dp",
@@ -73,6 +120,19 @@
 	textAlign: Ti.UI.LEFT,
 	touchEnabled:false
 },
+".recipe_subtext[platform=android formFactor=tablet]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"20dp"
+	},
+	top:"2dp",
+	left:"12dp",
+	right:"5dp",
+	//width:Ti.UI.FILL,
+	textAlign: Ti.UI.LEFT,
+	touchEnabled:false
+},
 ".commentBtn":{
 	top:"10dp",
 	color:"#fff",
@@ -84,6 +144,18 @@
 	width:"160dp",
 	height:"33dp",
 	borderRadius:"4dp",
+},
+".commentBtn[platform=android formFactor=tablet]":{
+	top:"10dp",
+	color:"#fff",
+	backgroundColor: Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"20dp"
+	},
+	width:"240dp",
+	height:"50dp",
+	borderRadius:8,
 },
 ".socialBtn_view":{
 	width:Ti.UI.SIZE,
@@ -97,6 +169,18 @@
 	font: {
 		fontFamily:Alloy.Globals.BoldFont, 
 		fontSize:"14dp"
+	},
+	color:"#fff",
+	tintColor:"#fff"
+},
+".socialBtn[platform=android formFactor=tablet]":{
+	width:"140dp",
+	height:"50dp",
+	backgroundColor:"#d1d1d1",
+	borderRadius:8,
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"20dp"
 	},
 	color:"#fff",
 	tintColor:"#fff"
@@ -126,6 +210,12 @@
 	width:Ti.UI.FILL,
 	backgroundColor:'#fff'
 },
+"#rating_picker[platform=android formFactor=tablet]":{
+	height:"260dp",
+	bottom:"-260dp",
+	width:Ti.UI.FILL,
+	backgroundColor:'#fff'
+},
 ".tap_to_close":{
 	height:"40dp",
 	backgroundColor: "#eee",
@@ -140,6 +230,20 @@
         fontFamily: Alloy.Globals.BoldFont,
     }
 },
+".tap_to_close[platform=android formFactor=tablet]":{
+	height:"60dp",
+	backgroundColor: "#eee",
+	borderRadius:0,
+	borderColor: "#898989",
+	borderWidth: 1,
+	width: Ti.UI.FILL,
+	color: Alloy.Globals.PrimaryColor,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+        fontSize: '24dp',
+        fontFamily: Alloy.Globals.BoldFont,
+    }
+},
 "#rating_title":{
 	top:"10dp",
 	color:Alloy.Globals.PrimaryColor,
@@ -147,4 +251,34 @@
 		fontFamily:Alloy.Globals.MainFont, 
 		fontSize:"16dp"
 	}
+},
+"#rating_title[platform=android formFactor=tablet]":{
+	top:"10dp",
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"20dp"
+	}
+},
+".star_icon":{
+	left:"4dp",
+	right:"4dp", 
+	width:"25dp"
+},
+".star_icon[platform=android formFactor=tablet]":{
+	left:"4dp",
+	right:"4dp", 
+	width:"25dp",
+	height:"25dp"
+},
+".fav_icon_style":{
+	top:"10dp", 
+	right:"10dp",
+	width:"25dp" 
+},
+".fav_icon_style[platform=android formFactor=tablet]":{
+	top:"10dp", 
+	right:"10dp",
+	width:"25dp",
+	height:"25dp"
 }

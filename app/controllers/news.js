@@ -3,31 +3,67 @@ Ti.API.info("Opening News Page");
 function openEvents(e)
 {
 	var eventsWin = Alloy.createController('events').getView();
-    Alloy.Globals.parent.openWindow(eventsWin);
+	if(Ti.Platform.name == "android" )
+	{
+		eventsWin.open();
+	}
+	else
+	{
+		Alloy.Globals.parent.openWindow(eventsWin);
+	}
+    
 }
 
 function openBestBars(e)
 {
 	var bestBarsWin = Alloy.createController('best_bars').getView();
-    Alloy.Globals.parent.openWindow(bestBarsWin);
+	if(Ti.Platform.name == "android" )
+	{
+		bestBarsWin.open();
+	}
+	else
+	{
+    	Alloy.Globals.parent.openWindow(bestBarsWin);
+	}
 }
 
 function openBarSmarts(e)
 {
 	var barSmartsWin = Alloy.createController('bar_smarts').getView();
-    Alloy.Globals.parent.openWindow(barSmartsWin);
+	if(Ti.Platform.name == "android" )
+	{
+		barSmartsWin.open();
+	}
+	else
+	{
+    	Alloy.Globals.parent.openWindow(barSmartsWin);
+    }
 }
 
 function openCompetitions(e)
 {
 	var compWin = Alloy.createController('competitions').getView();
-    Alloy.Globals.parent.openWindow(compWin);
+	if(Ti.Platform.name == "android" )
+	{
+		compWin.open();
+	}
+	else
+	{
+    	Alloy.Globals.parent.openWindow(compWin);
+   	}
 }
 
 function openOffers(e)
 {
 	var offersWin = Alloy.createController('offers').getView();
-    Alloy.Globals.parent.openWindow(offersWin);
+	if(Ti.Platform.name == "android" )
+	{
+		offersWin.open();
+	}
+	else
+	{
+    	Alloy.Globals.parent.openWindow(offersWin);
+    }
 }
 
 

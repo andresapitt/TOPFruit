@@ -54,6 +54,27 @@ function visitSiteBtnHandler(e){
 
 if(args.longitude != null && args.latitude != null)
 {
+	var Map = require('ti.map');
+	var eventMapPinView = Map.createAnnotation({
+	    latitude:args.latitude,
+	    longitude:args.longitude,
+	    title:args.title,
+	    subtitle:args.where,
+	    pincolor:Map.ANNOTATION_RED,
+	    myid:1 // Custom property to uniquely identify this annotation.
+	});
+	
+	var mapview = Map.createView({
+	    mapType: Map.NORMAL_TYPE,
+	    region: {latitude:args.latitude, longitude:args.longitude,
+	            latitudeDelta:0.01, longitudeDelta:0.01},
+	    animate:true,
+	    regionFit:true,
+	    userLocation:true,
+	    annotations:[eventMapPinView],
+	    height:"200dp"
+	});
+	$.event_map_view.add(mapview);
 	
 }
 else{

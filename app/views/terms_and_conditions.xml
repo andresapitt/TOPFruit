@@ -3,7 +3,9 @@
 		<ScrollView id="scrollText" showVerticalScrollIndicator="true" showHorizontalScrollIndicator="false">
 			<Label id="TandC_Title">Terms and Conditions</Label>
 			<Label id="TandC_Text">	</Label>
-			<ImageView id="drinkaware_img" image="/images/age_gate/drinkaware.png" />
+			<View height="Ti.UI.SIZE" width="Ti.UI.SIZE" left="0dp" >
+				<ImageView id="drinkaware_img" image="/images/age_gate/drinkaware.png" />
+			</View>
 		</ScrollView>
 		<Button id="close_Btn" onClick="closeBtnHandler" title="Close" />
 	</Window>

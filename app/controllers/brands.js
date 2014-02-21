@@ -104,7 +104,12 @@ for(var i=0; i<str.length; i++)
 				var brand_row_label = Ti.UI.createLabel({text:brands_json.brands[y].title.toUpperCase()});
 				brand_row_label.applyProperties(row_label_style);
 				brand_row_view.add(brand_row_label);
-				var brand_image = Ti.UI.createImageView({image:brands_json.brands[y].thumb_image_url});
+				
+				//var brand_image = Ti.UI.createImageView({image:brands_json.brands[y].thumb_image_url});
+				var brand_image = Alloy.Globals.Utils.RemoteImage({
+			  		image: brands_json.brands[y].thumb_image_url,
+			  		defaultImage:'images/cocktails/glass.png'
+				});
 				brand_image.applyProperties(row_image_style);
 				brand_row_view.add(brand_image);
 				brand_row_view.applyProperties(row_view_style);

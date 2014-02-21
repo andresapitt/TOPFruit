@@ -185,7 +185,14 @@ function openRecipeDetailed(e){
 	Ti.API.info("Open detailed recipe! " + e.source.cocktailData.title);
 	
 	var recipeWin = Alloy.createController('cocktail_detailed', e.source.cocktailData).getView();
-    Alloy.Globals.parent.openWindow(recipeWin);
+	if(Ti.Platform.name == "android" )
+	{
+		recipeWin.open();
+	}
+	else
+	{
+   		Alloy.Globals.parent.openWindow(recipeWin);
+	}
     
 }
 

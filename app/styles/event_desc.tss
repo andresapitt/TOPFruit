@@ -82,15 +82,17 @@
 	height:Ti.UI.SIZE
 },
 ".visitSiteBtn":{
-	top:"10dp",
+	top:"0dp",
 	color:"#fff",
 	backgroundColor: Alloy.Globals.PrimaryColor,
 	font: {
 		fontFamily:Alloy.Globals.BoldFont, 
-		fontSize:"14dp"
+		fontSize:"16dp"
 	},
-	width:"160dp",
-	height:"33dp",
+	width:Ti.UI.FILL,
+	left:"5dp",
+	right:"5dp",
+	height:"40dp",
 	borderRadius:"4dp",
 	bottom:"10dp"
 },

@@ -44,7 +44,7 @@ for(var i = 0; i < sub_category.subcategories.length; i += 3)
 		single_drink_view.applyProperties(single_drink_view_style);
 		horizontal_drink_view.add(single_drink_view);
 		
-		var drink_image = Ti.UI.createImageView({image:"images/common/highlight_circle.png"});
+		var drink_image = Ti.UI.createImageView({image:"/images/common/highlight_circle.png"});
 		drink_image.applyProperties(single_drink_image_style);
 		single_drink_view.add(drink_image);
 		

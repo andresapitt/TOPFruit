@@ -3,12 +3,10 @@
 		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" />
 		<ScrollView class="scrollView" >
 			<View id="drink_types" layout="vertical" height="Ti.UI.SIZE">
-				
 			</View>
 			<View layout="vertical" height="Ti.UI.SIZE">
 				<Label class="search_desc_text">Alternatively</Label>
-				<Button class="search_button" image="/images/icons/search.png" onClick="openSearch">   Search Cocktails</Button>
-			
+				<Button class="search_button" image="/images/icons/search.png" onClick="openSearch">Search Cocktails</Button>
 			</View>
 		</ScrollView>
 		<RightNavButton>

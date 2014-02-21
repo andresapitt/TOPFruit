@@ -3,7 +3,8 @@
 		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" />
 		<ScrollView class="scrollView" >
 			<View class="brand_item">
-				<ImageView image="/images/brands/jameson_banner.png" class="brand_image" height="158dp" bottom="5dp" />
+				<!--<ImageView image="/images/brands/jameson_banner.png" class="brand_image" height="158dp" bottom="5dp" />-->
+				<View id="brand_banner_image" height="158dp" bottom="5dp" width="Ti.UI.FILL"></View>
 				<Label id="brand_title">...</Label>
 				<Label id="brand_desc_text">...</Label>
 				<View layout="horizontal" id="social_hor_view" height="Ti.UI.SIZE" bottom="10dp" >

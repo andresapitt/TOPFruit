@@ -23,13 +23,24 @@
         fontFamily: Alloy.Globals.BoldFont,
     }
 },
+".bold_prompt[platform=android formFactor=tablet]":{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: Alloy.Globals.PrimaryColor,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+        fontSize: '22dp',
+        fontFamily: Alloy.Globals.BoldFont,
+    }
+},
 ".dob_prompt":{
 	top:"10dp"
 },
 "#dob_picker":{
 	height:Ti.UI.SIZE,
 	layout:"horizontal",
-	top:"10dp"
+	top:"10dp", 
+	width:Ti.UI.SIZE
 },
 "#TandC_View":{
 	top:"14dp",
@@ -39,7 +50,8 @@
 },
 "#picker_view":{
 	height:"0dp",
-	botttom:"0dp"
+	botttom:"0dp",
+	//backgroundColor: "#fff",
 	//height:Ti.UI.SIZE,
 	//visible: false
 },
@@ -55,6 +67,18 @@
 	borderColor: "#898989",
 	borderWidth: 1,
 	width: Ti.UI.FILL
+},
+"#picker_dob_submit[platform=android formFactor=tablet]":{
+	height:"60dp",
+	backgroundColor: "#eee",
+	borderRadius:0,
+	borderColor: "#898989",
+	borderWidth: 1,
+	width: Ti.UI.FILL,
+	font: {
+        fontSize: '26dp',
+        fontFamily: Alloy.Globals.BoldFont,
+    }
 },
 "#picker":{
 	bottom:"0dp", 
@@ -73,11 +97,20 @@
 	height:"200dp",
 	width:Ti.UI.SIZE
 },
+"#banner_img[platform=android formFactor=tablet]":{
+	top:"20dp",
+	height:"40%",
+	width:Ti.UI.SIZE
+},
 "#drinkaware_img":{
 	bottom:"0dp",
 	height:"60dp",
 	width:Ti.UI.SIZE,
-	left:"0dp"
+},
+"#drinkaware_img[platform=android formFactor=tablet]":{
+	bottom:"0dp",
+	height:"80dp",
+	width:Ti.UI.SIZE,
 },
 "#facebookBtn": {
 	width: "240dp",
@@ -94,6 +127,21 @@
    },
    tintColor:"#fff"
 },
+"#facebookBtn[platform=android formFactor=tablet]": {
+	width: "300dp",
+	height:"50dp",
+	//height:"100dp",
+	color: "#fff",
+	top:"8dp",
+	backgroundColor: Alloy.Globals.FacebookColor,
+	//backgroundColor: "#f00",
+	borderRadius:8,
+	font: {
+        fontSize: '22dp',
+        fontFamily: Alloy.Globals.MainFont,
+   },
+   tintColor:"#fff"
+},
 "#submitBtn": {
 	width: "160dp",
 	height:"32dp",
@@ -106,23 +154,69 @@
         fontFamily: Alloy.Globals.MainFont,
     }
 },
+"#submitBtn[platform=android formFactor=tablet]": {
+	width: "180dp",
+	height:"50dp",
+	top:"12dp",
+	color: "#fff",
+	backgroundColor: Alloy.Globals.PrimaryColor,
+	borderRadius:8,
+	font: {
+        fontSize: '22dp',
+        fontFamily: Alloy.Globals.MainFont,
+    }
+},
 ".dob_fields":{
 	color: Alloy.Globals.PrimaryColor,
 	font: {
         fontSize: '18dp',
         fontFamily: Alloy.Globals.MainFont,
    },
-   left:"8dp"
+   left:"8dp",
+   touchEnabled:false
+},
+".dob_fields[platform=android formFactor=tablet]":{
+	color: Alloy.Globals.PrimaryColor,
+	font: {
+        fontSize: '20dp',
+        fontFamily: Alloy.Globals.MainFont,
+   },
+   left:"8dp",
+   touchEnabled:false
 },
 ".dropdownbox":{
 	height:"32dp",
 	borderRadius:"4dp",
 	borderColor: "#898989",
 	borderWidth: 1
-	
-}
+},
+".dropdownbox[platform=android formFactor=tablet]":{
+	height:"50dp",
+	borderRadius:"10dp",
+	borderColor: "#898989",
+	borderWidth: 1
+},
+".single_picker[platform=android]":{
+//	color: Alloy.Globals.PrimaryColor#898989,
+	backgroundColor:"#898989",
+	left:"10dp",
+	right:"10dp",
+	height:"50dp",
+	borderRadius:8,
+	bottom:"10dp"
+	//borderColor:  Alloy.Globals.PrimaryColor,
+	//borderWidth: 2
+},
 ".arrow":{
 	width:"12dp",
 	height:Ti.UI.SIZE,
 	right:"4dp"
+},
+".T&C_click_link":{
+	width:"110dp",
+	//touchEnabled:false	
+},
+".T&C_click_link[platform=android formFactor=tablet]":{
+	width:"175dp",
+		//touchEnabled:false		
 }

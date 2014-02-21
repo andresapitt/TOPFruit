@@ -1,19 +1,85 @@
 
-$.picker.setMaxDate(new Date());
-$.picker.setMinDate(new Date(1900, 0, 0, 0, 0, 0, 0));
-$.picker_view.anchorPoint =  {x:0.5, y:1};
-var birthdate = new Date();
+//$.picker.setMaxDate(new Date());
 
-var month = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-$.picker.addEventListener('change',function(e){
+if(Ti.Platform.name == "android" )
+{
+	//date picker
+	var date_data = [];
+	for(var i = 1;i < 32; i++)
+ 	{
+ 		date_data.push(Ti.UI.createPickerRow({title:i}));
+ 	}
+ 	$.day_picker.add(date_data);
+	
+	//month_picker
+	var month_data = [];
+	var months=new Array("January","February","March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+ 	for(var i = 0;i < 12; i++)
+ 	{
+ 		month_data.push(Ti.UI.createPickerRow({title:months[i], value:i}));
+ 	}
+ 	$.month_picker.add(month_data);
+ 	
+ 	//date picker
+	var year_data = [];
+	for(var i = 1900;i < 2014; i++)
+ 	{
+ 		year_data.push(Ti.UI.createPickerRow({title:i}));
+ 	}
+ 	$.year_picker.add(year_data);
+}
+else
+{
+	var picker = Ti.UI.createPicker({
+	  type:Ti.UI.PICKER_TYPE_DATE,
+	  minDate:new Date(1900, 0, 0, 0, 0, 0, 0),
+	  maxDate:new Date(),
+	  //selectionIndicator:true,
+	  useSpinner:true,
+	  value:new Date(),
+	  top:"10dp", 
+	  bottom:"10dp",
+		height: "200dp",
+		width :"400dp"
+	});
+	
+	$.picker_container.add(picker);
+	$.picker_view.anchorPoint =  {x:0.5, y:1};
+	
+	picker.addEventListener('change',function(e){
+	  Ti.API.info("User selected date: " + e.value.toLocaleString());
+	});
+}
+	
+
+
+//$.picker.setMinDate(new Date(1900, 0, 0, 0, 0, 0, 0));
+//$.picker_view.anchorPoint =  {x:0.5, y:1};
+//var birthdate = new Date();
+
+//var month = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+/*$.picker.addEventListener('change',function(e){
   Ti.API.info("User selected date: " + e.value.toLocaleString());
-});
+});*/
+
+
 
 function submitBtnHandler(e) {
 	var over18 = false;
     var currentDate = new Date();
-    birthdate = $.picker.getValue();
+    var birthdate = new Date();
+    //birthdate = $.picker.getValue();
+    if(Ti.Platform.name == "android" )
+	{
+		birthdate = new Date($.year_picker.getSelectedRow(0).title, $.month_picker.getSelectedRow(0).value, $.day_picker.getSelectedRow(0).title, 0, 0, 0, 0);
+		Ti.API.info("birth date: " + birthdate.toString());
+	}
+	else
+	{
+    	birthdate = picker.getValue();
+	}
 
     if(currentDate.getFullYear() - birthdate.getFullYear() > 18)
     {
@@ -42,7 +108,16 @@ function submitBtnHandler(e) {
     {
     	alert("Over 18");
 		Ti.App.Properties.setBool('over18', true);
-		Alloy.Globals.parent.open();
+		 
+	    if(Ti.Platform.name == "android" )
+		{
+			var indexWin = Alloy.createController('index').getView();
+			indexWin.open({ activityEnterAnimation: Ti.Android.R.anim.slide_in_left, activityExitAnimation: Ti.Android.R.anim.slide_out_right});
+		}
+		else
+		{
+			Alloy.Globals.parent.open();
+		}
 		$.age_gate.close();
     }
     else
@@ -93,9 +168,9 @@ function facebookBtnHandler(e){
 function closeDateHandler(e){
 	
 	$.picker_view.height = "0dp";
-	Ti.API.info("Selected value: " + $.picker.getValue());
 	
-	birthdate = $.picker.getValue();
+	//birthdate = $.picker.getValue();
+	birthdate = picker.getValue();
 	var monthofbirth = birthdate.getMonth();
 	var dateofbirth = birthdate.getDate();
 	var yearofbirth = birthdate.getFullYear();
@@ -113,40 +188,64 @@ function closeDateHandler(e){
 	
 	var animation = Titanium.UI.createAnimation();
 	animation.top = "0dp";
-	animation.duration = 500;
+	animation.duration = 400;
 	$.age_gate_view.animate(animation);
 }
 
 function dateBtnHandler(e)
 {
+	if(Ti.Platform.name == "android" )
+	{
+		Ti.API.info("android dd pressed: " + e.source.id);
+		var picker = Ti.UI.createPicker({
+		  top:0,
+		  color:"black"
+		});
+		var data = [];
+		switch(e.source.id)
+		{
+			case "birth_date_dd":
+			  //x="Today is Sunday";
+			  //var months=new Array("January","February","March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+			 	for(var i = 0;i < 32; i++)
+			 	{
+			 		data.push(Ti.UI.createPickerRow({title:i}));
+			 	}
+			 	picker.add(data);
+			  break;
+			case "birth_month_dd":
+			 // x="Today is Monday";
+			 	var months=new Array("January","February","March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+			 	for(var i = 0;i < 12; i++)
+			 	{
+			 		data.push(Ti.UI.createPickerRow({title:months[i]}));
+			 	}
+			 	picker.add(data);
+			 	//data[0]=Ti.UI.createPickerRow({title:'January'});
+				//data[1]=Ti.UI.createPickerRow({title:'February'});
+				//data[2]=Ti.UI.createPickerRow({title:'March'});
+				//data[3]=Ti.UI.createPickerRow({title:'April'});
+			  break;
+			case "birth_year_dd":
+			  //x="Today is Tuesday";
+			  break;
+		}
 	
-	var animation = Titanium.UI.createAnimation();
-	animation.top = "-78dp";
-	animation.duration = 500;
-	$.age_gate_view.animate(animation);
-	
-	$.picker_view.height = Ti.UI.FILL;
-
-	/*var picker = Ti.UI.createPicker({
-	  top:50
-	});
-	var dates = [ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31' ];
-	var column = Ti.UI.createPickerColumn();
-
-	for(var i=0, ilen=dates.length; i<ilen; i++){
-	  var row = Ti.UI.createPickerRow({
-	    title: dates[i]
-	  });
-	  column.addRow(row);
+		
+		
+		picker.selectionIndicator = true;
+		e.source.add(picker);
 	}
-
-	picker.add(column);
-	picker.selectionIndicator = true;
+	else
+	{
+		var animation = Titanium.UI.createAnimation();
 	
-	$.age_gate.add(picker);
-	$.age_gate.open();
+		animation.top = "-78dp";	
 	
-	// must be after picker has been displayed
-	picker.setSelectedRow(0, 2, false); // select Mangos
-	*/
+		animation.duration = 400;
+		$.age_gate_view.animate(animation);
+		
+		$.picker_view.height = Ti.UI.FILL;
+	}
+	
 }

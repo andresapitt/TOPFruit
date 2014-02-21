@@ -214,8 +214,11 @@
   ],
   "mix_of_the_month": {
     "ID": "cocktail12",
-    "title": "Mix of the Month",
-    "desc": "Absolut Citron & Tonic",
-    "version_date": "1390907569"
+    "title": "Mix of the Month Woo!",
+    "desc": "Absolut Citron & Tonic, huzzarh!",
+    "version_date": "1390907569",
+    "image_bottle":"http://vocal.ie/client/idl/image_test/generics.png", 
+    "image_background":"http://vocal.ie/client/idl/image_test/brands/mix_month_bg.png",
+    "brand_theme":"default"
   }
 }

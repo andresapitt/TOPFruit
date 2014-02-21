@@ -13,7 +13,7 @@
 
 Ti.API.info("in the alloy.js file");
 
-//Ti.App.Properties.setBool('over18', false);
+Ti.App.Properties.setBool('over18', false);
 
 Alloy.Globals.PrimaryColor = "#313646";
 Alloy.Globals.FacebookColor = "#3b5998";
@@ -78,14 +78,19 @@ Alloy.Globals.Utils = {
 		}
     }
     var image = Ti.UI.createImageView(a);
-    if(needsToSave === true){
-      function saveImage(e){
-        image.removeEventListener('load',saveImage);
-        //load high/low res version of image
-         Ti.API.info("image link string : " + image.image);
-        savedFile.write(
-          Ti.UI.createImageView({image:image.image,width:'auto',height:'auto'}).toImage()
-        );
+	if(needsToSave === true){
+		function saveImage(e){
+	        image.removeEventListener('load',saveImage);
+			//load high/low res version of image
+			Ti.API.info("image link string : " + image.image);
+			if(Ti.Platform.name == "android" )
+			{
+				savedFile.write( Ti.UI.createImageView({image:image.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE}).toBlob() );
+			}
+			else
+			{
+				savedFile.write( Ti.UI.createImageView({image:image.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE}).toImage() );
+			}
       }
       image.addEventListener('load',saveImage);
     }

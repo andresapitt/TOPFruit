@@ -47,7 +47,7 @@
 	right:"10dp"
 },
 ".event_title":{
-	left:"72dp",
+	left:"0dp",
 	font: {
 		fontFamily:Alloy.Globals.BoldFont, 
 		fontSize:"14dp"
@@ -75,7 +75,7 @@
 	touchEnabled:false
 },
 ".event_time":{
-	left:"72dp",
+	left:"0dp",
 	font: {
 		fontFamily:Alloy.Globals.MainFont, 
 		fontSize:"14dp"
@@ -83,6 +83,6 @@
 	//color:Alloy.Globals.PrimaryColor,
 	//color:"#e87722",
 	color:Alloy.Globals.PrimaryColor,
-	top:"20dp",
+	top:"0dp",
 	touchEnabled:false
 }

@@ -52,13 +52,19 @@ if(cocktail.video_url != null && cocktail.video_url != "")
 		Alloy.createWidget('ytPlayer').play(cocktail.video_url);
 	});
 	*/
+	
+	
 	var video_thumbnail_image = Alloy.Globals.Utils.RemoteImage({
 	  image: "http://img.youtube.com/vi/" + cocktail.video_url + "/hqdefault.jpg",
 	  defaultImage:'images/cocktails/glass.png',
-	  checkRetina:false
+	  checkRetina:false,
+	  width: Ti.UI.FILL,
+	 // height: Ti.UI.FILL
 	});;
 	
+	//video_thumbnail_image.width = "100%";
 	$.video_container.add(video_thumbnail_image);
+	//video_thumbnail_image.height = Ti.UI.SIZE;
 	
 	video_thumbnail_image.addEventListener('click', function(e){
 		Ti.API.info("youtube link clicked");
@@ -75,8 +81,11 @@ if(cocktail.video_url != null && cocktail.video_url != "")
 	var video_play = Ti.UI.createImageView();
 	video_play.image = "/images/common/play_btn.png";
 	video_play.touchEnabled = false;
-	//event_image_view.applyProperties(event_image_style);
 	$.video_container.add(video_play);
+	//video_play.height = "10%";
+	video_play.width = Ti.UI.SIZE;
+	//event_image_view.applyProperties(event_image_style);
+	
 	
 }
 else
@@ -85,13 +94,18 @@ else
 	$.cocktail_scroll.remove($.video_container);
 }
 
+var ratings_star_style = $.createStyle({
+		classes: ["star_icon"],
+	});
+	
 for(var i = 0; i < 5; i++){
 	var rating_star_image = Ti.UI.createImageView();
 	rating_star_image.image = "/images/common/empty_star.png";
 	rating_star_image.touchEnabled = false;
-	rating_star_image.left = "3dp";
-	rating_star_image.right = "3dp";
-	rating_star_image.width = "25dp";
+	//rating_star_image.left = "3dp";
+	//rating_star_image.right = "3dp";
+	//rating_star_image.width = "25dp";
+	rating_star_image.applyProperties(ratings_star_style);
 	$.rating_view.add(rating_star_image);
 }
 
@@ -207,7 +221,14 @@ function star_clicked(e){
 function closeRatingHandler(e){
 	Ti.API.info("Close rating handler");
 	var animation = Titanium.UI.createAnimation();
-	animation.bottom = "-240dp";
+	if(Ti.Platform.name == "android" )
+	{
+		animation.bottom = "-260dp";
+	}
+	else
+	{
+		animation.bottom = "-240dp";
+	}
 	animation.duration = 500;
 	$.rating_picker.animate(animation);
 }
@@ -229,7 +250,14 @@ function submitRatingBtnHandler(e){
 			});
 		Titanium.App.Properties.setList('ratings', currentRatings);
 		var animation = Titanium.UI.createAnimation();
-		animation.bottom = "-240dp";
+		if(Ti.Platform.name == "android" )
+		{
+			animation.bottom = "-260dp";
+		}
+		else
+		{
+			animation.bottom = "-240dp";
+		}
 		animation.duration = 500;
 		$.rating_picker.animate(animation);
 		$.rating_view.touchEnabled = false;
@@ -268,6 +296,7 @@ function updateFavIcon(){
 updateFavIcon();
 
 function fav_clicked(e){
+	alert("Favourite  heart clicked!!");
 	Ti.API.info("Fav heart clicked ");
 	if(currentFavs == null || currentFavs.length == 0)
 	{

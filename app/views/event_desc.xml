@@ -22,7 +22,7 @@
 					<Label class="event_title_style">DESC.</Label>
 					<Label id="event_desc_text" class="event_desc_style">This is the description</Label>
 				</View>
-				<Button class="visitSiteBtn" onClick="visitSiteBtnHandler" title="VISIT SITE" />
+				<!--<Button class="visitSiteBtn" onClick="visitSiteBtnHandler" title="VISIT SITE" />-->
 				<!--<View layout="horizontal" id="social_hor_view" height="Ti.UI.SIZE" bottom="10dp" >
 					<View class="socialBtn_view" id="twitterParent">
 						<Button id="twitterBtn" image="/images/icons/twitterbird.png" class="socialBtn twitter" title="Twitter" />
@@ -35,9 +35,12 @@
 					</View>
 			</View>-->
 		</View>
+		<Label class="event_title_style" width="Ti.UI.FILL" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">LOCATION</Label>
 		<View id="event_map_view" class="event_item">
-			<Label class="event_title_style">I'M A MAP</Label>
+			
 		</View>
+		
+			<Button class="visitSiteBtn" onClick="visitSiteBtnHandler" title="VISIT SITE" />
 		</ScrollView>
 		<RightNavButton>
         	<Button image="/images/icons/home.png" onClick="goToHome" />

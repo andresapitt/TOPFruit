@@ -43,14 +43,17 @@ for(var i = 0; i < events_json.events.length; i++)
 {
 	Ti.API.info("Event " + i + " Title: " + events_json.events[i].title);
 	var event_item_view = Ti.UI.createView();
+	var vertical_event_container = Ti.UI.createView({layout:'vertical', height:"67dp", left:"72dp", right:"20dp", touchEnabled:false});
+	event_item_view.add(vertical_event_container);
+	
 	var event_title_label = Ti.UI.createLabel({text:events_json.events[i].title.toUpperCase()});
 	event_title_label.applyProperties(event_title_style);
-	event_item_view.add(event_title_label);
+	vertical_event_container.add(event_title_label);
 	event_item_view.applyProperties(event_view_style);
 	
 	var event_time_label = Ti.UI.createLabel({text:events_json.events[i].when});
 	event_time_label.applyProperties(event_time_style);
-	event_item_view.add(event_time_label);
+	vertical_event_container.add(event_time_label);
 	
 	/*var event_image_view = Ti.UI.createImageView();
 	event_image_view.image = "/images/placeholders/ph_events.png";
@@ -85,7 +88,14 @@ for(var i = 0; i < events_json.events.length; i++)
 function openEventDescription(e){
 	Ti.API.info("Opening event description, title: " + e.source.eventData.title);
 	var event_desc_Win = Alloy.createController('event_desc', e.source.eventData).getView();
-    Alloy.Globals.parent.openWindow(event_desc_Win);
+	if(Ti.Platform.name == "android" )
+	{
+		event_desc_Win.open();
+	}
+	else
+	{
+    	Alloy.Globals.parent.openWindow(event_desc_Win);
+    }
 	
 }
 

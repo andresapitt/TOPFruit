@@ -57,7 +57,7 @@ for(var i = 0; i < drinks_json.drinks.length; i += 3)
 		single_drink_view.applyProperties(single_drink_view_style);
 		horizontal_drink_view.add(single_drink_view);
 		
-		var drink_image = Ti.UI.createImageView({image:"images/common/highlight_circle.png"});
+		var drink_image = Ti.UI.createImageView({image:"/images/common/highlight_circle.png"});
 		drink_image.applyProperties(single_drink_image_style);
 		single_drink_view.add(drink_image);
 		
@@ -80,12 +80,17 @@ for(var i = 0; i < drinks_json.drinks.length; i += 3)
 		
 		overlay_drink_image.defaultImage = "images/category_images/generic.png";	
 		*/
+		
+		
+		// TESTING FOR ANDROID
+		
 		var overlay_drink_image = Alloy.Globals.Utils.RemoteImage({
 		  image: drinks_json.drinks[y].image_thumb,
 		  defaultImage:'images/category_images/generic.png'
 		});
 		overlay_drink_image.applyProperties(single_drink_image_style_bottle);
 		single_drink_view.add(overlay_drink_image);
+		
 		
 		var drink_single_label = Ti.UI.createLabel({text:drinks_json.drinks[y].title});
 		drink_single_label.applyProperties(single_drink_title_style);
@@ -104,13 +109,27 @@ function openDrinks(e){
 	if(e.source.drinkData.subcategories.length <= 0){
 		Ti.API.info('No drink sub category, open cocktail display');
 		var resultsWin = Alloy.createController('cocktail_results',  e.source.drinkData ).getView();
-    	Alloy.Globals.parent.openWindow(resultsWin);
+		if(Ti.Platform.name == "android" )
+		{
+			resultsWin.open();
+		}
+		else
+		{
+    		Alloy.Globals.parent.openWindow(resultsWin);
+    	}
 	}
 	else
 	{
 		Ti.API.info('There are drink sub categories, open more options');
 		var sub_categoryWin = Alloy.createController('drinks_sub_category', e.source.drinkData ).getView();
-    	Alloy.Globals.parent.openWindow(sub_categoryWin);
+		if(Ti.Platform.name == "android" )
+		{
+			sub_categoryWin.open();
+		}
+		else
+		{
+    		Alloy.Globals.parent.openWindow(sub_categoryWin);
+    	}
 	}
 }
 
@@ -118,7 +137,14 @@ function openDrinks(e){
 
 function openSearch(e){
 	var searchWin = Alloy.createController('search').getView();
-    Alloy.Globals.parent.openWindow(searchWin);
+	if(Ti.Platform.name == "android" )
+	{
+		searchWin.open();
+	}
+	else
+	{
+    	Alloy.Globals.parent.openWindow(searchWin);
+	}
 }
 
 function closeWindow(e)

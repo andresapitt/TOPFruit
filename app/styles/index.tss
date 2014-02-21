@@ -9,44 +9,96 @@
 	},
 	barColor:"#fff",
 	layout:'vertical',
-	navTintColor:Alloy.Globals.PrimaryColor
+	navTintColor:Alloy.Globals.PrimaryColor,
+	height:Ti.UI.FILL
+},
+".container[platform=android]": {
+	backgroundColor:"red",
+	layout:'vertical',
+	height:"100%"
+},
+".menu_row":{
+	height:"100dp"
+},
+".menu_row[platform=android]":{
+	height:"20%"
 },
 "#mix_title": {
-	width: Ti.UI.SIZE,
+	width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
 	color:Alloy.Globals.PrimaryColor,
 		font: {
 			fontFamily:Alloy.Globals.MainFont, 
 			fontSize:"18dp"
 		},
-		top:"70dp"
+},
+"#mix_title[platform=android  formFactor=tablet]": {
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	color:Alloy.Globals.PrimaryColor,
+		font: {
+			fontFamily:Alloy.Globals.MainFont, 
+			fontSize:"28dp"
+		},
 },
 "#mix_desc": {
-	width: Ti.UI.SIZE,
+	width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
 	color:Alloy.Globals.PrimaryColor,
 		font: {
 			fontFamily:Alloy.Globals.BoldFont, 
 			fontSize:"18dp"
 		},
-		top:"94dp"
+		top:"2dp"
+},
+"#mix_desc[platform=android  formFactor=tablet]": {
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	color:Alloy.Globals.PrimaryColor,
+		font: {
+			fontFamily:Alloy.Globals.BoldFont, 
+			fontSize:"24dp"
+		},
+		top:"2dp"
 },
 ".home_menu_btn":{
 	width:"160dp", 
 	backgroundColor:"#fff",
-	height:"100dp",
+	height:Ti.UI.FILL,
 	borderRadius:0,
 	borderColor: "#b0b0b0",
 	borderWidth: 1,
 },
+".home_menu_btn[platform=android]":{	
+	width:"50%", 
+	backgroundColor:"#fff",
+	height:Ti.UI.FILL,
+	borderRadius:0,
+	borderColor: "#b0b0b0",
+	borderWidth: 1,}
+,
 ".menu_title":{
 	color:Alloy.Globals.PrimaryColor,
 	font: {
 		fontFamily:Alloy.Globals.MainFont, 
 		fontSize:"16dp"
 	},
-	bottom:"20dp"
+	top:"5dp"
+	//bottom:"20dp"
+},
+".menu_title[platform=android  formFactor=tablet]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"22dp"
+	},
+	top:"5dp"
+	//bottom:"20dp"
 },
 ".menu_image":{
-	top:"25dp"
+	//top:"25dp"
+},
+".home_menu_smaller_btn":
+{
+	height:"84dp"
 }

@@ -22,6 +22,26 @@
 	showHorizontalScrollIndicator:false,
 	backgroundColor:"#efefef"
 },
+".scrollView[platform=android]":{
+	layout:"vertical",
+	bottom:"0dp",
+	width:Ti.UI.FILL,
+	contentWidth:"auto",
+	disableBounce:true,
+	showVerticalScrollIndicator:true,
+	showHorizontalScrollIndicator:false,
+	backgroundColor:"#efefef"
+},
+".result_item[platform=android]":{
+	width:"46%",
+	height:"147dp", 
+	backgroundColor:"#fff", 
+	borderRadius:0,
+	borderColor: "#d1d1d1",
+	borderWidth: 1,
+	left:"2%",
+	right:"2%"
+},
 ".result_item":{
 	width:"152dp",
 	height:"147dp", 
@@ -34,6 +54,11 @@
 ".cocktail_image_glass":{
 	width:Ti.UI.SIZE,
 	height:Ti.UI.SIZE,
+	touchEnabled:false
+},
+".cocktail_image_glass[platform=android]":{
+	width:Ti.UI.SIZE,
+	height:Ti.UI.FILL,
 	touchEnabled:false
 },
 ".result_title":{
