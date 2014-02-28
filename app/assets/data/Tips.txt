@@ -1,25 +1,41 @@
-{
-  "version_date": "1390907569",
-  "tips": [
-    {
+[
+  {
+    "Tip": {
+      "ID": "1",
       "title": "Tip 1 title",
-      "desc": "Tip 1 description text goes here. Line 2 text goes here",
-      "image_thumb": "http://vocal.ie/client/idl/image_test/whiskey.png"
-    },
-    {
-      "title": "Tip 2 title",
-      "desc": "Tip 2 description text goes here. Line 2 text goes here. Line 3 text goes here",
-      "image_thumb": "http://vocal.ie/client/idl/image_test/vodka.png"
-    },
-    {
-      "title": "Tip 3 title",
-      "desc": "Tip 3 description text goes here. Line 2 text goes here. Line 3 text goes here. Line 4 text goes here. Line 5 text goes here.",
-      "image_thumb": "http://vocal.ie/client/idl/image_test/champ.png"
-    },
-    {
-      "title": "Tip 4 title",
-      "desc": "Tip 4 description text goes here",
-      "image_thumb": "http://vocal.ie/client/idl/image_test/rum.png"
+      "description": "Tip 1 description text goes here. Line 2 text goes here",
+      "image_thumb": "http://vocal.ie/client/idl/image_test/whiskey.png",
+      "status": true,
+      "thumb": null,
+      "thumbRetina": null,
+      "image": null,
+      "imageRetina": null
     }
-  ]
-}
+  },
+  {
+    "Tip": {
+      "ID": "2",
+      "title": "Tip 2 title",
+      "description": "Tip 2 description text goes here. Line 2 text goes here",
+      "image_thumb": "http://vocal.ie/client/idl/image_test/whiskey.png",
+      "status": true,
+      "thumb": null,
+      "thumbRetina": null,
+      "image": null,
+      "imageRetina": null
+    }
+  },
+  {
+    "Tip": {
+      "ID": "3",
+      "title": "Tip 3 title",
+      "description": "Tip 3 description text goes here. Line 2 text goes here",
+      "image_thumb": "http://vocal.ie/client/idl/image_test/whiskey.png",
+      "status": true,
+      "thumb": null,
+      "thumbRetina": null,
+      "image": null,
+      "imageRetina": null
+    }
+  }
+]

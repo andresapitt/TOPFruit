@@ -10,7 +10,30 @@
 	barColor:"#fff",
 	layout:'vertical',
 	tintColor:Alloy.Globals.PrimaryColor,
-	navTintColor:Alloy.Globals.PrimaryColor
+	navTintColor:Alloy.Globals.PrimaryColor,
+	orientationModes: [
+        Ti.UI.PORTRAIT,
+        Ti.UI.UPSIDE_PORTRAIT
+    ] 
+},
+".container[platform=android]": {
+	backgroundColor:"white",
+	titleAttributes:{
+		color:Alloy.Globals.PrimaryColor,
+		font: {
+			fontFamily:Alloy.Globals.MainFont, 
+			fontSize:"18dp"
+		}
+	},
+	barColor:"#fff",
+	//layout:'vertical',
+	tintColor:Alloy.Globals.PrimaryColor,
+	navTintColor:Alloy.Globals.PrimaryColor,
+	orientationModes: [
+        Ti.UI.PORTRAIT,
+        Ti.UI.UPSIDE_PORTRAIT
+    ],
+	navBarHidden:true
 },
 ".scrollView":{
 	layout:"vertical",
@@ -24,6 +47,7 @@
 },
 ".scrollView[platform=android]":{
 	layout:"vertical",
+	//top:"50dp"
 	bottom:"0dp",
 	width:Ti.UI.FILL,
 	contentWidth:"auto",
@@ -58,7 +82,8 @@
 			fontFamily:Alloy.Globals.MainFont, 
 			fontSize:"22dp"
 	},
-	width:"240dp",
+	width:"260dp",
+	//width:Ti.UI.SIZE,
 	height:"50dp",
 	borderRadius:8,
 	tintColor:"#fff",
@@ -106,7 +131,7 @@
 	right:"5dp"
 },
 ".drink_single_view[platform=android formFactor=tablet]":{
-	height:"30%",
+	height:"26%",
 	width:"30%",
 	//left:"5dp",
 	//right:"5dp"
@@ -119,7 +144,7 @@
 	touchEnabled:false
 },
 ".drink_image[platform=android formFactor=tablet]":{
-	height:"125dp",
+	height:"60%",
 	width:Ti.UI.SIZE,
 	top:"0dp",
 //	image:"images/common/highlight_circle.png",
@@ -127,6 +152,13 @@
 },
 ".drink_image_bottle":{
 	height:"95dp",
+	width:Ti.UI.SIZE,
+	top:"0dp",
+//	image:"images/common/highlight_circle.png",
+	touchEnabled:false
+},
+".drink_image_bottle[platform=android formFactor=tablet]":{
+	height:"60%",
 	width:Ti.UI.SIZE,
 	top:"0dp",
 //	image:"images/common/highlight_circle.png",
@@ -149,6 +181,16 @@
 	},
 	top:"130dp",
 	touchEnabled:false
+},
+".page_title[platform=android ]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"28dp"
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
+	left:"50dp", 
+	right:"50dp"
 }
 
 

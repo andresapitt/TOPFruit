@@ -1,125 +1,20 @@
-{
-  "version_date": "02-11-2014",
-  "brands": [
-    {
+[
+  {
+    "Brand": {
+      "id": "1",
       "title": "Jameson Whiskey",
       "twitter": "JAMESONPARTY",
       "facebook": "7947488730",
       "website": "http://www.jameson.com",
-      "desc": "Jameson object description",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/brands/jameson_banner.png",
+      "description": "Jameson object description",
+		"banner_img_url": "http://vocal.ie/client/idl/image_test/brands/jameson_banner.png",
       "thumb_image_url": "http://vocal.ie/client/idl/image_test/brands/absolut_vodka.png",
-      "version_date": "02-11-2014"
-    },
-    {
-      "title": "Powers",
-      "twitter": null,
-      "facebook": null,
-      "website": null,
-      "desc": "Powers object description",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/brands/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/brands/absolut_vodka.png",
-      "version_date": "02-11-2014"
-    },
-    {
-      "title": "Malibu",
-      "twitter": null,
-      "facebook": null,
-      "website": null,
-      "desc": "Malibu object description",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/brands/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/brands/absolut_vodka.png",
-      "version_date": "02-11-2014"
-    },
-    {
-      "title": "Absolute Vodka",
-      "twitter": null,
-      "facebook": null,
-      "website": null,
-      "desc": "Absolute Vodka object description",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/brands/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/brands/absolut_vodka.png",
-      "version_date": "02-11-2014"
-    },
-    {
-      "title": "Beefeater",
-      "twitter": null,
-      "facebook": null,
-      "website": null,
-      "desc": "Beefeater object description",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/brands/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/brands/absolut_vodka.png",
-      "version_date": "02-11-2014"
-    },
-    {
-      "title": "Brancott estate",
-      "twitter": null,
-      "facebook": null,
-      "website": null,
-      "desc": "Brancott estate object description",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/brands/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/brands/absolut_vodka.png",
-      "version_date": "02-11-2014"
-    },
-    {
-      "title": "Campo viejo",
-      "twitter": null,
-      "facebook": null,
-      "website": null,
-      "desc": "Campo viejo object description",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/brands/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/brands/absolut_vodka.png",
-      "version_date": "02-11-2014"
-    },
-    {
-      "title": "Cork Dry Gin",
-      "twitter": null,
-      "facebook": null,
-      "website": null,
-      "desc": "Cork Dry Gin object description",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/brands/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/brands/absolut_vodka.png",
-      "version_date": "02-11-2014"
-    },
-    {
-      "title": "Chivas Regal 12 Year old",
-      "twitter": null,
-      "facebook": null,
-      "website": null,
-      "desc": "Chivas object description",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/brands/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/brands/absolut_vodka.png",
-      "version_date": "02-11-2014"
-    },
-    {
-      "title": "Havana Club",
-      "twitter": null,
-      "facebook": null,
-      "website": null,
-      "desc": "Havana Club object description",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/brands/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/brands/absolut_vodka.png",
-      "version_date": "02-11-2014"
-    },
-    {
-      "title": "Jacob's Creek",
-      "twitter": null,
-      "facebook": null,
-      "website": null,
-      "desc": "Jacob's Creek object description",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/brands/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/brands/absolut_vodka.png",
-      "version_date": "02-11-2014"
-    },
-    {
-      "title": "Kahlua",
-      "twitter": null,
-      "facebook": null,
-      "website": null,
-      "desc": "Kahlua object description",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/brands/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/brands/absolut_vodka.png",
-      "version_date": "02-11-2014"
+      "status": true,
+      "created": "2014-02-24 17:48:36",
+      "modified": "2014-02-24 17:48:36",
+      "image_thumb": null,
+      "thumbRetina": null,
+      "imageRetina": null
     }
-  ]
-}
+  }
+]

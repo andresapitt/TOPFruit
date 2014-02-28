@@ -89,7 +89,15 @@ function openDrinks(e){
 	Ti.API.info("Drink selection made: " + e.source.drinkData.title );
 
 	var resultsWin = Alloy.createController('cocktail_results',  e.source.drinkData ).getView();
-	Alloy.Globals.parent.openWindow(resultsWin);
+	
+	if(Ti.Platform.name == "android" )
+	{
+		resultsWin.open();
+	}
+	else
+	{
+		Alloy.Globals.parent.openWindow(resultsWin);
+	}
 
 }
 

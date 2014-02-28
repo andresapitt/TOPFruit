@@ -1,3 +1,7 @@
+
+Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/brands/brands/viewjson", "data/Brands.txt", DisplayBrands);
+var brands_json_text = ""; 
+/*
 var readFile = Titanium.Filesystem.getFile(Ti.Filesystem.resourcesDirectory , "data/Brands.txt");  
  
 var brands_json_text = ""; 
@@ -10,126 +14,152 @@ if (readFile.exists()){
 else{
 	alert("Brands json local text file not found");
 }
-
-var brands_json = JSON.parse(brands_json_text);
-
-Ti.API.info("Brands json: " + brands_json);
-Ti.API.info("Brands json brands: " + brands_json.brands);
-Ti.API.info("Brands json length: " + brands_json.brands.length);
-
-for(var i = 0; i < brands_json.brands.length; i++)
+*/
+function DisplayBrands(newJSON)
 {
-	Ti.API.info("Brand " + i + " Title: " + brands_json.brands[i].title);
-}
+	var brands_json;
 	
-brands_json.brands.sort(function(a, b) {
-    var textA = a.title.toUpperCase();
-    var textB = b.title.toUpperCase();
-    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-});
-	
-Ti.API.info("AFTER SORT ");
-for(var i = 0; i < brands_json.brands.length; i++)
-{
-	Ti.API.info("Brand " + i + " Title: " + brands_json.brands[i].title);
-}
-
-//iterate through alphabet and see what letters are active
-var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-for(var i=0; i<str.length; i++)
-{
-	var is_letter_active = false;
-	var nextChar = str.charAt(i);
-	//Ti.API.info(" alphbet loop: " + nextChar);
-	for(var y = 0; y < brands_json.brands.length; y++)
+	if(newJSON != null)
 	{
-		var first_char_brand = brands_json.brands[y].title.charAt(0);
-		if(nextChar == first_char_brand)
-		{
-			is_letter_active = true;
-			Ti.API.info("Char active: " + nextChar);
-		}
+		brands_json = JSON.parse(newJSON);
 	}
-	if(is_letter_active)
+	else
 	{
-		Ti.API.info("Adding table view: " + nextChar);
-		var table_view_section = Ti.UI.createTableViewSection(/*{headerTitle:nextChar + " - header test" }*/);
-	//	$.brand_table.add(table_view_section);
-		var headerView = Ti.UI.createView();
-		var style = $.createStyle({
-        	classes: ["table_header"],
-  		});
-    	headerView.applyProperties(style);
-    	var topSeparator = Ti.UI.createView();
-    	var separator_style_top = $.createStyle({
-        	classes: ["table_separator", "top"],
-  		});
-  		topSeparator.applyProperties(separator_style_top);
-    	headerView.add(topSeparator);
-    	var header_label = Ti.UI.createLabel({text: nextChar});
-    	var header_label_style = $.createStyle({
-        	classes: ["table_header_label"],
-  		});
-  		header_label.applyProperties(header_label_style);
-    	headerView.add(header_label);
-    	var bottomSeparator = Ti.UI.createView();
-    	var separator_style_bottom = $.createStyle({
-        	classes: ["table_separator", "bottom"],
-  		});
-  		bottomSeparator.applyProperties(separator_style_bottom);
-    	headerView.add(bottomSeparator);
-		table_view_section.setHeaderView(headerView);
-		$.brand_table.appendSection(table_view_section);
+		brands_json = JSON.parse(brands_json_text);
+	}
+	
+	for(var i = 0; i < brands_json.length; i++)
+	{
+		Ti.API.info("Brand " + i + " Title: " + brands_json[i].Brand.title);
+	}
 		
-		var row_label_style = $.createStyle({
-        	classes: ["row_label"],
-  		});
-  		var row_view_style = $.createStyle({
-        	classes: ["row_view"],
-  		});
-  		var row_image_style = $.createStyle({
-        	classes: ["row_brand_image"],
-  		});
+	/*
+	brands_json.brands.sort(function(a, b) {
+	    var textA = a.title.toUpperCase();
+	    var textB = b.title.toUpperCase();
+	    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+	});
+	*/
+	
+	brands_json.sort(function(a, b) {
+	    var textA = a.Brand.title.toUpperCase();
+	    var textB = b.Brand.title.toUpperCase();
+	    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+	});
 		
-		for(var y = 0; y < brands_json.brands.length; y++)
+	Ti.API.info("AFTER SORT ");
+	for(var i = 0; i < brands_json.length; i++)
+	{
+		Ti.API.info("Brand " + i + " Title: " + brands_json[i].Brand.title);
+	}
+	
+	//iterate through alphabet and see what letters are active
+	var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	for(var i=0; i<str.length; i++)
+	{
+		var is_letter_active = false;
+		var nextChar = str.charAt(i);
+		//Ti.API.info(" alphbet loop: " + nextChar);
+		for(var y = 0; y < brands_json.length; y++)
 		{
-			var first_char_brand = brands_json.brands[y].title.charAt(0);
+			var first_char_brand = brands_json[y].Brand.title.charAt(0);
 			if(nextChar == first_char_brand)
 			{
-				//is_letter_active = true;
-				//Ti.API.info("Char active: " + nextChar);
-				var brand_row = Ti.UI.createTableViewRow(/*{title:brands_json.brands[y].title}*/);
-				brand_row.brand_data = brands_json.brands[y];
-				var brand_row_view = Ti.UI.createView();
-				var brand_row_label = Ti.UI.createLabel({text:brands_json.brands[y].title.toUpperCase()});
-				brand_row_label.applyProperties(row_label_style);
-				brand_row_view.add(brand_row_label);
-				
-				//var brand_image = Ti.UI.createImageView({image:brands_json.brands[y].thumb_image_url});
-				var brand_image = Alloy.Globals.Utils.RemoteImage({
-			  		image: brands_json.brands[y].thumb_image_url,
-			  		defaultImage:'images/cocktails/glass.png'
-				});
-				brand_image.applyProperties(row_image_style);
-				brand_row_view.add(brand_image);
-				brand_row_view.applyProperties(row_view_style);
-				brand_row.add(brand_row_view);
-				brand_row.brand_name = brands_json.brands[y].title;
-				table_view_section.add(brand_row);
+				is_letter_active = true;
+				Ti.API.info("Char active: " + nextChar);
 			}
 		}
-		
-	}
-}
-
-$.brand_table.filterAttribute="brand_name";
-
-$.brand_table.addEventListener('click', function(e){
-	//alert('Row clicked, index: ' + e.index + ", brand data: " + e.row.brand_data.title);
+		if(is_letter_active)
+		{
+			Ti.API.info("Adding table view: " + nextChar);
+		//	var table_view_section = Ti.UI.createTableViewSection(/*{headerTitle:nextChar + " - header test" }*/);
+		//	$.brand_table.add(table_view_section);
+			var headerView = Ti.UI.createView();
+			var style = $.createStyle({
+	        	classes: ["table_header"],
+	  		});
+	    	headerView.applyProperties(style);
+	    	var topSeparator = Ti.UI.createView();
+	    	var separator_style_top = $.createStyle({
+	        	classes: ["table_separator", "top"],
+	  		});
+	  		topSeparator.applyProperties(separator_style_top);
+	    	headerView.add(topSeparator);
+	    	var header_label = Ti.UI.createLabel({text: nextChar});
+	    	var header_label_style = $.createStyle({
+	        	classes: ["table_header_label"],
+	  		});
+	  		header_label.applyProperties(header_label_style);
+	    	headerView.add(header_label);
+	    	var bottomSeparator = Ti.UI.createView();
+	    	var separator_style_bottom = $.createStyle({
+	        	classes: ["table_separator", "bottom"],
+	  		});
+	  		bottomSeparator.applyProperties(separator_style_bottom);
+	    	headerView.add(bottomSeparator);
+	    	var table_view_section = Ti.UI.createTableViewSection({headerView:headerView});
 	
-	var brand_desc_Win = Alloy.createController('brand_desc', e.row.brand_data).getView();
-    Alloy.Globals.parent.openWindow(brand_desc_Win);
-});
+			//table_view_section.setHeaderView(headerView);
+			
+			
+			var row_label_style = $.createStyle({
+	        	classes: ["row_label"],
+	  		});
+	  		var row_view_style = $.createStyle({
+	        	classes: ["row_view"],
+	  		});
+	  		var row_image_style = $.createStyle({
+	        	classes: ["row_brand_image"],
+	  		});
+			
+			for(var y = 0; y < brands_json.length; y++)
+			{
+				var first_char_brand = brands_json[y].Brand.title.charAt(0);
+				if(nextChar == first_char_brand)
+				{
+					//is_letter_active = true;
+					//Ti.API.info("Char active: " + nextChar);
+					var brand_row = Ti.UI.createTableViewRow(/*{title:brands_json.brands[y].title}*/);
+					brand_row.brand_data = brands_json[y].Brand;
+					var brand_row_view = Ti.UI.createView();
+					var brand_row_label = Ti.UI.createLabel({text:brands_json[y].Brand.title.toUpperCase()});
+					brand_row_label.applyProperties(row_label_style);
+					brand_row_view.add(brand_row_label);
+					
+					//var brand_image = Ti.UI.createImageView({image:brands_json.brands[y].thumb_image_url});
+					var brand_image = Alloy.Globals.Utils.RemoteImage({
+				  		image: brands_json[y].Brand.thumb_image_url,
+				  		defaultImage:'images/cocktails/glass.png'
+					});
+					brand_image.applyProperties(row_image_style);
+					brand_row_view.add(brand_image);
+					brand_row_view.applyProperties(row_view_style);
+					brand_row.add(brand_row_view);
+					brand_row.brand_name = brands_json[y].Brand.title;
+					table_view_section.add(brand_row);
+				}
+			}
+			$.brand_table.appendSection(table_view_section);
+			
+		}
+	}
+	
+	$.brand_table.filterAttribute="brand_name";
+	
+	$.brand_table.addEventListener('click', function(e){
+		//alert('Row clicked, index: ' + e.index + ", brand data: " + e.row.brand_data.title);
+		
+		var brand_desc_Win = Alloy.createController('brand_desc', e.row.brand_data).getView();
+		if(Ti.Platform.name == "android" )
+		{
+			brand_desc_Win.open();
+		}
+		else
+		{
+	    	Alloy.Globals.parent.openWindow(brand_desc_Win);
+		}
+	});
+}
 
 function closeWindow(e)
 {

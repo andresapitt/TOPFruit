@@ -1,5 +1,19 @@
 ".container": {
 	backgroundColor:"#eee",
+	orientationModes: [
+        Ti.UI.PORTRAIT,
+        Ti.UI.UPSIDE_PORTRAIT
+    ],
+	//width:"90%",
+	//height:"85%"
+},
+".container[platform=android]": {
+	backgroundColor:"#eee",
+	orientationModes: [
+        Ti.UI.PORTRAIT,
+        Ti.UI.UPSIDE_PORTRAIT
+    ],
+    navBarHidden:true
 	//width:"90%",
 	//height:"85%"
 },
@@ -8,14 +22,26 @@
 	bottom:"40dp",
 	width:Ti.UI.FILL,
 	contentWidth:Ti.UI.FILL,
-	disableBounce:true
+	disableBounce:true,
+	top:"1dp"
 },
-"#scrollText[platform=android formFactor=tablet]":{
+"#scrollText[platform=android]":{
 	layout:"vertical",
-	bottom:"60dp",
+	bottom:"0dp",
+	top:"51dp",
 	width:Ti.UI.FILL,
 	contentWidth:Ti.UI.FILL,
 	disableBounce:true
+},
+".page_title[platform=android ]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"28dp"
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
+	left:"50dp", 
+	right:"50dp"
 },
 "#close_Btn":{
 	bottom:"0dp",

@@ -1,10 +1,19 @@
 <Alloy>
 	<Window class="container" title="ABOUT">
-		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" />
+		<View platform="android" height="50dp" width="Ti.UI.FILL" top="0dp">
+			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="0.8" />
+			<View width="Ti.UI.FILL">
+				<View backgroundImage="/images/icons/back.png" onClick="closeWindow" left="10dp" top="10dp" bottom="10dp" height="30dp" width="30dp" />
+				<Label color="#313646" class="page_title">ABOUT</Label>
+				<View backgroundImage="/images/icons/home.png" onClick="goToHome" right="10dp" top="10dp" bottom="10dp" height="30dp"  width="30dp" />
+			</View>
+		</View>
+		<View class="color_seperator"  platform="android" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="50dp" />
+		<View class="color_seperator"  platform="ios" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="0dp" />
 		<ScrollView class="scrollView" >
 			<View class="brand_item">
 				<!--<ImageView image="/images/brands/jameson_banner.png" class="brand_image" height="158dp" bottom="5dp" />-->
-				<View id="brand_banner_image" height="158dp" bottom="5dp" width="Ti.UI.FILL"></View>
+				<View id="brand_banner_image" width="Ti.UI.FILL" bottom="5dp" height="Ti.UI.SIZE"></View>
 				<Label id="brand_title">...</Label>
 				<Label id="brand_desc_text">...</Label>
 				<View layout="horizontal" id="social_hor_view" height="Ti.UI.SIZE" bottom="10dp" >
@@ -21,10 +30,10 @@
 				<!--<ImageView image="/images/common/chevron.png" class="news_arrow" />-->
 			</View>
 		</ScrollView>
-		<RightNavButton>
+		<RightNavButton platform="ios">
         	<Button image="/images/icons/home.png" onClick="goToHome" />
 		</RightNavButton>
-		<LeftNavButton>
+		<LeftNavButton platform="ios">
         	<Button image="/images/icons/back.png" onClick="closeWindow" />
 		</LeftNavButton>
 	</Window>

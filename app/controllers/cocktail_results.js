@@ -14,7 +14,7 @@ else if(cocktail_category == "favourites")
 	$.cocktail_results.title = "FAVOURITES";
 }
 
-var readFile = Titanium.Filesystem.getFile(Ti.Filesystem.resourcesDirectory , "data/Drinks.txt");  
+var readFile = Titanium.Filesystem.getFile(Ti.Filesystem.resourcesDirectory , "data/Cocktails.txt");  
  
 var drinks_json_text = ""; 
  
@@ -27,8 +27,9 @@ else{
 	alert("Drinks json local text file not found");
 }
 
-var drinks_json = JSON.parse(drinks_json_text);
-var all_cocktails = drinks_json.cocktails;
+//var drinks_json = JSON.parse(drinks_json_text);
+//var all_cocktails = drinks_json.cocktails;
+var all_cocktails = JSON.parse(drinks_json_text);
 var rel_cocktails = [];
 var cocktailViews = [];
 
@@ -48,13 +49,13 @@ if(cocktail_category != "favourites")
 {
 	for(var i = 0; i < all_cocktails.length; i++)
 	{
-		Ti.API.info("Cocktail " + i + " Title: " + all_cocktails[i].title);
-		for(var y = 0; y < all_cocktails[i].categories.length; y++)
+		Ti.API.info("Cocktail " + i + " Title: " + all_cocktails[i].Cocktail.title);
+		for(var y = 0; y < all_cocktails[i].Cocktail.subcategories.length; y++)
 		{
-			if(cocktail_category == all_cocktails[i].categories[y])
+			if(cocktail_category == all_cocktails[i].Cocktail.subcategories[y].Subcategory.id)
 			{
-				Ti.API.info("match is true for cocktail: " + all_cocktails[i].title);
-				rel_cocktails.push(all_cocktails[i]);
+				Ti.API.info("match is true for cocktail: " + all_cocktails[i].Cocktail.title);
+				rel_cocktails.push(all_cocktails[i].Cocktail);
 			}
 		}
 	}
@@ -75,10 +76,10 @@ else
 		{
 			for(var y = 0; y < all_cocktails.length; y++)
 			{
-				if( all_cocktails[y].ID == currentFavs[i].id)
+				if( all_cocktails[y].Cocktail.ID == currentFavs[i].id)
 				{
 					Ti.API.info("Fav cocktail: " + all_cocktails[y].title);
-					rel_cocktails.push(all_cocktails[y]);
+					rel_cocktails.push(all_cocktails[y].Cocktail);
 				}
 			}
 		}
@@ -142,14 +143,13 @@ if(rel_cocktails.length > 0 )
 			
 			if(cocktail_category == "favourites")
 			{
+				var broken_heart_style = $.createStyle({
+					classes: ["fav_heart_style"],
+				});
 				single_result_item_view.ID = rel_cocktails[y].ID;
 				var brokenHeart_image = Ti.UI.createImageView();
 				brokenHeart_image.image = "/images/favs/heart_broken.png";
-				brokenHeart_image.touchEnabled = false;
-				brokenHeart_image.right = "6dp";
-				brokenHeart_image.width = "21dp";
-				brokenHeart_image.top = "6dp";
-				brokenHeart_image.opacity = 0.0;
+				brokenHeart_image.applyProperties(broken_heart_style);
 				single_result_item_view.broken_heart_image = brokenHeart_image;
 				single_result_item_view.add(brokenHeart_image);
 			}

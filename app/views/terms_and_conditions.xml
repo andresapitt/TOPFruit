@@ -1,13 +1,22 @@
 <Alloy>
 	<Window class="container">
+		<View platform="android" height="50dp" width="Ti.UI.FILL" top="0dp">
+			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="0.8" />
+			<View width="Ti.UI.FILL">
+				<View backgroundImage="/images/icons/back.png" onClick="closeBtnHandler" left="10dp" top="10dp" bottom="10dp" height="30dp" width="30dp" />
+				<Label color="#313646" class="page_title" >TERMS AND CONDITIONS</Label>
+			</View>
+		</View>
+		<View class="color_seperator"  platform="android" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="50dp" />
+		<View class="color_seperator"  platform="ios" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="0dp" />
 		<ScrollView id="scrollText" showVerticalScrollIndicator="true" showHorizontalScrollIndicator="false">
-			<Label id="TandC_Title">Terms and Conditions</Label>
+			<Label id="TandC_Title" platform="ios">Terms and Conditions</Label>
 			<Label id="TandC_Text">	</Label>
 			<View height="Ti.UI.SIZE" width="Ti.UI.SIZE" left="0dp" >
 				<ImageView id="drinkaware_img" image="/images/age_gate/drinkaware.png" />
 			</View>
 		</ScrollView>
-		<Button id="close_Btn" onClick="closeBtnHandler" title="Close" />
+		<Button id="close_Btn" onClick="closeBtnHandler" title="Close" platform="ios" />
 	</Window>
 </Alloy>
 

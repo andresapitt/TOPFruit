@@ -5,7 +5,7 @@ var brandName = args.title || 'Title not received';
 //$.recipeTitle.text = args.title || 'Title not received';
 Ti.API.info("Brand title: " + brandName);
 $.brand_title.text = args.title || 'Title not received';
-$.brand_desc_text.text = args.desc || 'Description not received';
+$.brand_desc_text.text = args.description || 'Description not received';
 
 if(args.banner_img_url != null && args.banner_img_url != "")
 {
@@ -21,14 +21,30 @@ if(args.twitter != null && args.twitter != "" )
 {
 	Ti.API.info("Twitter link exists");
 	$.twitterBtn.addEventListener('click', function(e){
-		var canOpenTwitter = Ti.Platform.canOpenURL("twitter://user?screen_name="+args.twitter);
-		if(canOpenTwitter)
+		if (Titanium.Platform.name != 'android'){
+			var canOpenTwitter = Ti.Platform.canOpenURL("twitter://user?screen_name="+args.twitter);
+			if(canOpenTwitter)
+			{
+				Ti.Platform.openURL("twitter://user?screen_name="+args.twitter);
+			}
+			else{
+				alert("The twitter app must be installed to open this link.");
+			}
+		}
+		else 
 		{
-			Ti.Platform.openURL("twitter://user?screen_name="+args.twitter);
+			var canOpen = Ti.Platform.openURL("twitter://user?screen_name="+args.twitter);
+			
+			if(canOpen == false)
+			{
+				var dialog = Ti.UI.createAlertDialog({
+				    message: "Sorry, you must first have the twitter app installed on this device to click this button.",
+				    ok: 'Ok, thanks!',
+				    title: 'Twitter Error'
+				  }).show();
+			}
 		}
-		else{
-			alert("The twitter app must be installed to open this link.");
-		}
+		
 	});
 }
 else{

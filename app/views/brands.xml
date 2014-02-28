@@ -1,193 +1,28 @@
 <Alloy>
 	<Window class="container" title="OUR BRANDS">
-		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" />
-	
-			<TableView class="search_table" id="brand_table" >
-				<SearchBar id="searchbar" height="44dp" top="0dp" />
-			 <!-->	<TableViewSection id="section_A" >
-			 		<HeaderView>
-				        <View class="table_header" >
-				        	<View class="table_separator" />
-				            <Label class="table_header_label">A</Label>
-				        	<View class="table_separator" />
-				        </View>
-				    </HeaderView>
-	                <TableViewRow title="ABSOLUTE VODKA"/>
-	            </TableViewSection>
-	            <TableViewSection id="section_B">
-	            	<HeaderView>
-				        <View class="table_header" >
-				        	<View class="table_separator" />
-				            <Label class="table_header_label">B</Label>
-				        	<View class="table_separator" />
-				        </View>
-				    </HeaderView>
-	                <TableViewRow title="BEEFEATER"/>
-	                <TableViewRow title="BRANCOTT ESTATE"/>
-	            </TableViewSection>
-	            <TableViewSection id="section_C">
-	            	<HeaderView>
-				        <View class="table_header" >
-				        	<View class="table_separator" />
-				            <Label class="table_header_label">C</Label>
-				        	<View class="table_separator" />
-				        </View>
-				    </HeaderView>
-	                <TableViewRow title="CAMPO VIEJO"/>
-	                <TableViewRow title="CORK DRY GIN"/>
-	                <TableViewRow title="CHIVAS REGAL 12 YEAR OLD"/>
-	            </TableViewSection>
-	            <TableViewSection id="section_D">
-	            	<HeaderView>
-				        <View class="table_header" >
-				        	<View class="table_separator" />
-				            <Label class="table_header_label">D</Label>
-				        	<View class="table_separator" />
-				        </View>
-				    </HeaderView>
-	            </TableViewSection>
-	            <TableViewSection id="section_E">
-	            	<HeaderView>
-				        <View class="table_header" >
-				        	<View class="table_separator" />
-				            <Label class="table_header_label">E</Label>
-				        	<View class="table_separator" />
-				        </View>
-				    </HeaderView>
-	            </TableViewSection>
-	            <TableViewSection id="section_F">
-	            	<HeaderView>
-				        <View class="table_header" >
-				        	<View class="table_separator" />
-				            <Label class="table_header_label">F</Label>
-				        	<View class="table_separator" />
-				        </View>
-				    </HeaderView>
-	            </TableViewSection>
-	            <TableViewSection id="section_G">
-	            	<HeaderView>
-				        <View class="table_header" >
-				        	<View class="table_separator" />
-				            <Label class="table_header_label">G</Label>
-				        	<View class="table_separator" />
-				        </View>
-				    </HeaderView>
-	            </TableViewSection>
-	            <TableViewSection id="section_H">
-	            	<HeaderView>
-				        <View class="table_header" >
-				        	<View class="table_separator" />
-				            <Label class="table_header_label">H</Label>
-				        	<View class="table_separator" />
-				        </View>
-				    </HeaderView>
-	            	 <TableViewRow title="HAVANA CLUB"/>
-	            	 <TableViewRow title="HUZZAR"/>
-	            </TableViewSection>
-	            <TableViewSection id="section_I">
-	            	<HeaderView>
-				        <View class="table_header" >
-				        	<View class="table_separator" />
-				            <Label class="table_header_label">I</Label>
-				        	<View class="table_separator" />
-				        </View>
-				    </HeaderView>
-	            </TableViewSection>
-	            <TableViewSection id="section_J">
-	            	<HeaderView>
-				        <View class="table_header">
-				        	<View class="table_separator" />
-				            <Label class="table_header_label">J</Label>
-				        	<View class="table_separator" />
-				        </View>
-				    </HeaderView>
-	            </TableViewSection>
-	            <TableViewSection id="section_K">
-	            	<HeaderView>
-		            	<View class="table_header">
-					        	<View class="table_separator" />
-					            <Label class="table_header_label">K</Label>
-					        	<View class="table_separator" />
-					        </View>
-				       </HeaderView> 
-	            	 <TableViewRow title="KAHLUA"/>
-	            </TableViewSection>
-	            <TableViewSection id="section_L">
-	            	<HeaderView>
-	            		<View class="table_header">
-				        	<View class="table_separator" />
-				            <Label class="table_header_label">L</Label>
-				        	<View class="table_separator" />
-				        </View>
-					</HeaderView> 
-	            </TableViewSection>
-	            <TableViewSection id="section_M">
-	            	<HeaderView>
-	            		<View class="table_header">
-				        	<View class="table_separator" />
-				            <Label class="table_header_label">M</Label>
-				        	<View class="table_separator" />
-				        </View>
-					</HeaderView> 
-	            	 <TableViewRow title="MALIBU"/>
-	            	<TableViewRow title="MIDDLETON"/>
-	            </TableViewSection>
-	            <TableViewSection id="section_N">
-	            	<HeaderView> 
-	            		<View class="table_header">
-				        	<View class="table_separator" />
-				            <Label class="table_header_label">N</Label>
-				        	<View class="table_separator" />
-				        </View>
-				    </HeaderView> 
-	            </TableViewSection>
-	            <TableViewSection id="section_O">
-	            	<HeaderView> 
-	            		<View class="table_header">
-				        	<View class="table_separator" />
-				            <Label class="table_header_label">O</Label>
-				        	<View class="table_separator" />
-				        </View>
-				     </HeaderView> 
-	            	 <TableViewRow title="OLMECA"/>
-	            </TableViewSection>
-	            <TableViewSection id="section_P">
-	            	<HeaderView> 
-	            		<View class="table_header">
-				        	<View class="table_separator" />
-				            <Label class="table_header_label">P</Label>
-				        	<View class="table_separator" />
-				        </View>
-				    </HeaderView> 
-	            	<TableViewRow title="PADDYS"/>
-	            	<TableViewRow title="POWERS"/>
-	            </TableViewSection>
-	            <TableViewSection id="section_Q" headerTitle="Q">
-	            </TableViewSection>
-	            <TableViewSection id="section_R" headerTitle="R">
-	            </TableViewSection>
-	            <TableViewSection id="section_S" headerTitle="S">
-	            </TableViewSection>
-	            <TableViewSection id="section_T" headerTitle="T">
-	            </TableViewSection>
-	            <TableViewSection id="section_U" headerTitle="U">
-	            </TableViewSection>
-	            <TableViewSection id="section_V" headerTitle="V">
-	            </TableViewSection>
-	            <TableViewSection id="section_W" headerTitle="W">
-	            </TableViewSection>
-	            <TableViewSection id="section_X" headerTitle="X">
-	            </TableViewSection>
-	            <TableViewSection id="section_Y" headerTitle="Y">
-	            </TableViewSection>
-	            <TableViewSection id="section_Z" headerTitle="Z">
-	            </TableViewSection>-->
-			</TableView>
+		<View platform="android" height="50dp" width="Ti.UI.FILL" top="0dp">
+			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="0.8" />
+			<View width="Ti.UI.FILL">
+				<View backgroundImage="/images/icons/back.png" onClick="closeWindow" left="10dp" top="10dp" bottom="10dp" height="30dp" width="30dp" />
+				<Label color="#313646" class="page_title">OUR BRANDS</Label>
+				<View backgroundImage="/images/icons/home.png" onClick="goToHome" right="10dp" top="10dp" bottom="10dp" height="30dp"  width="30dp" />
+			</View>
+		</View>
+		<View class="color_seperator"  platform="android" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="50dp" />
+		<View class="color_seperator"  platform="ios" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="0dp" />
 
-		<RightNavButton>
+	
+		<TableView class="search_table" id="brand_table" platform="android" top="51dp" >
+			<SearchBar id="searchbar" height="44dp" top="0dp" />
+		</TableView>
+		<TableView class="search_table" id="brand_table" platform="ios" top="1dp" >
+			<SearchBar id="searchbar" height="44dp" top="0dp" />
+		</TableView>
+
+		<RightNavButton platform="ios">
         	<Button image="/images/icons/home.png" onClick="goToHome" />
 		</RightNavButton>
-		<LeftNavButton>
+		<LeftNavButton platform="ios">
         	<Button image="/images/icons/back.png" onClick="closeWindow" />
 		</LeftNavButton>
 	</Window>

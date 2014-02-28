@@ -1,15 +1,23 @@
 <Alloy>
 	<Window class="container" title="COCKTAILS">
+		<View platform="android" height="50dp" width="Ti.UI.FILL">
+			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="0.8" />
+			<View width="Ti.UI.FILL">
+				<View backgroundImage="/images/icons/back.png" onClick="closeWindow" left="10dp" top="10dp" bottom="10dp" height="30dp" width="30dp" />
+				<Label color="#313646" class="page_title" >COCKTAILS</Label>
+				<View backgroundImage="/images/icons/home.png" onClick="goToHome" right="10dp" top="10dp" bottom="10dp" height="30dp"  width="30dp" />
+			</View>
+		</View>
 		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" />
 		<ScrollView class="scrollView" >
 			<View id="drink_results" layout="vertical" height="Ti.UI.SIZE" bottom="10dp">
 				
 			</View>
 		</ScrollView>
-		<RightNavButton>
+		<RightNavButton platform="ios">
         	<Button image="/images/icons/home.png" onClick="goToHome" />
 		</RightNavButton>
-		<LeftNavButton>
+		<LeftNavButton platform="ios">
         	<Button image="/images/icons/back.png" onClick="closeWindow" />
 		</LeftNavButton>
 	</Window>

@@ -23,11 +23,19 @@ if(Ti.Platform.name == "android" )
  	
  	//date picker
 	var year_data = [];
-	for(var i = 1900;i < 2014; i++)
+	for(var i = 1900;i <= new Date().getFullYear(); i++)
  	{
  		year_data.push(Ti.UI.createPickerRow({title:i}));
  	}
  	$.year_picker.add(year_data);
+ 	Ti.API.info("year row count: " + $.year_picker.getColumns()[0].rowCount);
+ 	$.year_picker.setSelectedRow(0, $.year_picker.getColumns()[0].rowCount-1, false);
+ 	
+ 	$.age_gate.addEventListener('androidback', function(e){
+ 		Ti.API.info("back button pressed on age gate");
+ 		var activity = Titanium.Android.currentActivity;
+		activity.finish();
+ 	});
 }
 else
 {
@@ -106,7 +114,7 @@ function submitBtnHandler(e) {
     
     if(over18)
     {
-    	alert("Over 18");
+    	//alert("Over 18");
 		Ti.App.Properties.setBool('over18', true);
 		 
 	    if(Ti.Platform.name == "android" )

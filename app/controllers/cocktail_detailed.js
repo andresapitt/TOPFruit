@@ -10,7 +10,17 @@ $.recipe_title_label.text = cocktail.title;
 if(cocktail.glass != null && cocktail.glass != "")
 {
 	Ti.API.info("cocktail glassware info: " + cocktail.glass);
-	$.glassware.text = cocktail.glass;
+	var glassText = "";
+	
+	for(var i = 0; i < cocktail.glass.length; i += 2)
+	{
+		if(i > 0)
+		{
+			glassText += "\n";
+		}
+		glassText += cocktail.glass[i].Glass.title;
+	}
+	$.glassware.text = glassText;
 }
 else{
 	Ti.API.info("No cocktail glass info");
@@ -275,6 +285,11 @@ function submitRatingBtnHandler(e){
 function submitCommentBtnHandler(e){
 	Ti.API.info("Submit comment on recipe");
 	//$.rating_picker.height = Ti.UI.FILL;
+	var emailDialog = Ti.UI.createEmailDialog();
+	emailDialog.subject = "The Perfect Mix - Comment: " + cocktail.title;
+	emailDialog.toRecipients = ['foo@yahoo.com'];
+	emailDialog.messageBody = '';
+	emailDialog.open();
 
 }
 
@@ -296,7 +311,7 @@ function updateFavIcon(){
 updateFavIcon();
 
 function fav_clicked(e){
-	alert("Favourite  heart clicked!!");
+	//alert("Favourite  heart clicked!!");
 	Ti.API.info("Fav heart clicked ");
 	if(currentFavs == null || currentFavs.length == 0)
 	{
@@ -364,7 +379,8 @@ $.cocktail_detailed.addEventListener('open', function(e){
 	
 	var cocktail_image = Alloy.Globals.Utils.RemoteImage({
 	  image: cocktail.image_thumb,
-	  defaultImage:'images/cocktails/glass.png'
+	  defaultImage:'images/cocktails/glass.png',
+	  height:Ti.UI.FILL
 	});
 	//cocktail_image.applyProperties(cocktail_image_style_bottle);
 	$.recipe_image_ani_view.add(cocktail_image);

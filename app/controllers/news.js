@@ -53,20 +53,6 @@ function openCompetitions(e)
    	}
 }
 
-function openOffers(e)
-{
-	var offersWin = Alloy.createController('offers').getView();
-	if(Ti.Platform.name == "android" )
-	{
-		offersWin.open();
-	}
-	else
-	{
-    	Alloy.Globals.parent.openWindow(offersWin);
-    }
-}
-
-
 function closeWindow(e)
 {
 	$.news.close();
@@ -74,13 +60,19 @@ function closeWindow(e)
 
 function goToHome(e)
 {
-	for(var i = Alloy.Globals.windowStack.length-1; i >= 0; i--)
+	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
 	{
-		//Ti.API.info("index to remove: " + i);
-		//Ti.API.info("object at index: " + Alloy.Globals.windowStack[i]);
-		Alloy.Globals.parent.closeWindow(Alloy.Globals.windowStack[i]);
-	}	
+		if(i == Alloy.Globals.windowStack.length-1)
+		{
+			Alloy.Globals.windowStack[i].close();
+		}
+		else
+		{
+			Alloy.Globals.windowStack[i].close({animated:false});
+		}
+	}
 }
+
 
 $.news.addEventListener('close', function(e){
 	Ti.API.info('News window closed');
@@ -93,5 +85,6 @@ $.news.addEventListener('open', function(e){
 	Ti.API.info('News window opened');
 	
 	Alloy.Globals.windowStack.push($.news);
+	
 });
 

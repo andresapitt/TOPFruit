@@ -1,5 +1,5 @@
 <Alloy>
-	<Window exitOnClose="true" class="container" height="100%">
+	<Window class="container" height="100%">
 		<View class="vertical_view" id="age_gate_view" >
 			<ImageView id="banner_img" image="/images/age_gate/age_gate_banner.png" />
 			<Label class="bold_prompt">TO DISCOVER THE PERFECT MIX \nWE FIRST NEED TO CHECK YOUR AGE</Label>

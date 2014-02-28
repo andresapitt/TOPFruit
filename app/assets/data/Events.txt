@@ -1,131 +1,48 @@
-{
-  "version_date": "1390907569",
-  "events": [
-    {
+[
+  {
+    "Event": {
+      "id": "1",
       "title": "Event one title",
-      "where": "12 fake street, Dublin 2",
-      "when": "Thurs 12th - fri 15",
-      "desc": "Bacon ipsum dolor sit amet tempor labore duis t-bone meatloaf. Officia exercitation in dolore ball tip shankle. Sausage enim voluptate, turkey aute exercitation ad ea. In ball tip dolore leberkas landjaeger. Ut short loin bacon pork belly elit corned beef t-bone. Esse nostrud quis, kevin sirloin pork chop duis leberkas excepteur boudin fatback irure fugiat veniam.\n\nNon boudin magna pariatur eu corned beef ut cupidatat tail. Dolore quis bresaola sed ut. Duis commodo beef officia. Leberkas andouille deserunt pork loin, mollit bresaola brisket eiusmod turkey bacon enim ham hock. Pig dolore sirloin capicola sint velit et shoulder ham hock doner. Anim laboris proident, sausage sunt enim duis short ribs turducken ullamco. Doner pork loin rump, ball tip ea landjaeger beef ribs jerky.",
-      "finish_date": "1390907569",
+      "location": "12 fake street, Dublin 2",
+      "date": "Thurs 12th - fri 15",
+      "description": "event one description text goes here",
+      "start_date": null,
+      "finish_date": "2014-02-24 18:16:00",
       "banner_img_url": "http://vocal.ie/client/idl/image_test/events/jameson_banner.png",
       "thumb_image_url": "http://vocal.ie/client/idl/image_test/generics.png",
-      "version_date": "1390907569",
       "admission_fee": "£3.00 for adults, £2.00 for students",
       "more_info_url": "http://www.google.com",
-      "longitude": -6.271925,
-      "latitude": 53.340164
-    },
-    {
-      "title": "Event two title bloop bloop blop blooop bloop",
-      "where": "",
-      "when": "wed 15th - fri 25th",
-      "desc": "event two description text goes here",
-      "finish_date": "1390907569",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/events/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/generics.png",
-      "version_date": "1390907569",
-      "admission_fee": "£5.00 for adults, £3.50 for students",
-      "more_info_url": "http://www.google.com",
-      "longitude": -6.271925,
-      "latitude": 53.340164
-    },
-    {
-      "title": "Event three title",
-      "where": "14 fake street, Dublin 2",
-      "when": "wed 15th - fri 25th",
-      "desc": "",
-      "finish_date": "1390907569",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/events/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/generics.png",
-      "version_date": "1390907569",
-      "admission_fee": "£5.00 for adults, £3.50 for students",
-      "more_info_url": "http://www.google.com",
-      "longitude": -6.271925,
-      "latitude": 53.340164
-    },
-    {
-      "title": "Event four title",
-      "where": "14 fake street, Dublin 2",
-      "when": "",
-      "desc": "event four description text goes here",
-      "finish_date": "1390907569",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/events/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/generics.png",
-      "version_date": "1390907569",
-      "admission_fee": "£5.00 for adults, £3.50 for students",
-      "more_info_url": "http://www.google.com",
-      "longitude": -6.271925,
-      "latitude": 53.340164
-    },
-    {
-      "title": "Event five title",
-      "where": "",
-      "when": "",
-      "desc": "event five description text goes here",
-      "finish_date": "1390907569",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/events/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/generics.png",
-      "version_date": "1390907569",
-      "admission_fee": "£5.00 for adults, £3.50 for students",
-      "more_info_url": "http://www.google.com",
-     "longitude": -6.271925,
-      "latitude": 53.340164
-    },
-    {
-      "title": "Event six title",
-      "where": "",
-      "when": "",
-      "desc": "",
-      "finish_date": "1390907569",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/events/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/generics.png",
-      "version_date": "1390907569",
-      "admission_fee": "",
-      "more_info_url": "http://www.google.com",
-      "longitude": -6.271925,
-      "latitude": 53.340164
-    },
-    {
-      "title": "Event seven title",
-      "where": "14 fake street, Dublin 2",
-      "when": "wed 15th - fri 25th",
-      "desc": "event seven description text goes here",
-      "finish_date": "1390907569",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/events/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/generics.png",
-      "version_date": "1390907569",
-      "admission_fee": "£5.00 for adults, £3.50 for students",
-      "more_info_url": "http://www.google.com",
-      "longitude": -6.271925,
-      "latitude": 53.340164
-    },
-    {
-      "title": "Event eight title",
-      "where": "14 fake street, Dublin 2",
-      "when": "wed 15th - fri 25th",
-      "desc": "event eight description text goes here",
-      "finish_date": "1390907569",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/events/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/generics.png",
-      "version_date": "1390907569",
-      "admission_fee": "£5.00 for adults, £3.50 for students",
-      "more_info_url": "http://www.google.com",
-      "longitude": -6.271925,
-      "latitude": 53.340164
-    },
-    {
-      "title": "Event nine title",
-      "where": "14 fake street, Dublin 2",
-      "when": "wed 15th - fri 25th",
-      "desc": "event nine description text goes here",
-      "finish_date": "1390907569",
-      "banner_img_url": "http://vocal.ie/client/idl/image_test/events/jameson_banner.png",
-      "thumb_image_url": "http://vocal.ie/client/idl/image_test/generics.png",
-      "version_date": "1390907569",
-      "admission_fee": "£5.00 for adults, £3.50 for students",
-      "more_info_url": "http://www.google.com",
-      "longitude": -6.271925,
-      "latitude": 53.340164
+      "longitude": "-6.153",
+      "latitude": "-7.684",
+      "created": "2014-02-24 18:17:37",
+      "modified": "2014-02-24 18:17:37",
+      "thumb": null,
+      "thumbRetina": null,
+      "image": null,
+      "imageRetina": null
     }
-  ]
-}
+  },
+  {
+    "Event": {
+      "id": "2",
+      "title": "Event one title",
+      "location": "12 fake street, Dublin 2",
+      "date": "Thurs 12th - fri 15",
+      "description": "event one description text goes here",
+      "start_date": null,
+      "finish_date": "2014-02-24 18:16:00",
+      "banner_img_url": "http://vocal.ie/client/idl/image_test/events/jameson_banner.png",
+      "thumb_image_url": "http://vocal.ie/client/idl/image_test/generics.png",
+      "admission_fee": "£3.00 for adults, £2.00 for students",
+      "more_info_url": "http://www.google.com",
+      "longitude": "-6.153",
+      "latitude": "-7.684",
+      "created": "2014-02-24 18:19:35",
+      "modified": "2014-02-24 18:19:35",
+      "thumb": null,
+      "thumbRetina": null,
+      "image": null,
+      "imageRetina": null
+    }
+  }
+]

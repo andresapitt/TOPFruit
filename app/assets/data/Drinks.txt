@@ -6,14 +6,14 @@
       "version_date": "1390907569",
       "image_thumb": "http://vocal.ie/client/idl/image_test/rum.png",
       "subcategories": [],
-      "ID": "001"
+      "ID": "1"
     },
     {
       "title": "Tequila",
       "version_date": "1390907569",
       "image_thumb": "http://vocal.ie/client/idl/image_test/tequila.png",
       "subcategories": [],
-      "ID": "002"
+      "ID": "2"
     },
     {
       "title": "Vodka",
@@ -22,27 +22,33 @@
       "subcategories": [
         {
           "title": "ABSOLUTE Vodka",
-          "image_thumb": "http://vocal.ie/client/idl/image_test/vodka/vodka.png"
+          "image_thumb": "http://vocal.ie/client/idl/image_test/vodka/vodka.png",
+           "ID": "003_1"
         },
         {
           "title": "ABSOLUT Raspberri",
-          "image_thumb": "http://vocal.ie/client/idl/image_test/vodka/raspberri.png"
+          "image_thumb": "http://vocal.ie/client/idl/image_test/vodka/raspberri.png",
+          "ID": "003_2"
         },
         {
           "title": "ABSOLUT Vanilla",
-          "image_thumb": "http://vocal.ie/client/idl/image_test/vodka/vanilla.png"
+          "image_thumb": "http://vocal.ie/client/idl/image_test/vodka/vanilla.png",
+          "ID": "003_3"
         },
         {
           "title": "ABSOLUT Citron",
-          "image_thumb": "http://vocal.ie/client/idl/image_test/vodka/citron.png"
+          "image_thumb": "http://vocal.ie/client/idl/image_test/vodka/citron.png",
+          "ID": "003_4"
         },
         {
           "title": "ABSOLUT Kurant",
-          "image_thumb": "http://vocal.ie/client/idl/image_test/vodka/kurant.png"
+          "image_thumb": "http://vocal.ie/client/idl/image_test/vodka/kurant.png",
+          "ID": "003_5"
         },
         {
           "title": "ABSOLUT Pears",
-          "image_thumb": "http://vocal.ie/client/idl/image_test/vodka/pears.png"
+          "image_thumb": "http://vocal.ie/client/idl/image_test/vodka/pears.png",
+          "ID": "003_6"
         }
       ],
       "ID": "003"
@@ -97,7 +103,7 @@
       "image_thumb": "http://vocal.ie/client/idl/image_test/generics.png",
       "desc": "A tasty summer cocktail",
       "categories": [
-        "003",
+        "003_2",
         "005"
       ],
       "search_thumb_url": "http://vocal.ie/client/idl/image_test/generics.png"
@@ -108,7 +114,7 @@
       "image_thumb": "http://vocal.ie/client/idl/image_test/generics.png",
       "desc": "A tasty winter cocktail",
       "categories": [
-        "003"
+        "003_2"
       ],
       "search_thumb_url": "http://vocal.ie/client/idl/image_test/generics.png"
     },

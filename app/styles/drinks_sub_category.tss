@@ -10,7 +10,30 @@
 	barColor:"#fff",
 	layout:'vertical',
 	tintColor:Alloy.Globals.PrimaryColor,
-	navTintColor:Alloy.Globals.PrimaryColor
+	navTintColor:Alloy.Globals.PrimaryColor,
+	orientationModes: [
+        Ti.UI.PORTRAIT,
+        Ti.UI.UPSIDE_PORTRAIT
+    ] 
+},
+".container[platform=android]": {
+	backgroundColor:"white",
+	titleAttributes:{
+		color:Alloy.Globals.PrimaryColor,
+		font: {
+			fontFamily:Alloy.Globals.MainFont, 
+			fontSize:"18dp"
+		}
+	},
+	barColor:"#fff",
+	layout:'vertical',
+	tintColor:Alloy.Globals.PrimaryColor,
+	navTintColor:Alloy.Globals.PrimaryColor,
+	orientationModes: [
+        Ti.UI.PORTRAIT,
+        Ti.UI.UPSIDE_PORTRAIT
+    ],
+	navBarHidden:true
 },
 ".scrollView":{
 	layout:"vertical",
@@ -22,7 +45,7 @@
 	showHorizontalScrollIndicator:false,
 	backgroundColor:"#efefef"
 },
-".scrollView[platform=android formFactor=tablet]":{
+".scrollView[platform=android]":{
 	layout:"vertical",
 	bottom:"0dp",
 	width:Ti.UI.FILL,
@@ -31,6 +54,16 @@
 	showVerticalScrollIndicator:true,
 	showHorizontalScrollIndicator:false,
 	backgroundColor:"#efefef"
+},
+".page_title[platform=android ]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"28dp"
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
+	left:"50dp", 
+	right:"50dp"
 },
 ".socialBtn_view":{
 	width:Ti.UI.SIZE,
@@ -91,7 +124,7 @@
 	right:"5dp"
 },
 ".drink_single_view[platform=android formFactor=tablet]":{
-	height:"30%",
+	height:"26%",
 	width:"30%",
 	//left:"5dp",
 	//right:"5dp"
@@ -104,7 +137,7 @@
 	touchEnabled:false
 },
 ".drink_image[platform=android formFactor=tablet]":{
-	height:"125dp",
+	height:"60%",
 	width:Ti.UI.SIZE,
 	top:"0dp",
 //	image:"images/common/highlight_circle.png",
@@ -112,6 +145,13 @@
 },
 ".drink_image_bottle":{
 	height:"95dp",
+	width:Ti.UI.SIZE,
+	top:"0dp",
+//	image:"images/common/highlight_circle.png",
+	touchEnabled:false
+},
+".drink_image_bottle[platform=android formFactor=tablet]":{
+	height:"60%",
 	width:Ti.UI.SIZE,
 	top:"0dp",
 //	image:"images/common/highlight_circle.png",

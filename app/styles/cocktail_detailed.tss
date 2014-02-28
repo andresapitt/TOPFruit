@@ -11,9 +11,34 @@
 	layout:'vertical',
 	tintColor:Alloy.Globals.PrimaryColor,
 	navTintColor:Alloy.Globals.PrimaryColor,
-	height: Ti.UI.FILL
+	height: Ti.UI.FILL,
+	orientationModes: [
+        Ti.UI.PORTRAIT,
+        Ti.UI.UPSIDE_PORTRAIT
+    ] 
+},
+".container[platform=android]": {
+	backgroundColor:"white",
+	titleAttributes:{
+		color:Alloy.Globals.PrimaryColor,
+		font: {
+			fontFamily:Alloy.Globals.MainFont, 
+			fontSize:"18dp"
+		}
+	},
+	barColor:"#fff",
+	layout:'vertical',
+	tintColor:Alloy.Globals.PrimaryColor,
+	navTintColor:Alloy.Globals.PrimaryColor,
+	height: Ti.UI.FILL,
+	orientationModes: [
+        Ti.UI.PORTRAIT,
+        Ti.UI.UPSIDE_PORTRAIT
+    ],
+	navBarHidden:true
 },
 ".scrollView":{
+	top:"1dp",
 	layout:"vertical",
 	bottom:"0dp",
 	width:"320dp",
@@ -25,6 +50,7 @@
 	height:Ti.UI.FILL
 },
 ".scrollView[platform=android]":{
+	top:"51dp",
 	layout:"vertical",
 	bottom:"0dp",
 	width:Ti.UI.FILL,
@@ -34,6 +60,16 @@
 	showHorizontalScrollIndicator:false,
 	backgroundColor:"#efefef",
 	height:Ti.UI.FILL
+},
+".page_title[platform=android ]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"28dp"
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
+	left:"50dp", 
+	right:"50dp"
 },
 ".recipe_container":{
 	left:"5dp", 
@@ -48,8 +84,20 @@
 	top:"10dp",
 },
 ".recipe_container[platform=android]":{
-	left:"5%", 
-	right:"5%", 
+	left:"5dp", 
+	right:"5dp", 
+	width:Ti.UI.FILL, 
+	height:Ti.UI.SIZE, 
+	backgroundColor:"#fff",
+	borderRadius:8,
+	borderColor: "#d1d1d1",
+	borderWidth: 1,
+	layout:"vertical",
+	top:"10dp",
+},
+".recipe_container[platform=android  formFactor=tablet]":{
+	left:"10dp", 
+	right:"10dp", 
 	width:Ti.UI.FILL, 
 	height:Ti.UI.SIZE, 
 	backgroundColor:"#fff",
@@ -94,6 +142,7 @@
 	right:"5dp",
 	width:Ti.UI.FILL,
 	textAlign: Ti.UI.LEFT,
+	touchEnabled: false
 },
 ".recipe_subtitle[platform=android formFactor=tablet]":{
 	color:Alloy.Globals.PrimaryColor,
@@ -106,6 +155,7 @@
 	right:"5dp",
 	width:Ti.UI.FILL,
 	textAlign: Ti.UI.LEFT,
+	touchEnabled: false
 },
 ".recipe_subtext":{
 	color:Alloy.Globals.PrimaryColor,
@@ -215,6 +265,18 @@
 	bottom:"-260dp",
 	width:Ti.UI.FILL,
 	backgroundColor:'#fff'
+},
+"#recipe_image_ani_view":{
+	left:"-30%", 
+	width:"30%", 
+	height:"160dp", 
+	top:"10dp"
+},
+"#recipe_image_ani_view[platform=android formFactor=tablet]":{
+	left:"-30%", 
+	width:"30%", 
+	height:"240dp", 
+	top:"10dp"
 },
 ".tap_to_close":{
 	height:"40dp",

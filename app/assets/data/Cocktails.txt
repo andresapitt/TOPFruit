@@ -1,0 +1,77 @@
+[
+  {
+    "Cocktail": {
+      "id": "1",
+      "title": "Collins",
+      "description": "A tasty summer cocktail.",
+      "ingredients": "50ml Base Spirit, 25 ml Lemon Juice, 12.5 Sugar Syrup, Top with Soda.",
+      "glass": [
+        {
+          "Glass": {
+            "title": "Highball"
+          }
+        }
+      ],
+      "method": "First three ingredients in a shaker, shake and strain into an iced filled high ball topped with soda.",
+      "garnish": "Orange wheel with a cherry on a stick (sail).",
+      "image": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/1/c18a4f115fa35dfb10ca70be301e0df9.jpg",
+      "image_thumb": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/1/tmb_c18a4f115fa35dfb10ca70be301e0df9.jpg",
+      "video": "",
+      "subcategories": [
+        {
+          "Subcategory": {
+            "id": "1"
+          }
+        },
+        {
+          "Subcategory": {
+            "id": "2"
+          }
+        }
+      ],
+      "search_thumb_url": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/1/search_c18a4f115fa35dfb10ca70be301e0df9.jpg",
+      "status": true,
+      "featured": false,
+      "created": "2014-02-19 12:28:30",
+      "modified": "2014-02-26 15:57:17",
+      "thumbRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/1/tmb_c18a4f115fa35dfb10ca70be301e0df9@2x.jpg",
+      "imageRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/1/c18a4f115fa35dfb10ca70be301e0df9@2x.jpg",
+      "searchRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/1/search_c18a4f115fa35dfb10ca70be301e0df9@2x.jpg"
+    }
+  },
+  {
+    "Cocktail": {
+      "id": "2",
+      "title": "Tipperary",
+      "description": "A tasty summer cocktail",
+      "ingredients": "50ml Base Spirit, 25 ml Lemon Juice, 12.5 Sugar Syrup, Top with Soda.",
+      "glass": [
+        {
+          "Glass": {
+            "title": "Highball"
+          }
+        }
+      ],
+      "method": "First three ingredients in a shaker, shake and strain into an iced filled high ball topped with soda.",
+      "garnish": "Orange wheel with a cherry on a stick (sail).",
+      "image": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/2/e8bc43c59dd92702a185f9e00732fd9a.jpg",
+      "image_thumb": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/2/tmb_e8bc43c59dd92702a185f9e00732fd9a.jpg",
+      "video": "K85o3T_g7so",
+      "subcategories": [
+        {
+          "Subcategory": {
+            "id": "2"
+          }
+        }
+      ],
+      "search_thumb_url": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/2/search_e8bc43c59dd92702a185f9e00732fd9a.jpg",
+      "status": true,
+      "featured": true,
+      "created": "2014-02-21 11:30:16",
+      "modified": "2014-02-26 15:43:50",
+      "thumbRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/2/tmb_e8bc43c59dd92702a185f9e00732fd9a@2x.jpg",
+      "imageRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/2/e8bc43c59dd92702a185f9e00732fd9a@2x.jpg",
+      "searchRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/2/search_e8bc43c59dd92702a185f9e00732fd9a@2x.jpg"
+    }
+  }
+]

@@ -8,9 +8,33 @@
 		}
 	},
 	barColor:"#fff",
-	layout:'vertical',
+	layout:'composite',
 	tintColor:Alloy.Globals.PrimaryColor,
-	navTintColor:Alloy.Globals.PrimaryColor
+	navTintColor:Alloy.Globals.PrimaryColor,
+	orientationModes: [
+        Ti.UI.PORTRAIT,
+        Ti.UI.UPSIDE_PORTRAIT
+    ] 
+},
+".container[platform=android]": {
+	backgroundColor:"white",
+	titleAttributes:{
+		color:Alloy.Globals.PrimaryColor,
+		font: {
+			fontFamily:Alloy.Globals.MainFont, 
+			fontSize:"18dp"
+		}
+	},
+	barColor:"#fff",
+	layout:'composite',
+	tintColor:Alloy.Globals.PrimaryColor,
+	navTintColor:Alloy.Globals.PrimaryColor,
+	orientationModes: [
+        Ti.UI.PORTRAIT,
+        Ti.UI.UPSIDE_PORTRAIT
+    ],
+    
+    navBarHidden:true
 },
 "#tip_item_container":{
 	height:Ti.UI.SIZE,
@@ -19,7 +43,15 @@
 	layout:"vertical",
 	bottom:"10dp"
 },
+"#tip_item_container[platform=android formFactor=tablet]":{
+	height:Ti.UI.SIZE,
+	left:"10dp",
+	right:"10dp",
+	layout:"vertical",
+	bottom:"10dp"
+},
 ".scrollView":{
+	top:"1dp",
 	layout:"vertical",
 	bottom:"40dp",
 	width:Ti.UI.FILL,
@@ -28,6 +60,27 @@
 	showVerticalScrollIndicator:true,
 	showHorizontalScrollIndicator:false,
 	backgroundColor:"#efefef"
+},
+".scrollView[platform=android]":{
+	top:"51dp",
+	layout:"vertical",
+	bottom:"0dp",
+	width:Ti.UI.FILL,
+	contentWidth:"auto",
+	disableBounce:true,
+	showVerticalScrollIndicator:true,
+	showHorizontalScrollIndicator:false,
+	backgroundColor:"#efefef"
+},
+".page_title[platform=android ]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"28dp"
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
+	left:"50dp", 
+	right:"50dp"
 },
 ".tip_item":{
 	backgroundColor:"#fff",
@@ -44,6 +97,13 @@
 	top:"2dp", 
 	bottom:"10dp"
 },
+".tip_text_view[platform=android formFactor=tablet]":{
+	left:"100dp",
+	height:Ti.UI.SIZE,
+	layout:"vertical",
+	top:"10dp", 
+	bottom:"10dp"
+},
 ".tip_title":{
 	//left:"72dp",
 	font: {
@@ -56,10 +116,32 @@
 	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
 	width:Ti.UI.FILL
 },
+".tip_title[platform=android formFactor=tablet]":{
+	//left:"72dp",
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"18dp"
+	},
+	color:Alloy.Globals.PrimaryColor,
+	touchEnabled:false,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	width:Ti.UI.FILL
+},
 ".tip_image":{
 	height:"60dp", 
 	width:"60dp",
 	left:"5dp",
+	borderRadius:0,
+	borderColor: "#d1d1d1",
+	borderWidth: 1,
+	touchEnabled:false,
+	top:"10dp",
+	bottom:"10dp"
+},
+".tip_image[platform=android formFactor=tablet]":{
+	height:"80dp", 
+	width:"80dp",
+	left:"10dp",
 	borderRadius:0,
 	borderColor: "#d1d1d1",
 	borderWidth: 1,
@@ -76,6 +158,19 @@
 	color:Alloy.Globals.PrimaryColor,
 	//color:"#e87722",
 	top:"2dp",
+	touchEnabled:false,	
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	width:Ti.UI.FILL
+},
+".tip_desc[platform=android formFactor=tablet]":{
+//	left:"72dp",
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"16dp"
+	},
+	color:Alloy.Globals.PrimaryColor,
+	//color:"#e87722",
+	//top:"2dp",
 	touchEnabled:false,	
 	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
 	width:Ti.UI.FILL

@@ -10,12 +10,31 @@
 	barColor:"#fff",
 	layout:'vertical',
 	navTintColor:Alloy.Globals.PrimaryColor,
-	height:Ti.UI.FILL
+	height:Ti.UI.FILL,
+	orientationModes: [
+        Ti.UI.PORTRAIT,
+        Ti.UI.UPSIDE_PORTRAIT
+    ] 
 },
 ".container[platform=android]": {
-	backgroundColor:"red",
+	backgroundColor:"white",
 	layout:'vertical',
-	height:"100%"
+	height:"100%",
+	navBarHidden:true,
+	orientationModes: [
+        Ti.UI.PORTRAIT,
+        Ti.UI.UPSIDE_PORTRAIT
+    ],
+},
+".page_title[platform=android ]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"28dp"
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
+	left:"50dp", 
+	right:"50dp"
 },
 ".menu_row":{
 	height:"100dp"
