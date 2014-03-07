@@ -61,7 +61,7 @@ Alloy.Globals.Utils = {
 				if(a.checkRetina != false)
 				{
 					Ti.API.info("density droid: "  + Ti.Platform.displayCaps.density);
-					if( Ti.Platform.displayCaps.density == 'high' || Ti.Platform.displayCaps.density == 'xhigh')
+					if( Ti.Platform.displayCaps.density == 'high' || Ti.Platform.displayCaps.density == 'xhigh' || Ti.Platform.displayCaps.density == 'xxhigh')
 					{
 				    	var image_url = a.image;
 				    	var basename = image_url.replace(/\\/g,'/').replace( /.*\//, '' );
@@ -170,7 +170,7 @@ Alloy.Globals.Utils = {
 		var return_json_text = ""; 
 		var UTC_time = new Date().getTime();
 		//var timePassedToUpdate = 96400000;
-		var timePassedToUpdate = 10000;
+		var timePassedToUpdate = 300000;
 		Ti.API.info("current UTC time is: " + UTC_time);
 		
 		if (readFileFromCMS.exists()){ 

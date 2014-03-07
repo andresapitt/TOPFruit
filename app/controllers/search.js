@@ -115,7 +115,7 @@ function displayCocktails(newJSON)
 				{
 					//is_letter_active = true;
 					//Ti.API.info("Char active: " + nextChar);
-					var brand_row = Ti.UI.createTableViewRow(/*{title:brands_json.brands[y].title}*/);
+					var brand_row = Ti.UI.createTableViewRow(/*{title:brands_json.brands[y].title}*/ {cocktail_name : drinks_json[y].Cocktail.title} );
 					var brand_row_view = Ti.UI.createView();
 					var brand_row_label = Ti.UI.createLabel({text:drinks_json[y].Cocktail.title.toUpperCase()});
 					brand_row_label.applyProperties(row_label_style);
@@ -134,6 +134,7 @@ function displayCocktails(newJSON)
 					brand_row.add(brand_row_view);
 					brand_row.cocktailData = drinks_json[y].Cocktail;
 					//brand_row.addEventListener('click', openRecipe);
+					//brand_row.cocktail_name = drinks_json[y].Cocktail.title;
 					table_view_section.add(brand_row);
 				}
 			}
@@ -142,7 +143,7 @@ function displayCocktails(newJSON)
 	}
 	
 	
-	$.search_table.filterAttribute="cocktail_name";
+	//$.search_table.filterAttribute="cocktail_name";
 	$.search_table.addEventListener('click', openRecipe);
 }
 
@@ -152,7 +153,7 @@ function openRecipe(e){
 	var recipeWin = Alloy.createController('cocktail_detailed', e.row.cocktailData).getView();
 	if(Ti.Platform.name == "android" )
 	{
-		recipeWin.open();
+		recipeWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 	}
 	else
 	{
@@ -162,7 +163,14 @@ function openRecipe(e){
 
 function closeWindow(e)
 {
-	$.search.close();
+	if(Ti.Platform.name == "android" )
+	{
+		$.search.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	}
+	else
+	{
+		$.search.close();
+	}
 }
 
 function goToHome(e)
@@ -171,7 +179,14 @@ function goToHome(e)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
 		{
-			Alloy.Globals.windowStack[i].close();
+			if(Ti.Platform.name == "android" )
+			{
+				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
 		}
 		else
 		{
@@ -187,4 +202,8 @@ $.search.addEventListener('close', function(e){
 
 $.search.addEventListener('open', function(e){
 	Alloy.Globals.windowStack.push($.search);
+});
+
+$.search.addEventListener('androidback', function(e){
+	$.search.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
 });

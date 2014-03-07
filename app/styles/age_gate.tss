@@ -5,7 +5,8 @@
 	orientationModes: [
         Ti.UI.PORTRAIT,
         Ti.UI.UPSIDE_PORTRAIT
-    ] 
+    ] ,
+    translucent:false
 },
 ".container[platform=android]": {
 	backgroundColor:"white",
@@ -16,6 +17,17 @@
         Ti.UI.UPSIDE_PORTRAIT
     ] ,
     navBarHidden:true,
+},
+".scrollView":{
+	top:"1dp",
+	layout:"vertical",
+	bottom:"0dp",
+	width:Ti.UI.FILL,
+	contentWidth:"auto",
+	disableBounce:true,
+	showVerticalScrollIndicator:true,
+	showHorizontalScrollIndicator:false,
+	backgroundColor:"#efefef"
 },
 ".vertical_view":{
 	layout:"vertical",
@@ -57,7 +69,7 @@
 	width:Ti.UI.SIZE
 },
 "#TandC_View":{
-	top:"14dp",
+	top:"10dp",
 	height:Ti.UI.SIZE,
 	width:Ti.UI.SIZE,
 	layout:'vertical'
@@ -117,18 +129,18 @@
 	width:Ti.UI.SIZE
 },
 "#drinkaware_img":{
-	bottom:"0dp",
+	//bottom:"0dp",
 	height:"60dp",
 	width:Ti.UI.SIZE,
 },
 "#drinkaware_img[platform=android formFactor=tablet]":{
-	bottom:"0dp",
+	//bottom:"0dp",
 	height:"80dp",
 	width:Ti.UI.SIZE,
 },
 "#facebookBtn": {
 	width: "240dp",
-	height:"43dp",
+	height:"40dp",
 	//height:"100dp",
 	color: "#fff",
 	top:"8dp",

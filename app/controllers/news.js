@@ -5,13 +5,12 @@ function openEvents(e)
 	var eventsWin = Alloy.createController('events').getView();
 	if(Ti.Platform.name == "android" )
 	{
-		eventsWin.open();
+		eventsWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 	}
 	else
 	{
 		Alloy.Globals.parent.openWindow(eventsWin);
 	}
-    
 }
 
 function openBestBars(e)
@@ -19,7 +18,7 @@ function openBestBars(e)
 	var bestBarsWin = Alloy.createController('best_bars').getView();
 	if(Ti.Platform.name == "android" )
 	{
-		bestBarsWin.open();
+		bestBarsWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 	}
 	else
 	{
@@ -32,7 +31,7 @@ function openBarSmarts(e)
 	var barSmartsWin = Alloy.createController('bar_smarts').getView();
 	if(Ti.Platform.name == "android" )
 	{
-		barSmartsWin.open();
+		barSmartsWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 	}
 	else
 	{
@@ -45,7 +44,7 @@ function openCompetitions(e)
 	var compWin = Alloy.createController('competitions').getView();
 	if(Ti.Platform.name == "android" )
 	{
-		compWin.open();
+		compWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 	}
 	else
 	{
@@ -55,7 +54,14 @@ function openCompetitions(e)
 
 function closeWindow(e)
 {
-	$.news.close();
+	if(Ti.Platform.name == "android" )
+	{
+		$.news.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	}
+	else
+	{
+		$.news.close();
+	}
 }
 
 function goToHome(e)
@@ -64,7 +70,14 @@ function goToHome(e)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
 		{
-			Alloy.Globals.windowStack[i].close();
+			if(Ti.Platform.name == "android" )
+			{
+				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
 		}
 		else
 		{
@@ -87,4 +100,9 @@ $.news.addEventListener('open', function(e){
 	Alloy.Globals.windowStack.push($.news);
 	
 });
+
+$.news.addEventListener('androidback', function(e){
+	$.news.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+});
+
 

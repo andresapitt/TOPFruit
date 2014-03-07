@@ -14,7 +14,8 @@
 	orientationModes: [
         Ti.UI.PORTRAIT,
         Ti.UI.UPSIDE_PORTRAIT
-    ] 
+    ],
+    translucent:false
 },
 ".container[platform=android ]": {
 	backgroundColor:"white",
@@ -37,7 +38,7 @@
 },
 ".scrollView":{
 	layout:"vertical",
-	bottom:"40dp",
+	bottom:"0dp",
 	width:Ti.UI.FILL,
 	contentWidth:"auto",
 	disableBounce:true,
@@ -55,11 +56,21 @@
 	showHorizontalScrollIndicator:false,
 	backgroundColor:"#fff"
 },
-".page_title[platform=android ]":{
+".page_title[platform=android formFactor=tablet]":{
 	color:Alloy.Globals.PrimaryColor,
 	font: {
 		fontFamily:Alloy.Globals.MainFont, 
 		fontSize:"28dp"
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
+	left:"50dp", 
+	right:"50dp"
+},
+".page_title[platform=android]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"22dp"
 	},
 	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
 	left:"50dp", 

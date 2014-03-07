@@ -119,7 +119,7 @@ function DisplayBrands(newJSON)
 				{
 					//is_letter_active = true;
 					//Ti.API.info("Char active: " + nextChar);
-					var brand_row = Ti.UI.createTableViewRow(/*{title:brands_json.brands[y].title}*/);
+					var brand_row = Ti.UI.createTableViewRow(/*{title:brands_json.brands[y].title}*/ {brand_name:brands_json[y].Brand.title});
 					brand_row.brand_data = brands_json[y].Brand;
 					var brand_row_view = Ti.UI.createView();
 					var brand_row_label = Ti.UI.createLabel({text:brands_json[y].Brand.title.toUpperCase()});
@@ -140,11 +140,10 @@ function DisplayBrands(newJSON)
 				}
 			}
 			$.brand_table.appendSection(table_view_section);
-			
 		}
 	}
 	
-	$.brand_table.filterAttribute="brand_name";
+	//$.brand_table.filterAttribute ="brand_name";
 	
 	$.brand_table.addEventListener('click', function(e){
 		//alert('Row clicked, index: ' + e.index + ", brand data: " + e.row.brand_data.title);
@@ -152,7 +151,7 @@ function DisplayBrands(newJSON)
 		var brand_desc_Win = Alloy.createController('brand_desc', e.row.brand_data).getView();
 		if(Ti.Platform.name == "android" )
 		{
-			brand_desc_Win.open();
+			brand_desc_Win.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 		}
 		else
 		{
@@ -163,7 +162,14 @@ function DisplayBrands(newJSON)
 
 function closeWindow(e)
 {
-	$.brands.close();
+	if(Ti.Platform.name == "android" )
+	{
+		$.brands.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	}
+	else
+	{
+		$.brands.close();
+	}
 }
 
 function goToHome(e)
@@ -172,7 +178,14 @@ function goToHome(e)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
 		{
-			Alloy.Globals.windowStack[i].close();
+			if(Ti.Platform.name == "android" )
+			{
+				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
 		}
 		else
 		{
@@ -188,4 +201,8 @@ $.brands.addEventListener('close', function(e){
 
 $.brands.addEventListener('open', function(e){
 	Alloy.Globals.windowStack.push($.brands);
+});
+
+$.brands.addEventListener('androidback', function(e){
+	$.brands.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
 });

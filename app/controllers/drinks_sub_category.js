@@ -2,11 +2,16 @@
 
 var sub_category = arguments[0] || {};
 
-var cocktail_category = sub_category.ID || 'Category not received';
+var cocktail_category = sub_category.id || 'Category not received';
 //$.recipeTitle.text = args.title || 'Title not received';
 Ti.API.info("Cocktail category: " + cocktail_category);
 
 $.drinks_sub_category.title = sub_category.title.toUpperCase();
+
+if(Ti.Platform.name == "android" )
+{
+	$.drinks_sub_category_page_title.text = sub_category.title.toUpperCase();
+}
 
 var horizontal_drink_view_style = $.createStyle({
 	classes: ["horizontal_drinks_nav_view"],
@@ -69,18 +74,19 @@ for(var i = 0; i < sub_category.subcategories.length; i += 3)
 		*/
 		
 		var overlay_drink_image = Alloy.Globals.Utils.RemoteImage({
-		  image: sub_category.subcategories[y].image_thumb,
+		  image: sub_category.subcategories[y].Subcategory.image,
 		  defaultImage:'images/category_images/generic.png'
 		});
 		overlay_drink_image.applyProperties(single_drink_image_style_bottle);
 		
 		single_drink_view.add(overlay_drink_image);
 		
-		var drink_single_label = Ti.UI.createLabel({text:sub_category.subcategories[y].title});
+		var drink_single_label = Ti.UI.createLabel({text:sub_category.subcategories[y].Subcategory.title});
 		drink_single_label.applyProperties(single_drink_title_style);
 		single_drink_view.add(drink_single_label);
 		
-		single_drink_view.drinkData = sub_category.subcategories[y];
+		sub_category.subcategories[y].topCategory = false;
+		single_drink_view.drinkData = sub_category.subcategories[y].Subcategory;
 		single_drink_view.addEventListener('click', openDrinks);
 	}
 }
@@ -92,7 +98,7 @@ function openDrinks(e){
 	
 	if(Ti.Platform.name == "android" )
 	{
-		resultsWin.open();
+		resultsWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 	}
 	else
 	{
@@ -104,7 +110,14 @@ function openDrinks(e){
 
 function closeWindow(e)
 {
-	$.drinks_sub_category.close();
+	if(Ti.Platform.name == "android" )
+	{
+		$.drinks_sub_category.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	}
+	else
+	{
+		$.drinks_sub_category.close();
+	}
 }
 
 function goToHome(e)
@@ -113,7 +126,14 @@ function goToHome(e)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
 		{
-			Alloy.Globals.windowStack[i].close();
+			if(Ti.Platform.name == "android" )
+			{
+				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
 		}
 		else
 		{
@@ -129,4 +149,8 @@ $.drinks_sub_category.addEventListener('close', function(e){
 
 $.drinks_sub_category.addEventListener('open', function(e){
 	Alloy.Globals.windowStack.push($.drinks_sub_category);
+});
+
+$.drinks_sub_category.addEventListener('androidback', function(e){
+	$.drinks_sub_category.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
 });

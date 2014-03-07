@@ -5,14 +5,14 @@
 			<View id="mix_of_month_view" height="202dp" backgroundColor="#ddd">
 				<!--<ImageView image="/images/home_screen/mix_month_bg.png" width="Ti.UI.FILL" height="Ti.UI.FILL" />-->
 				<View id="mix_banner_image_container" width="Ti.UI.FILL" height="Ti.UI.FILL" />
-				<View id="mix_bottle_image_container" left="5dp" width="30%" height="Ti.UI.SIZE" />
+				<View id="mix_bottle_image_container" left="5dp" width="100dp" height="200dp" />
 				<View id="mix_of_the_month_anim_view" height="Ti.UI.SIZE" layout="vertical" width="60%" right="-25dp" opacity="0">
-					<Label id="mix_title">Mix of the Month bloop bloop lboop blooopb</Label>
-					<Label id="mix_desc">Absolut Citron & Tonic bloop bloop lboop blooopb</Label>
+					<Label id="mix_title">Mix of the Month </Label>
+					<Label id="mix_desc">Absolut Citron & Tonic </Label>
 				</View>
 			</View>
 			<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundColor="#f00" backgroundImage="/images/common/color_sep.png" />
-			<View class="menu_row" backgroundColor="#ddd" layout="horizontal" width="100%">
+			<View id="menu_row_1" class="menu_row" backgroundColor="#ddd" layout="horizontal" width="100%">
 				<View id="cocktails_home_btn" class="home_menu_btn" onClick="openDrinks">
 					<View height="Ti.UI.SIZE" layout="vertical">
 						<ImageView image="/images/icons/drinks.png" class="menu_image" />
@@ -26,7 +26,7 @@
 					</View>
 				</View>
 			</View>
-			<View class="menu_row" backgroundColor="#fff" layout="horizontal" width="100%">
+			<View id="menu_row_2" class="menu_row" backgroundColor="#fff" layout="horizontal" width="100%">
 				<View id="tips_home_btn" class="home_menu_btn" onClick="openTips">
 					<View height="Ti.UI.SIZE" layout="vertical">
 						<ImageView image="/images/icons/tips.png" class="menu_image" />
@@ -40,7 +40,7 @@
 					</View>
 				</View>
 			</View>
-			<View class="menu_row" backgroundColor="#fff" layout="horizontal" width="100%">
+			<View id="menu_row_3" class="menu_row" backgroundColor="#fff" layout="horizontal" width="100%">
 				<View id="news_home_btn" class="home_menu_btn" onClick="openNews">
 					<View height="Ti.UI.SIZE" layout="vertical">
 						<ImageView image="/images/icons/news.png" class="menu_image" />
@@ -62,7 +62,7 @@
 	
 	<Window exitOnClose="true" class="container" platform="android" title="HOME" id="win1" >
 		<View platform="android" height="50dp" width="Ti.UI.FILL">
-			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="0.8" />
+			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="1" />
 			<View width="Ti.UI.FILL">
 				<View backgroundImage="/images/icons/tandc.png" onClick="openTandCs" left="10dp" top="10dp" bottom="10dp" height="30dp" width="30dp" />
 				<Label color="#313646" class="page_title" >HOME</Label>

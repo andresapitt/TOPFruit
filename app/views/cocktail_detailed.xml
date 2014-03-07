@@ -1,7 +1,7 @@
 <Alloy>
 	<Window class="container" title="DRINK RECIPE" layout="composite">
 		<View platform="android" height="50dp" width="Ti.UI.FILL" top="0dp">
-			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="0.8" />
+			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="1" />
 			<View width="Ti.UI.FILL">
 				<View backgroundImage="/images/icons/back.png" onClick="closeWindow" left="10dp" top="10dp" bottom="10dp" height="30dp" width="30dp" />
 				<Label color="#313646" class="page_title" >DRINK RECIPE</Label>
@@ -26,6 +26,10 @@
 					
 					<!-- THIS IS THE INGREDIENTS VIEW ON THE RIGHT SIDE -->
 					<View layout="vertical" height="Ti.UI.SIZE" width="70%" left="30%" top="0dp" id="how_to_view">
+						<View id="cocktail_desc_container" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL" >
+							<Label class="recipe_subtitle" left="12dp">Description</Label>
+							<Label class="recipe_subtext" id="cocktail_desc" >Description</Label>
+						</View>
 						<View id="glassware_container" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL" >
 							<Label class="recipe_subtitle" left="12dp">Glassware</Label>
 							<Label class="recipe_subtext" id="glassware" >Glassware info</Label>

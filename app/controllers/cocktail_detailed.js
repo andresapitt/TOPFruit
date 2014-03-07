@@ -26,6 +26,15 @@ else{
 	Ti.API.info("No cocktail glass info");
 	$.how_to_view.remove($.glassware_container);
 }
+if(cocktail.description != null && cocktail.description != "")
+{
+	Ti.API.info("cocktail description info: " + cocktail.description);
+	$.cocktail_desc.text = cocktail.description;
+}
+else{
+	Ti.API.info("No cocktail description info");
+	$.how_to_view.remove($.cocktail_desc_container);
+}
 if(cocktail.ingredients != null && cocktail.ingredients != "")
 {
 	Ti.API.info("cocktail ingredients info: " + cocktail.ingredients);
@@ -82,7 +91,8 @@ if(cocktail.video_url != null && cocktail.video_url != "")
 		//if rating is open then close it
 		var animation = Titanium.UI.createAnimation();
 		animation.bottom = "-240dp";
-		animation.duration = 500;
+		animation.duration = 300;
+		animation.curve = Ti.UI.ANIMATION_CURVE_EASE_IN_OUT;
 		$.rating_picker.animate(animation);
 		
 		Alloy.createWidget('ytPlayer').play(cocktail.video_url);
@@ -130,7 +140,8 @@ if(currentRatings == null || currentRatings.length == 0 )
 		Ti.API.info("Cocktail rating clicked");
 		var animation = Titanium.UI.createAnimation();
 		animation.bottom = "0dp";
-		animation.duration = 500;
+		animation.duration = 300;
+		animation.curve = Ti.UI.ANIMATION_CURVE_EASE_IN_OUT;
 		$.rating_picker.animate(animation);
 	});
 }
@@ -157,7 +168,8 @@ else if(currentRatings.length > 0)
 			Ti.API.info("Cocktail rating clicked");
 			var animation = Titanium.UI.createAnimation();
 			animation.bottom = "0dp";
-			animation.duration = 500;
+			animation.duration = 300;
+			animation.curve = Ti.UI.ANIMATION_CURVE_EASE_IN_OUT;
 			$.rating_picker.animate(animation);
 		});
 	}
@@ -239,7 +251,8 @@ function closeRatingHandler(e){
 	{
 		animation.bottom = "-240dp";
 	}
-	animation.duration = 500;
+	animation.duration = 300;
+	animation.curve = Ti.UI.ANIMATION_CURVE_EASE_IN_OUT;
 	$.rating_picker.animate(animation);
 }
 
@@ -268,7 +281,8 @@ function submitRatingBtnHandler(e){
 		{
 			animation.bottom = "-240dp";
 		}
-		animation.duration = 500;
+		animation.duration = 300;
+		animation.curve = Ti.UI.ANIMATION_CURVE_EASE_IN_OUT;
 		$.rating_picker.animate(animation);
 		$.rating_view.touchEnabled = false;
 		if( currentRating == 1)
@@ -298,7 +312,7 @@ function updateFavIcon(){
 	{
 		for(var i = 0; i < currentFavs.length; i ++)
 		{
-			if(currentFavs[i].id == cocktail.ID)
+			if(currentFavs[i].id == cocktail.id)
 			{
 				Ti.API.info('cocktail in favorites');
 				$.fav_heart.image = "/images/favs/heart_full.png";
@@ -316,13 +330,13 @@ function fav_clicked(e){
 	if(currentFavs == null || currentFavs.length == 0)
 	{
 		Ti.API.info('No current favourites - add this cocktail to favourites');
-		currentFavs.push({id:cocktail.ID});
+		currentFavs.push({id:cocktail.id});
 	}
 	else
 	{
 		for(var i = 0; i < currentFavs.length; i ++)
 		{
-			if(currentFavs[i].id == cocktail.ID)
+			if(currentFavs[i].id == cocktail.id)
 			{
 				Ti.API.info('Cocktail already in favorites - remove from list');
 				currentFavs.splice(i, 1);
@@ -331,7 +345,7 @@ function fav_clicked(e){
 				return false;
 			}
 		}
-		currentFavs.push({id:cocktail.ID});
+		currentFavs.push({id:cocktail.id});
 	}
 	Titanium.App.Properties.setList('favs', currentFavs);
 	updateFavIcon();
@@ -340,7 +354,14 @@ function fav_clicked(e){
 
 function closeWindow(e)
 {
-	$.cocktail_detailed.close();
+	if(Ti.Platform.name == "android" )
+	{
+		$.cocktail_detailed.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	}
+	else
+	{
+		$.cocktail_detailed.close();
+	}
 }
 
 function goToHome(e)
@@ -349,7 +370,14 @@ function goToHome(e)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
 		{
-			Alloy.Globals.windowStack[i].close();
+			if(Ti.Platform.name == "android" )
+			{
+				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
 		}
 		else
 		{
@@ -388,6 +416,8 @@ $.cocktail_detailed.addEventListener('open', function(e){
 	setTimeout(function(){
 	   $.recipe_image_ani_view.animate(animation);
 	}, 700);
+});
 
-	
+$.cocktail_detailed.addEventListener('androidback', function(e){
+	$.cocktail_detailed.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
 });

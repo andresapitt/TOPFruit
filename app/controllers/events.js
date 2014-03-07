@@ -1,5 +1,6 @@
 
-Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/events/events/viewjson", "data/Events.txt", DisplayBrands);
+Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/events/events/viewjson", "data/Events.txt", DisplayEvents);
+var events_json_text = ""; 
 
 /*var readFileFromCMS = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory , "Events.txt");  
 var UTC_time = new Date().getTime();
@@ -33,7 +34,7 @@ else
 	}
 }
 */
-function DisplayBrands(newJSON)
+function DisplayEvents(newJSON)
 {
 	var events_json;
 	if(newJSON != null)
@@ -120,7 +121,7 @@ function openEventDescription(e){
 	var event_desc_Win = Alloy.createController('event_desc', e.source.eventData).getView();
 	if(Ti.Platform.name == "android" )
 	{
-		event_desc_Win.open();
+		event_desc_Win.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 	}
 	else
 	{
@@ -132,7 +133,14 @@ function openEventDescription(e){
 
 function closeWindow(e)
 {
-	$.events.close();
+	if(Ti.Platform.name == "android" )
+	{
+		$.events.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	}
+	else
+	{
+		$.events.close();
+	}
 }
 
 function goToHome(e)
@@ -141,7 +149,14 @@ function goToHome(e)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
 		{
-			Alloy.Globals.windowStack[i].close();
+			if(Ti.Platform.name == "android" )
+			{
+				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
 		}
 		else
 		{
@@ -162,3 +177,9 @@ $.events.addEventListener('open', function(e){
 	
 	Alloy.Globals.windowStack.push($.events);
 });
+
+$.events.addEventListener('androidback', function(e){
+	$.events.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+});
+
+

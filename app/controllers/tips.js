@@ -129,7 +129,7 @@ function DisplayTips(newJSON)
 		
 		var tip_image_view = Alloy.Globals.Utils.RemoteImage({
 		  image: tips_json[i].Tip.image_thumb,
-		  defaultImage:'/images/placeholders/ph_events.png'
+		  defaultImage:'/images/icons/tips.png'
 		});
 		tip_image_view.applyProperties(tip_image_style);
 		tip_item_view.add(tip_image_view);
@@ -139,7 +139,14 @@ function DisplayTips(newJSON)
 }
 function closeWindow(e)
 {
-	$.tips.close();
+	if(Ti.Platform.name == "android" )
+	{
+		$.tips.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	}
+	else
+	{
+		$.tips.close();
+	}
 }
 
 function goToHome(e)
@@ -148,7 +155,14 @@ function goToHome(e)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
 		{
-			Alloy.Globals.windowStack[i].close();
+			if(Ti.Platform.name == "android" )
+			{
+				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
 		}
 		else
 		{
@@ -165,3 +179,12 @@ $.tips.addEventListener('close', function(e){
 $.tips.addEventListener('open', function(e){
 	Alloy.Globals.windowStack.push($.tips);
 });
+
+$.tips.addEventListener('androidback', function(e){
+	$.tips.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+});
+
+
+
+
+

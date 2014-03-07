@@ -58,6 +58,18 @@ else
 	picker.addEventListener('change',function(e){
 	  Ti.API.info("User selected date: " + e.value.toLocaleString());
 	});
+	
+	
+	
+	if(Ti.Platform.name == "iPhone OS" &&  Ti.Platform.displayCaps.platformHeight == 480)
+	{	
+		$.banner_img.height="150dp";
+	}
+	else if(Ti.Platform.name == "iPhone OS" &&  Ti.Platform.displayCaps.platformHeight > 480)
+	{
+		$.drinkaware_img.top = "40dp";
+	}
+	
 }
 	
 
@@ -72,7 +84,7 @@ else
   Ti.API.info("User selected date: " + e.value.toLocaleString());
 });*/
 
-
+var month = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 function submitBtnHandler(e) {
 	var over18 = false;
@@ -120,13 +132,20 @@ function submitBtnHandler(e) {
 	    if(Ti.Platform.name == "android" )
 		{
 			var indexWin = Alloy.createController('index').getView();
-			indexWin.open({ activityEnterAnimation: Ti.Android.R.anim.slide_in_left, activityExitAnimation: Ti.Android.R.anim.slide_out_right});
+			indexWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 		}
 		else
 		{
 			Alloy.Globals.parent.open();
 		}
-		$.age_gate.close();
+		if(Ti.Platform.name == "android" )
+		{
+			$.age_gate.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
+		}
+		else
+		{
+			$.age_gate.close();
+		}
     }
     else
     {
@@ -137,7 +156,14 @@ function submitBtnHandler(e) {
 function TandCBtnHandler(e){
 	//alert("Terms and Conditions clicked");
 	var terms_and_conditions = Alloy.createController('terms_and_conditions').getView();
-	terms_and_conditions.open({modal:true});
+	if(Ti.Platform.name == "android")
+	{
+		terms_and_conditions.open({modal:true, activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
+	}
+	else
+	{
+		terms_and_conditions.open({modal:true});
+	}
 }
 	
 function facebookBtnHandler(e){
@@ -145,21 +171,21 @@ function facebookBtnHandler(e){
 	fb.appid = Alloy.Globals.appid;
 	fb.permissions = Alloy.Globals.permissions;
 	 
-	 Ti.API.info("Logged in: " + fb.loggedIn);
+	 //Ti.API.info("Logged in: " + fb.loggedIn);
 	
-	if(fb.loggedIn)
+	/*if(fb.loggedIn)
 	{
 		fb.logout();
 		alert("logged out");
-	}
+	}*/
 	
-	alert("Facebook button pressed");
+	//alert("Facebook button pressed");
 	 
 	fb.forceDialogAuth = false;
 	
 	fb.addEventListener('login', function(e) {
 	    if (e.success) {
-	    	alert('Logged In');
+	    	//alert('Logged In');
 	         Ti.App.Properties.setBool('over18', true);
 	         Alloy.Globals.parent.open();
 	         $.age_gate.close();

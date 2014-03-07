@@ -1,7 +1,7 @@
 <Alloy>
 	<Window class="container" title="BAR SMARTS">
 		<View platform="android" height="50dp" width="Ti.UI.FILL" top="0dp">
-			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="0.8" />
+			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="1" />
 			<View width="Ti.UI.FILL">
 				<View backgroundImage="/images/icons/back.png" onClick="closeWindow" left="10dp" top="10dp" bottom="10dp" height="30dp" width="30dp" />
 				<Label color="#313646" class="page_title">BAR SMARTS</Label>
@@ -11,6 +11,13 @@
 		<View class="color_seperator"  platform="android" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="50dp" />
 		<View class="color_seperator"  platform="ios" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="0dp" />
 		<ScrollView class="scrollView" >
+			<View class="bar_smarts_main" bottom="10dp">
+				<View id="bar_smarts_banner_image_view" bottom="5dp" width="Ti.UI.FILL" height="Ti.UI.SIZE" >
+					<ImageView id="bar_smarts_banner_image" image="/images/brands/jameson_banner.png" class="brand_image" height="Ti.UI.SIZE"  width="Ti.UI.SIZE" bottom="5dp" />
+				</View>
+				<Label class="bar_smarts_desc_text">Be a part of the new revolution in spirits and cocktails. BarSmarts is a one-of-a-kind online bartender education and certification program sponsored by Pernod Ricard.</Label>
+			</View>
+			<Button class="visitSiteBtn" onClick="openBarSmarts" title="GO TO BAR SMARTS WEBSITE" bottom="10dp" />
 		</ScrollView>
 		<RightNavButton platform="ios">
         	<Button image="/images/icons/home.png" onClick="goToHome" />

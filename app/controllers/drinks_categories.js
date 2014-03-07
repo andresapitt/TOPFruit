@@ -1,7 +1,7 @@
-var readFile = Titanium.Filesystem.getFile(Ti.Filesystem.resourcesDirectory , "data/Drinks.txt");  
+//var readFile = Titanium.Filesystem.getFile(Ti.Filesystem.resourcesDirectory , "data/Drinks.txt");  
  
-var drinks_json_text = ""; 
 
+/*
 // If the file exists
 if (readFile.exists()){  
 	Ti.API.info("Drinks json local text file exists");
@@ -9,7 +9,7 @@ if (readFile.exists()){
 }
 else{
 	alert("Drinks json local text file not found");
-}
+}*/
 
 var drinks_categories_images = {
 		whiskey: "images/category_images/whiskey.png", 
@@ -23,7 +23,10 @@ var drinks_categories_images = {
 		tequila:"images/category_images/tequila.png"
 		};
 
-DisplayDrinks();
+//DisplayDrinks();
+
+var drinks_json_text = ""; 
+Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/drinks/drinks/viewjson", "data/Drinks.txt", DisplayDrinks);
 
 function DisplayDrinks(newJSON)
 {
@@ -55,16 +58,16 @@ function DisplayDrinks(newJSON)
 	
 	
 	
-	for(var i = 0; i < drinks_json.drinks.length; i += 3)
+	for(var i = 0; i < drinks_json.length; i += 3)
 	{
-		Ti.API.info("Drink " + i + " Title: " + drinks_json.drinks[i].title);
+		Ti.API.info("Drink " + i + " Title: " + drinks_json[i].Drink.title);
 		var horizontal_drink_view = Ti.UI.createView();
 		horizontal_drink_view.applyProperties(horizontal_drink_view_style);
 		$.drink_types.add(horizontal_drink_view);
 		
-		for(y = i; y < i+3 && y < drinks_json.drinks.length; y++ )
+		for(y = i; y < i+3 && y < drinks_json.length; y++ )
 		{
-			Ti.API.info("Drink " + y + " Title: " + drinks_json.drinks[y].title);
+			Ti.API.info("Drink " + y + " Title: " + drinks_json[y].Drink.title);
 			var single_drink_view = Ti.UI.createView();
 			single_drink_view.applyProperties(single_drink_view_style);
 			horizontal_drink_view.add(single_drink_view);
@@ -97,18 +100,25 @@ function DisplayDrinks(newJSON)
 			// TESTING FOR ANDROID
 			
 			var overlay_drink_image = Alloy.Globals.Utils.RemoteImage({
-			  image: drinks_json.drinks[y].image_thumb,
+			  image: drinks_json[y].Drink.image,
 			  defaultImage:'images/category_images/generic.png'
 			});
 			overlay_drink_image.applyProperties(single_drink_image_style_bottle);
 			single_drink_view.add(overlay_drink_image);
 			
 			
-			var drink_single_label = Ti.UI.createLabel({text:drinks_json.drinks[y].title});
+			var drink_single_label = Ti.UI.createLabel({text:drinks_json[y].Drink.title});
 			drink_single_label.applyProperties(single_drink_title_style);
 			single_drink_view.add(drink_single_label);
 			
-			single_drink_view.drinkData = drinks_json.drinks[y];
+			if(drinks_json[y].Drink.subcategories.length <= 0){
+				drinks_json[y].Drink.topCategory = true;
+			}
+			else
+			{
+				drinks_json[y].Drink.topCategory = false;
+			}
+			single_drink_view.drinkData = drinks_json[y].Drink;
 			single_drink_view.addEventListener('click', openDrinks);
 					
 			//$.drink_types.add(single_drink_view);
@@ -121,10 +131,11 @@ function openDrinks(e){
 	Ti.API.info("Drink selection made: " + e.source.drinkData.title );
 	if(e.source.drinkData.subcategories.length <= 0){
 		Ti.API.info('No drink sub category, open cocktail display');
+		e.source.drinkData.topCategory = true;
 		var resultsWin = Alloy.createController('cocktail_results',  e.source.drinkData ).getView();
 		if(Ti.Platform.name == "android" )
 		{
-			resultsWin.open();
+			resultsWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 		}
 		else
 		{
@@ -134,10 +145,11 @@ function openDrinks(e){
 	else
 	{
 		Ti.API.info('There are drink sub categories, open more options');
+		e.source.drinkData.topCategory = false;
 		var sub_categoryWin = Alloy.createController('drinks_sub_category', e.source.drinkData ).getView();
 		if(Ti.Platform.name == "android" )
 		{
-			sub_categoryWin.open();
+			sub_categoryWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 		}
 		else
 		{
@@ -152,7 +164,7 @@ function openSearch(e){
 	var searchWin = Alloy.createController('search').getView();
 	if(Ti.Platform.name == "android" )
 	{
-		searchWin.open();
+		searchWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 	}
 	else
 	{
@@ -162,7 +174,14 @@ function openSearch(e){
 
 function closeWindow(e)
 {
-	$.drinks_categories.close();
+	if(Ti.Platform.name == "android" )
+	{
+		$.drinks_categories.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	}
+	else
+	{
+		$.drinks_categories.close();
+	}
 }
 
 function goToHome(e)
@@ -171,7 +190,14 @@ function goToHome(e)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
 		{
-			Alloy.Globals.windowStack[i].close();
+			if(Ti.Platform.name == "android" )
+			{
+				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
 		}
 		else
 		{
@@ -187,4 +213,8 @@ $.drinks_categories.addEventListener('close', function(e){
 
 $.drinks_categories.addEventListener('open', function(e){
 	Alloy.Globals.windowStack.push($.drinks_categories);
+});
+
+$.drinks_categories.addEventListener('androidback', function(e){
+	$.drinks_categories.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
 });

@@ -1,7 +1,7 @@
 <Alloy>
 	<Window class="container" title="ABOUT EVENT">
-			<View platform="android" height="50dp" width="Ti.UI.FILL" top="0dp">
-			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="0.8" />
+		<View platform="android" height="50dp" width="Ti.UI.FILL" top="0dp">
+			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="1" />
 			<View width="Ti.UI.FILL">
 				<View backgroundImage="/images/icons/back.png" onClick="closeWindow" left="10dp" top="10dp" bottom="10dp" height="30dp" width="30dp" />
 				<Label color="#313646" class="page_title" >ABOUT EVENT</Label>
@@ -28,7 +28,7 @@
 					<Label id="event_admission_text" class="event_desc_style">$0.00</Label>
 				</View>
 				<View id="event_desc_view" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL">
-					<Label class="event_title_style">DESC.</Label>
+					<Label class="event_title_style">DESCRIPTION</Label>
 					<Label id="event_desc_text" class="event_desc_style">This is the description</Label>
 				</View>
 				<!--<Button class="visitSiteBtn" onClick="visitSiteBtnHandler" title="VISIT SITE" />-->
@@ -45,7 +45,7 @@
 			</View>-->
 		</View>
 		<Label id="location_header_title" class="event_title_style" width="Ti.UI.FILL" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">LOCATION</Label>
-		<View id="event_map_view" class="event_item" borderRadius="0" >
+		<View id="event_map_view" class="event_item" borderRadius="6" >
 			
 		</View>
 		

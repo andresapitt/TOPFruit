@@ -8,49 +8,48 @@ $.event_title.text = args.title || 'Title not received';
 
 if(args.banner_img_url != null && args.banner_img_url != "")
 {
+	var new_height = "160dp";
+	if(Ti.Platform.name == "android" )
+	{
+		new_height = PixelsToDPUnits((Ti.Platform.displayCaps.platformWidth / 320 ) * 160);
+		
+		function PixelsToDPUnits(ThePixels)
+		{
+		  return (ThePixels / (Titanium.Platform.displayCaps.dpi / 160));
+		}
+	}
+	
+	Ti.API.info('new height: ' + new_height);
 	var event_image_view = Alloy.Globals.Utils.RemoteImage({
 	  image: args.banner_img_url,
 	  defaultImage:'/images/placeholders/ph_events.png',
-	// width:Ti.UI.SIZE, 
-	 //height:"40%"
-	//  height:Ti.UI.FILL
-	 // left:0,
-	  //right:0
-		//height:Ti.UI.SIZE,
+	  height:new_height
 	});
 
-	function resetLayout(e){
+	/*function resetLayout(e){
 		event_image_view.removeEventListener('postlayout', resetLayout);
-		Ti.API.info("Image width: " + event_image_view.size.width);
-		Ti.API.info("Image height: " + event_image_view.size.height);
-		Ti.API.info("Banner width: " + $.event_banner_image.size.width);
-		var height_multipler = $.event_banner_image.size.width / event_image_view.size.width;
-		Ti.API.info("Height Multiplier: " + height_multipler);
-		event_image_view.height = event_image_view.size.height * height_multipler;
-	}
+		//var height_multipler = $.event_banner_image.size.width / event_image_view.size.width;
+		//event_image_view.height = event_image_view.size.height * height_multipler;
+		event_image_view.height = new_height;
+	}*/
 
-	event_image_view.addEventListener('postlayout', resetLayout);
+	//event_image_view.addEventListener('postlayout', resetLayout);
 	
 	$.event_banner_image.add(event_image_view);
-	//event_image_view.height=Ti.UI.F;
-//	Ti.API.info("Image width: " + event_image_view.image.width);
-//	Ti.API.info("Image height: " + event_image_view.image.height);
 
-	//event_image_view.width = 700;
-	//event_image_view.height = 700;
 }
 //WHERE SECTION
-if(args.where != null && args.where != "")
+if(args.location != null && args.location != "")
 {
-	$.event_where_text.text = args.where;
+	$.event_where_text.text = args.location;
 }
 else{
 	$.event_desc_parent.remove($.event_where_view);
 }
 //WHEN SECTION 
-if(args.when != null && args.when != "")
+if(args.date != null && args.date != "")
 {
-	$.event_when_text.text = args.when;
+	$.event_when_text.text = args.date;
 }
 else{
 	$.event_desc_parent.remove($.event_when_view);
@@ -64,9 +63,9 @@ else{
 	$.event_desc_parent.remove($.event_admission_view);
 }
 //DESCRIPTION SECTION 
-if(args.desc != null && args.desc != "")
+if(args.description != null && args.description != "")
 {
-	$.event_desc_text.text = args.desc;
+	$.event_desc_text.text = args.description;
 }
 else{
 	$.event_desc_parent.remove($.event_desc_view);
@@ -75,51 +74,13 @@ else{
 if(args.more_info_url != null && args.more_info_url != "")
 {
 	$.event_visit_site_Btn.addEventListener('click', function(e){
-		Ti.API.info("Event website button clicked! Go to: " + args.more_info_url);
-		/*if(Ti.Platform.name == "android" )
-		{
-			var intent = Ti.Android.createIntent({
-			    action: Ti.Android.ACTION_VIEW,
-			    data: args.more_info_url
-			});
-			 
-			Ti.Android.currentActivity.startActivity(intent);
-			//Ti.Platform.openURL(args.more_info_url);
-		}
-		else
-		{*/
-			Ti.Platform.openURL(args.more_info_url);
-		//}
+		Ti.Platform.openURL(args.more_info_url);
 	});
 }
 else
 {
 	$.event_decs_scrollview.remove($.event_visit_site_Btn);
 }
-/*
-function visitSiteBtnHandler(e){
-	Ti.API.info("OPEN URL: " + args.more_info_url);
-	//Ti.Platform.openURL(args.more_info_url);
-	//Ti.Platform.openURL();
-	if(Ti.Platform.name == "android" )
-	{
-		
-		var intent = Ti.Android.createIntent({
-		    action: Ti.Android.ACTION_VIEW,
-		    data: args.more_info_url,
-		  //  className: 'com.android.browser.BrowserActivity',
-		  //  packageName: 'com.android.browser'
-		});
-		 
-		Ti.Android.currentActivity.startActivity(intent);
-		//Ti.Platform.openURL(args.more_info_url);
-	//	Ti.Platform.openURL(args.more_info_url);
-	}
-	else
-	{
-		Ti.Platform.openURL(args.more_info_url);
-	}
-}*/
 
 if(args.longitude != null && args.latitude != null)
 {
@@ -148,13 +109,16 @@ if(args.longitude != null && args.latitude != null)
 		    regionFit:true,
 		    userLocation:true,
 			annotations:[eventMapPinView],
-		    height:mapHeight
+		    height:mapHeight,
+		     borderRadius:6,
 		});
 		$.event_map_view.add(mapview);
 	}
 	else
 	{
+		
 		var Map = require('ti.map');
+		
 		var eventMapPinView = Map.createAnnotation({
 		    latitude:args.latitude,
 		    longitude:args.longitude,
@@ -172,9 +136,13 @@ if(args.longitude != null && args.latitude != null)
 		    regionFit:true,
 		    userLocation:true,
 		    annotations:[eventMapPinView],
-		    height:"200dp"
+		    height:"200dp",
+		    backgroundColor:'#fff',
+		    borderRadius:6,
+		    tintColor:'#fff'
 		});
 		$.event_map_view.add(mapview);
+	
 	}
 }
 else{
@@ -185,7 +153,14 @@ else{
 
 function closeWindow(e)
 {
-	$.event_desc.close();
+	if(Ti.Platform.name == "android" )
+	{
+		$.event_desc.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	}
+	else
+	{
+		$.event_desc.close();
+	}
 }
 
 function goToHome(e)
@@ -194,7 +169,14 @@ function goToHome(e)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
 		{
-			Alloy.Globals.windowStack[i].close();
+			if(Ti.Platform.name == "android" )
+			{
+				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
 		}
 		else
 		{
@@ -211,3 +193,8 @@ $.event_desc.addEventListener('close', function(e){
 $.event_desc.addEventListener('open', function(e){
 	Alloy.Globals.windowStack.push($.event_desc);
 });
+
+$.event_desc.addEventListener('androidback', function(e){
+	$.event_desc.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+});
+

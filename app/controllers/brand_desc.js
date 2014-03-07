@@ -9,9 +9,23 @@ $.brand_desc_text.text = args.description || 'Description not received';
 
 if(args.banner_img_url != null && args.banner_img_url != "")
 {
+	var new_height = "160dp";
+	if(Ti.Platform.name == "android" )
+	{
+		new_height = PixelsToDPUnits((Ti.Platform.displayCaps.platformWidth / 320 ) * 160);
+		
+		function PixelsToDPUnits(ThePixels)
+		{
+		  return (ThePixels / (Titanium.Platform.displayCaps.dpi / 160));
+		}
+	}
+	
+	Ti.API.info('new height: ' + new_height);
+	
 	var brand_image_view = Alloy.Globals.Utils.RemoteImage({
 	  image: args.banner_img_url,
-	  defaultImage:'/images/placeholders/ph_events.png'
+	  defaultImage:'/images/placeholders/ph_events.png',
+	  height:new_height
 	});
 	$.brand_banner_image.add(brand_image_view);
 }
@@ -113,7 +127,14 @@ function openFacebookLike(e){
 
 function closeWindow(e)
 {
-	$.brand_desc.close();
+	if(Ti.Platform.name == "android" )
+	{
+		$.brand_desc.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	}
+	else
+	{
+		$.brand_desc.close();
+	}
 }
 
 function goToHome(e)
@@ -122,7 +143,14 @@ function goToHome(e)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
 		{
-			Alloy.Globals.windowStack[i].close();
+			if(Ti.Platform.name == "android" )
+			{
+				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
 		}
 		else
 		{
@@ -139,3 +167,8 @@ $.brand_desc.addEventListener('close', function(e){
 $.brand_desc.addEventListener('open', function(e){
 	Alloy.Globals.windowStack.push($.brand_desc);
 });
+
+$.brand_desc.addEventListener('androidback', function(e){
+	$.brand_desc.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+});
+
