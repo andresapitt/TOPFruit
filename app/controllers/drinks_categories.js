@@ -71,8 +71,14 @@ function DisplayDrinks(newJSON)
 			var single_drink_view = Ti.UI.createView();
 			single_drink_view.applyProperties(single_drink_view_style);
 			horizontal_drink_view.add(single_drink_view);
-			
-			var drink_image = Ti.UI.createImageView({image:"/images/common/highlight_circle.png"});
+			if(Ti.Platform.name == "mobileweb" )
+			{
+				var drink_image = Ti.UI.createImageView({image:"./images/common/highlight_circle.png"});
+			}
+			else
+			{
+				var drink_image = Ti.UI.createImageView({image:"/images/common/highlight_circle.png"});
+			}
 			drink_image.applyProperties(single_drink_image_style);
 			single_drink_view.add(drink_image);
 			
@@ -103,6 +109,10 @@ function DisplayDrinks(newJSON)
 			  image: drinks_json[y].Drink.image,
 			  defaultImage:'images/category_images/generic.png'
 			});
+			if(Ti.Platform.name == "mobileweb" )
+			{
+				overlay_drink_image.defaultImage = "./images/category_images/generic.png";
+			}
 			overlay_drink_image.applyProperties(single_drink_image_style_bottle);
 			single_drink_view.add(overlay_drink_image);
 			
@@ -137,6 +147,10 @@ function openDrinks(e){
 		{
 			resultsWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 		}
+		else if(Ti.Platform.name == "mobileweb" )
+		{
+			resultsWin.open();
+		}
 		else
 		{
     		Alloy.Globals.parent.openWindow(resultsWin);
@@ -150,6 +164,10 @@ function openDrinks(e){
 		if(Ti.Platform.name == "android" )
 		{
 			sub_categoryWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
+		}
+		else if(Ti.Platform.name == "mobileweb" )
+		{
+			sub_categoryWin.open();
 		}
 		else
 		{
@@ -166,6 +184,10 @@ function openSearch(e){
 	{
 		searchWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 	}
+	else if(Ti.Platform.name == "mobileweb" )
+	{
+		searchWin.open();
+	}
 	else
 	{
     	Alloy.Globals.parent.openWindow(searchWin);
@@ -174,9 +196,15 @@ function openSearch(e){
 
 function closeWindow(e)
 {
+	var a = Alloy.Globals.windowStack.indexOf($.drinks_categories);
+	Alloy.Globals.windowStack.splice(a,1);
 	if(Ti.Platform.name == "android" )
 	{
 		$.drinks_categories.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	}
+	else if(Ti.Platform.name == "mobileweb" )
+	{
+		$.drinks_categories.close();
 	}
 	else
 	{
@@ -186,6 +214,9 @@ function closeWindow(e)
 
 function goToHome(e)
 {
+	Alloy.Globals.goToHome(e);
+	/*
+	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
 	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
@@ -198,23 +229,36 @@ function goToHome(e)
 			{
 				Alloy.Globals.windowStack[i].close();
 			}
+			Ti.API.info("Close index: " + i );
 		}
 		else
 		{
-			Alloy.Globals.windowStack[i].close({animated:false});
+			if(Ti.Platform.name != "mobileweb" )
+			{
+				Alloy.Globals.windowStack[i].close({animated:false});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
+			Ti.API.info("Close index: " + i );
 		}
-	}
+	}*/
 }
 
 $.drinks_categories.addEventListener('close', function(e){
-	var a = Alloy.Globals.windowStack.indexOf($.drinks_categories);
-	Alloy.Globals.windowStack.splice(a,1);
+	Ti.API.info("Drinks categories closed");
+	//var a = Alloy.Globals.windowStack.indexOf($.drinks_categories);
+	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.drinks_categories.addEventListener('open', function(e){
+	Ti.API.info("Drinks categories opened");
 	Alloy.Globals.windowStack.push($.drinks_categories);
 });
 
 $.drinks_categories.addEventListener('androidback', function(e){
 	$.drinks_categories.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	var a = Alloy.Globals.windowStack.indexOf($.drinks_categories);
+	Alloy.Globals.windowStack.splice(a,1);
 });

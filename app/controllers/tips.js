@@ -139,6 +139,8 @@ function DisplayTips(newJSON)
 }
 function closeWindow(e)
 {
+	var a = Alloy.Globals.windowStack.indexOf($.tips);
+	Alloy.Globals.windowStack.splice(a,1);
 	if(Ti.Platform.name == "android" )
 	{
 		$.tips.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
@@ -151,6 +153,9 @@ function closeWindow(e)
 
 function goToHome(e)
 {
+	Alloy.Globals.goToHome(e);
+	/*
+	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
 	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
@@ -163,25 +168,38 @@ function goToHome(e)
 			{
 				Alloy.Globals.windowStack[i].close();
 			}
+			Ti.API.info("Close index: " + i );
 		}
 		else
 		{
-			Alloy.Globals.windowStack[i].close({animated:false});
+			if(Ti.Platform.name != "mobileweb" )
+			{
+				Alloy.Globals.windowStack[i].close({animated:false});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
+			Ti.API.info("Close index: " + i );
 		}
-	}
+	}*/
 }
 
 $.tips.addEventListener('close', function(e){
-	var a = Alloy.Globals.windowStack.indexOf($.tips);
-	Alloy.Globals.windowStack.splice(a,1);
+	Ti.API.info("tips closed");
+	//var a = Alloy.Globals.windowStack.indexOf($.tips);
+	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.tips.addEventListener('open', function(e){
+	Ti.API.info("tips opened");
 	Alloy.Globals.windowStack.push($.tips);
 });
 
 $.tips.addEventListener('androidback', function(e){
 	$.tips.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	var a = Alloy.Globals.windowStack.indexOf($.tips);
+	Alloy.Globals.windowStack.splice(a,1);
 });
 
 

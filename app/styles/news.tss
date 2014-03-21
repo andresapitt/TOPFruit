@@ -1,50 +1,3 @@
-".container": {
-	backgroundColor:"white",
-	titleAttributes:{
-		color:Alloy.Globals.PrimaryColor,
-		font: {
-			fontFamily:Alloy.Globals.MainFont, 
-			fontSize:"18dp"
-		}
-	},
-	barColor:"#fff",
-	layout:'vertical',
-	tintColor:Alloy.Globals.PrimaryColor,
-	navTintColor:Alloy.Globals.PrimaryColor,
-	orientationModes: [
-        Ti.UI.PORTRAIT,
-        Ti.UI.UPSIDE_PORTRAIT
-    ],
-    translucent:false
-},
-".container[platform=android ]": {
-	backgroundColor:"white",
-	titleAttributes:{
-		color:Alloy.Globals.PrimaryColor,
-		font: {
-			fontFamily:Alloy.Globals.MainFont, 
-			fontSize:"18dp"
-		}
-	},
-	layout:'vertical',
-	tintColor:Alloy.Globals.PrimaryColor,
-	navTintColor:Alloy.Globals.PrimaryColor,
-	orientationModes: [
-        Ti.UI.PORTRAIT,
-        Ti.UI.UPSIDE_PORTRAIT
-    ],
-    navBarHidden:true
-},
-".scrollView":{
-	layout:"vertical",
-	bottom:"0dp",
-	width:Ti.UI.FILL,
-	contentWidth:"auto",
-	disableBounce:true,
-	showVerticalScrollIndicator:true,
-	showHorizontalScrollIndicator:false,
-	backgroundColor:"#efefef"
-},
 ".news_item":{
 	backgroundColor:"#fff",
 	height:"67dp",
@@ -68,24 +21,4 @@
 },
 ".news_arrow":{
 	right:"10dp"
-},
-".page_title[platform=android formFactor=tablet]":{
-	color:Alloy.Globals.PrimaryColor,
-	font: {
-		fontFamily:Alloy.Globals.MainFont, 
-		fontSize:"28dp"
-	},
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
-	left:"50dp", 
-	right:"50dp"
-},
-".page_title[platform=android]":{
-	color:Alloy.Globals.PrimaryColor,
-	font: {
-		fontFamily:Alloy.Globals.MainFont, 
-		fontSize:"22dp"
-	},
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
-	left:"50dp", 
-	right:"50dp"
 }

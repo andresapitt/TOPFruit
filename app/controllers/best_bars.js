@@ -24,6 +24,87 @@ if(Ti.Platform.name == "android" )
 
 $.best_bars_banner_image.height = new_height;
 
+function openTwitter(e){
+	if (Titanium.Platform.name == 'iPhone OS'){
+			var canOpenTwitter = Ti.Platform.canOpenURL("twitter://user?screen_name=WorldsBestBars");
+			if(canOpenTwitter)
+			{
+				Ti.Platform.openURL("twitter://user?screen_name=WorldsBestBars");
+			}
+			else{
+				alert("The twitter app must be installed to open this link.");
+			}
+		}
+		else if(Titanium.Platform.name == 'android')
+		{
+			var canOpen = Ti.Platform.openURL("twitter://user?screen_name=WorldsBestBars");
+			
+			if(canOpen == false)
+			{
+				var dialog = Ti.UI.createAlertDialog({
+				    message: "Sorry, you must first have the twitter app installed on this device to click this button.",
+				    ok: 'Ok, thanks!',
+				    title: 'Twitter Error'
+				  }).show();
+			}
+		}
+}
+function openFacebook(e){
+	if (Titanium.Platform.name == 'iPhone OS') {
+		Ti.API.info("facebook like button clicked");
+		var canOpenFacebook = Ti.Platform.canOpenURL("fb://profile/149071961796732");
+		if(canOpenFacebook)
+		{
+			Ti.Platform.openURL("fb://profile/149071961796732");
+		}
+		else{
+			//Ti.Platform.openURL("http://www.facebook.com/"+args.facebook);
+			var dialog = Ti.UI.createAlertDialog({
+			    message: "Sorry, you must first have the facebook app installed on this device to click this button.",
+			    ok: 'Ok, thanks!',
+			    title: 'Facebook'
+			  }).show();
+		}
+	}
+	else if (Titanium.Platform.name == 'android'){
+		var canOpen = Ti.Platform.openURL("fb://profile/149071961796732");
+		
+		if(canOpen == false)
+		{
+			var dialog = Ti.UI.createAlertDialog({
+			    message: "Sorry, you must first have the facebook app installed on this device to click this button.",
+			    ok: 'Ok, thanks!',
+			    title: 'Facebook Error'
+			  }).show();
+		}
+	}
+	else if (Titanium.Platform.name == 'mobileweb'){
+		//Ti.Platform.openURL("http://www.facebook.com");
+	}
+}
+function openEmail(e){
+	Ti.API.info("Submit best bars email");
+	var emailDialog = Ti.UI.createEmailDialog();
+	emailDialog.subject = "Perfect Mix - Best Bars Consideration ";
+	//emailDialog.toRecipients = ['editor@worldsbestbars.com'];
+	emailDialog.toRecipients = ['lisa@vstream.ie'];
+	emailDialog.ccRecipients = [];
+	emailDialog.bccRecipients = [];
+	emailDialog.messageBody = '';
+	Ti.API.info("is it support? " + emailDialog.isSupported());
+	
+	emailDialog.addEventListener('complete', function(e){
+		Ti.API.info("email complete: " + e.code + ", result: " + e.result + ", success: " + e.success);
+	});
+	emailDialog.open();
+}
+
+
+function submitBarForConsideration(e)
+{
+	Ti.Platform.openURL("http://www.worldsbestbars.com/bar-resource/login");
+}
+
 
 function openWorldsBestBars(e)
 {
@@ -32,6 +113,8 @@ function openWorldsBestBars(e)
 
 function closeWindow(e)
 {
+	var a = Alloy.Globals.windowStack.indexOf($.best_bars);
+	Alloy.Globals.windowStack.splice(a,1);
 	if(Ti.Platform.name == "android" )
 	{
 		$.best_bars.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
@@ -44,6 +127,9 @@ function closeWindow(e)
 
 function goToHome(e)
 {
+	Alloy.Globals.goToHome(e);
+	/*
+	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
 	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
@@ -56,23 +142,36 @@ function goToHome(e)
 			{
 				Alloy.Globals.windowStack[i].close();
 			}
+			Ti.API.info("Close index: " + i );
 		}
 		else
 		{
-			Alloy.Globals.windowStack[i].close({animated:false});
+			if(Ti.Platform.name != "mobileweb" )
+			{
+				Alloy.Globals.windowStack[i].close({animated:false});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
+			Ti.API.info("Close index: " + i );
 		}
-	}
+	}*/
 }
 
 $.best_bars.addEventListener('close', function(e){
-	var a = Alloy.Globals.windowStack.indexOf($.best_bars);
-	Alloy.Globals.windowStack.splice(a,1);
+	Ti.API.info("best bars closed");
+	//var a = Alloy.Globals.windowStack.indexOf($.best_bars);
+	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.best_bars.addEventListener('open', function(e){
+	Ti.API.info("best bars opened");
 	Alloy.Globals.windowStack.push($.best_bars);
 });
 
 $.best_bars.addEventListener('androidback', function(e){
 	$.best_bars.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	var a = Alloy.Globals.windowStack.indexOf($.best_bars);
+	Alloy.Globals.windowStack.splice(a,1);
 });

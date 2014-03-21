@@ -1,0 +1,43 @@
+[
+  {
+    "Mix": {
+      "id": "17",
+      "title": "Mix of the Month",
+      "subtitle": "this is the mix of the month",
+      "type": "1",
+      "image": null,
+      "background": null,
+      "status": true,
+      "created": "2014-03-13 09:57:13",
+      "modified": "2014-03-14 08:25:15",
+      "image_thumb": null,
+      "thumbRetina": null,
+      "imageRetina": null,
+      "backgroundRetina": null,
+      "cocktails": {
+        "Cocktail": {
+          "id": "2",
+          "title": "Tipperary",
+          "description": "A tasty summer cocktail",
+          "ingredients": "50ml Base Spirit, 25 ml Lemon Juice, 12.5 Sugar Syrup, Top with Soda.",
+          "glass": "1",
+          "method": "First three ingredients in a shaker, shake and strain into an iced filled high ball topped with soda.",
+          "garnish": "Orange wheel with a cherry on a stick (sail).",
+          "image": "http://vocal.ie/client/idl/perfect-mix/files/Cocktails/2/e8bc43c59dd92702a185f9e00732fd9a.jpg",
+          "image_thumb": "http://vocal.ie/client/idl/perfect-mix/files/Cocktails/2/tmb_e8bc43c59dd92702a185f9e00732fd9a.jpg",
+          "video": "K85o3T_g7so",
+          "drinks": "",
+          "subcategories": "[\"2\"]",
+          "search_thumb_url": "http://vocal.ie/client/idl/perfect-mix/files/Cocktails/2/search_e8bc43c59dd92702a185f9e00732fd9a.jpg",
+          "status": true,
+          "featured": true,
+          "created": "2014-02-21 11:30:16",
+          "modified": "2014-03-06 06:41:29",
+          "thumbRetina": "http://vocal.ie/client/idl/perfect-mix/files/Cocktails/2/tmb_e8bc43c59dd92702a185f9e00732fd9a@2x.jpg",
+          "imageRetina": "http://vocal.ie/client/idl/perfect-mix/files/Cocktails/2/e8bc43c59dd92702a185f9e00732fd9a@2x.jpg",
+          "searchRetina": "http://vocal.ie/client/idl/perfect-mix/files/Cocktails/2/search_e8bc43c59dd92702a185f9e00732fd9a@2x.jpg"
+        }
+      }
+    }
+  }
+]

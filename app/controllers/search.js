@@ -14,11 +14,14 @@ else{
 
 displayCocktails();*/
 
+//alert('search page opened');
+
 Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/cocktails/cocktails/viewjson", "data/Cocktails.txt", displayCocktails);
 var drinks_json_text = ""; 
 
 function displayCocktails(newJSON)
 {
+	//$.search_table.addEventListener('click', openRecipe);
 	var drinks_json;
 	if(newJSON != null)
 	{
@@ -91,7 +94,7 @@ function displayCocktails(newJSON)
 	  		bottomSeparator.applyProperties(separator_style_bottom);
 	    	headerView.add(bottomSeparator);
 	    	
-	    	var table_view_section = Ti.UI.createTableViewSection(/*{headerTitle:nextChar + " - header test" }*/);
+	    //	var table_view_section = Ti.UI.createTableViewSection(/*{headerTitle:nextChar + " - header test" }*/);
 	
 		//	table_view_section.setHeaderView(headerView);
 			var table_view_section = Ti.UI.createTableViewSection({headerView:headerView});
@@ -135,6 +138,11 @@ function displayCocktails(newJSON)
 					brand_row.cocktailData = drinks_json[y].Cocktail;
 					//brand_row.addEventListener('click', openRecipe);
 					//brand_row.cocktail_name = drinks_json[y].Cocktail.title;
+					if(Ti.Platform.name == "mobileweb" )
+					{
+						brand_row_view.cocktailData = drinks_json[y].Cocktail;
+						brand_row.addEventListener('click', openRecipe);
+					}
 					table_view_section.add(brand_row);
 				}
 			}
@@ -144,25 +152,39 @@ function displayCocktails(newJSON)
 	
 	
 	//$.search_table.filterAttribute="cocktail_name";
-	$.search_table.addEventListener('click', openRecipe);
+	if(Ti.Platform.name != "mobileweb" )
+	{
+		$.search_table.addEventListener('click', openRecipe);
+	}
 }
 
 function openRecipe(e){
-	Ti.API.info("Open detailed recipe! " + e.row.cocktailData.title);
 	
-	var recipeWin = Alloy.createController('cocktail_detailed', e.row.cocktailData).getView();
+	
 	if(Ti.Platform.name == "android" )
 	{
+		Ti.API.info("Open detailed recipe! " + e.row.cocktailData.title);
+		var recipeWin = Alloy.createController('cocktail_detailed', e.row.cocktailData).getView();
 		recipeWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
+	}
+	else if(Ti.Platform.name == "mobileweb" )
+	{
+		Ti.API.info("Open detailed recipe! " + e.source.cocktailData.title);
+		var recipeWin = Alloy.createController('cocktail_detailed',  e.source.cocktailData).getView();
+		recipeWin.open();
 	}
 	else
 	{
+		Ti.API.info("Open detailed recipe! " + e.row.cocktailData.title);
+		var recipeWin = Alloy.createController('cocktail_detailed', e.row.cocktailData).getView();
     	Alloy.Globals.parent.openWindow(recipeWin);
     }
 }
 
 function closeWindow(e)
 {
+	var a = Alloy.Globals.windowStack.indexOf($.search);
+	Alloy.Globals.windowStack.splice(a,1);
 	if(Ti.Platform.name == "android" )
 	{
 		$.search.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
@@ -175,6 +197,9 @@ function closeWindow(e)
 
 function goToHome(e)
 {
+	Alloy.Globals.goToHome(e);
+	/*
+	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
 	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
@@ -187,23 +212,40 @@ function goToHome(e)
 			{
 				Alloy.Globals.windowStack[i].close();
 			}
+			Ti.API.info("Close index: " + i );
 		}
 		else
 		{
-			Alloy.Globals.windowStack[i].close({animated:false});
+			if(Ti.Platform.name != "mobileweb" )
+			{
+				Alloy.Globals.windowStack[i].close({animated:false});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
+			Ti.API.info("Close index: " + i );
 		}
-	}
+	}*/
 }
 
 $.search.addEventListener('close', function(e){
-	var a = Alloy.Globals.windowStack.indexOf($.search);
-	Alloy.Globals.windowStack.splice(a,1);
+	Ti.API.info("search closed");
+	//var a = Alloy.Globals.windowStack.indexOf($.search);
+	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.search.addEventListener('open', function(e){
+	Ti.API.info("search open");
+	if(Ti.Platform.name != "mobileweb")
+	{
+		$.searchbar.blur();
+	}
 	Alloy.Globals.windowStack.push($.search);
 });
 
 $.search.addEventListener('androidback', function(e){
 	$.search.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	var a = Alloy.Globals.windowStack.indexOf($.search);
+	Alloy.Globals.windowStack.splice(a,1);
 });

@@ -114,17 +114,39 @@ if(args.longitude != null && args.latitude != null)
 		});
 		$.event_map_view.add(mapview);
 	}
+	else if(Ti.Platform.name == "mobileweb" )
+	{
+		//var screenWidth = (Ti.Platform.displayCaps.platformHeight < Ti.Platform.displayCaps.platformWidth) ? Ti.Platform.displayCaps.platformHeight : Ti.Platform.displayCaps.platformWidth;
+		
+		//var mapHeight = (screenWidth * 0.6) / Ti.Platform.displayCaps.logicalDensityFactor ;
+		
+		var remoteMapImage = Ti.UI.createImageView({
+				image:"http://maps.googleapis.com/maps/api/staticmap?center="+args.latitude+","+args.longitude+"&zoom=14&size=640x400&sensor=false&output=embed",
+			width:Ti.UI.FILL, 
+			 height:"200dp",
+			   borderRadius:6,
+			}
+		);
+		
+	/*	var mobileWebMapView = Ti.UI.createWebView({
+			url:"http://maps.googleapis.com/maps/api/staticmap?center="+args.latitude+","+args.longitude+"&zoom=14&size=640x400&sensor=false&output=embed",
+			width:Ti.UI.FILL, 
+			 height:"200dp"
+		});*/
+		$.event_map_view.add(remoteMapImage);
+		//$.event_map_view.height = mapHeight;
+		//Ti.API.info("map height: " + mapHeight);
+	}
 	else
 	{
 		
 		var Map = require('ti.map');
-		
 		var eventMapPinView = Map.createAnnotation({
 		    latitude:args.latitude,
 		    longitude:args.longitude,
 		    title:args.title,
 		    subtitle:args.where,
-		    pincolor:Map.ANNOTATION_RED,
+		    pincolor:Alloy.Globals.Map.ANNOTATION_RED,
 		    myid:1 // Custom property to uniquely identify this annotation.
 		});
 		
@@ -153,6 +175,8 @@ else{
 
 function closeWindow(e)
 {
+	var a = Alloy.Globals.windowStack.indexOf($.event_desc);
+	Alloy.Globals.windowStack.splice(a,1);
 	if(Ti.Platform.name == "android" )
 	{
 		$.event_desc.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
@@ -165,6 +189,9 @@ function closeWindow(e)
 
 function goToHome(e)
 {
+	Alloy.Globals.goToHome(e);
+	/*
+	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
 	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
@@ -177,24 +204,37 @@ function goToHome(e)
 			{
 				Alloy.Globals.windowStack[i].close();
 			}
+			Ti.API.info("Close index: " + i );
 		}
 		else
 		{
-			Alloy.Globals.windowStack[i].close({animated:false});
+			if(Ti.Platform.name != "mobileweb" )
+			{
+				Alloy.Globals.windowStack[i].close({animated:false});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
+			Ti.API.info("Close index: " + i );
 		}
-	}
+	}*/
 }
 
 $.event_desc.addEventListener('close', function(e){
-	var a = Alloy.Globals.windowStack.indexOf($.event_desc);
-	Alloy.Globals.windowStack.splice(a,1);
+	Ti.API.info("event desc closed");
+	//var a = Alloy.Globals.windowStack.indexOf($.event_desc);
+	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.event_desc.addEventListener('open', function(e){
+	Ti.API.info("event desc opened");
 	Alloy.Globals.windowStack.push($.event_desc);
 });
 
 $.event_desc.addEventListener('androidback', function(e){
 	$.event_desc.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	var a = Alloy.Globals.windowStack.indexOf($.event_desc);
+	Alloy.Globals.windowStack.splice(a,1);
 });
 

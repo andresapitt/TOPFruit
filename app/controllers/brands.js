@@ -136,32 +136,50 @@ function DisplayBrands(newJSON)
 					brand_row_view.applyProperties(row_view_style);
 					brand_row.add(brand_row_view);
 					brand_row.brand_name = brands_json[y].Brand.title;
+					if(Ti.Platform.name == "mobileweb" )
+					{
+						brand_row_view.brand_data = brands_json[y].Brand;
+						brand_row.addEventListener('click', openBrand);
+					}
 					table_view_section.add(brand_row);
 				}
 			}
+			
 			$.brand_table.appendSection(table_view_section);
+			
 		}
 	}
 	
 	//$.brand_table.filterAttribute ="brand_name";
+	if(Ti.Platform.name != "mobileweb" )
+	{
+		$.brand_table.addEventListener('click', openBrand);
+	}
 	
-	$.brand_table.addEventListener('click', function(e){
-		//alert('Row clicked, index: ' + e.index + ", brand data: " + e.row.brand_data.title);
+	function openBrand(e){
 		
-		var brand_desc_Win = Alloy.createController('brand_desc', e.row.brand_data).getView();
 		if(Ti.Platform.name == "android" )
 		{
+			var brand_desc_Win = Alloy.createController('brand_desc', e.row.brand_data).getView();
 			brand_desc_Win.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
+		}
+		else if(Ti.Platform.name == "mobileweb" )
+		{
+			var brand_desc_Win = Alloy.createController('brand_desc', e.source.brand_data).getView();
+			brand_desc_Win.open();
 		}
 		else
 		{
+			var brand_desc_Win = Alloy.createController('brand_desc', e.row.brand_data).getView();
 	    	Alloy.Globals.parent.openWindow(brand_desc_Win);
 		}
-	});
+	}
 }
 
 function closeWindow(e)
 {
+	var a = Alloy.Globals.windowStack.indexOf($.brands);
+	Alloy.Globals.windowStack.splice(a,1);
 	if(Ti.Platform.name == "android" )
 	{
 		$.brands.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
@@ -174,6 +192,9 @@ function closeWindow(e)
 
 function goToHome(e)
 {
+	Alloy.Globals.goToHome(e);
+	/*
+	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
 	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
@@ -186,23 +207,42 @@ function goToHome(e)
 			{
 				Alloy.Globals.windowStack[i].close();
 			}
+			Ti.API.info("Close index: " + i );
 		}
 		else
 		{
-			Alloy.Globals.windowStack[i].close({animated:false});
+			if(Ti.Platform.name != "mobileweb" )
+			{
+				Alloy.Globals.windowStack[i].close({animated:false});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
+			Ti.API.info("Close index: " + i );
 		}
-	}
+	}*/
 }
 
 $.brands.addEventListener('close', function(e){
-	var a = Alloy.Globals.windowStack.indexOf($.brands);
-	Alloy.Globals.windowStack.splice(a,1);
+	Ti.API.info("brands closed");
+	//var a = Alloy.Globals.windowStack.indexOf($.brands);
+	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.brands.addEventListener('open', function(e){
+	Ti.API.info("brands opened");
+	if(Ti.Platform.name != "mobileweb")
+	{
+		$.searchbar.blur();
+	}
+	
 	Alloy.Globals.windowStack.push($.brands);
+	
 });
 
 $.brands.addEventListener('androidback', function(e){
 	$.brands.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	var a = Alloy.Globals.windowStack.indexOf($.brands);
+	Alloy.Globals.windowStack.splice(a,1);
 });

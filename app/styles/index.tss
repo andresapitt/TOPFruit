@@ -1,52 +1,3 @@
-".container": {
-	backgroundColor:"#fff",
-	titleAttributes:{
-		color:Alloy.Globals.PrimaryColor,
-		font: {
-			fontFamily:Alloy.Globals.MainFont, 
-			fontSize:"18dp"
-		}
-	},
-	barColor:"#fff",
-	layout:'vertical',
-	navTintColor:Alloy.Globals.PrimaryColor,
-	height:Ti.UI.FILL,
-	orientationModes: [
-        Ti.UI.PORTRAIT,
-        Ti.UI.UPSIDE_PORTRAIT
-    ],
-    translucent:false
-},
-".container[platform=android]": {
-	backgroundColor:"white",
-	layout:'vertical',
-	height:"100%",
-	navBarHidden:true,
-	orientationModes: [
-        Ti.UI.PORTRAIT,
-        Ti.UI.UPSIDE_PORTRAIT
-    ],
-},
-".page_title[platform=android formFactor=tablet]":{
-	color:Alloy.Globals.PrimaryColor,
-	font: {
-		fontFamily:Alloy.Globals.MainFont, 
-		fontSize:"28dp"
-	},
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
-	left:"50dp", 
-	right:"50dp"
-},
-".page_title[platform=android]":{
-	color:Alloy.Globals.PrimaryColor,
-	font: {
-		fontFamily:Alloy.Globals.MainFont, 
-		fontSize:"22dp"
-	},
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
-	left:"50dp", 
-	right:"50dp"
-},
 ".menu_row":{
 	height:"100dp"
 },
@@ -61,8 +12,19 @@
 			fontFamily:Alloy.Globals.MainFont, 
 			fontSize:"18dp"
 		},
+	touchEnabled:false
 },
-"#mix_title[platform=android  formFactor=tablet]": {
+"#mix_title[platform=android formFactor=handheld]": {
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	color:Alloy.Globals.PrimaryColor,
+		font: {
+			fontFamily:Alloy.Globals.MainFont, 
+			fontSize:"22dp"
+		},
+	touchEnabled:false
+},
+"#mix_title[platform=android formFactor=tablet]": {
 	width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
 	color:Alloy.Globals.PrimaryColor,
@@ -70,6 +32,7 @@
 			fontFamily:Alloy.Globals.MainFont, 
 			fontSize:"28dp"
 		},
+	touchEnabled:false
 },
 "#mix_desc": {
 	width: Ti.UI.FILL,
@@ -79,7 +42,19 @@
 			fontFamily:Alloy.Globals.BoldFont, 
 			fontSize:"18dp"
 		},
-		top:"2dp"
+	top:"2dp",
+	touchEnabled:false
+},
+"#mix_desc[platform=android formFactor=handheld]": {
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	color:Alloy.Globals.PrimaryColor,
+		font: {
+			fontFamily:Alloy.Globals.BoldFont, 
+			fontSize:"22dp"
+		},
+		top:"2dp",
+	touchEnabled:false
 },
 "#mix_desc[platform=android  formFactor=tablet]": {
 	width: Ti.UI.FILL,
@@ -89,7 +64,8 @@
 			fontFamily:Alloy.Globals.BoldFont, 
 			fontSize:"24dp"
 		},
-		top:"2dp"
+		top:"2dp",
+	touchEnabled:false
 },
 ".home_menu_btn":{
 	width:"160dp", 

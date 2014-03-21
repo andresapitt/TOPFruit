@@ -127,6 +127,8 @@ function openFacebookLike(e){
 
 function closeWindow(e)
 {
+	var a = Alloy.Globals.windowStack.indexOf($.brand_desc);
+	Alloy.Globals.windowStack.splice(a,1);
 	if(Ti.Platform.name == "android" )
 	{
 		$.brand_desc.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
@@ -139,6 +141,9 @@ function closeWindow(e)
 
 function goToHome(e)
 {
+	Alloy.Globals.goToHome(e);
+	/*
+	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
 	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
@@ -151,24 +156,37 @@ function goToHome(e)
 			{
 				Alloy.Globals.windowStack[i].close();
 			}
+			Ti.API.info("Close index: " + i );
 		}
 		else
 		{
-			Alloy.Globals.windowStack[i].close({animated:false});
+			if(Ti.Platform.name != "mobileweb" )
+			{
+				Alloy.Globals.windowStack[i].close({animated:false});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
+			Ti.API.info("Close index: " + i );
 		}
-	}
+	}*/
 }
 
 $.brand_desc.addEventListener('close', function(e){
-	var a = Alloy.Globals.windowStack.indexOf($.brand_desc);
-	Alloy.Globals.windowStack.splice(a,1);
+	Ti.API.info("brands desc closed");
+	//var a = Alloy.Globals.windowStack.indexOf($.brand_desc);
+	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.brand_desc.addEventListener('open', function(e){
+	Ti.API.info("brand desc opened");
 	Alloy.Globals.windowStack.push($.brand_desc);
 });
 
 $.brand_desc.addEventListener('androidback', function(e){
 	$.brand_desc.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	var a = Alloy.Globals.windowStack.indexOf($.brand_desc);
+	Alloy.Globals.windowStack.splice(a,1);
 });
 

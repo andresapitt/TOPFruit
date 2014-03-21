@@ -24,9 +24,6 @@ else if(cocktail_category == "favourites")
 	}
 }
 
-var rel_cocktails = [];
-var cocktailViews = [];
-var drinks_json_text = ""; 
 Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/cocktails/cocktails/viewjson", "data/Cocktails.txt", displayCocktails);
 
 
@@ -52,6 +49,11 @@ function displayCocktails(newJSON)
 	{
 	//var drinks_json = JSON.parse(drinks_json_text);
 	//var all_cocktails = drinks_json.cocktails;
+	
+	
+	var rel_cocktails = [];
+	var cocktailViews = [];
+	var drinks_json_text = ""; 
 	
 	var all_cocktails;
 	if(newJSON != null)
@@ -217,7 +219,14 @@ function displayCocktails(newJSON)
 		var no_result_item_view = Ti.UI.createView();
 		no_result_item_view.applyProperties(no_results_style);
 		
-		var result_item_title = Ti.UI.createLabel({text:"Sorry, no results were found. \nPlease try another category."});
+		if(cocktail_category != "favourites")
+		{
+			var result_item_title = Ti.UI.createLabel({text:"Sorry, no results were found. \nPlease try another category."});
+		}
+		else
+		{
+			var result_item_title = Ti.UI.createLabel({text:"You haven't saved any favourites yet. \n\nSave your favourites by clicking on the heart icon in each recipe. \n\nDon't forget favourite recipes can be viewed even when you're not connected to the internet." });
+		}
 		result_item_title.applyProperties(no_results_title_style);
 		no_result_item_view.add(result_item_title);
 				
@@ -282,16 +291,19 @@ function displayCocktails(newJSON)
 function openRecipeDetailed(e){
 	Ti.API.info("Open detailed recipe! " + e.source.cocktailData.title);
 	
-	var recipeWin = Alloy.createController('cocktail_detailed', e.source.cocktailData).getView();
-	if(Ti.Platform.name == "android" )
-	{
-		recipeWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
-	}
-	else
-	{
-   		Alloy.Globals.parent.openWindow(recipeWin);
-	}
-    
+		var recipeWin = Alloy.createController('cocktail_detailed', e.source.cocktailData).getView();
+		if(Ti.Platform.name == "android" )
+		{
+			recipeWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
+		}
+		else if(Ti.Platform.name == "mobileweb" )
+		{
+			recipeWin.open();
+		}
+		else
+		{
+	   		Alloy.Globals.parent.openWindow(recipeWin);
+		}
 }
 
 
@@ -299,6 +311,8 @@ function openRecipeDetailed(e){
 
 function closeWindow(e)
 {
+	var a = Alloy.Globals.windowStack.indexOf($.cocktail_results);
+	Alloy.Globals.windowStack.splice(a,1);
 	if(Ti.Platform.name == "android" )
 	{
 		$.cocktail_results.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
@@ -311,6 +325,9 @@ function closeWindow(e)
 
 function goToHome(e)
 {
+	Alloy.Globals.goToHome(e);
+	/*
+	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
 	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
@@ -323,23 +340,36 @@ function goToHome(e)
 			{
 				Alloy.Globals.windowStack[i].close();
 			}
+			Ti.API.info("Close index: " + i );
 		}
 		else
 		{
-			Alloy.Globals.windowStack[i].close({animated:false});
+			if(Ti.Platform.name != "mobileweb" )
+			{
+				Alloy.Globals.windowStack[i].close({animated:false});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
+			Ti.API.info("Close index: " + i );
 		}
-	}
+	}*/
 }
 
 $.cocktail_results.addEventListener('close', function(e){
-	var a = Alloy.Globals.windowStack.indexOf($.cocktail_results);
-	Alloy.Globals.windowStack.splice(a,1);
+	Ti.API.info("Cocktail results closed");
+	//var a = Alloy.Globals.windowStack.indexOf($.cocktail_results);
+	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.cocktail_results.addEventListener('open', function(e){
+	Ti.API.info("Cocktail results opened");
 	Alloy.Globals.windowStack.push($.cocktail_results);
 });
 
 $.cocktail_results.addEventListener('androidback', function(e){
 	$.cocktail_results.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	var a = Alloy.Globals.windowStack.indexOf($.cocktail_results);
+	Alloy.Globals.windowStack.splice(a,1);
 });

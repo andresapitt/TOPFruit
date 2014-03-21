@@ -46,6 +46,25 @@ function DisplayEvents(newJSON)
 		events_json = JSON.parse(events_json_text);
 	}
 	
+	var eventsToShow = [];
+	
+	for(var i = 0; i < events_json.length; i++)
+	{
+		//var event_finish_date = new Date(events_json[i].Event.finish_date.substring(0,10));
+		var parts = (events_json[i].Event.finish_date.substring(0,10)).split('-');
+		var event_finish_date = new Date(parts[0], parts[1]-1, parts[2]); 
+		Ti.API.info('event finish date: ' + events_json[i].Event.finish_date.substring(0,10) + ' (parsed) ' + event_finish_date.toString());
+		if(event_finish_date < new Date())
+		{
+			Ti.API.info("event " + i + " date is greater than current date");
+		}
+		else
+		{
+			Ti.API.info("event " + i + " date is less or equal to current date");
+			eventsToShow.push(events_json[i]);
+		}
+	}
+	
 	var event_view_style = $.createStyle({
 		classes: ["event_item"],
 	});
@@ -69,19 +88,19 @@ function DisplayEvents(newJSON)
 		classes: ["event_time"],
 	});
 	
-	for(var i = 0; i < events_json.length; i++)
+	for(var i = 0; i < eventsToShow.length; i++)
 	{
-		Ti.API.info("Event " + i + " Title: " + events_json[i].Event.title);
+		Ti.API.info("Event " + i + " Title: " + eventsToShow[i].Event.title);
 		var event_item_view = Ti.UI.createView();
 		var vertical_event_container = Ti.UI.createView({layout:'vertical', height:"67dp", left:"72dp", right:"20dp", touchEnabled:false});
 		event_item_view.add(vertical_event_container);
 		
-		var event_title_label = Ti.UI.createLabel({text:events_json[i].Event.title.toUpperCase()});
+		var event_title_label = Ti.UI.createLabel({text:eventsToShow[i].Event.title.toUpperCase()});
 		event_title_label.applyProperties(event_title_style);
 		vertical_event_container.add(event_title_label);
 		event_item_view.applyProperties(event_view_style);
 		
-		var event_time_label = Ti.UI.createLabel({text:events_json[i].Event.date});
+		var event_time_label = Ti.UI.createLabel({text:eventsToShow[i].Event.date});
 		event_time_label.applyProperties(event_time_style);
 		vertical_event_container.add(event_time_label);
 		
@@ -91,17 +110,23 @@ function DisplayEvents(newJSON)
 		event_item_view.add(event_image_view);*/
 		
 		var event_image_view = Alloy.Globals.Utils.RemoteImage({
-		  image: events_json[i].Event.thumb_image_url,
+		  image: eventsToShow[i].Event.thumb_image_url,
 		  defaultImage:'/images/placeholders/ph_events.png'
 		});
 		event_image_view.applyProperties(event_image_style);
 		event_item_view.add(event_image_view);
-		
-		var event_arrow_view = Ti.UI.createImageView({image:"/images/common/chevron.png"});
+		if(Ti.Platform.name != "mobileweb" )
+		{
+			var event_arrow_view = Ti.UI.createImageView({image:"/images/common/chevron.png"});
+		}
+		else
+		{
+			var event_arrow_view = Ti.UI.createImageView({image:"./images/common/chevron.png"});
+		}
 		event_arrow_view.applyProperties(event_arrow_style);
 		event_item_view.add(event_arrow_view);
 		
-		event_item_view.eventData = events_json[i].Event;
+		event_item_view.eventData = eventsToShow[i].Event;
 		event_item_view.addEventListener('click', openEventDescription);
 		
 		$.event_item_container.add(event_item_view);
@@ -123,6 +148,10 @@ function openEventDescription(e){
 	{
 		event_desc_Win.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 	}
+	else if(Ti.Platform.name == "mobileweb" )
+	{
+		event_desc_Win.open();
+	}
 	else
 	{
     	Alloy.Globals.parent.openWindow(event_desc_Win);
@@ -133,6 +162,8 @@ function openEventDescription(e){
 
 function closeWindow(e)
 {
+	var a = Alloy.Globals.windowStack.indexOf($.events);
+	Alloy.Globals.windowStack.splice(a,1);
 	if(Ti.Platform.name == "android" )
 	{
 		$.events.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
@@ -145,6 +176,9 @@ function closeWindow(e)
 
 function goToHome(e)
 {
+	Alloy.Globals.goToHome(e);
+	/*
+	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
 	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
@@ -157,19 +191,28 @@ function goToHome(e)
 			{
 				Alloy.Globals.windowStack[i].close();
 			}
+			Ti.API.info("Close index: " + i );
 		}
 		else
 		{
-			Alloy.Globals.windowStack[i].close({animated:false});
+			if(Ti.Platform.name != "mobileweb" )
+			{
+				Alloy.Globals.windowStack[i].close({animated:false});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
+			Ti.API.info("Close index: " + i );
 		}
-	}
+	}*/
 }
 
 $.events.addEventListener('close', function(e){
 	Ti.API.info('Events window closed');
 	
-	var a = Alloy.Globals.windowStack.indexOf($.events);
-	Alloy.Globals.windowStack.splice(a,1);
+	//var a = Alloy.Globals.windowStack.indexOf($.events);
+	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.events.addEventListener('open', function(e){
@@ -180,6 +223,8 @@ $.events.addEventListener('open', function(e){
 
 $.events.addEventListener('androidback', function(e){
 	$.events.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	var a = Alloy.Globals.windowStack.indexOf($.events);
+	Alloy.Globals.windowStack.splice(a,1);
 });
 
 

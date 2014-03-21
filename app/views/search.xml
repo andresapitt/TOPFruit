@@ -8,9 +8,18 @@
 				<View backgroundImage="/images/icons/home.png" onClick="goToHome" right="10dp" top="10dp" bottom="10dp" height="30dp"  width="30dp" />
 			</View>
 		</View>
+		<View platform="mobileweb" height="50dp" width="Ti.UI.FILL">
+			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="1" />
+			<View width="Ti.UI.FILL">
+				<View backgroundImage="/images/icons/back.png" onClick="closeWindow" left="10dp" top="10dp" bottom="10dp" height="30dp" width="30dp" />
+				<Label color="#313646" class="page_title" >COCKTAIL SEARCH</Label>
+				<View backgroundImage="/images/icons/home.png" onClick="goToHome" right="10dp" top="10dp" bottom="10dp" height="30dp"  width="30dp" />
+			</View>
+		</View>
 		<View class="color_seperator" height="1dp" width="Ti.UI.FILL"  backgroundImage="/images/common/color_sep.png" />
 		<TableView id="search_table" filterAttribute="cocktail_name" >
-			<SearchBar id="searchbar" height="44dp" top="0dp" />
+			<SearchBar id="searchbar" height="44dp" top="0dp" platform="ios" />
+			<SearchBar id="searchbar" platform="android" height="44dp" top="0dp" />
 		</TableView>
 		<RightNavButton platform="ios">
         	<Button image="/images/icons/home.png" onClick="goToHome" />

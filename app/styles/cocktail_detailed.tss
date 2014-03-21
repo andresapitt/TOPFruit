@@ -1,98 +1,14 @@
-".container": {
-	backgroundColor:"white",
-	titleAttributes:{
-		color:Alloy.Globals.PrimaryColor,
-		font: {
-			fontFamily:Alloy.Globals.MainFont, 
-			fontSize:"18dp"
-		}
-	},
-	barColor:"#fff",
-	layout:'vertical',
-	tintColor:Alloy.Globals.PrimaryColor,
-	navTintColor:Alloy.Globals.PrimaryColor,
-	height: Ti.UI.FILL,
-	orientationModes: [
-        Ti.UI.PORTRAIT,
-        Ti.UI.UPSIDE_PORTRAIT
-    ],
-    translucent:false
-},
-".container[platform=android]": {
-	backgroundColor:"white",
-	titleAttributes:{
-		color:Alloy.Globals.PrimaryColor,
-		font: {
-			fontFamily:Alloy.Globals.MainFont, 
-			fontSize:"18dp"
-		}
-	},
-	barColor:"#fff",
-	layout:'vertical',
-	tintColor:Alloy.Globals.PrimaryColor,
-	navTintColor:Alloy.Globals.PrimaryColor,
-	height: Ti.UI.FILL,
-	orientationModes: [
-        Ti.UI.PORTRAIT,
-        Ti.UI.UPSIDE_PORTRAIT
-    ],
-	navBarHidden:true
-},
-".scrollView":{
-	top:"1dp",
-	layout:"vertical",
-	bottom:"0dp",
-	width:"320dp",
-	contentWidth:"320dp",
-	disableBounce:true,
-	showVerticalScrollIndicator:true,
-	showHorizontalScrollIndicator:false,
-	backgroundColor:"#efefef",
-	height:Ti.UI.FILL
-},
-".scrollView[platform=android]":{
-	top:"51dp",
-	layout:"vertical",
-	bottom:"0dp",
-	width:Ti.UI.FILL,
-	contentWidth:Ti.UI.FILL,
-	disableBounce:true,
-	showVerticalScrollIndicator:true,
-	showHorizontalScrollIndicator:false,
-	backgroundColor:"#efefef",
-	height:Ti.UI.FILL
-},
-".page_title[platform=android formFactor=tablet]":{
-	color:Alloy.Globals.PrimaryColor,
-	font: {
-		fontFamily:Alloy.Globals.MainFont, 
-		fontSize:"28dp"
-	},
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
-	left:"50dp", 
-	right:"50dp"
-},
-".page_title[platform=android]":{
-	color:Alloy.Globals.PrimaryColor,
-	font: {
-		fontFamily:Alloy.Globals.MainFont, 
-		fontSize:"22dp"
-	},
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
-	left:"50dp", 
-	right:"50dp"
-},
 ".recipe_container":{
 	left:"5dp", 
 	right:"5dp", 
-	width:Ti.UI.FILL, 
+	//width:Ti.UI.FILL, 
 	height:Ti.UI.SIZE, 
 	backgroundColor:"#fff",
 	borderRadius:"4dp",
 	borderColor: "#d1d1d1",
 	borderWidth: 1,
 	layout:"vertical",
-	top:"10dp",
+	top:"0dp",
 },
 ".recipe_container[platform=android]":{
 	left:"5dp", 
@@ -127,6 +43,30 @@
 	top:"15dp",
 	left:"5dp",
 	right:"5dp",
+//	width:Ti.UI.FILL,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+},
+".recipe_title[platform=mobileweb]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"22dp"
+	},
+	top:"15dp",
+	left:"5dp",
+	right:"5dp",
+//	width:Ti.UI.FILL,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+},
+".recipe_title[platform=android formFactor=handheld]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"25dp"
+	},
+	top:"10dp",
+	left:"5dp",
+	right:"5dp",
 	width:Ti.UI.FILL,
 	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 },
@@ -147,6 +87,32 @@
 	font: {
 		fontFamily:Alloy.Globals.BoldFont, 
 		fontSize:"14dp"
+	},
+	top:"10dp",
+	left:"5dp",
+	right:"5dp",
+	width:Ti.UI.FILL,
+	textAlign: Ti.UI.LEFT,
+	touchEnabled: false
+},
+".recipe_subtitle[platform=mobileweb]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"18dp"
+	},
+	top:"10dp",
+	left:"5dp",
+	right:"5dp",
+	width:Ti.UI.FILL,
+	textAlign: Ti.UI.LEFT,
+	touchEnabled: false
+},
+".recipe_subtitle[platform=android formFactor=handheld]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"20dp"
 	},
 	top:"10dp",
 	left:"5dp",
@@ -181,6 +147,32 @@
 	textAlign: Ti.UI.LEFT,
 	touchEnabled:false
 },
+".recipe_subtext[platform=mobileweb]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"14dp"
+	},
+	top:"2dp",
+	left:"12dp",
+	right:"5dp",
+	//width:Ti.UI.FILL,
+	textAlign: Ti.UI.LEFT,
+	touchEnabled:false
+},
+".recipe_subtext[platform=android formFactor=handheld]":{
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"15dp"
+	},
+	top:"2dp",
+	left:"12dp",
+	right:"5dp",
+	//width:Ti.UI.FILL,
+	textAlign: Ti.UI.LEFT,
+	touchEnabled:false
+},
 ".recipe_subtext[platform=android formFactor=tablet]":{
 	color:Alloy.Globals.PrimaryColor,
 	font: {
@@ -205,6 +197,18 @@
 	width:"160dp",
 	height:"33dp",
 	borderRadius:"4dp",
+},
+".commentBtn[platform=android]":{
+	top:"10dp",
+	color:"#fff",
+	backgroundColor: Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"16dp"
+	},
+	width:"200dp",
+	height:"34dp",
+	borderRadius:8
 },
 ".commentBtn[platform=android formFactor=tablet]":{
 	top:"10dp",
@@ -234,6 +238,18 @@
 	color:"#fff",
 	tintColor:"#fff"
 },
+".socialBtn[platform=android]":{
+	width:"110dp",
+	height:"36dp",
+	backgroundColor:"#d1d1d1",
+	borderRadius:6,
+	font: {
+		fontFamily:Alloy.Globals.BoldFont, 
+		fontSize:"16dp"
+	},
+	color:"#fff",
+	tintColor:"#fff"
+},
 ".socialBtn[platform=android formFactor=tablet]":{
 	width:"140dp",
 	height:"50dp",
@@ -247,7 +263,7 @@
 	tintColor:"#fff"
 },
 ".twitter":{
-	backgroundColor:"none",
+	backgroundColor:"transparent",
 	backgroundGradient: {
         type: 'linear',
         startPoint: { x: '50%', y: '0%' },
@@ -256,7 +272,7 @@
        }
 },
 ".facebook":{
-	backgroundColor:"none",
+	backgroundColor:"transparent",
 	backgroundGradient: {
         type: 'linear',
         startPoint: { x: '50%', y: '0%' },
@@ -323,6 +339,14 @@
 	font: {
 		fontFamily:Alloy.Globals.MainFont, 
 		fontSize:"16dp"
+	}
+},
+"#rating_title[platform=mobileweb]":{
+	top:"10dp",
+	color:Alloy.Globals.PrimaryColor,
+	font: {
+		fontFamily:Alloy.Globals.MainFont, 
+		fontSize:"18dp"
 	}
 },
 "#rating_title[platform=android formFactor=tablet]":{

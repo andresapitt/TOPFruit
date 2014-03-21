@@ -8,11 +8,18 @@
 				<View backgroundImage="/images/icons/home.png" onClick="goToHome" right="10dp" top="10dp" bottom="10dp" height="30dp"  width="30dp" />
 			</View>
 		</View>
-		<View class="color_seperator"  platform="android" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="50dp" />
-		<View class="color_seperator"  platform="ios" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="0dp" />
+		<View platform="mobileweb" height="50dp" width="Ti.UI.FILL" top="0dp">
+			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="1" />
+			<View width="Ti.UI.FILL">
+				<View backgroundImage="/images/icons/back.png" onClick="closeWindow" left="10dp" top="10dp" bottom="10dp" height="30dp" width="30dp" />
+				<Label color="#313646" class="page_title" >ABOUT EVENT</Label>
+				<View backgroundImage="/images/icons/home.png" onClick="goToHome" right="10dp" top="10dp" bottom="10dp" height="30dp"  width="30dp" />
+			</View>
+		</View>
+		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="0dp" />
 		<ScrollView id="event_decs_scrollview" class="scrollView" >
 			<Label id="event_title" class="event_title_style">...</Label>
-			<View id="event_desc_parent" class="event_item">
+			<View id="event_desc_parent" class="desc_block">
 				<View id="event_banner_image" bottom="5dp" width="Ti.UI.FILL" height="Ti.UI.SIZE" ></View>
 				<!--<ImageView image="/images/brands/jameson_banner.png" class="event_image" height="158dp" bottom="5dp" />-->
 				<View id="event_where_view" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL">
@@ -31,24 +38,9 @@
 					<Label class="event_title_style">DESCRIPTION</Label>
 					<Label id="event_desc_text" class="event_desc_style">This is the description</Label>
 				</View>
-				<!--<Button class="visitSiteBtn" onClick="visitSiteBtnHandler" title="VISIT SITE" />-->
-				<!--<View layout="horizontal" id="social_hor_view" height="Ti.UI.SIZE" bottom="10dp" >
-					<View class="socialBtn_view" id="twitterParent">
-						<Button id="twitterBtn" image="/images/icons/twitterbird.png" class="socialBtn twitter" title="Twitter" />
-					</View>
-					<View class="socialBtn_view" id="facebookParent">
-						<Button id="facebookBtn" image="/images/icons/facebookIcon.png" class="socialBtn facebook" title="Facebook" />
-					</View>
-					<View class="socialBtn_view" id="websiteParent">
-						<Button id="websiteBtn" image="/images/icons/websiteIcon.png" class="socialBtn website" title="Website" />
-					</View>
-			</View>-->
-		</View>
-		<Label id="location_header_title" class="event_title_style" width="Ti.UI.FILL" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">LOCATION</Label>
-		<View id="event_map_view" class="event_item" borderRadius="6" >
-			
-		</View>
-		
+			</View>
+			<Label id="location_header_title"  class="event_title_style" width="Ti.UI.FILL" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">LOCATION</Label>
+			<View id="event_map_view" class="event_item" borderRadius="6" />
 			<Button id="event_visit_site_Btn" class="visitSiteBtn" title="VISIT SITE" />
 		</ScrollView>
 		<RightNavButton platform="ios">

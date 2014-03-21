@@ -1,0 +1,20 @@
+[
+  {
+    "Brand": {
+      "id": "1",
+      "title": "Jameson Whiskey",
+      "twitter": "JAMESONPARTY",
+      "facebook": "7947488730",
+      "website": "http://www.jameson.com",
+      "description": "Jameson object description",
+		"banner_img_url": "http://vocal.ie/client/idl/image_test/brands/jameson_banner.png",
+      "thumb_image_url": "http://vocal.ie/client/idl/image_test/brands/absolut_vodka.png",
+      "status": true,
+      "created": "2014-02-24 17:48:36",
+      "modified": "2014-02-24 17:48:36",
+      "image_thumb": null,
+      "thumbRetina": null,
+      "imageRetina": null
+    }
+  }
+]

@@ -37,12 +37,12 @@ if(Ti.Platform.name == "android" )
 		activity.finish();
  	});
 }
-else
+else if (Ti.Platform.name == "iPhone OS" )
 {
 	var picker = Ti.UI.createPicker({
 	  type:Ti.UI.PICKER_TYPE_DATE,
 	  minDate:new Date(1900, 0, 0, 0, 0, 0, 0),
-	  maxDate:new Date(),
+	  maxDate:new Date(new Date().getFullYear(), 11, 31, 0, 0, 0, 0),
 	  //selectionIndicator:true,
 	  useSpinner:true,
 	  value:new Date(),
@@ -59,8 +59,6 @@ else
 	  Ti.API.info("User selected date: " + e.value.toLocaleString());
 	});
 	
-	
-	
 	if(Ti.Platform.name == "iPhone OS" &&  Ti.Platform.displayCaps.platformHeight == 480)
 	{	
 		$.banner_img.height="150dp";
@@ -69,10 +67,45 @@ else
 	{
 		$.drinkaware_img.top = "40dp";
 	}
+}
+else if (Ti.Platform.name == "mobileweb" )
+{
+	var date_data = [];
+	for(var i = 1;i < 32; i++)
+ 	{
+ 		date_data.push(Ti.UI.createPickerRow({title:i}));
+ 	}
+ 	
+ 	$.day_picker.add(date_data);
 	
+	//month_picker
+	var month_data = [];
+	var months=new Array("January","February","March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+ 	for(var i = 0;i < 12; i++)
+ 	{
+ 		month_data.push(Ti.UI.createPickerRow({title:months[i], value:i}));
+ 	}
+ 	$.month_picker.add(month_data);
+ 	//Ti.API.info('month picker column length: ' + $.month_picker.columns[0].rows.length);
+ 	
+ 	//date picker
+	var year_data = [];
+	for(var i = 1900;i <= new Date().getFullYear(); i++)
+ 	{
+ 		year_data.push(Ti.UI.createPickerRow({title:i}));
+ 	}
+ 	$.year_picker.add(year_data);
+ 	//Ti.API.info("year row count: " + $.year_picker.getColumns()[0].rowCount);
+ 	$.year_picker.setSelectedRow(0, $.year_picker.getColumns()[0].rowCount-1, false);
+ 	//Ti.API.info('year picker column length: ' + $.year_picker.columns[0].rows.length);
 }
 	
-
+$.age_gate.addEventListener('close', function(e){
+	Ti.API.info('age gate window closed');
+});
+$.age_gate.addEventListener('open', function(e){
+	Ti.API.info('age gate window opened');
+});
 
 //$.picker.setMinDate(new Date(1900, 0, 0, 0, 0, 0, 0));
 //$.picker_view.anchorPoint =  {x:0.5, y:1};
@@ -92,6 +125,11 @@ function submitBtnHandler(e) {
     var birthdate = new Date();
     //birthdate = $.picker.getValue();
     if(Ti.Platform.name == "android" )
+	{
+		birthdate = new Date($.year_picker.getSelectedRow(0).title, $.month_picker.getSelectedRow(0).value, $.day_picker.getSelectedRow(0).title, 0, 0, 0, 0);
+		Ti.API.info("birth date: " + birthdate.toString());
+	}
+	else if(Ti.Platform.name == "mobileweb" )
 	{
 		birthdate = new Date($.year_picker.getSelectedRow(0).title, $.month_picker.getSelectedRow(0).value, $.day_picker.getSelectedRow(0).title, 0, 0, 0, 0);
 		Ti.API.info("birth date: " + birthdate.toString());
@@ -165,39 +203,65 @@ function TandCBtnHandler(e){
 		terms_and_conditions.open({modal:true});
 	}
 }
+
+//var fb = require('facebook');
+//fb.appid = Alloy.Globals.appid;
+//fb.permissions = Alloy.Globals.permissions;
+//fb.forceDialogAuth = false;
+
+function facebookLoginHandler(e){
+	 if (e.success) {
+    	//alert('Logged In');
+    	 Ti.API.info("FACEBOOK login success: " + e.toString());
+         Ti.App.Properties.setBool('over18', true);
+         Alloy.Globals.parent.open();
+         $.age_gate.close();
+         Alloy.Globals.fb.removeEventListener('login', facebookLoginHandler);
+    } else if (e.error) {
+    	Ti.API.info("FACEBOOK login error: " + e.toString());
+        alert("Facebook error: " + e.error);
+    } else if (e.cancelled) {
+    	Ti.API.info("FACEBOOK login cancel: " + e.toString());
+       // alert("Canceled");
+    }
+    else
+    {
+    	Ti.API.info("FACEBOOK return: " + e.toString());
+    }
+}
+
+if(Ti.Platform.name != "mobileweb")
+{
+	Alloy.Globals.fb.addEventListener('login', facebookLoginHandler);
+}
+
 	
 function facebookBtnHandler(e){
-	var fb = require('facebook');
-	fb.appid = Alloy.Globals.appid;
-	fb.permissions = Alloy.Globals.permissions;
+	//var fb = require('facebook');
+	//fb.appid = Alloy.Globals.appid;
+	//fb.permissions = Alloy.Globals.permissions;
 	 
 	 //Ti.API.info("Logged in: " + fb.loggedIn);
 	
-	/*if(fb.loggedIn)
+	/*if(fb.loggedIn == true)
 	{
 		fb.logout();
-		alert("logged out");
+		Ti.API.info("Logged out ");
 	}*/
 	
 	//alert("Facebook button pressed");
 	 
-	fb.forceDialogAuth = false;
 	
-	fb.addEventListener('login', function(e) {
-	    if (e.success) {
-	    	//alert('Logged In');
-	         Ti.App.Properties.setBool('over18', true);
-	         Alloy.Globals.parent.open();
-	         $.age_gate.close();
-	    } else if (e.error) {
-	        alert("Facebook error: " + e.error);
-	    } else if (e.cancelled) {
-	        alert("Canceled");
-	    }
-	});
-	 
-	fb.authorize();
+	//Alloy.Globals.fb.appid = "183073991901631";
+//	Alloy.Globals.fb.permissions = ["email"];
+	//Alloy.Globals.fb.forceDialogAuth = false;
+
+
+	Ti.API.info("FACEBOOK authorise, is it logged in: " + Alloy.Globals.fb.getLoggedIn() );
+	Alloy.Globals.fb.authorize();
 }
+
+
 
 function closeDateHandler(e){
 	

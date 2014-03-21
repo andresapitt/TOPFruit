@@ -78,6 +78,10 @@ function openCompetitionDescription(e){
 	{
 		competition_desc_Win.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 	}
+	else if(Ti.Platform.name == "mobileweb" )
+	{
+		competition_desc_Win.open();
+	}
 	else
 	{
     	Alloy.Globals.parent.openWindow(competition_desc_Win);
@@ -86,6 +90,8 @@ function openCompetitionDescription(e){
 
 function closeWindow(e)
 {
+	var a = Alloy.Globals.windowStack.indexOf($.competitions);
+	Alloy.Globals.windowStack.splice(a,1);
 	if(Ti.Platform.name == "android" )
 	{
 		$.competitions.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
@@ -98,6 +104,9 @@ function closeWindow(e)
 
 function goToHome(e)
 {
+	Alloy.Globals.goToHome(e);
+	/*
+	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
 	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
@@ -110,23 +119,36 @@ function goToHome(e)
 			{
 				Alloy.Globals.windowStack[i].close();
 			}
+			Ti.API.info("Close index: " + i );
 		}
 		else
 		{
-			Alloy.Globals.windowStack[i].close({animated:false});
+			if(Ti.Platform.name != "mobileweb" )
+			{
+				Alloy.Globals.windowStack[i].close({animated:false});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
+			Ti.API.info("Close index: " + i );
 		}
-	}
+	}*/
 }
 
 $.competitions.addEventListener('close', function(e){
-	var a = Alloy.Globals.windowStack.indexOf($.competitions);
-	Alloy.Globals.windowStack.splice(a,1);
+	Ti.API.info("competitions closed");
+	//var a = Alloy.Globals.windowStack.indexOf($.competitions);
+	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.competitions.addEventListener('open', function(e){
+	Ti.API.info("Competitions opened");
 	Alloy.Globals.windowStack.push($.competitions);
 });
 
 $.competitions.addEventListener('androidback', function(e){
 	$.competitions.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	var a = Alloy.Globals.windowStack.indexOf($.competitions);
+	Alloy.Globals.windowStack.splice(a,1);
 });

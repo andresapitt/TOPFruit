@@ -8,14 +8,25 @@
 				<View backgroundImage="/images/icons/home.png" onClick="goToHome" right="10dp" top="10dp" bottom="10dp" height="30dp"  width="30dp" />
 			</View>
 		</View>
+		<View platform="mobileweb" height="50dp" width="Ti.UI.FILL" top="0dp">
+			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="1" />
+			<View width="Ti.UI.FILL">
+				<View backgroundImage="/images/icons/back.png" onClick="closeWindow" left="10dp" top="10dp" bottom="10dp" height="30dp" width="30dp" />
+				<Label color="#313646" class="page_title" >DRINK RECIPE</Label>
+				<View backgroundImage="/images/icons/home.png" onClick="goToHome" right="10dp" top="10dp" bottom="10dp" height="30dp"  width="30dp" />
+			</View>
+		</View>
 		<View class="color_seperator"  platform="android" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="50dp" />
-		<View class="color_seperator"  platform="ios" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="0dp" />
+		<View class="color_seperator"  platform="mobileweb" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="50dp" />
+		<View class="color_seperator"  platform="ios" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="50dp" />
 
-		<ScrollView class="scrollView" id="cocktail_scroll" >
+		<ScrollView class="scrollView" id="cocktail_scroll" top="51dp"  >
 			<Label id="recipe_title_label" class="recipe_title"></Label>
 			<View id="how_to_make_it" class="recipe_container">
 				<View height="Ti.UI.SIZE">
-					<ImageView id="fav_heart" image="/images/favs/heart_outline.png" class="fav_icon_style" onClick="fav_clicked" />
+					<ImageView id="fav_heart" platform="android" image="/images/favs/heart_outline.png" class="fav_icon_style" onClick="fav_clicked" />
+					<ImageView id="fav_heart" platform="ios" image="/images/favs/heart_outline.png" class="fav_icon_style" onClick="fav_clicked" />
+					<ImageView id="fav_heart" platform="mobileweb" image="./images/favs/heart_outline.png" class="fav_icon_style" onClick="fav_clicked" />
 					
 					<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" >How to make it</Label>
 					<View height="1" width="140dp" backgroundColor="#d1d1d1" bottom="0dp" />
@@ -53,7 +64,7 @@
 			<View class="recipe_container" id="video_container" layout="composite">
 				<!--<Label class="recipe_subtext" id="video_url_link">VIDEO</Label>-->
 			</View>
-			<View class="recipe_container">
+			<View id="recipe_container_bottom" class="recipe_container">
 				<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">Rating</Label>
 				<View height="1" width="140dp" backgroundColor="#d1d1d1" />
 				<View layout="vertical" height="Ti.UI.SIZE">
@@ -64,15 +75,17 @@
 				<View height="1" width="140dp" backgroundColor="#d1d1d1" />
 				<Button class="commentBtn" onClick="submitCommentBtnHandler" title="Add Comments / Review" />
 			
-				<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">Social</Label>
-				<View height="1" width="140dp" backgroundColor="#d1d1d1" />
-				
-				<View layout="horizontal" id="social_hor_view_recipe" width="Ti.UI.SIZE" height="Ti.UI.SIZE" top="10dp" >
-					<View class="socialBtn_view" id="twitterParent_recipe">
-						<Button id="twitterBtn_recipe" image="/images/icons/twitterbird.png" class="socialBtn twitter" title="Twitter" />
-					</View>
-					<View class="socialBtn_view" id="facebookParent_recipe">
-						<Button id="facebookBtn_recipe" image="/images/icons/facebookIcon.png" class="socialBtn facebook" title="Facebook" />
+				<View id="recipe_social_container" width="Ti.UI.FILL" height="Ti.UI.SIZE" layout="vertical">
+					<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">Social</Label>
+					<View height="1" width="140dp" backgroundColor="#d1d1d1" />
+					
+					<View layout="horizontal" id="social_hor_view_recipe" width="Ti.UI.SIZE" height="Ti.UI.SIZE" top="10dp" >
+						<View class="socialBtn_view" id="twitterParent_recipe">
+							<Button id="twitterBtn_recipe" image="/images/icons/twitterbird.png" class="socialBtn twitter" title="Twitter" />
+						</View>
+						<View class="socialBtn_view" id="facebookParent_recipe">
+							<Button id="facebookBtn_recipe" image="/images/icons/facebookIcon.png" class="socialBtn facebook" title="Facebook" />
+						</View>
 					</View>
 				</View>
 				<View height="10dp" width="140dp" />
@@ -85,12 +98,26 @@
 			<View layout="vertical" top="0dp" height="Ti.UI.SIZE" >
 					<Button class="tap_to_close bold_prompt" onClick="closeRatingHandler">TAP TO CLOSE</Button>
 					<Label id="rating_title" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" top="30dp">Tap a star to rate</Label>
-					<View layout="horizontal" height="Ti.UI.SIZE" width="Ti.UI.SIZE" top="20dp" bottom="20dp">
+					<View layout="horizontal" height="Ti.UI.SIZE" width="Ti.UI.SIZE" platform="android" top="20dp" bottom="20dp">
 						<ImageView id="star_1" image="/images/common/empty_star.png" class="star_icon" star_id="1" onClick="star_clicked" />
 						<ImageView id="star_2" image="/images/common/empty_star.png" class="star_icon" star_id="2" onClick="star_clicked" />
 						<ImageView id="star_3" image="/images/common/empty_star.png" class="star_icon" star_id="3" onClick="star_clicked" />
 						<ImageView id="star_4" image="/images/common/empty_star.png" class="star_icon" star_id="4" onClick="star_clicked" />
 						<ImageView id="star_5" image="/images/common/empty_star.png" class="star_icon" star_id="5" onClick="star_clicked" />
+					</View>
+					<View layout="horizontal" height="Ti.UI.SIZE" width="Ti.UI.SIZE" platform="ios" top="20dp" bottom="20dp">
+						<ImageView id="star_1" image="/images/common/empty_star.png" class="star_icon" star_id="1" onClick="star_clicked" />
+						<ImageView id="star_2" image="/images/common/empty_star.png" class="star_icon" star_id="2" onClick="star_clicked" />
+						<ImageView id="star_3" image="/images/common/empty_star.png" class="star_icon" star_id="3" onClick="star_clicked" />
+						<ImageView id="star_4" image="/images/common/empty_star.png" class="star_icon" star_id="4" onClick="star_clicked" />
+						<ImageView id="star_5" image="/images/common/empty_star.png" class="star_icon" star_id="5" onClick="star_clicked" />
+					</View>
+					<View layout="horizontal" height="Ti.UI.SIZE" width="Ti.UI.SIZE" platform="mobileweb" top="20dp" bottom="20dp">
+						<ImageView id="star_1" image="./images/common/empty_star.png" class="star_icon" star_id="1" onClick="star_clicked" />
+						<ImageView id="star_2" image="./images/common/empty_star.png" class="star_icon" star_id="2" onClick="star_clicked" />
+						<ImageView id="star_3" image="./images/common/empty_star.png" class="star_icon" star_id="3" onClick="star_clicked" />
+						<ImageView id="star_4" image="./images/common/empty_star.png" class="star_icon" star_id="4" onClick="star_clicked" />
+						<ImageView id="star_5" image="./images/common/empty_star.png" class="star_icon" star_id="5" onClick="star_clicked" />
 					</View>
 					<Button class="commentBtn" onClick="submitRatingBtnHandler" title="Submit Rating" />
 			</View>

@@ -1,84 +1,4 @@
-".container": {
-	backgroundColor:"white",
-	titleAttributes:{
-		color:Alloy.Globals.PrimaryColor,
-		font: {
-			fontFamily:Alloy.Globals.MainFont, 
-			fontSize:"18dp"
-		}
-	},
-	barColor:"#fff",
-	layout:'composite',
-	tintColor:Alloy.Globals.PrimaryColor,
-	navTintColor:Alloy.Globals.PrimaryColor,
-	orientationModes: [
-        Ti.UI.PORTRAIT,
-        Ti.UI.UPSIDE_PORTRAIT
-    ],
-    translucent:false
-},
-".container[platform=android ]": {
-	backgroundColor:"white",
-	titleAttributes:{
-		color:Alloy.Globals.PrimaryColor,
-		font: {
-			fontFamily:Alloy.Globals.MainFont, 
-			fontSize:"18dp"
-		}
-	},
-	barColor:"#fff",
-	layout:'composite',
-	tintColor:Alloy.Globals.PrimaryColor,
-	navTintColor:Alloy.Globals.PrimaryColor,
-	orientationModes: [
-        Ti.UI.PORTRAIT,
-        Ti.UI.UPSIDE_PORTRAIT
-    ],
-    navBarHidden:true
-},
-".scrollView":{
-	top:"1dp",
-	layout:"vertical",
-	bottom:"0dp",
-	width:Ti.UI.FILL,
-	contentWidth:"auto",
-	disableBounce:true,
-	showVerticalScrollIndicator:true,
-	showHorizontalScrollIndicator:false,
-	backgroundColor:"#fff"
-},
-".scrollView[platform=android ]":{
-	top:"51dp",
-	layout:"vertical",
-	bottom:"0dp",
-	width:Ti.UI.FILL,
-	contentWidth:"auto",
-	disableBounce:true,
-	showVerticalScrollIndicator:true,
-	showHorizontalScrollIndicator:false,
-	backgroundColor:"#fff"
-},
-".page_title[platform=android formFactor=tablet]":{
-	color:Alloy.Globals.PrimaryColor,
-	font: {
-		fontFamily:Alloy.Globals.MainFont, 
-		fontSize:"28dp"
-	},
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
-	left:"50dp", 
-	right:"50dp"
-},
-".page_title[platform=android]":{
-	color:Alloy.Globals.PrimaryColor,
-	font: {
-		fontFamily:Alloy.Globals.MainFont, 
-		fontSize:"22dp"
-	},
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
-	left:"50dp", 
-	right:"50dp"
-},
-".search_table":{
+".search_table[platform=ios]":{
 	hideSearchOnSelection :false,
 	filterAttribute:'title',
 	height:Ti.UI.FILL, 
@@ -89,6 +9,17 @@
 		right:0
 	},
 	style:Ti.UI.iPhone.TableViewStyle.PLAIN
+},
+".search_table":{
+	hideSearchOnSelection :false,
+	filterAttribute:'title',
+	height:Ti.UI.FILL, 
+	width:Ti.UI.FILL, 
+	searchHidden:false,
+	separatorInsets:{
+		left:0, 
+		right:0
+	}
 },
 ".table_header":{
 	backgroundColor:"#efefef",
@@ -111,12 +42,14 @@
 		fontFamily:Alloy.Globals.BoldFont, 
 		fontSize:"14dp"
 	},
-	color:Alloy.Globals.PrimaryColor
+	color:Alloy.Globals.PrimaryColor,
+	touchEnabled:false
 },
 ".row_brand_image":{
 	width:"70dp",
 	height:"40dp",
-	left:"0dp"
+	left:"0dp",
+	touchEnabled:false
 },
 ".row_view":{
 	height:"40dp",

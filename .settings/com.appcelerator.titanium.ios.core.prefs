@@ -1,12 +1,12 @@
 eclipse.preferences.version=1
 iosLaunchConfigurationAttributes/ATTR_MINIFY=true
-iosLaunchConfigurationAttributes/ATTR_PROJECT_NAME=IDL_The_Perfect_Mix
+iosLaunchConfigurationAttributes/ATTR_PROJECT_NAME=Perfect_Mix_Web
 iosLaunchConfigurationAttributes/appid=ie.vstream.perfectmix
 iosLaunchConfigurationAttributes/certificate=VSTREAM DIGITAL MEDIA LTD
-iosLaunchConfigurationAttributes/distribute_path=/Users/vocal/Development/Appcelerator/IDL_The_Perfect_Mix/deploy
+iosLaunchConfigurationAttributes/distribute_path=/Users/vocal/Development/Appcelerator/Perfect_Mix_Web/deploy
 iosLaunchConfigurationAttributes/keychain=
 iosLaunchConfigurationAttributes/output_format=ipa
-iosLaunchConfigurationAttributes/sdk_version=7.0.3
+iosLaunchConfigurationAttributes/sdk_version=7.1
 iosLaunchConfigurationAttributes/uuid=AC9A5DA5-D498-49D7-96F6-48A05970FF9B
 provisioning_profiles/distribution/00C39991-B40F-4F88-8D06-AADB157BE427/appid=com.hmhpub.hmhbiologygames
 provisioning_profiles/distribution/00C39991-B40F-4F88-8D06-AADB157BE427/name=HMH_Biology_Games_Dist

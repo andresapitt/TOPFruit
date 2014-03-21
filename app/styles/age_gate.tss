@@ -1,34 +1,3 @@
-".container": {
-	backgroundColor:"white",
-	//layout:"vertical",
-	height:"100%",
-	orientationModes: [
-        Ti.UI.PORTRAIT,
-        Ti.UI.UPSIDE_PORTRAIT
-    ] ,
-    translucent:false
-},
-".container[platform=android]": {
-	backgroundColor:"white",
-	//layout:"vertical",
-	height:"100%",
-	orientationModes: [
-        Ti.UI.PORTRAIT,
-        Ti.UI.UPSIDE_PORTRAIT
-    ] ,
-    navBarHidden:true,
-},
-".scrollView":{
-	top:"1dp",
-	layout:"vertical",
-	bottom:"0dp",
-	width:Ti.UI.FILL,
-	contentWidth:"auto",
-	disableBounce:true,
-	showVerticalScrollIndicator:true,
-	showHorizontalScrollIndicator:false,
-	backgroundColor:"#efefef"
-},
 ".vertical_view":{
 	layout:"vertical",
 	top:"0dp",
@@ -63,6 +32,12 @@
 	top:"10dp"
 },
 "#dob_picker":{
+	height:Ti.UI.SIZE,
+	layout:"horizontal",
+	top:"10dp", 
+	width:Ti.UI.SIZE
+},
+"#dob_picker[platform=mobileweb]":{
 	height:Ti.UI.SIZE,
 	layout:"horizontal",
 	top:"10dp", 
@@ -121,16 +96,26 @@
 "#banner_img":{
 	top:"20dp",
 	height:"200dp",
-	width:Ti.UI.SIZE
+	width:Ti.UI.FILL
+},
+"#banner_img[platform=mobileweb]":{
+	top:"20dp",
+	height:"180dp",
+	width:Ti.UI.FILL
 },
 "#banner_img[platform=android formFactor=tablet]":{
 	top:"20dp",
 	height:"40%",
-	width:Ti.UI.SIZE
+	width:Ti.UI.FILL
 },
 "#drinkaware_img":{
 	//bottom:"0dp",
 	height:"60dp",
+	width:Ti.UI.SIZE,
+},
+"#drinkaware_img[platform=mobileweb]":{
+	//bottom:"0dp",
+	height:"55dp",
 	width:Ti.UI.SIZE,
 },
 "#drinkaware_img[platform=android formFactor=tablet]":{
@@ -180,6 +165,18 @@
         fontFamily: Alloy.Globals.MainFont,
     }
 },
+"#submitBtn[platform=mobileweb]": {
+	width: "160dp",
+	height:"32dp",
+	top:"8dp",
+	color: "#fff",
+	backgroundColor: Alloy.Globals.PrimaryColor,
+	borderRadius:4,
+	font: {
+        fontSize: '18dp',
+        fontFamily: Alloy.Globals.MainFont,
+    }
+},
 "#submitBtn[platform=android formFactor=tablet]": {
 	width: "180dp",
 	height:"50dp",
@@ -222,6 +219,20 @@
 	borderColor: "#898989",
 	borderWidth: 1
 },
+".single_picker[platform=mobileweb]":{
+//	color: Alloy.Globals.PrimaryColor#898989,
+	backgroundColor:"#898989",
+	left:"8dp",
+	right:"8dp",
+	height:"120dp",
+	borderRadius:8,
+	bottom:"10dp",
+	top:"0dp",
+	width:"85dp"
+	//width:Ti.UI.SIZE
+	//borderColor:  Alloy.Globals.PrimaryColor,
+	//borderWidth: 2
+},
 ".single_picker[platform=android]":{
 //	color: Alloy.Globals.PrimaryColor#898989,
 	backgroundColor:"#898989",
@@ -229,7 +240,7 @@
 	right:"10dp",
 	height:"50dp",
 	borderRadius:8,
-	bottom:"10dp"
+	bottom:"10dp",
 	//borderColor:  Alloy.Globals.PrimaryColor,
 	//borderWidth: 2
 },

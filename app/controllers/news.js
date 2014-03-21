@@ -7,6 +7,10 @@ function openEvents(e)
 	{
 		eventsWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 	}
+	else if(Ti.Platform.name == "mobileweb" )
+	{
+		eventsWin.open();
+	}
 	else
 	{
 		Alloy.Globals.parent.openWindow(eventsWin);
@@ -19,6 +23,10 @@ function openBestBars(e)
 	if(Ti.Platform.name == "android" )
 	{
 		bestBarsWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
+	}
+	else if(Ti.Platform.name == "mobileweb" )
+	{
+		bestBarsWin.open();
 	}
 	else
 	{
@@ -33,6 +41,10 @@ function openBarSmarts(e)
 	{
 		barSmartsWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 	}
+	else if(Ti.Platform.name == "mobileweb" )
+	{
+		barSmartsWin.open();
+	}
 	else
 	{
     	Alloy.Globals.parent.openWindow(barSmartsWin);
@@ -46,6 +58,10 @@ function openCompetitions(e)
 	{
 		compWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 	}
+	else if(Ti.Platform.name == "mobileweb" )
+	{
+		compWin.open();
+	}
 	else
 	{
     	Alloy.Globals.parent.openWindow(compWin);
@@ -54,6 +70,8 @@ function openCompetitions(e)
 
 function closeWindow(e)
 {
+	var a = Alloy.Globals.windowStack.indexOf($.news);
+	Alloy.Globals.windowStack.splice(a,1);
 	if(Ti.Platform.name == "android" )
 	{
 		$.news.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
@@ -66,6 +84,9 @@ function closeWindow(e)
 
 function goToHome(e)
 {
+	Alloy.Globals.goToHome(e);
+	/*
+	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
 	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
 	{
 		if(i == Alloy.Globals.windowStack.length-1)
@@ -78,20 +99,29 @@ function goToHome(e)
 			{
 				Alloy.Globals.windowStack[i].close();
 			}
+			Ti.API.info("Close index: " + i );
 		}
 		else
 		{
-			Alloy.Globals.windowStack[i].close({animated:false});
+			if(Ti.Platform.name != "mobileweb" )
+			{
+				Alloy.Globals.windowStack[i].close({animated:false});
+			}
+			else
+			{
+				Alloy.Globals.windowStack[i].close();
+			}
+			Ti.API.info("Close index: " + i );
 		}
-	}
+	}*/
 }
 
 
 $.news.addEventListener('close', function(e){
 	Ti.API.info('News window closed');
 	
-	var a = Alloy.Globals.windowStack.indexOf($.news);
-	Alloy.Globals.windowStack.splice(a,1);
+	//var a = Alloy.Globals.windowStack.indexOf($.news);
+	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.news.addEventListener('open', function(e){
@@ -103,6 +133,8 @@ $.news.addEventListener('open', function(e){
 
 $.news.addEventListener('androidback', function(e){
 	$.news.close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+	var a = Alloy.Globals.windowStack.indexOf($.news);
+	Alloy.Globals.windowStack.splice(a,1);
 });
 
 

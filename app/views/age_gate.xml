@@ -1,11 +1,16 @@
 <Alloy>
-	<Window class="container" height="100%">
+	<Window class="container">
 		<ScrollView class="scrollView">
 			<View class="vertical_view" id="age_gate_view" >
-				<ImageView id="banner_img" image="/images/age_gate/age_gate_banner.png" />
+				<ImageView id="banner_img"  platform="android" image="/images/age_gate/age_gate_banner.png" />
+				<ImageView id="banner_img"  platform="ios" image="/images/age_gate/age_gate_banner.png" />
+				<ImageView id="banner_img"  platform="mobileweb" image="./images/age_gate/age_gate_banner.png" />
 				<Label class="bold_prompt">TO DISCOVER THE PERFECT MIX \nWE FIRST NEED TO CHECK YOUR AGE</Label>
-				<Button id="facebookBtn" image="/images/age_gate/facebook_Icon.png" onClick="facebookBtnHandler" title="Login with Facebook" />
-				<Label class="bold_prompt dob_prompt">OR ENTER YOUR DOB</Label>
+				<Button id="facebookBtn" platform="ios" image="/images/age_gate/facebook_Icon.png" onClick="facebookBtnHandler" title="Login with Facebook" />
+				<Button id="facebookBtn" platform="android" image="/images/age_gate/facebook_Icon.png" onClick="facebookBtnHandler" title="Login with Facebook" />
+				<Label class="bold_prompt dob_prompt" platform="ios" >OR ENTER YOUR DOB</Label>
+				<Label class="bold_prompt dob_prompt" platform="android" >OR ENTER YOUR DOB</Label>
+				<Label class="bold_prompt dob_prompt" platform="mobileweb" >ENTER YOUR DOB</Label>
 				<View id="dob_picker" platform="ios"  >
 					<View class="dropdownbox" width="60dp" left="15dp" id="birth_date_dd" onClick="dateBtnHandler">
 						<Label class="dob_fields"  id="date_birth">Day</Label>
@@ -25,6 +30,11 @@
 					<Picker id="month_picker" class="single_picker" selectionIndicator="true" useSpinner="false" />
 					<Picker id="year_picker" class="single_picker" selectionIndicator="true" useSpinner="false" />
 				</View>
+				<View id="dob_picker" platform="mobileweb"  >
+					<Picker id="day_picker" class="single_picker" type="Ti.UI.PICKER_TYPE_PLAIN"   />
+					<Picker id="month_picker" class="single_picker" type="Ti.UI.PICKER_TYPE_PLAIN" />
+					<Picker id="year_picker" class="single_picker" type="Ti.UI.PICKER_TYPE_PLAIN"  />
+				</View>
 				<Button id="submitBtn" onClick="submitBtnHandler" title="Submit" />
 				<View id="TandC_View" >
 					<Label class="bold_prompt tandc_prompt">By entering the app you agree to our</Label>
@@ -34,7 +44,9 @@
 					</View>
 				</View>
 			</View>
-			<ImageView id="drinkaware_img" image="/images/age_gate/drinkaware.png" top="5dp" />
+			<ImageView id="drinkaware_img"  platform="android" image="/images/age_gate/drinkaware.png" top="5dp" />
+			<ImageView id="drinkaware_img"  platform="ios" image="/images/age_gate/drinkaware.png" top="5dp" />
+			<ImageView id="drinkaware_img"  platform="mobileweb" image="./images/age_gate/drinkaware.png" top="5dp" />
 		</ScrollView>
 		<View id="picker_view" platform="ios">
 			<!--<View id="picker_bg" />-->
