@@ -151,7 +151,7 @@
 	color:"#fff",
 	tintColor:"#fff"
 },
-".twitter":{
+".twitter[platform=android]":{
 	backgroundColor:"none",
 	backgroundGradient: {
         type: 'linear',
@@ -160,7 +160,7 @@
         colors: [ { color: '#6db3e1', offset: 0.0}, { color: '#428ecf', offset: 1.0 } ]
        }
 },
-".facebook":{
+".facebook[platform=android]":{
 	backgroundColor:"none",
 	backgroundGradient: {
         type: 'linear',
@@ -169,7 +169,61 @@
         colors: [ { color: '#4b69a5', offset: 0.0}, { color: '#253d7d', offset: 1.0 } ]
        }
 },
-".website":{
+".website[platform=android]":{
+	backgroundColor:"none",
+	backgroundGradient: {
+        type: 'linear',
+        startPoint: { x: '50%', y: '0%' },
+        endPoint: { x: '50%', y: '100%' },
+        colors: [ { color: '#414656', offset: 0.0}, { color: '#1e222e', offset: 1.0 } ]
+       }
+}
+".twitter[platform=mobileweb]":{
+	backgroundColor:"none",
+	backgroundGradient: {
+        type: 'linear',
+        startPoint: { x: '50%', y: '0%' },
+        endPoint: { x: '50%', y: '100%' },
+        colors: [ { color: '#6db3e1', offset: 0.0}, { color: '#428ecf', offset: 1.0 } ]
+       }
+},
+".facebook[platform=mobileweb]":{
+	backgroundColor:"none",
+	backgroundGradient: {
+        type: 'linear',
+        startPoint: { x: '50%', y: '0%' },
+        endPoint: { x: '50%', y: '100%' },
+        colors: [ { color: '#4b69a5', offset: 0.0}, { color: '#253d7d', offset: 1.0 } ]
+       }
+},
+".website[platform=mobileweb]":{
+	backgroundColor:"none",
+	backgroundGradient: {
+        type: 'linear',
+        startPoint: { x: '50%', y: '0%' },
+        endPoint: { x: '50%', y: '100%' },
+        colors: [ { color: '#414656', offset: 0.0}, { color: '#1e222e', offset: 1.0 } ]
+       }
+}
+".twitter[platform=ios]":{
+	backgroundColor:"none",
+	backgroundGradient: {
+        type: 'linear',
+        startPoint: { x: '50%', y: '0%' },
+        endPoint: { x: '50%', y: '100%' },
+        colors: [ { color: '#6db3e1', offset: 0.0}, { color: '#428ecf', offset: 1.0 } ]
+       }
+},
+".facebook[platform=ios]":{
+	backgroundColor:"none",
+	backgroundGradient: {
+        type: 'linear',
+        startPoint: { x: '50%', y: '0%' },
+        endPoint: { x: '50%', y: '100%' },
+        colors: [ { color: '#4b69a5', offset: 0.0}, { color: '#253d7d', offset: 1.0 } ]
+       }
+},
+".website[platform=ios]":{
 	backgroundColor:"none",
 	backgroundGradient: {
         type: 'linear',

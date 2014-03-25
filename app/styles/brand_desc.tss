@@ -8,6 +8,7 @@
 	left:"5dp",
 	right:"5dp",
 	layout:"vertical",
+	bottom:"10dp"
 },
 ".brand_item[platform=mobileweb]":{
 	backgroundColor:"#fff",
@@ -19,6 +20,7 @@
 	left:"5dp",
 	right:"5dp",
 	layout:"vertical",
+	bottom:"10dp"
 },
 "#brand_title":{
 	color:Alloy.Globals.PrimaryColor,

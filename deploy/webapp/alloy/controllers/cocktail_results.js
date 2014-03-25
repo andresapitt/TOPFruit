@@ -187,36 +187,36 @@ function Controller() {
         id: "cocktail_results"
     });
     $.__views.cocktail_results && $.addTopLevelView($.__views.cocktail_results);
-    $.__views.__alloyId142 = Ti.UI.createView({
+    $.__views.__alloyId121 = Ti.UI.createView({
         height: "50dp",
         width: Ti.UI.FILL,
-        id: "__alloyId142"
+        id: "__alloyId121"
     });
-    $.__views.cocktail_results.add($.__views.__alloyId142);
-    $.__views.__alloyId143 = Ti.UI.createView({
+    $.__views.cocktail_results.add($.__views.__alloyId121);
+    $.__views.__alloyId122 = Ti.UI.createView({
         width: Ti.UI.FILL,
         height: Ti.UI.FILL,
         backgroundColor: "#fff",
         opacity: "1",
-        id: "__alloyId143"
+        id: "__alloyId122"
     });
-    $.__views.__alloyId142.add($.__views.__alloyId143);
-    $.__views.__alloyId144 = Ti.UI.createView({
+    $.__views.__alloyId121.add($.__views.__alloyId122);
+    $.__views.__alloyId123 = Ti.UI.createView({
         width: Ti.UI.FILL,
-        id: "__alloyId144"
+        id: "__alloyId123"
     });
-    $.__views.__alloyId142.add($.__views.__alloyId144);
-    $.__views.__alloyId145 = Ti.UI.createView({
+    $.__views.__alloyId121.add($.__views.__alloyId123);
+    $.__views.__alloyId124 = Ti.UI.createView({
         backgroundImage: "/images/icons/back.png",
         left: "10dp",
         top: "10dp",
         bottom: "10dp",
         height: "30dp",
         width: "30dp",
-        id: "__alloyId145"
+        id: "__alloyId124"
     });
-    $.__views.__alloyId144.add($.__views.__alloyId145);
-    closeWindow ? $.__views.__alloyId145.addEventListener("click", closeWindow) : __defers["$.__views.__alloyId145!click!closeWindow"] = true;
+    $.__views.__alloyId123.add($.__views.__alloyId124);
+    closeWindow ? $.__views.__alloyId124.addEventListener("click", closeWindow) : __defers["$.__views.__alloyId124!click!closeWindow"] = true;
     $.__views.cocktail_results_page_title = Ti.UI.createLabel({
         color: "#313646",
         font: {
@@ -229,26 +229,26 @@ function Controller() {
         text: "COCKTAILS",
         id: "cocktail_results_page_title"
     });
-    $.__views.__alloyId144.add($.__views.cocktail_results_page_title);
-    $.__views.__alloyId146 = Ti.UI.createView({
+    $.__views.__alloyId123.add($.__views.cocktail_results_page_title);
+    $.__views.__alloyId125 = Ti.UI.createView({
         backgroundImage: "/images/icons/home.png",
         right: "10dp",
         top: "10dp",
         bottom: "10dp",
         height: "30dp",
         width: "30dp",
-        id: "__alloyId146"
+        id: "__alloyId125"
     });
-    $.__views.__alloyId144.add($.__views.__alloyId146);
-    goToHome ? $.__views.__alloyId146.addEventListener("click", goToHome) : __defers["$.__views.__alloyId146!click!goToHome"] = true;
-    $.__views.__alloyId147 = Ti.UI.createView({
+    $.__views.__alloyId123.add($.__views.__alloyId125);
+    goToHome ? $.__views.__alloyId125.addEventListener("click", goToHome) : __defers["$.__views.__alloyId125!click!goToHome"] = true;
+    $.__views.__alloyId126 = Ti.UI.createView({
         height: "1dp",
         width: Ti.UI.FILL,
         backgroundImage: "/images/common/color_sep.png",
-        id: "__alloyId147"
+        id: "__alloyId126"
     });
-    $.__views.cocktail_results.add($.__views.__alloyId147);
-    $.__views.__alloyId148 = Ti.UI.createScrollView({
+    $.__views.cocktail_results.add($.__views.__alloyId126);
+    $.__views.__alloyId127 = Ti.UI.createScrollView({
         top: "0dp",
         layout: "vertical",
         bottom: "0dp",
@@ -259,16 +259,16 @@ function Controller() {
         showVerticalScrollIndicator: true,
         showHorizontalScrollIndicator: false,
         backgroundColor: "#efefef",
-        id: "__alloyId148"
+        id: "__alloyId127"
     });
-    $.__views.cocktail_results.add($.__views.__alloyId148);
+    $.__views.cocktail_results.add($.__views.__alloyId127);
     $.__views.drink_results = Ti.UI.createView({
         id: "drink_results",
         layout: "vertical",
         height: Ti.UI.SIZE,
         bottom: "10dp"
     });
-    $.__views.__alloyId148.add($.__views.drink_results);
+    $.__views.__alloyId127.add($.__views.drink_results);
     exports.destroy = function() {};
     _.extend($, $.__views);
     Ti.API.info("In cocktails result section");
@@ -297,12 +297,12 @@ function Controller() {
         var a = Alloy.Globals.windowStack.indexOf($.cocktail_results);
         Alloy.Globals.windowStack.splice(a, 1);
     });
-    __defers["$.__views.__alloyId140!click!closeWindow"] && $.__views.__alloyId140.addEventListener("click", closeWindow);
-    __defers["$.__views.__alloyId141!click!goToHome"] && $.__views.__alloyId141.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId145!click!closeWindow"] && $.__views.__alloyId145.addEventListener("click", closeWindow);
-    __defers["$.__views.__alloyId146!click!goToHome"] && $.__views.__alloyId146.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId150!click!goToHome"] && $.__views.__alloyId150.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId152!click!closeWindow"] && $.__views.__alloyId152.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId119!click!closeWindow"] && $.__views.__alloyId119.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId120!click!goToHome"] && $.__views.__alloyId120.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId124!click!closeWindow"] && $.__views.__alloyId124.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId125!click!goToHome"] && $.__views.__alloyId125.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId129!click!goToHome"] && $.__views.__alloyId129.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId131!click!closeWindow"] && $.__views.__alloyId131.addEventListener("click", closeWindow);
     _.extend($, exports);
 }
 

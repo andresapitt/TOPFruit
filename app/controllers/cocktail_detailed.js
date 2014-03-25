@@ -15,11 +15,7 @@ if(cocktail.glass != null && cocktail.glass != "")
 	
 	for(var i = 0; i < cocktail.glass.length; i += 2)
 	{
-		if(i > 0)
-		{
-			glassText += "\n";
-		}
-		glassText += cocktail.glass[i].Glass.title;
+		glassText +=  "\u2022" + " " + cocktail.glass[i].Glass.title + "\n";
 	}
 	$.glassware.text = glassText;
 }
@@ -35,11 +31,18 @@ if(cocktail.description != null && cocktail.description != "")
 else{
 	Ti.API.info("No cocktail description info");
 	$.how_to_view.remove($.cocktail_desc_container);
-}
+} 
 if(cocktail.ingredients != null && cocktail.ingredients != "")
 {
 	Ti.API.info("cocktail ingredients info: " + cocktail.ingredients);
-	$.ingredients.text = cocktail.ingredients;
+	
+	var parsedIngredients = cocktail.ingredients.replace( /\r\n/g, "\n" ).replace( /\r/g, "\n" ).split( "\n" );
+	
+	$.ingredients.text = "";
+	for(var i = 0; i < parsedIngredients.length; i++)
+	{
+		$.ingredients.text += "\u2022" + " " + parsedIngredients[i] + "\r\n";
+	}
 }
 else{
 	Ti.API.info("No cocktail ingredients info");
@@ -48,7 +51,14 @@ else{
 if(cocktail.method != null && cocktail.method != "")
 {
 	Ti.API.info("cocktail method info: " + cocktail.method);
-	$.method.text = cocktail.method;
+	//$.method.text = cocktail.method;
+	var parsedMethod = cocktail.method.replace( /\r\n/g, "\n" ).replace( /\r/g, "\n" ).split( "\n" );
+	
+	$.method.text = "";
+	for(var i = 0; i < parsedMethod.length; i++)
+	{
+		$.method.text += "\u2022" + " " + parsedMethod[i] + "\r\n";
+	}
 }
 else{
 	Ti.API.info("No cocktail method info");
@@ -58,6 +68,13 @@ if(cocktail.garnish != null && cocktail.garnish != "")
 {
 	Ti.API.info("cocktail garnish info: " + cocktail.garnish);
 	$.garnish.text = cocktail.garnish;
+	var parsedGarnish = cocktail.garnish.replace( /\r\n/g, "\n" ).replace( /\r/g, "\n" ).split( "\n" );
+	
+	$.garnish.text = "";
+	for(var i = 0; i < parsedGarnish.length; i++)
+	{
+		$.garnish.text += "\u2022" + " " + parsedGarnish[i] + "\r\n";
+	}
 }
 else{
 	Ti.API.info("No cocktail garnish info");
@@ -179,11 +196,11 @@ else{
 			
 			if(canOpen == false)
 			{
-					var dialog = Ti.UI.createAlertDialog({
-					    message: "Sorry, you must first have the facebook app installed on this device to click this button.",
-					    ok: 'Ok, thanks!',
-					    title: 'Facebook Error'
-					  }).show();
+				var dialog = Ti.UI.createAlertDialog({
+				    message: "Sorry, you must first have the facebook app installed on this device to click this button.",
+				    ok: 'Ok, thanks!',
+				    title: 'Facebook Error'
+				  }).show();
 			}
 		}
 	});
@@ -577,35 +594,6 @@ function closeWindow(e)
 function goToHome(e)
 {
 	Alloy.Globals.goToHome(e);
-	/*
-	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
-	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
-	{
-		if(i == Alloy.Globals.windowStack.length-1)
-		{
-			if(Ti.Platform.name == "android" )
-			{
-				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-		else
-		{
-			if(Ti.Platform.name != "mobileweb" )
-			{
-				Alloy.Globals.windowStack[i].close({animated:false});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-	}*/
 }
 
 $.cocktail_detailed.addEventListener('close', function(e){
@@ -622,24 +610,52 @@ $.cocktail_detailed.addEventListener('open', function(e){
 	animation.left = "0dp";
 	animation.duration = 700;
 	animation.curve = Ti.UI.ANIMATION_CURVE_EASE_IN_OUT;
-	/*var animationHandler = function() {
-	  animation.removeEventListener('complete',animationHandler);
-	  animation.backgroundColor = 'orange';
-	  view.animate(animation);
-	};
-	animation.addEventListener('complete',animationHandler);*/
-	
-	var cocktail_image = Alloy.Globals.Utils.RemoteImage({
-	  image: cocktail.image,
-	  defaultImage:'images/cocktails/glass.png',
-	  height:Ti.UI.FILL
-	});
-	//cocktail_image.applyProperties(cocktail_image_style_bottle);
-	$.recipe_image_ani_view.add(cocktail_image);
+
+	try
+	{
+		
+		var cocktail_image = Alloy.Globals.Utils.RemoteImage({
+		  image: cocktail.image,
+		  defaultImage:'images/cocktails/glass.png',
+		  height:Ti.UI.FILL,
+		//  width:Ti.UI.SIZE
+		});
+		
+		$.recipe_image_ani_view.add(cocktail_image);
+		
+	}
+	catch(ex)
+	{
+		Ti.API.info('image drawing error: ' + ex.toString);
+	}
 	
 	setTimeout(function(){
 	   $.recipe_image_ani_view.animate(animation);
 	}, 700);
+	
+/*
+	var firstLayout = false;
+	function animateHeight(e){
+		
+		$.how_to_make_it.removeEventListener('postlayout', animateHeight);
+		
+		function PixelsToDPUnits(ThePixels)
+		{
+			return (ThePixels / (Titanium.Platform.displayCaps.dpi / 194));
+		}
+		Ti.API.info('POSTLAYOUT: Height of view: ' + $.how_to_make_it.size.height);
+		Ti.API.info('POSTLAYOUT: Height of device: ' + PixelsToDPUnits(Ti.Platform.displayCaps.platformHeight) );
+		
+		var animation = Titanium.UI.createAnimation();
+		animation.height = "800dp";
+		animation.duration = 4000;
+		animation.curve = Ti.UI.ANIMATION_CURVE_EASE_IN_OUT;
+		 $.how_to_make_it.animate(animation);
+		//$.how_to_make_it.height = Ti.UI.SIZE;
+	}
+	
+	$.how_to_make_it.addEventListener('postlayout', animateHeight);
+	*/
 });
 
 $.cocktail_detailed.addEventListener('androidback', function(e){

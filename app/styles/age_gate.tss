@@ -1,3 +1,14 @@
+"#age_gate[platform=ios]": {
+	backgroundColor:"white",
+	//layout:"vertical",
+	layout:'absolute',
+	height:"100%",
+	orientationModes: [
+        Ti.UI.PORTRAIT,
+        Ti.UI.UPSIDE_PORTRAIT
+    ] ,
+    translucent:false
+},
 ".vertical_view":{
 	layout:"vertical",
 	top:"0dp",
@@ -94,14 +105,21 @@
     
 },
 "#banner_img":{
-	top:"20dp",
-	height:"200dp",
-	width:Ti.UI.FILL
+	top:"60dp",
+	height:"102dp",
+	width:"320dp",
+	bottom:"40dp"
+},
+"#banner_img[platform=android]":{
+	top:"60dp",
+	height:"102dp",
+	width:"320dp",
+	bottom:"40dp"
 },
 "#banner_img[platform=mobileweb]":{
-	top:"20dp",
-	height:"180dp",
-	width:Ti.UI.FILL
+	top:"40dp",
+	height:"102dp",
+	width:"320dp"
 },
 "#banner_img[platform=android formFactor=tablet]":{
 	top:"20dp",
@@ -138,6 +156,21 @@
    },
    tintColor:"#fff"
 },
+"#facebookBtn[platform=android formFactor=handheld]": {
+	width: "240dp",
+	height:"40dp",
+	//height:"100dp",
+	color: "#fff",
+	top:"8dp",
+	backgroundColor: Alloy.Globals.FacebookColor,
+	//backgroundColor: "#f00",
+	borderRadius:6,
+	font: {
+        fontSize: '18dp',
+        fontFamily: Alloy.Globals.MainFont,
+   },
+   tintColor:"#fff"
+},
 "#facebookBtn[platform=android formFactor=tablet]": {
 	width: "300dp",
 	height:"50dp",
@@ -160,6 +193,18 @@
 	color: "#fff",
 	backgroundColor: Alloy.Globals.PrimaryColor,
 	borderRadius:"4dp",
+	font: {
+        fontSize: '18dp',
+        fontFamily: Alloy.Globals.MainFont,
+    }
+},
+"#submitBtn[platform=android]": {
+	width: "160dp",
+	height:"40dp",
+	top:"12dp",
+	color: "#fff",
+	backgroundColor: Alloy.Globals.PrimaryColor,
+	borderRadius:6,
 	font: {
         fontSize: '18dp',
         fontFamily: Alloy.Globals.MainFont,
@@ -233,13 +278,24 @@
 	//borderColor:  Alloy.Globals.PrimaryColor,
 	//borderWidth: 2
 },
-".single_picker[platform=android]":{
+".single_picker[platform=android formFactor=tablet]":{
 //	color: Alloy.Globals.PrimaryColor#898989,
 	backgroundColor:"#898989",
 	left:"10dp",
 	right:"10dp",
 	height:"50dp",
 	borderRadius:8,
+	bottom:"10dp",
+	//borderColor:  Alloy.Globals.PrimaryColor,
+	//borderWidth: 2
+},
+".single_picker[platform=android formFactor=handheld]":{
+//	color: Alloy.Globals.PrimaryColor#898989,
+	backgroundColor:"#898989",
+	left:"10dp",
+	right:"10dp",
+	height:"40dp",
+	borderRadius:6,
 	bottom:"10dp",
 	//borderColor:  Alloy.Globals.PrimaryColor,
 	//borderWidth: 2

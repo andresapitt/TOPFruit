@@ -49,7 +49,7 @@ function indexOpen(e)
 		
 	//if(Ti.Platform.name != "mobileweb")
 	//{
-		Alloy.Globals.Utils.GetAppData("http://vocal.ie/client/idl/perfect-mix/mixes/mixes/viewjson", "data/FeaturedMix.txt", displayMixOfTheMonth);
+		Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/mixes/mixes/viewjson", "data/FeaturedMix.txt", displayMixOfTheMonth);
 	//}
 		
 	function displayMixOfTheMonth(newJSON)

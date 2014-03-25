@@ -187,7 +187,19 @@ function submitBtnHandler(e) {
     }
     else
     {
-    	alert("Under 18");
+    	//alert("Under 18");
+    	if(Ti.Platform.name != "mobileweb" )
+		{
+			var dialog = Ti.UI.createAlertDialog({
+			    message: "You must be at least 18 years old to use The Perfect Mix app!",
+			    ok: 'OK',
+			    title: 'Error'
+			  }).show();
+		 }
+		 else
+		 {
+		 	alert("You must be at least 18 years old to use The Perfect Mix app!");
+		 }
     }
 }
 
@@ -196,7 +208,8 @@ function TandCBtnHandler(e){
 	var terms_and_conditions = Alloy.createController('terms_and_conditions').getView();
 	if(Ti.Platform.name == "android")
 	{
-		terms_and_conditions.open({modal:true, activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
+		//terms_and_conditions.open({modal:true, activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
+		terms_and_conditions.open({modal:true, activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
 	}
 	else
 	{
@@ -219,7 +232,12 @@ function facebookLoginHandler(e){
          Alloy.Globals.fb.removeEventListener('login', facebookLoginHandler);
     } else if (e.error) {
     	Ti.API.info("FACEBOOK login error: " + e.toString());
-        alert("Facebook error: " + e.error);
+        //alert("Facebook error: " + e.error);
+        var dialog = Ti.UI.createAlertDialog({
+		    message: "ERROR: " + e.error,
+		    ok: 'Ok',
+		    title: 'Facebook'
+		  }).show();
     } else if (e.cancelled) {
     	Ti.API.info("FACEBOOK login cancel: " + e.toString());
        // alert("Canceled");
@@ -343,7 +361,10 @@ function dateBtnHandler(e)
 		animation.duration = 400;
 		$.age_gate_view.animate(animation);
 		
-		$.picker_view.height = Ti.UI.FILL;
+		//$.picker_view.height = Ti.UI.FILL;
+		$.picker_view.height = "300dp";
+		$.picker_view.bottom = 0;
+		Ti.API.info("height after animation: " + $.picker_view.height + ", bottom: " + $.picker_view.bottom );
 	}
 	
 }

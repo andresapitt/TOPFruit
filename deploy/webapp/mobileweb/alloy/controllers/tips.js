@@ -81,38 +81,38 @@ function Controller() {
         id: "tips"
     });
     $.__views.tips && $.addTopLevelView($.__views.tips);
-    $.__views.__alloyId423 = Ti.UI.createView({
+    $.__views.__alloyId402 = Ti.UI.createView({
         height: "50dp",
         width: Ti.UI.FILL,
         top: "0dp",
-        id: "__alloyId423"
+        id: "__alloyId402"
     });
-    $.__views.tips.add($.__views.__alloyId423);
-    $.__views.__alloyId424 = Ti.UI.createView({
+    $.__views.tips.add($.__views.__alloyId402);
+    $.__views.__alloyId403 = Ti.UI.createView({
         width: Ti.UI.FILL,
         height: Ti.UI.FILL,
         backgroundColor: "#fff",
         opacity: "1",
-        id: "__alloyId424"
+        id: "__alloyId403"
     });
-    $.__views.__alloyId423.add($.__views.__alloyId424);
-    $.__views.__alloyId425 = Ti.UI.createView({
+    $.__views.__alloyId402.add($.__views.__alloyId403);
+    $.__views.__alloyId404 = Ti.UI.createView({
         width: Ti.UI.FILL,
-        id: "__alloyId425"
+        id: "__alloyId404"
     });
-    $.__views.__alloyId423.add($.__views.__alloyId425);
-    $.__views.__alloyId426 = Ti.UI.createView({
+    $.__views.__alloyId402.add($.__views.__alloyId404);
+    $.__views.__alloyId405 = Ti.UI.createView({
         backgroundImage: "/images/icons/back.png",
         left: "10dp",
         top: "10dp",
         bottom: "10dp",
         height: "30dp",
         width: "30dp",
-        id: "__alloyId426"
+        id: "__alloyId405"
     });
-    $.__views.__alloyId425.add($.__views.__alloyId426);
-    closeWindow ? $.__views.__alloyId426.addEventListener("click", closeWindow) : __defers["$.__views.__alloyId426!click!closeWindow"] = true;
-    $.__views.__alloyId427 = Ti.UI.createLabel({
+    $.__views.__alloyId404.add($.__views.__alloyId405);
+    closeWindow ? $.__views.__alloyId405.addEventListener("click", closeWindow) : __defers["$.__views.__alloyId405!click!closeWindow"] = true;
+    $.__views.__alloyId406 = Ti.UI.createLabel({
         color: "#313646",
         font: {
             fontFamily: Alloy.Globals.MainFont,
@@ -122,29 +122,29 @@ function Controller() {
         left: "50dp",
         right: "50dp",
         text: "TOP TIPS",
-        id: "__alloyId427"
+        id: "__alloyId406"
     });
-    $.__views.__alloyId425.add($.__views.__alloyId427);
-    $.__views.__alloyId428 = Ti.UI.createView({
+    $.__views.__alloyId404.add($.__views.__alloyId406);
+    $.__views.__alloyId407 = Ti.UI.createView({
         backgroundImage: "/images/icons/home.png",
         right: "10dp",
         top: "10dp",
         bottom: "10dp",
         height: "30dp",
         width: "30dp",
-        id: "__alloyId428"
+        id: "__alloyId407"
     });
-    $.__views.__alloyId425.add($.__views.__alloyId428);
-    goToHome ? $.__views.__alloyId428.addEventListener("click", goToHome) : __defers["$.__views.__alloyId428!click!goToHome"] = true;
-    $.__views.__alloyId429 = Ti.UI.createView({
+    $.__views.__alloyId404.add($.__views.__alloyId407);
+    goToHome ? $.__views.__alloyId407.addEventListener("click", goToHome) : __defers["$.__views.__alloyId407!click!goToHome"] = true;
+    $.__views.__alloyId408 = Ti.UI.createView({
         height: "1dp",
         width: Ti.UI.FILL,
         backgroundImage: "/images/common/color_sep.png",
         top: "0dp",
-        id: "__alloyId429"
+        id: "__alloyId408"
     });
-    $.__views.tips.add($.__views.__alloyId429);
-    $.__views.__alloyId430 = Ti.UI.createScrollView({
+    $.__views.tips.add($.__views.__alloyId408);
+    $.__views.__alloyId409 = Ti.UI.createScrollView({
         top: "0dp",
         layout: "vertical",
         bottom: "0dp",
@@ -155,9 +155,9 @@ function Controller() {
         showVerticalScrollIndicator: true,
         showHorizontalScrollIndicator: false,
         backgroundColor: "#efefef",
-        id: "__alloyId430"
+        id: "__alloyId409"
     });
-    $.__views.tips.add($.__views.__alloyId430);
+    $.__views.tips.add($.__views.__alloyId409);
     $.__views.tip_item_container = Ti.UI.createView({
         height: Ti.UI.SIZE,
         left: "5dp",
@@ -166,7 +166,7 @@ function Controller() {
         bottom: "10dp",
         id: "tip_item_container"
     });
-    $.__views.__alloyId430.add($.__views.tip_item_container);
+    $.__views.__alloyId409.add($.__views.tip_item_container);
     exports.destroy = function() {};
     _.extend($, $.__views);
     Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/tips/tips/viewjson", "data/Tips.txt", DisplayTips);
@@ -186,12 +186,12 @@ function Controller() {
         var a = Alloy.Globals.windowStack.indexOf($.tips);
         Alloy.Globals.windowStack.splice(a, 1);
     });
-    __defers["$.__views.__alloyId420!click!closeWindow"] && $.__views.__alloyId420.addEventListener("click", closeWindow);
-    __defers["$.__views.__alloyId422!click!goToHome"] && $.__views.__alloyId422.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId426!click!closeWindow"] && $.__views.__alloyId426.addEventListener("click", closeWindow);
-    __defers["$.__views.__alloyId428!click!goToHome"] && $.__views.__alloyId428.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId432!click!goToHome"] && $.__views.__alloyId432.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId434!click!closeWindow"] && $.__views.__alloyId434.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId399!click!closeWindow"] && $.__views.__alloyId399.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId401!click!goToHome"] && $.__views.__alloyId401.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId405!click!closeWindow"] && $.__views.__alloyId405.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId407!click!goToHome"] && $.__views.__alloyId407.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId411!click!goToHome"] && $.__views.__alloyId411.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId413!click!closeWindow"] && $.__views.__alloyId413.addEventListener("click", closeWindow);
     _.extend($, exports);
 }
 

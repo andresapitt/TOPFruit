@@ -107,7 +107,9 @@ function DisplayDrinks(newJSON)
 			
 			var overlay_drink_image = Alloy.Globals.Utils.RemoteImage({
 			  image: drinks_json[y].Drink.image,
-			  defaultImage:'images/category_images/generic.png'
+			  defaultImage:'images/category_images/generic.png',
+			  height:Ti.UI.SIZE, 
+			  width:Ti.UI.SIZE
 			});
 			if(Ti.Platform.name == "mobileweb" )
 			{

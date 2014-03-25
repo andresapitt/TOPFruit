@@ -1,7 +1,7 @@
 <Alloy>
 	<Window class="container">
-		<ScrollView class="scrollView">
-			<View class="vertical_view" id="age_gate_view" >
+		<ScrollView class="scrollView"  id="age_gate_view" >
+			<View class="vertical_view">
 				<ImageView id="banner_img"  platform="android" image="/images/age_gate/age_gate_banner.png" />
 				<ImageView id="banner_img"  platform="ios" image="/images/age_gate/age_gate_banner.png" />
 				<ImageView id="banner_img"  platform="mobileweb" image="./images/age_gate/age_gate_banner.png" />

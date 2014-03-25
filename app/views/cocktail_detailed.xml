@@ -18,9 +18,9 @@
 		</View>
 		<View class="color_seperator"  platform="android" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="50dp" />
 		<View class="color_seperator"  platform="mobileweb" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="50dp" />
-		<View class="color_seperator"  platform="ios" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="50dp" />
+		<View class="color_seperator"  platform="ios" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="0dp" />
 
-		<ScrollView class="scrollView" id="cocktail_scroll" top="51dp"  >
+		<ScrollView class="scrollView" id="cocktail_scroll"   >
 			<Label id="recipe_title_label" class="recipe_title"></Label>
 			<View id="how_to_make_it" class="recipe_container">
 				<View height="Ti.UI.SIZE">

@@ -1,4 +1,15 @@
-"#scrollText":{
+"#terms_and_conditions[platform=ios]": {
+	backgroundColor:"white",
+	//layout:"vertical",
+	layout:'absolute',
+	height:"100%",
+	orientationModes: [
+        Ti.UI.PORTRAIT,
+        Ti.UI.UPSIDE_PORTRAIT
+    ] ,
+    translucent:false
+},
+"#scrollText[platform=ios]":{
 	layout:"vertical",
 	bottom:"40dp",
 	width:Ti.UI.FILL,

@@ -82,11 +82,11 @@ json_data_cache_updates.push({file:"data/Cocktails.txt", elapsed_time:86400000})
 json_data_cache_updates.push({file:"data/Drinks.txt", elapsed_time:86400000}); // only update drinks every day
 */
 //debug times
-json_data_cache_updates.push({file:"data/Tips.txt", elapsed_time:300000}); // only update tips every five mins
-json_data_cache_updates.push({file:"data/Events.txt", elapsed_time:300000}); // only update events every five mins
-json_data_cache_updates.push({file:"data/Competitions.txt", elapsed_time:300000}); // only update competitions every five mins
-json_data_cache_updates.push({file:"data/Cocktails.txt", elapsed_time:300000}); // only update cocktails every five mins
-json_data_cache_updates.push({file:"data/Drinks.txt", elapsed_time:300000}); // only update drinks every five mins
+json_data_cache_updates.push({file:"data/Tips.txt", elapsed_time:60000}); // only update tips every min
+json_data_cache_updates.push({file:"data/Events.txt", elapsed_time:60000}); // only update events every min
+json_data_cache_updates.push({file:"data/Competitions.txt", elapsed_time:60000}); // only update competitions every min
+json_data_cache_updates.push({file:"data/Cocktails.txt", elapsed_time:60000}); // only update cocktails every min
+json_data_cache_updates.push({file:"data/Drinks.txt", elapsed_time:60000}); // only update drinks every min
 
 Alloy.Globals.windowStack = new Array();
 
@@ -102,80 +102,121 @@ Alloy.Globals.Utils = {
     var tmpext = re.exec(fn)[1];
     return (tmpext) ? tmpext : '';
   },
-  RemoteImage: function(a){
+RemoteImage: function(a){
     a = a || {};
     var md5;
     var needsToSave = false;
     var savedFile;
-	Ti.API.info("image link string : " + a.image);
+	//Ti.API.info("image link string : " + a.image);
 	if(Ti.Platform.name == "android" )
-		{
-			if(a.image){
-				if(a.checkRetina != false)
+	{
+		//Ti.API.info("android phone found");
+		if(a.image){
+			if(a.checkRetina != false)
+			{
+				Ti.API.info("density droid: "  + Ti.Platform.displayCaps.density);
+				if( Ti.Platform.displayCaps.density == 'high' || Ti.Platform.displayCaps.density == 'xhigh' || Ti.Platform.displayCaps.density == 'xxhigh')
 				{
-					Ti.API.info("density droid: "  + Ti.Platform.displayCaps.density);
-					if( Ti.Platform.displayCaps.density == 'high' || Ti.Platform.displayCaps.density == 'xhigh' || Ti.Platform.displayCaps.density == 'xxhigh')
-					{
-				    	var image_url = a.image;
-				    	var basename = image_url.replace(/\\/g,'/').replace( /.*\//, '' );
-				        var segment = basename.split('.');
-				        image_url = image_url.replace(basename, segment[0]+'@2x.'+segment[1]);
-				        Ti.API.info("full image path: " + image_url);
-				        a.image =	image_url;
-				    }
-				}
+			    	var image_url = a.image;
+			    	var basename = image_url.replace(/\\/g,'/').replace( /.*\//, '' );
+			        var segment = basename.split('.');
+			        image_url = image_url.replace(basename, segment[0]+'@2x.'+segment[1]);
+			        Ti.API.info("full image path: " + image_url);
+			        a.image =	image_url;
+			    }
 			}
-			var image = Ti.UI.createImageView(a);
-			return image;
 		}
-		else
-		{
-			if(a.image){
-				if(a.checkRetina != false)
+		
+		md5 = Ti.Utils.md5HexDigest(a.image)+"."+this._getExtension(a.image);
+		Ti.API.info("MD% string return: " + md5);
+		savedFile = Ti.Filesystem.getFile(Titanium.Filesystem.applicationCacheDirectory, md5);
+		if(savedFile.exists()){
+			Ti.API.info("DROID: Image file already cached" );
+			a.image = savedFile;
+		} else {
+			Ti.API.info("DROID: Image file needs to be downloaded" );
+			needsToSave = true;
+		}
+		
+		savedFile = null;
+		
+		var image = Ti.UI.createImageView({image:a.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE});
+		if(needsToSave == true){
+			function saveImageDroid(e){
+				Ti.API.info('DROID: in save image handler');
+		        image.removeEventListener('load',saveImage);
+				//load high/low res version of image
+				Ti.API.info("DROID: image link string : " + image.image);
+				Ti.API.info('saving image of width: ' + image.size.width + ' and height: ' + image.size.height);
+				//savedFile.write( Ti.UI.createImageView({image:image.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE}).toBlob() );
+				//var blob = ;
+				/*savedFile.write( */
+				/*Ti.UI.createImageView({image:image.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE}).toImage(function(blob){
+					Ti.API.info('in callback');
+					savedFile.write( blob);
+				} );*/
+				var fileToSave = Ti.Filesystem.getFile(Titanium.Filesystem.applicationCacheDirectory, e.source.md5);
+				fileToSave.write(e.source.toBlob() );
+				fileToSave = null;
+			//	savedFile = null;
+				//blob = null;
+	      }
+	      Ti.API.info('DROID: adding on load image event handler');
+	      image.md5 = md5;
+	      image.addEventListener('load',saveImageDroid);
+	    }
+	    image.width = a.width;
+	    image.height = a.height;
+		return image;
+	}
+	else if (Ti.Platform.name == "iPhone OS" || Ti.Platform.name == "mobileweb" )
+	{
+		if(a.image){
+			if(a.checkRetina != false)
+			{
+				if( Ti.Platform.displayCaps.density == 'high')
 				{
-					if( Ti.Platform.displayCaps.density == 'high')
-					{
-				    	var image_url = a.image;
-				    	var basename = image_url.replace(/\\/g,'/').replace( /.*\//, '' );
-				        var segment = basename.split('.');
-				        image_url = image_url.replace(basename, segment[0]+'@2x.'+segment[1]);
-				        Ti.API.info("full image path: " + image_url);
-				        a.image =	image_url;
-				    }
+			    	var image_url = a.image;
+			    	var basename = image_url.replace(/\\/g,'/').replace( /.*\//, '' );
+			        var segment = basename.split('.');
+			        image_url = image_url.replace(basename, segment[0]+'@2x.'+segment[1]);
+			        Ti.API.info("full image path: " + image_url);
+			        a.image =	image_url;
+			    }
+			}
+			md5 = Ti.Utils.md5HexDigest(a.image)+this._getExtension(a.image);
+			  
+			Ti.API.info("MD% string return: " + md5);
+			savedFile = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,md5);
+			if(savedFile.exists()){
+				Ti.API.info("Image file already cached" );
+				a.image = savedFile;
+			} else {
+				Ti.API.info("Image file needs to be downloaded" );
+				needsToSave = true;
+			}
+	    }
+	    var image = Ti.UI.createImageView(a);
+		if(needsToSave === true){
+			function saveImage(e){
+		        image.removeEventListener('load',saveImage);
+				//load high/low res version of image
+				Ti.API.info("image link string (iPHONE): " + image.image);
+				if(Ti.Platform.name == "android" )
+				{
+					savedFile.write( Ti.UI.createImageView({image:image.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE}).toBlob() );
 				}
-				md5 = Ti.Utils.md5HexDigest(a.image)+this._getExtension(a.image);
-				  
-				Ti.API.info("MD% string return: " + md5);
-				savedFile = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,md5);
-				if(savedFile.exists()){
-					Ti.API.info("Image file already cached" );
-					a.image = savedFile;
-				} else {
-					Ti.API.info("Image file needs to be downloaded" );
-					needsToSave = true;
+				else
+				{
+					savedFile.write( Ti.UI.createImageView({image:image.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE}).toImage() );
 				}
-		    }
-		    var image = Ti.UI.createImageView(a);
-			if(needsToSave === true){
-				function saveImage(e){
-			        image.removeEventListener('load',saveImage);
-					//load high/low res version of image
-					Ti.API.info("image link string : " + image.image);
-					if(Ti.Platform.name == "android" )
-					{
-						savedFile.write( Ti.UI.createImageView({image:image.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE}).toBlob() );
-					}
-					else
-					{
-						savedFile.write( Ti.UI.createImageView({image:image.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE}).toImage() );
-					}
-		      }
-		      image.addEventListener('load',saveImage);
-		    }
-		    return image;
-   		}
-	},
-	RetrieveJson:function(url, saveFilePath, callback){
+	      }
+	      image.addEventListener('load',saveImage);
+	    }
+	    return image;
+	}
+},
+RetrieveJson:function(url, saveFilePath, callback){
 	 	Ti.API.info("in json retrieve function, url: " + url);
 	 	var xhr = Ti.Network.createHTTPClient();
 		xhr.open("GET", url);
@@ -354,36 +395,6 @@ Alloy.Globals.Utils = {
 
 Alloy.Globals.goToHome = function(e){
 	Ti.API.info("Go to home function, window stack count: " + Alloy.Globals.windowStack.length);
-	
-	/*
-	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
-	{
-		if(i == Alloy.Globals.windowStack.length-1)
-		{
-			if(Ti.Platform.name == "android" )
-			{
-				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: (top window) " + i );
-		}
-		else
-		{
-			if(Ti.Platform.name != "mobileweb" )
-			{
-				Alloy.Globals.windowStack[i].close({animated:false});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-	}
-	*/
 	var stackCount = Alloy.Globals.windowStack.length;
 	for(var i = 0; i < stackCount; i++)
 	{
@@ -413,8 +424,6 @@ Alloy.Globals.goToHome = function(e){
 			Alloy.Globals.windowStack.shift();
 		}
 	}
-	
-	
 };
 
 

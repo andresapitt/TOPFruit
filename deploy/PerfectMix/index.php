@@ -56,7 +56,7 @@
 </head>
 <body>
 	<div class="step">      
-	<a href="itms-services://?action=download-manifest&url=http://www.vocal.ie<? echo dirname($_SERVER['PHP_SELF']); ?>/myApp.plist">
+	<a href="itms-services://?action=download-manifest&url=https://www.vstream.ie/client/idl/myApp.plist">
 			<span class="instructions"><strong>IDL Perfect mix (iPhone)</strong></span>
             <span width="57" class="imagelink"> <img class="download" src="icon.png" width="60" height="60"/></span>
 			<span width="24" class="arrow">&rarr;</span>          

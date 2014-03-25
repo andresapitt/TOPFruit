@@ -91,6 +91,7 @@
 	layout:"vertical",
 	bottom:"0dp",
 	width:Ti.UI.FILL,
+	height:Ti.UI.FILL,
 	contentWidth:"auto",
 	contentHeight:Ti.UI.SIZE,
 	disableBounce:true,
@@ -177,7 +178,7 @@
 ".desc_block[platform=android ]":{
 	backgroundColor:"#fff",
 	height:Ti.UI.SIZE,
-	borderRadius:6,
+	borderRadius:0,
 	borderColor: "#d1d1d1",
 	borderWidth: 1,
 	top:"10dp",
@@ -189,7 +190,7 @@
 ".desc_block[platform=android formFactor=tablet]":{
 	backgroundColor:"#fff",
 	height:Ti.UI.SIZE,
-	borderRadius:8,
+	borderRadius:0,
 	borderColor: "#d1d1d1",
 	borderWidth: 1,
 	top:"10dp",

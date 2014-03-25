@@ -57,38 +57,38 @@ function Controller() {
         id: "best_bars"
     });
     $.__views.best_bars && $.addTopLevelView($.__views.best_bars);
-    $.__views.__alloyId39 = Ti.UI.createView({
+    $.__views.__alloyId18 = Ti.UI.createView({
         height: "50dp",
         width: Ti.UI.FILL,
         top: "0dp",
-        id: "__alloyId39"
+        id: "__alloyId18"
     });
-    $.__views.best_bars.add($.__views.__alloyId39);
-    $.__views.__alloyId40 = Ti.UI.createView({
+    $.__views.best_bars.add($.__views.__alloyId18);
+    $.__views.__alloyId19 = Ti.UI.createView({
         width: Ti.UI.FILL,
         height: Ti.UI.FILL,
         backgroundColor: "#fff",
         opacity: "1",
-        id: "__alloyId40"
+        id: "__alloyId19"
     });
-    $.__views.__alloyId39.add($.__views.__alloyId40);
-    $.__views.__alloyId41 = Ti.UI.createView({
+    $.__views.__alloyId18.add($.__views.__alloyId19);
+    $.__views.__alloyId20 = Ti.UI.createView({
         width: Ti.UI.FILL,
-        id: "__alloyId41"
+        id: "__alloyId20"
     });
-    $.__views.__alloyId39.add($.__views.__alloyId41);
-    $.__views.__alloyId42 = Ti.UI.createView({
+    $.__views.__alloyId18.add($.__views.__alloyId20);
+    $.__views.__alloyId21 = Ti.UI.createView({
         backgroundImage: "/images/icons/back.png",
         left: "10dp",
         top: "10dp",
         bottom: "10dp",
         height: "30dp",
         width: "30dp",
-        id: "__alloyId42"
+        id: "__alloyId21"
     });
-    $.__views.__alloyId41.add($.__views.__alloyId42);
-    closeWindow ? $.__views.__alloyId42.addEventListener("click", closeWindow) : __defers["$.__views.__alloyId42!click!closeWindow"] = true;
-    $.__views.__alloyId43 = Ti.UI.createLabel({
+    $.__views.__alloyId20.add($.__views.__alloyId21);
+    closeWindow ? $.__views.__alloyId21.addEventListener("click", closeWindow) : __defers["$.__views.__alloyId21!click!closeWindow"] = true;
+    $.__views.__alloyId22 = Ti.UI.createLabel({
         color: "#313646",
         font: {
             fontFamily: Alloy.Globals.MainFont,
@@ -98,29 +98,29 @@ function Controller() {
         left: "50dp",
         right: "50dp",
         text: "WORLDS BEST BARS",
-        id: "__alloyId43"
+        id: "__alloyId22"
     });
-    $.__views.__alloyId41.add($.__views.__alloyId43);
-    $.__views.__alloyId44 = Ti.UI.createView({
+    $.__views.__alloyId20.add($.__views.__alloyId22);
+    $.__views.__alloyId23 = Ti.UI.createView({
         backgroundImage: "/images/icons/home.png",
         right: "10dp",
         top: "10dp",
         bottom: "10dp",
         height: "30dp",
         width: "30dp",
-        id: "__alloyId44"
+        id: "__alloyId23"
     });
-    $.__views.__alloyId41.add($.__views.__alloyId44);
-    goToHome ? $.__views.__alloyId44.addEventListener("click", goToHome) : __defers["$.__views.__alloyId44!click!goToHome"] = true;
-    $.__views.__alloyId45 = Ti.UI.createView({
+    $.__views.__alloyId20.add($.__views.__alloyId23);
+    goToHome ? $.__views.__alloyId23.addEventListener("click", goToHome) : __defers["$.__views.__alloyId23!click!goToHome"] = true;
+    $.__views.__alloyId24 = Ti.UI.createView({
         height: "1dp",
         width: Ti.UI.FILL,
         backgroundImage: "/images/common/color_sep.png",
         top: "0dp",
-        id: "__alloyId45"
+        id: "__alloyId24"
     });
-    $.__views.best_bars.add($.__views.__alloyId45);
-    $.__views.__alloyId46 = Ti.UI.createScrollView({
+    $.__views.best_bars.add($.__views.__alloyId24);
+    $.__views.__alloyId25 = Ti.UI.createScrollView({
         top: "0dp",
         layout: "vertical",
         bottom: "0dp",
@@ -131,10 +131,10 @@ function Controller() {
         showVerticalScrollIndicator: true,
         showHorizontalScrollIndicator: false,
         backgroundColor: "#efefef",
-        id: "__alloyId46"
+        id: "__alloyId25"
     });
-    $.__views.best_bars.add($.__views.__alloyId46);
-    $.__views.__alloyId47 = Ti.UI.createView({
+    $.__views.best_bars.add($.__views.__alloyId25);
+    $.__views.__alloyId26 = Ti.UI.createView({
         backgroundColor: "#fff",
         height: Ti.UI.SIZE,
         borderRadius: 4,
@@ -145,16 +145,16 @@ function Controller() {
         right: "5dp",
         layout: "vertical",
         bottom: "10dp",
-        id: "__alloyId47"
+        id: "__alloyId26"
     });
-    $.__views.__alloyId46.add($.__views.__alloyId47);
+    $.__views.__alloyId25.add($.__views.__alloyId26);
     $.__views.best_bars_banner_image_view = Ti.UI.createView({
         id: "best_bars_banner_image_view",
         bottom: "5dp",
         width: Ti.UI.FILL,
         height: Ti.UI.SIZE
     });
-    $.__views.__alloyId47.add($.__views.best_bars_banner_image_view);
+    $.__views.__alloyId26.add($.__views.best_bars_banner_image_view);
     $.__views.best_bars_banner_image = Ti.UI.createImageView({
         id: "best_bars_banner_image",
         image: "/images/worldsbestbars/WBB_banner.png",
@@ -163,7 +163,7 @@ function Controller() {
         bottom: "5dp"
     });
     $.__views.best_bars_banner_image_view.add($.__views.best_bars_banner_image);
-    $.__views.__alloyId48 = Ti.UI.createLabel({
+    $.__views.__alloyId27 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.MainFont,
@@ -177,10 +177,10 @@ function Controller() {
         right: "10dp",
         text: "Think you are one of the World’s Best Bars?",
         width: Ti.UI.FILL,
-        id: "__alloyId48"
+        id: "__alloyId27"
     });
-    $.__views.__alloyId47.add($.__views.__alloyId48);
-    $.__views.__alloyId49 = Ti.UI.createButton({
+    $.__views.__alloyId26.add($.__views.__alloyId27);
+    $.__views.__alloyId28 = Ti.UI.createButton({
         top: "10dp",
         color: "#fff",
         backgroundColor: Alloy.Globals.PrimaryColor,
@@ -194,11 +194,11 @@ function Controller() {
         borderRadius: 4,
         bottom: "10dp",
         title: "Submit your bar for consideration!",
-        id: "__alloyId49"
+        id: "__alloyId28"
     });
-    $.__views.__alloyId47.add($.__views.__alloyId49);
-    submitBarForConsideration ? $.__views.__alloyId49.addEventListener("click", submitBarForConsideration) : __defers["$.__views.__alloyId49!click!submitBarForConsideration"] = true;
-    $.__views.__alloyId50 = Ti.UI.createLabel({
+    $.__views.__alloyId26.add($.__views.__alloyId28);
+    submitBarForConsideration ? $.__views.__alloyId28.addEventListener("click", submitBarForConsideration) : __defers["$.__views.__alloyId28!click!submitBarForConsideration"] = true;
+    $.__views.__alloyId29 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.MainFont,
@@ -212,17 +212,17 @@ function Controller() {
         right: "10dp",
         text: "If you are already on the site, tell us about your new cocktail or menu via",
         width: Ti.UI.FILL,
-        id: "__alloyId50"
+        id: "__alloyId29"
     });
-    $.__views.__alloyId47.add($.__views.__alloyId50);
-    $.__views.__alloyId51 = Ti.UI.createView({
+    $.__views.__alloyId26.add($.__views.__alloyId29);
+    $.__views.__alloyId30 = Ti.UI.createView({
         layout: "horizontal",
         height: Ti.UI.SIZE,
         bottom: "20dp",
         top: "10dp",
-        id: "__alloyId51"
+        id: "__alloyId30"
     });
-    $.__views.__alloyId47.add($.__views.__alloyId51);
+    $.__views.__alloyId26.add($.__views.__alloyId30);
     $.__views.twitterParent = Ti.UI.createView({
         left: "5dp",
         right: "4dp",
@@ -230,9 +230,18 @@ function Controller() {
         height: Ti.UI.SIZE,
         id: "twitterParent"
     });
-    $.__views.__alloyId51.add($.__views.twitterParent);
+    $.__views.__alloyId30.add($.__views.twitterParent);
     $.__views.twitterBtn = Ti.UI.createLabel({
-        backgroundColor: "#d1d1d1",
+        width: "93dp",
+        height: "34dp",
+        backgroundColor: "none",
+        borderRadius: 4,
+        font: {
+            fontFamily: Alloy.Globals.BoldFont,
+            fontSize: "12dp"
+        },
+        color: "#fff",
+        tintColor: "#fff",
         backgroundGradient: {
             type: "linear",
             startPoint: {
@@ -251,15 +260,6 @@ function Controller() {
                 offset: 1
             } ]
         },
-        width: "93dp",
-        height: "34dp",
-        borderRadius: 4,
-        font: {
-            fontFamily: Alloy.Globals.BoldFont,
-            fontSize: "12dp"
-        },
-        color: "#fff",
-        tintColor: "#fff",
         id: "twitterBtn",
         html: '<a href="http://twitter.com/WorldsBestBars" target="_blank"><div style="height:30px;"><img src="./images/icons/twitterbird@2x.png" style="width:25px;height:20px;top:5px;left:5px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Twitter</span></div></a>'
     });
@@ -271,9 +271,18 @@ function Controller() {
         height: Ti.UI.SIZE,
         id: "facebookParent"
     });
-    $.__views.__alloyId51.add($.__views.facebookParent);
+    $.__views.__alloyId30.add($.__views.facebookParent);
     $.__views.facebookBtn = Ti.UI.createLabel({
-        backgroundColor: "#d1d1d1",
+        width: "93dp",
+        height: "34dp",
+        backgroundColor: "none",
+        borderRadius: 4,
+        font: {
+            fontFamily: Alloy.Globals.BoldFont,
+            fontSize: "12dp"
+        },
+        color: "#fff",
+        tintColor: "#fff",
         backgroundGradient: {
             type: "linear",
             startPoint: {
@@ -292,15 +301,6 @@ function Controller() {
                 offset: 1
             } ]
         },
-        width: "93dp",
-        height: "34dp",
-        borderRadius: 4,
-        font: {
-            fontFamily: Alloy.Globals.BoldFont,
-            fontSize: "12dp"
-        },
-        color: "#fff",
-        tintColor: "#fff",
         id: "facebookBtn",
         html: '<a href="http://www.facebook.com/149071961796732" target="_blank"><div style="height:30px;"><img src="./images/icons/facebookIcon@2x.png" style="width:20px;height:25px;left:3px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Facebook</span></div></a>'
     });
@@ -312,9 +312,18 @@ function Controller() {
         height: Ti.UI.SIZE,
         id: "websiteParent"
     });
-    $.__views.__alloyId51.add($.__views.websiteParent);
+    $.__views.__alloyId30.add($.__views.websiteParent);
     $.__views.websiteBtn = Ti.UI.createLabel({
-        backgroundColor: "#d1d1d1",
+        width: "93dp",
+        height: "34dp",
+        backgroundColor: "none",
+        borderRadius: 4,
+        font: {
+            fontFamily: Alloy.Globals.BoldFont,
+            fontSize: "12dp"
+        },
+        color: "#fff",
+        tintColor: "#fff",
         backgroundGradient: {
             type: "linear",
             startPoint: {
@@ -333,15 +342,6 @@ function Controller() {
                 offset: 1
             } ]
         },
-        width: "93dp",
-        height: "34dp",
-        borderRadius: 4,
-        font: {
-            fontFamily: Alloy.Globals.BoldFont,
-            fontSize: "12dp"
-        },
-        color: "#fff",
-        tintColor: "#fff",
         id: "websiteBtn",
         html: '<a href="mailto:lisa@vstream.ie?Subject=Perfect%20Mix%20-%20Best%20Bars%20Consideration" target="_top"><div style="height:30px;"><img src="./images/icons/websiteIcon@2x.png" style="width:25px;height:20px;top:5px;left:5px"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Email</span></div></a>'
     });
@@ -365,19 +365,19 @@ function Controller() {
         var a = Alloy.Globals.windowStack.indexOf($.best_bars);
         Alloy.Globals.windowStack.splice(a, 1);
     });
-    __defers["$.__views.__alloyId36!click!closeWindow"] && $.__views.__alloyId36.addEventListener("click", closeWindow);
-    __defers["$.__views.__alloyId38!click!goToHome"] && $.__views.__alloyId38.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId42!click!closeWindow"] && $.__views.__alloyId42.addEventListener("click", closeWindow);
-    __defers["$.__views.__alloyId44!click!goToHome"] && $.__views.__alloyId44.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId49!click!submitBarForConsideration"] && $.__views.__alloyId49.addEventListener("click", submitBarForConsideration);
+    __defers["$.__views.__alloyId15!click!closeWindow"] && $.__views.__alloyId15.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId17!click!goToHome"] && $.__views.__alloyId17.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId21!click!closeWindow"] && $.__views.__alloyId21.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId23!click!goToHome"] && $.__views.__alloyId23.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId28!click!submitBarForConsideration"] && $.__views.__alloyId28.addEventListener("click", submitBarForConsideration);
     __defers["$.__views.twitterBtn!click!openTwitter"] && $.__views.twitterBtn.addEventListener("click", openTwitter);
     __defers["$.__views.twitterBtn!click!openTwitter"] && $.__views.twitterBtn.addEventListener("click", openTwitter);
     __defers["$.__views.facebookBtn!click!openFacebook"] && $.__views.facebookBtn.addEventListener("click", openFacebook);
     __defers["$.__views.facebookBtn!click!openFacebook"] && $.__views.facebookBtn.addEventListener("click", openFacebook);
     __defers["$.__views.websiteBtn!click!openEmail"] && $.__views.websiteBtn.addEventListener("click", openEmail);
     __defers["$.__views.websiteBtn!click!openEmail"] && $.__views.websiteBtn.addEventListener("click", openEmail);
-    __defers["$.__views.__alloyId53!click!goToHome"] && $.__views.__alloyId53.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId55!click!closeWindow"] && $.__views.__alloyId55.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId32!click!goToHome"] && $.__views.__alloyId32.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId34!click!closeWindow"] && $.__views.__alloyId34.addEventListener("click", closeWindow);
     _.extend($, exports);
 }
 

@@ -18,7 +18,7 @@ function Controller() {
             Ti.App.Properties.setBool("over18", true);
             Alloy.Globals.parent.open();
             $.age_gate.close();
-        } else alert("Under 18");
+        } else alert("You must be at least 18 years old to use The Perfect Mix app!");
     }
     function TandCBtnHandler() {
         var terms_and_conditions = Alloy.createController("terms_and_conditions").getView();
@@ -50,7 +50,9 @@ function Controller() {
         animation.top = "-78dp";
         animation.duration = 400;
         $.age_gate_view.animate(animation);
-        $.picker_view.height = Ti.UI.FILL;
+        $.picker_view.height = "300dp";
+        $.picker_view.bottom = 0;
+        Ti.API.info("height after animation: " + $.picker_view.height + ", bottom: " + $.picker_view.bottom);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "age_gate";
@@ -80,7 +82,7 @@ function Controller() {
         id: "age_gate"
     });
     $.__views.age_gate && $.addTopLevelView($.__views.age_gate);
-    $.__views.__alloyId0 = Ti.UI.createScrollView({
+    $.__views.age_gate_view = Ti.UI.createScrollView({
         top: "0dp",
         layout: "vertical",
         bottom: "0dp",
@@ -91,24 +93,25 @@ function Controller() {
         showVerticalScrollIndicator: true,
         showHorizontalScrollIndicator: false,
         backgroundColor: "#efefef",
-        id: "__alloyId0"
+        id: "age_gate_view"
     });
-    $.__views.age_gate.add($.__views.__alloyId0);
-    $.__views.age_gate_view = Ti.UI.createView({
+    $.__views.age_gate.add($.__views.age_gate_view);
+    $.__views.__alloyId0 = Ti.UI.createView({
         layout: "vertical",
         top: "0dp",
         height: Ti.UI.SIZE,
-        id: "age_gate_view"
+        id: "__alloyId0"
     });
-    $.__views.__alloyId0.add($.__views.age_gate_view);
+    $.__views.age_gate_view.add($.__views.__alloyId0);
     $.__views.banner_img = Ti.UI.createImageView({
-        top: "20dp",
-        height: "180dp",
-        width: Ti.UI.FILL,
+        top: "40dp",
+        height: "102dp",
+        width: "320dp",
+        bottom: "40dp",
         id: "banner_img",
         image: "./images/age_gate/age_gate_banner.png"
     });
-    $.__views.age_gate_view.add($.__views.banner_img);
+    $.__views.__alloyId0.add($.__views.banner_img);
     $.__views.__alloyId1 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -121,7 +124,7 @@ function Controller() {
         text: "TO DISCOVER THE PERFECT MIX \nWE FIRST NEED TO CHECK YOUR AGE",
         id: "__alloyId1"
     });
-    $.__views.age_gate_view.add($.__views.__alloyId1);
+    $.__views.__alloyId0.add($.__views.__alloyId1);
     $.__views.__alloyId4 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -135,7 +138,7 @@ function Controller() {
         text: "ENTER YOUR DOB",
         id: "__alloyId4"
     });
-    $.__views.age_gate_view.add($.__views.__alloyId4);
+    $.__views.__alloyId0.add($.__views.__alloyId4);
     $.__views.dob_picker = Ti.UI.createView({
         height: Ti.UI.SIZE,
         layout: "horizontal",
@@ -143,7 +146,7 @@ function Controller() {
         width: Ti.UI.SIZE,
         id: "dob_picker"
     });
-    $.__views.age_gate_view.add($.__views.dob_picker);
+    $.__views.__alloyId0.add($.__views.dob_picker);
     $.__views.day_picker = Ti.UI.createPicker({
         backgroundColor: "#898989",
         left: "8dp",
@@ -197,7 +200,7 @@ function Controller() {
         id: "submitBtn",
         title: "Submit"
     });
-    $.__views.age_gate_view.add($.__views.submitBtn);
+    $.__views.__alloyId0.add($.__views.submitBtn);
     submitBtnHandler ? $.__views.submitBtn.addEventListener("click", submitBtnHandler) : __defers["$.__views.submitBtn!click!submitBtnHandler"] = true;
     $.__views.TandC_View = Ti.UI.createView({
         top: "10dp",
@@ -206,7 +209,7 @@ function Controller() {
         layout: "vertical",
         id: "TandC_View"
     });
-    $.__views.age_gate_view.add($.__views.TandC_View);
+    $.__views.__alloyId0.add($.__views.TandC_View);
     $.__views.__alloyId8 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -254,7 +257,7 @@ function Controller() {
         image: "./images/age_gate/drinkaware.png",
         top: "5dp"
     });
-    $.__views.__alloyId0.add($.__views.drinkaware_img);
+    $.__views.age_gate_view.add($.__views.drinkaware_img);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var date_data;

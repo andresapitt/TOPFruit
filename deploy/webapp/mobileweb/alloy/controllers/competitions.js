@@ -96,38 +96,38 @@ function Controller() {
         id: "competitions"
     });
     $.__views.competitions && $.addTopLevelView($.__views.competitions);
-    $.__views.__alloyId176 = Ti.UI.createView({
+    $.__views.__alloyId155 = Ti.UI.createView({
         height: "50dp",
         width: Ti.UI.FILL,
         top: "0dp",
-        id: "__alloyId176"
+        id: "__alloyId155"
     });
-    $.__views.competitions.add($.__views.__alloyId176);
-    $.__views.__alloyId177 = Ti.UI.createView({
+    $.__views.competitions.add($.__views.__alloyId155);
+    $.__views.__alloyId156 = Ti.UI.createView({
         width: Ti.UI.FILL,
         height: Ti.UI.FILL,
         backgroundColor: "#fff",
         opacity: "1",
-        id: "__alloyId177"
+        id: "__alloyId156"
     });
-    $.__views.__alloyId176.add($.__views.__alloyId177);
-    $.__views.__alloyId178 = Ti.UI.createView({
+    $.__views.__alloyId155.add($.__views.__alloyId156);
+    $.__views.__alloyId157 = Ti.UI.createView({
         width: Ti.UI.FILL,
-        id: "__alloyId178"
+        id: "__alloyId157"
     });
-    $.__views.__alloyId176.add($.__views.__alloyId178);
-    $.__views.__alloyId179 = Ti.UI.createView({
+    $.__views.__alloyId155.add($.__views.__alloyId157);
+    $.__views.__alloyId158 = Ti.UI.createView({
         backgroundImage: "/images/icons/back.png",
         left: "10dp",
         top: "10dp",
         bottom: "10dp",
         height: "30dp",
         width: "30dp",
-        id: "__alloyId179"
+        id: "__alloyId158"
     });
-    $.__views.__alloyId178.add($.__views.__alloyId179);
-    closeWindow ? $.__views.__alloyId179.addEventListener("click", closeWindow) : __defers["$.__views.__alloyId179!click!closeWindow"] = true;
-    $.__views.__alloyId180 = Ti.UI.createLabel({
+    $.__views.__alloyId157.add($.__views.__alloyId158);
+    closeWindow ? $.__views.__alloyId158.addEventListener("click", closeWindow) : __defers["$.__views.__alloyId158!click!closeWindow"] = true;
+    $.__views.__alloyId159 = Ti.UI.createLabel({
         color: "#313646",
         font: {
             fontFamily: Alloy.Globals.MainFont,
@@ -137,29 +137,29 @@ function Controller() {
         left: "50dp",
         right: "50dp",
         text: "COMPETITIONS",
-        id: "__alloyId180"
+        id: "__alloyId159"
     });
-    $.__views.__alloyId178.add($.__views.__alloyId180);
-    $.__views.__alloyId181 = Ti.UI.createView({
+    $.__views.__alloyId157.add($.__views.__alloyId159);
+    $.__views.__alloyId160 = Ti.UI.createView({
         backgroundImage: "/images/icons/home.png",
         right: "10dp",
         top: "10dp",
         bottom: "10dp",
         height: "30dp",
         width: "30dp",
-        id: "__alloyId181"
+        id: "__alloyId160"
     });
-    $.__views.__alloyId178.add($.__views.__alloyId181);
-    goToHome ? $.__views.__alloyId181.addEventListener("click", goToHome) : __defers["$.__views.__alloyId181!click!goToHome"] = true;
-    $.__views.__alloyId182 = Ti.UI.createView({
+    $.__views.__alloyId157.add($.__views.__alloyId160);
+    goToHome ? $.__views.__alloyId160.addEventListener("click", goToHome) : __defers["$.__views.__alloyId160!click!goToHome"] = true;
+    $.__views.__alloyId161 = Ti.UI.createView({
         height: "1dp",
         width: Ti.UI.FILL,
         backgroundImage: "/images/common/color_sep.png",
         top: "0dp",
-        id: "__alloyId182"
+        id: "__alloyId161"
     });
-    $.__views.competitions.add($.__views.__alloyId182);
-    $.__views.__alloyId183 = Ti.UI.createScrollView({
+    $.__views.competitions.add($.__views.__alloyId161);
+    $.__views.__alloyId162 = Ti.UI.createScrollView({
         top: "0dp",
         layout: "vertical",
         bottom: "0dp",
@@ -170,9 +170,9 @@ function Controller() {
         showVerticalScrollIndicator: true,
         showHorizontalScrollIndicator: false,
         backgroundColor: "#efefef",
-        id: "__alloyId183"
+        id: "__alloyId162"
     });
-    $.__views.competitions.add($.__views.__alloyId183);
+    $.__views.competitions.add($.__views.__alloyId162);
     $.__views.competition_item_container_sc = Ti.UI.createView({
         backgroundColor: "#fff",
         height: Ti.UI.SIZE,
@@ -186,7 +186,7 @@ function Controller() {
         bottom: "10dp",
         id: "competition_item_container_sc"
     });
-    $.__views.__alloyId183.add($.__views.competition_item_container_sc);
+    $.__views.__alloyId162.add($.__views.competition_item_container_sc);
     exports.destroy = function() {};
     _.extend($, $.__views);
     Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/competitions/competitions/viewjson", "data/Competitions.txt", DisplayCompetitions);
@@ -206,12 +206,12 @@ function Controller() {
         var a = Alloy.Globals.windowStack.indexOf($.competitions);
         Alloy.Globals.windowStack.splice(a, 1);
     });
-    __defers["$.__views.__alloyId173!click!closeWindow"] && $.__views.__alloyId173.addEventListener("click", closeWindow);
-    __defers["$.__views.__alloyId175!click!goToHome"] && $.__views.__alloyId175.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId179!click!closeWindow"] && $.__views.__alloyId179.addEventListener("click", closeWindow);
-    __defers["$.__views.__alloyId181!click!goToHome"] && $.__views.__alloyId181.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId185!click!goToHome"] && $.__views.__alloyId185.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId187!click!closeWindow"] && $.__views.__alloyId187.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId152!click!closeWindow"] && $.__views.__alloyId152.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId154!click!goToHome"] && $.__views.__alloyId154.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId158!click!closeWindow"] && $.__views.__alloyId158.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId160!click!goToHome"] && $.__views.__alloyId160.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId164!click!goToHome"] && $.__views.__alloyId164.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId166!click!closeWindow"] && $.__views.__alloyId166.addEventListener("click", closeWindow);
     _.extend($, exports);
 }
 

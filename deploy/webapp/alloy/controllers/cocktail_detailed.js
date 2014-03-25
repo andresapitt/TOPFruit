@@ -189,38 +189,38 @@ function Controller() {
         id: "cocktail_detailed"
     });
     $.__views.cocktail_detailed && $.addTopLevelView($.__views.cocktail_detailed);
-    $.__views.__alloyId98 = Ti.UI.createView({
+    $.__views.__alloyId77 = Ti.UI.createView({
         height: "50dp",
         width: Ti.UI.FILL,
         top: "0dp",
-        id: "__alloyId98"
+        id: "__alloyId77"
     });
-    $.__views.cocktail_detailed.add($.__views.__alloyId98);
-    $.__views.__alloyId99 = Ti.UI.createView({
+    $.__views.cocktail_detailed.add($.__views.__alloyId77);
+    $.__views.__alloyId78 = Ti.UI.createView({
         width: Ti.UI.FILL,
         height: Ti.UI.FILL,
         backgroundColor: "#fff",
         opacity: "1",
-        id: "__alloyId99"
+        id: "__alloyId78"
     });
-    $.__views.__alloyId98.add($.__views.__alloyId99);
-    $.__views.__alloyId100 = Ti.UI.createView({
+    $.__views.__alloyId77.add($.__views.__alloyId78);
+    $.__views.__alloyId79 = Ti.UI.createView({
         width: Ti.UI.FILL,
-        id: "__alloyId100"
+        id: "__alloyId79"
     });
-    $.__views.__alloyId98.add($.__views.__alloyId100);
-    $.__views.__alloyId101 = Ti.UI.createView({
+    $.__views.__alloyId77.add($.__views.__alloyId79);
+    $.__views.__alloyId80 = Ti.UI.createView({
         backgroundImage: "/images/icons/back.png",
         left: "10dp",
         top: "10dp",
         bottom: "10dp",
         height: "30dp",
         width: "30dp",
-        id: "__alloyId101"
+        id: "__alloyId80"
     });
-    $.__views.__alloyId100.add($.__views.__alloyId101);
-    closeWindow ? $.__views.__alloyId101.addEventListener("click", closeWindow) : __defers["$.__views.__alloyId101!click!closeWindow"] = true;
-    $.__views.__alloyId102 = Ti.UI.createLabel({
+    $.__views.__alloyId79.add($.__views.__alloyId80);
+    closeWindow ? $.__views.__alloyId80.addEventListener("click", closeWindow) : __defers["$.__views.__alloyId80!click!closeWindow"] = true;
+    $.__views.__alloyId81 = Ti.UI.createLabel({
         color: "#313646",
         font: {
             fontFamily: Alloy.Globals.MainFont,
@@ -230,28 +230,28 @@ function Controller() {
         left: "50dp",
         right: "50dp",
         text: "DRINK RECIPE",
-        id: "__alloyId102"
+        id: "__alloyId81"
     });
-    $.__views.__alloyId100.add($.__views.__alloyId102);
-    $.__views.__alloyId103 = Ti.UI.createView({
+    $.__views.__alloyId79.add($.__views.__alloyId81);
+    $.__views.__alloyId82 = Ti.UI.createView({
         backgroundImage: "/images/icons/home.png",
         right: "10dp",
         top: "10dp",
         bottom: "10dp",
         height: "30dp",
         width: "30dp",
-        id: "__alloyId103"
+        id: "__alloyId82"
     });
-    $.__views.__alloyId100.add($.__views.__alloyId103);
-    goToHome ? $.__views.__alloyId103.addEventListener("click", goToHome) : __defers["$.__views.__alloyId103!click!goToHome"] = true;
-    $.__views.__alloyId105 = Ti.UI.createView({
+    $.__views.__alloyId79.add($.__views.__alloyId82);
+    goToHome ? $.__views.__alloyId82.addEventListener("click", goToHome) : __defers["$.__views.__alloyId82!click!goToHome"] = true;
+    $.__views.__alloyId84 = Ti.UI.createView({
         height: "1dp",
         width: Ti.UI.FILL,
         backgroundImage: "/images/common/color_sep.png",
         top: "50dp",
-        id: "__alloyId105"
+        id: "__alloyId84"
     });
-    $.__views.cocktail_detailed.add($.__views.__alloyId105);
+    $.__views.cocktail_detailed.add($.__views.__alloyId84);
     $.__views.cocktail_scroll = Ti.UI.createScrollView({
         top: "51dp",
         layout: "vertical",
@@ -288,15 +288,15 @@ function Controller() {
         borderColor: "#d1d1d1",
         borderWidth: 1,
         layout: "vertical",
-        top: "0dp",
+        top: "10dp",
         id: "how_to_make_it"
     });
     $.__views.cocktail_scroll.add($.__views.how_to_make_it);
-    $.__views.__alloyId107 = Ti.UI.createView({
+    $.__views.__alloyId86 = Ti.UI.createView({
         height: Ti.UI.SIZE,
-        id: "__alloyId107"
+        id: "__alloyId86"
     });
-    $.__views.how_to_make_it.add($.__views.__alloyId107);
+    $.__views.how_to_make_it.add($.__views.__alloyId86);
     $.__views.fav_heart = Ti.UI.createImageView({
         top: "10dp",
         right: "10dp",
@@ -304,9 +304,9 @@ function Controller() {
         id: "fav_heart",
         image: "./images/favs/heart_outline.png"
     });
-    $.__views.__alloyId107.add($.__views.fav_heart);
+    $.__views.__alloyId86.add($.__views.fav_heart);
     fav_clicked ? $.__views.fav_heart.addEventListener("click", fav_clicked) : __defers["$.__views.fav_heart!click!fav_clicked"] = true;
-    $.__views.__alloyId108 = Ti.UI.createLabel({
+    $.__views.__alloyId87 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.BoldFont,
@@ -319,22 +319,22 @@ function Controller() {
         textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
         touchEnabled: false,
         text: "How to make it",
-        id: "__alloyId108"
+        id: "__alloyId87"
     });
-    $.__views.__alloyId107.add($.__views.__alloyId108);
-    $.__views.__alloyId109 = Ti.UI.createView({
+    $.__views.__alloyId86.add($.__views.__alloyId87);
+    $.__views.__alloyId88 = Ti.UI.createView({
         height: "1",
         width: "140dp",
         backgroundColor: "#d1d1d1",
         bottom: "0dp",
-        id: "__alloyId109"
+        id: "__alloyId88"
     });
-    $.__views.__alloyId107.add($.__views.__alloyId109);
-    $.__views.__alloyId110 = Ti.UI.createView({
+    $.__views.__alloyId86.add($.__views.__alloyId88);
+    $.__views.__alloyId89 = Ti.UI.createView({
         height: Ti.UI.SIZE,
-        id: "__alloyId110"
+        id: "__alloyId89"
     });
-    $.__views.how_to_make_it.add($.__views.__alloyId110);
+    $.__views.how_to_make_it.add($.__views.__alloyId89);
     $.__views.recipe_image_ani_view = Ti.UI.createView({
         left: "-30%",
         width: "30%",
@@ -342,7 +342,7 @@ function Controller() {
         top: "10dp",
         id: "recipe_image_ani_view"
     });
-    $.__views.__alloyId110.add($.__views.recipe_image_ani_view);
+    $.__views.__alloyId89.add($.__views.recipe_image_ani_view);
     $.__views.how_to_view = Ti.UI.createView({
         layout: "vertical",
         height: Ti.UI.SIZE,
@@ -351,7 +351,7 @@ function Controller() {
         top: "0dp",
         id: "how_to_view"
     });
-    $.__views.__alloyId110.add($.__views.how_to_view);
+    $.__views.__alloyId89.add($.__views.how_to_view);
     $.__views.cocktail_desc_container = Ti.UI.createView({
         id: "cocktail_desc_container",
         layout: "vertical",
@@ -359,7 +359,7 @@ function Controller() {
         width: Ti.UI.FILL
     });
     $.__views.how_to_view.add($.__views.cocktail_desc_container);
-    $.__views.__alloyId111 = Ti.UI.createLabel({
+    $.__views.__alloyId90 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.BoldFont,
@@ -372,9 +372,9 @@ function Controller() {
         textAlign: Ti.UI.LEFT,
         touchEnabled: false,
         text: "Description",
-        id: "__alloyId111"
+        id: "__alloyId90"
     });
-    $.__views.cocktail_desc_container.add($.__views.__alloyId111);
+    $.__views.cocktail_desc_container.add($.__views.__alloyId90);
     $.__views.cocktail_desc = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
@@ -397,7 +397,7 @@ function Controller() {
         width: Ti.UI.FILL
     });
     $.__views.how_to_view.add($.__views.glassware_container);
-    $.__views.__alloyId112 = Ti.UI.createLabel({
+    $.__views.__alloyId91 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.BoldFont,
@@ -410,9 +410,9 @@ function Controller() {
         textAlign: Ti.UI.LEFT,
         touchEnabled: false,
         text: "Glassware",
-        id: "__alloyId112"
+        id: "__alloyId91"
     });
-    $.__views.glassware_container.add($.__views.__alloyId112);
+    $.__views.glassware_container.add($.__views.__alloyId91);
     $.__views.glassware = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
@@ -435,7 +435,7 @@ function Controller() {
         width: Ti.UI.FILL
     });
     $.__views.how_to_view.add($.__views.ingredients_container);
-    $.__views.__alloyId113 = Ti.UI.createLabel({
+    $.__views.__alloyId92 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.BoldFont,
@@ -448,9 +448,9 @@ function Controller() {
         textAlign: Ti.UI.LEFT,
         touchEnabled: false,
         text: "Ingredients",
-        id: "__alloyId113"
+        id: "__alloyId92"
     });
-    $.__views.ingredients_container.add($.__views.__alloyId113);
+    $.__views.ingredients_container.add($.__views.__alloyId92);
     $.__views.ingredients = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
@@ -473,7 +473,7 @@ function Controller() {
         width: Ti.UI.FILL
     });
     $.__views.how_to_view.add($.__views.method_container);
-    $.__views.__alloyId114 = Ti.UI.createLabel({
+    $.__views.__alloyId93 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.BoldFont,
@@ -486,9 +486,9 @@ function Controller() {
         textAlign: Ti.UI.LEFT,
         touchEnabled: false,
         text: "Method",
-        id: "__alloyId114"
+        id: "__alloyId93"
     });
-    $.__views.method_container.add($.__views.__alloyId114);
+    $.__views.method_container.add($.__views.__alloyId93);
     $.__views.method = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
@@ -511,7 +511,7 @@ function Controller() {
         width: Ti.UI.FILL
     });
     $.__views.how_to_view.add($.__views.garnish_container);
-    $.__views.__alloyId115 = Ti.UI.createLabel({
+    $.__views.__alloyId94 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.BoldFont,
@@ -524,9 +524,9 @@ function Controller() {
         textAlign: Ti.UI.LEFT,
         touchEnabled: false,
         text: "Garnish",
-        id: "__alloyId115"
+        id: "__alloyId94"
     });
-    $.__views.garnish_container.add($.__views.__alloyId115);
+    $.__views.garnish_container.add($.__views.__alloyId94);
     $.__views.garnish = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
@@ -542,12 +542,12 @@ function Controller() {
         id: "garnish"
     });
     $.__views.garnish_container.add($.__views.garnish);
-    $.__views.__alloyId116 = Ti.UI.createView({
+    $.__views.__alloyId95 = Ti.UI.createView({
         height: "10dp",
         width: "140dp",
-        id: "__alloyId116"
+        id: "__alloyId95"
     });
-    $.__views.how_to_make_it.add($.__views.__alloyId116);
+    $.__views.how_to_make_it.add($.__views.__alloyId95);
     $.__views.video_container = Ti.UI.createView({
         left: "5dp",
         right: "5dp",
@@ -557,7 +557,7 @@ function Controller() {
         borderColor: "#d1d1d1",
         borderWidth: 1,
         layout: "composite",
-        top: "0dp",
+        top: "10dp",
         id: "video_container"
     });
     $.__views.cocktail_scroll.add($.__views.video_container);
@@ -570,11 +570,11 @@ function Controller() {
         borderColor: "#d1d1d1",
         borderWidth: 1,
         layout: "vertical",
-        top: "0dp",
+        top: "10dp",
         id: "recipe_container_bottom"
     });
     $.__views.cocktail_scroll.add($.__views.recipe_container_bottom);
-    $.__views.__alloyId117 = Ti.UI.createLabel({
+    $.__views.__alloyId96 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.BoldFont,
@@ -587,22 +587,22 @@ function Controller() {
         textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
         touchEnabled: false,
         text: "Rating",
-        id: "__alloyId117"
+        id: "__alloyId96"
     });
-    $.__views.recipe_container_bottom.add($.__views.__alloyId117);
-    $.__views.__alloyId118 = Ti.UI.createView({
+    $.__views.recipe_container_bottom.add($.__views.__alloyId96);
+    $.__views.__alloyId97 = Ti.UI.createView({
         height: "1",
         width: "140dp",
         backgroundColor: "#d1d1d1",
-        id: "__alloyId118"
+        id: "__alloyId97"
     });
-    $.__views.recipe_container_bottom.add($.__views.__alloyId118);
-    $.__views.__alloyId119 = Ti.UI.createView({
+    $.__views.recipe_container_bottom.add($.__views.__alloyId97);
+    $.__views.__alloyId98 = Ti.UI.createView({
         layout: "vertical",
         height: Ti.UI.SIZE,
-        id: "__alloyId119"
+        id: "__alloyId98"
     });
-    $.__views.recipe_container_bottom.add($.__views.__alloyId119);
+    $.__views.recipe_container_bottom.add($.__views.__alloyId98);
     $.__views.rating_view = Ti.UI.createView({
         id: "rating_view",
         layout: "horizontal",
@@ -610,7 +610,7 @@ function Controller() {
         width: Ti.UI.SIZE,
         top: "5dp"
     });
-    $.__views.__alloyId119.add($.__views.rating_view);
+    $.__views.__alloyId98.add($.__views.rating_view);
     $.__views.rating_cta = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
@@ -625,8 +625,8 @@ function Controller() {
         text: "Rate this recipe",
         id: "rating_cta"
     });
-    $.__views.__alloyId119.add($.__views.rating_cta);
-    $.__views.__alloyId120 = Ti.UI.createLabel({
+    $.__views.__alloyId98.add($.__views.rating_cta);
+    $.__views.__alloyId99 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.BoldFont,
@@ -639,17 +639,17 @@ function Controller() {
         textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
         touchEnabled: false,
         text: "Comments",
-        id: "__alloyId120"
+        id: "__alloyId99"
     });
-    $.__views.recipe_container_bottom.add($.__views.__alloyId120);
-    $.__views.__alloyId121 = Ti.UI.createView({
+    $.__views.recipe_container_bottom.add($.__views.__alloyId99);
+    $.__views.__alloyId100 = Ti.UI.createView({
         height: "1",
         width: "140dp",
         backgroundColor: "#d1d1d1",
-        id: "__alloyId121"
+        id: "__alloyId100"
     });
-    $.__views.recipe_container_bottom.add($.__views.__alloyId121);
-    $.__views.__alloyId122 = Ti.UI.createButton({
+    $.__views.recipe_container_bottom.add($.__views.__alloyId100);
+    $.__views.__alloyId101 = Ti.UI.createButton({
         top: "10dp",
         color: "#ffffff",
         backgroundColor: Alloy.Globals.PrimaryColor,
@@ -662,10 +662,10 @@ function Controller() {
         borderRadius: 4,
         textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
         title: "Add Comments / Review",
-        id: "__alloyId122"
+        id: "__alloyId101"
     });
-    $.__views.recipe_container_bottom.add($.__views.__alloyId122);
-    submitCommentBtnHandler ? $.__views.__alloyId122.addEventListener("click", submitCommentBtnHandler) : __defers["$.__views.__alloyId122!click!submitCommentBtnHandler"] = true;
+    $.__views.recipe_container_bottom.add($.__views.__alloyId101);
+    submitCommentBtnHandler ? $.__views.__alloyId101.addEventListener("click", submitCommentBtnHandler) : __defers["$.__views.__alloyId101!click!submitCommentBtnHandler"] = true;
     $.__views.recipe_social_container = Ti.UI.createView({
         id: "recipe_social_container",
         width: Ti.UI.FILL,
@@ -673,7 +673,7 @@ function Controller() {
         layout: "vertical"
     });
     $.__views.recipe_container_bottom.add($.__views.recipe_social_container);
-    $.__views.__alloyId123 = Ti.UI.createLabel({
+    $.__views.__alloyId102 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.BoldFont,
@@ -686,16 +686,16 @@ function Controller() {
         textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
         touchEnabled: false,
         text: "Social",
-        id: "__alloyId123"
+        id: "__alloyId102"
     });
-    $.__views.recipe_social_container.add($.__views.__alloyId123);
-    $.__views.__alloyId124 = Ti.UI.createView({
+    $.__views.recipe_social_container.add($.__views.__alloyId102);
+    $.__views.__alloyId103 = Ti.UI.createView({
         height: "1",
         width: "140dp",
         backgroundColor: "#d1d1d1",
-        id: "__alloyId124"
+        id: "__alloyId103"
     });
-    $.__views.recipe_social_container.add($.__views.__alloyId124);
+    $.__views.recipe_social_container.add($.__views.__alloyId103);
     $.__views.social_hor_view_recipe = Ti.UI.createView({
         layout: "horizontal",
         id: "social_hor_view_recipe",
@@ -785,18 +785,18 @@ function Controller() {
         title: "Facebook"
     });
     $.__views.facebookParent_recipe.add($.__views.facebookBtn_recipe);
-    $.__views.__alloyId125 = Ti.UI.createView({
+    $.__views.__alloyId104 = Ti.UI.createView({
         height: "10dp",
         width: "140dp",
-        id: "__alloyId125"
+        id: "__alloyId104"
     });
-    $.__views.recipe_container_bottom.add($.__views.__alloyId125);
-    $.__views.__alloyId126 = Ti.UI.createView({
+    $.__views.recipe_container_bottom.add($.__views.__alloyId104);
+    $.__views.__alloyId105 = Ti.UI.createView({
         height: "10dp",
         width: "140dp",
-        id: "__alloyId126"
+        id: "__alloyId105"
     });
-    $.__views.cocktail_scroll.add($.__views.__alloyId126);
+    $.__views.cocktail_scroll.add($.__views.__alloyId105);
     $.__views.rating_picker = Ti.UI.createView({
         height: "240dp",
         bottom: "-240dp",
@@ -805,14 +805,14 @@ function Controller() {
         id: "rating_picker"
     });
     $.__views.cocktail_detailed.add($.__views.rating_picker);
-    $.__views.__alloyId127 = Ti.UI.createView({
+    $.__views.__alloyId106 = Ti.UI.createView({
         layout: "vertical",
         top: "0dp",
         height: Ti.UI.SIZE,
-        id: "__alloyId127"
+        id: "__alloyId106"
     });
-    $.__views.rating_picker.add($.__views.__alloyId127);
-    $.__views.__alloyId128 = Ti.UI.createButton({
+    $.__views.rating_picker.add($.__views.__alloyId106);
+    $.__views.__alloyId107 = Ti.UI.createButton({
         height: "40dp",
         backgroundColor: "#eee",
         borderRadius: 0,
@@ -826,10 +826,10 @@ function Controller() {
             fontFamily: Alloy.Globals.BoldFont
         },
         title: "TAP TO CLOSE",
-        id: "__alloyId128"
+        id: "__alloyId107"
     });
-    $.__views.__alloyId127.add($.__views.__alloyId128);
-    closeRatingHandler ? $.__views.__alloyId128.addEventListener("click", closeRatingHandler) : __defers["$.__views.__alloyId128!click!closeRatingHandler"] = true;
+    $.__views.__alloyId106.add($.__views.__alloyId107);
+    closeRatingHandler ? $.__views.__alloyId107.addEventListener("click", closeRatingHandler) : __defers["$.__views.__alloyId107!click!closeRatingHandler"] = true;
     $.__views.rating_title = Ti.UI.createLabel({
         top: "30dp",
         color: Alloy.Globals.PrimaryColor,
@@ -841,16 +841,16 @@ function Controller() {
         id: "rating_title",
         textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
     });
-    $.__views.__alloyId127.add($.__views.rating_title);
-    $.__views.__alloyId131 = Ti.UI.createView({
+    $.__views.__alloyId106.add($.__views.rating_title);
+    $.__views.__alloyId110 = Ti.UI.createView({
         layout: "horizontal",
         height: Ti.UI.SIZE,
         width: Ti.UI.SIZE,
         top: "20dp",
         bottom: "20dp",
-        id: "__alloyId131"
+        id: "__alloyId110"
     });
-    $.__views.__alloyId127.add($.__views.__alloyId131);
+    $.__views.__alloyId106.add($.__views.__alloyId110);
     $.__views.star_1 = Ti.UI.createImageView({
         left: "4dp",
         right: "4dp",
@@ -859,7 +859,7 @@ function Controller() {
         image: "./images/common/empty_star.png",
         star_id: "1"
     });
-    $.__views.__alloyId131.add($.__views.star_1);
+    $.__views.__alloyId110.add($.__views.star_1);
     star_clicked ? $.__views.star_1.addEventListener("click", star_clicked) : __defers["$.__views.star_1!click!star_clicked"] = true;
     $.__views.star_2 = Ti.UI.createImageView({
         left: "4dp",
@@ -869,7 +869,7 @@ function Controller() {
         image: "./images/common/empty_star.png",
         star_id: "2"
     });
-    $.__views.__alloyId131.add($.__views.star_2);
+    $.__views.__alloyId110.add($.__views.star_2);
     star_clicked ? $.__views.star_2.addEventListener("click", star_clicked) : __defers["$.__views.star_2!click!star_clicked"] = true;
     $.__views.star_3 = Ti.UI.createImageView({
         left: "4dp",
@@ -879,7 +879,7 @@ function Controller() {
         image: "./images/common/empty_star.png",
         star_id: "3"
     });
-    $.__views.__alloyId131.add($.__views.star_3);
+    $.__views.__alloyId110.add($.__views.star_3);
     star_clicked ? $.__views.star_3.addEventListener("click", star_clicked) : __defers["$.__views.star_3!click!star_clicked"] = true;
     $.__views.star_4 = Ti.UI.createImageView({
         left: "4dp",
@@ -889,7 +889,7 @@ function Controller() {
         image: "./images/common/empty_star.png",
         star_id: "4"
     });
-    $.__views.__alloyId131.add($.__views.star_4);
+    $.__views.__alloyId110.add($.__views.star_4);
     star_clicked ? $.__views.star_4.addEventListener("click", star_clicked) : __defers["$.__views.star_4!click!star_clicked"] = true;
     $.__views.star_5 = Ti.UI.createImageView({
         left: "4dp",
@@ -899,9 +899,9 @@ function Controller() {
         image: "./images/common/empty_star.png",
         star_id: "5"
     });
-    $.__views.__alloyId131.add($.__views.star_5);
+    $.__views.__alloyId110.add($.__views.star_5);
     star_clicked ? $.__views.star_5.addEventListener("click", star_clicked) : __defers["$.__views.star_5!click!star_clicked"] = true;
-    $.__views.__alloyId132 = Ti.UI.createButton({
+    $.__views.__alloyId111 = Ti.UI.createButton({
         top: "10dp",
         color: "#ffffff",
         backgroundColor: Alloy.Globals.PrimaryColor,
@@ -914,10 +914,10 @@ function Controller() {
         borderRadius: 4,
         textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
         title: "Submit Rating",
-        id: "__alloyId132"
+        id: "__alloyId111"
     });
-    $.__views.__alloyId127.add($.__views.__alloyId132);
-    submitRatingBtnHandler ? $.__views.__alloyId132.addEventListener("click", submitRatingBtnHandler) : __defers["$.__views.__alloyId132!click!submitRatingBtnHandler"] = true;
+    $.__views.__alloyId106.add($.__views.__alloyId111);
+    submitRatingBtnHandler ? $.__views.__alloyId111.addEventListener("click", submitRatingBtnHandler) : __defers["$.__views.__alloyId111!click!submitRatingBtnHandler"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     Ti.API.info("Recipe detail screen opened");
@@ -928,10 +928,7 @@ function Controller() {
     if (null != cocktail.glass && "" != cocktail.glass) {
         Ti.API.info("cocktail glassware info: " + cocktail.glass);
         var glassText = "";
-        for (var i = 0; cocktail.glass.length > i; i += 2) {
-            i > 0 && (glassText += "\n");
-            glassText += cocktail.glass[i].Glass.title;
-        }
+        for (var i = 0; cocktail.glass.length > i; i += 2) glassText += "• " + cocktail.glass[i].Glass.title + "\n";
         $.glassware.text = glassText;
     } else {
         Ti.API.info("No cocktail glass info");
@@ -946,14 +943,18 @@ function Controller() {
     }
     if (null != cocktail.ingredients && "" != cocktail.ingredients) {
         Ti.API.info("cocktail ingredients info: " + cocktail.ingredients);
-        $.ingredients.text = cocktail.ingredients;
+        var parsedIngredients = cocktail.ingredients.replace(/\r\n/g, "\n").replace(/\r/g, "\n").split("\n");
+        $.ingredients.text = "";
+        for (var i = 0; parsedIngredients.length > i; i++) $.ingredients.text += "• " + parsedIngredients[i] + "\r\n";
     } else {
         Ti.API.info("No cocktail ingredients info");
         $.how_to_view.remove($.ingredients_container);
     }
     if (null != cocktail.method && "" != cocktail.method) {
         Ti.API.info("cocktail method info: " + cocktail.method);
-        $.method.text = cocktail.method;
+        var parsedMethod = cocktail.method.replace(/\r\n/g, "\n").replace(/\r/g, "\n").split("\n");
+        $.method.text = "";
+        for (var i = 0; parsedMethod.length > i; i++) $.method.text += "• " + parsedMethod[i] + "\r\n";
     } else {
         Ti.API.info("No cocktail method info");
         $.how_to_view.remove($.method_container);
@@ -961,6 +962,9 @@ function Controller() {
     if (null != cocktail.garnish && "" != cocktail.garnish) {
         Ti.API.info("cocktail garnish info: " + cocktail.garnish);
         $.garnish.text = cocktail.garnish;
+        var parsedGarnish = cocktail.garnish.replace(/\r\n/g, "\n").replace(/\r/g, "\n").split("\n");
+        $.garnish.text = "";
+        for (var i = 0; parsedGarnish.length > i; i++) $.garnish.text += "• " + parsedGarnish[i] + "\r\n";
     } else {
         Ti.API.info("No cocktail garnish info");
         $.how_to_view.remove($.garnish_container);
@@ -1078,15 +1082,15 @@ function Controller() {
         var a = Alloy.Globals.windowStack.indexOf($.cocktail_detailed);
         Alloy.Globals.windowStack.splice(a, 1);
     });
-    __defers["$.__views.__alloyId95!click!closeWindow"] && $.__views.__alloyId95.addEventListener("click", closeWindow);
-    __defers["$.__views.__alloyId97!click!goToHome"] && $.__views.__alloyId97.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId101!click!closeWindow"] && $.__views.__alloyId101.addEventListener("click", closeWindow);
-    __defers["$.__views.__alloyId103!click!goToHome"] && $.__views.__alloyId103.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId74!click!closeWindow"] && $.__views.__alloyId74.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId76!click!goToHome"] && $.__views.__alloyId76.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId80!click!closeWindow"] && $.__views.__alloyId80.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId82!click!goToHome"] && $.__views.__alloyId82.addEventListener("click", goToHome);
     __defers["$.__views.fav_heart!click!fav_clicked"] && $.__views.fav_heart.addEventListener("click", fav_clicked);
     __defers["$.__views.fav_heart!click!fav_clicked"] && $.__views.fav_heart.addEventListener("click", fav_clicked);
     __defers["$.__views.fav_heart!click!fav_clicked"] && $.__views.fav_heart.addEventListener("click", fav_clicked);
-    __defers["$.__views.__alloyId122!click!submitCommentBtnHandler"] && $.__views.__alloyId122.addEventListener("click", submitCommentBtnHandler);
-    __defers["$.__views.__alloyId128!click!closeRatingHandler"] && $.__views.__alloyId128.addEventListener("click", closeRatingHandler);
+    __defers["$.__views.__alloyId101!click!submitCommentBtnHandler"] && $.__views.__alloyId101.addEventListener("click", submitCommentBtnHandler);
+    __defers["$.__views.__alloyId107!click!closeRatingHandler"] && $.__views.__alloyId107.addEventListener("click", closeRatingHandler);
     __defers["$.__views.star_1!click!star_clicked"] && $.__views.star_1.addEventListener("click", star_clicked);
     __defers["$.__views.star_2!click!star_clicked"] && $.__views.star_2.addEventListener("click", star_clicked);
     __defers["$.__views.star_3!click!star_clicked"] && $.__views.star_3.addEventListener("click", star_clicked);
@@ -1102,9 +1106,9 @@ function Controller() {
     __defers["$.__views.star_3!click!star_clicked"] && $.__views.star_3.addEventListener("click", star_clicked);
     __defers["$.__views.star_4!click!star_clicked"] && $.__views.star_4.addEventListener("click", star_clicked);
     __defers["$.__views.star_5!click!star_clicked"] && $.__views.star_5.addEventListener("click", star_clicked);
-    __defers["$.__views.__alloyId132!click!submitRatingBtnHandler"] && $.__views.__alloyId132.addEventListener("click", submitRatingBtnHandler);
-    __defers["$.__views.__alloyId134!click!goToHome"] && $.__views.__alloyId134.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId136!click!closeWindow"] && $.__views.__alloyId136.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId111!click!submitRatingBtnHandler"] && $.__views.__alloyId111.addEventListener("click", submitRatingBtnHandler);
+    __defers["$.__views.__alloyId113!click!goToHome"] && $.__views.__alloyId113.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId115!click!closeWindow"] && $.__views.__alloyId115.addEventListener("click", closeWindow);
     _.extend($, exports);
 }
 

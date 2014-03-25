@@ -1,3 +1,12 @@
+"#cocktail_scroll[platform=ios]":{
+	top:"1dp"	
+},
+"#cocktail_scroll[platform=android]":{
+	top:"51dp"	
+},
+"#cocktail_scroll[platform=mobileweb]":{
+	top:"51dp"	
+},
 ".recipe_container":{
 	left:"5dp", 
 	right:"5dp", 
@@ -8,15 +17,17 @@
 	borderColor: "#d1d1d1",
 	borderWidth: 1,
 	layout:"vertical",
-	top:"0dp",
+	top:"10dp",
 },
 ".recipe_container[platform=android]":{
 	left:"5dp", 
 	right:"5dp", 
 	width:Ti.UI.FILL, 
-	height:Ti.UI.SIZE, 
+	height:Ti.UI.SIZE,
+	//height:Ti.UI.SIZE, 
+	//height:"200dp",
 	backgroundColor:"#fff",
-	borderRadius:8,
+	borderRadius:0,
 	borderColor: "#d1d1d1",
 	borderWidth: 1,
 	layout:"vertical",
@@ -28,7 +39,7 @@
 	width:Ti.UI.FILL, 
 	height:Ti.UI.SIZE, 
 	backgroundColor:"#fff",
-	borderRadius:8,
+	borderRadius:0,
 	borderColor: "#d1d1d1",
 	borderWidth: 1,
 	layout:"vertical",

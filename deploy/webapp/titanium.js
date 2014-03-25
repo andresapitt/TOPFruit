@@ -43,14 +43,14 @@ var require = {
 		name: "Perfect Mix"
 	},
 	ti: {
-		buildHash: "d9182d6",
-		buildDate: "12/20/13 10:56",
+		buildHash: "96e9a07",
+		buildDate: "03/05/14 12:21",
 		colorsModule: "Ti/_/colors",
 		filesystem: {
 			registry: "ondemand"
 		},
 		theme: "default",
-		version: "3.2.0"
+		version: "3.2.2"
 	},
 	vendorPrefixes: {
 		css: ["", "-webkit-", "-moz-", "-ms-", "-o-", "-khtml-"],
