@@ -187,7 +187,7 @@ RemoteImage: function(a){
 			md5 = Ti.Utils.md5HexDigest(a.image)+this._getExtension(a.image);
 			  
 			Ti.API.info("MD% string return: " + md5);
-			savedFile = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,md5);
+			savedFile = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationCacheDirectory,md5);
 			if(savedFile.exists()){
 				Ti.API.info("Image file already cached" );
 				a.image = savedFile;
@@ -195,6 +195,7 @@ RemoteImage: function(a){
 				Ti.API.info("Image file needs to be downloaded" );
 				needsToSave = true;
 			}
+			savedFile = null;
 	    }
 	    var image = Ti.UI.createImageView(a);
 		if(needsToSave === true){
@@ -202,14 +203,17 @@ RemoteImage: function(a){
 		        image.removeEventListener('load',saveImage);
 				//load high/low res version of image
 				Ti.API.info("image link string (iPHONE): " + image.image);
-				if(Ti.Platform.name == "android" )
+				/*if(Ti.Platform.name == "android" )
 				{
 					savedFile.write( Ti.UI.createImageView({image:image.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE}).toBlob() );
 				}
 				else
 				{
 					savedFile.write( Ti.UI.createImageView({image:image.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE}).toImage() );
-				}
+				}*/
+				var fileToSave = Ti.Filesystem.getFile(Titanium.Filesystem.applicationCacheDirectory, e.source.md5);
+				fileToSave.write(e.source.toBlob() );
+				fileToSave = null;
 	      }
 	      image.addEventListener('load',saveImage);
 	    }

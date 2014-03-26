@@ -106,6 +106,7 @@ function Controller() {
         layout: "vertical",
         bottom: "0dp",
         width: Ti.UI.FILL,
+        height: Ti.UI.FILL,
         contentWidth: "auto",
         contentHeight: Ti.UI.SIZE,
         disableBounce: true,
@@ -125,6 +126,7 @@ function Controller() {
         left: "5dp",
         right: "5dp",
         layout: "vertical",
+        bottom: "10dp",
         id: "__alloyId49"
     });
     $.__views.__alloyId48.add($.__views.__alloyId49);
@@ -312,7 +314,8 @@ function Controller() {
         var brand_image_view = Alloy.Globals.Utils.RemoteImage({
             image: args.banner_img_url,
             defaultImage: "/images/placeholders/ph_events.png",
-            height: new_height
+            height: new_height,
+            width: Ti.UI.FILL
         });
         $.brand_banner_image.add(brand_image_view);
     }

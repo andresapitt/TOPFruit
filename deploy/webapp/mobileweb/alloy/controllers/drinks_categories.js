@@ -35,7 +35,9 @@ function Controller() {
                 single_drink_view.add(drink_image);
                 var overlay_drink_image = Alloy.Globals.Utils.RemoteImage({
                     image: drinks_json[y].Drink.image,
-                    defaultImage: "images/category_images/generic.png"
+                    defaultImage: "images/category_images/generic.png",
+                    height: Ti.UI.SIZE,
+                    width: Ti.UI.SIZE
                 });
                 overlay_drink_image.defaultImage = "./images/category_images/generic.png";
                 overlay_drink_image.applyProperties(single_drink_image_style_bottle);
@@ -172,6 +174,7 @@ function Controller() {
         layout: "vertical",
         bottom: "0dp",
         width: Ti.UI.FILL,
+        height: Ti.UI.FILL,
         contentWidth: "auto",
         contentHeight: Ti.UI.SIZE,
         disableBounce: true,

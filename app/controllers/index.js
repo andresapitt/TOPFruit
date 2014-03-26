@@ -157,6 +157,8 @@ function indexOpen(e)
 		if(Ti.Platform.name == "mobileweb")
 		{
 			mix_of_the_month_banner_image_view.defaultImage = './images/home_screen/mix_month_bg.png';
+			//	mix_of_the_month_banner_image_view.width = '320dp';
+			//	mix_of_the_month_banner_image_view.height = '207dp';
 		}
 			
 		$.mix_banner_image_container.add(mix_of_the_month_banner_image_view);

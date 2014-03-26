@@ -33,6 +33,7 @@ function Controller() {
         tintColor: Alloy.Globals.PrimaryColor,
         navTintColor: Alloy.Globals.PrimaryColor,
         title: "ABOUT EVENT",
+        modal: "false",
         id: "event_desc"
     });
     $.__views.event_desc && $.addTopLevelView($.__views.event_desc);
@@ -104,6 +105,7 @@ function Controller() {
         layout: "vertical",
         bottom: "0dp",
         width: Ti.UI.FILL,
+        height: Ti.UI.FILL,
         contentWidth: "auto",
         contentHeight: Ti.UI.SIZE,
         disableBounce: true,
@@ -317,7 +319,7 @@ function Controller() {
     $.__views.event_map_view = Ti.UI.createView({
         backgroundColor: "#fff",
         height: Ti.UI.SIZE,
-        borderRadius: "6",
+        borderRadius: "0",
         borderColor: "#d1d1d1",
         borderWidth: 1,
         top: "10dp",
@@ -359,7 +361,8 @@ function Controller() {
         var event_image_view = Alloy.Globals.Utils.RemoteImage({
             image: args.banner_img_url,
             defaultImage: "/images/placeholders/ph_events.png",
-            height: new_height
+            height: new_height,
+            width: Ti.UI.FILL
         });
         $.event_banner_image.add(event_image_view);
     }
@@ -371,6 +374,7 @@ function Controller() {
         Ti.Platform.openURL(args.more_info_url);
     }) : $.event_decs_scrollview.remove($.event_visit_site_Btn);
     if (null != args.longitude && null != args.latitude) {
+        Ti.API.info("logitude: " + args.longitude + ", latitude: " + args.latitude);
         var remoteMapImage = Ti.UI.createImageView({
             image: "http://maps.googleapis.com/maps/api/staticmap?center=" + args.latitude + "," + args.longitude + "&zoom=14&size=640x400&sensor=false&output=embed",
             width: Ti.UI.FILL,
@@ -388,6 +392,7 @@ function Controller() {
     $.event_desc.addEventListener("open", function() {
         Ti.API.info("event desc opened");
         Alloy.Globals.windowStack.push($.event_desc);
+        Ti.API.info("is this modal? " + $.event_desc.modal);
     });
     $.event_desc.addEventListener("androidback", function() {
         $.event_desc.close({

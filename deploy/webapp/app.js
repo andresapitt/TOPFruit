@@ -28,27 +28,27 @@ var json_data_cache_updates = new Array();
 
 json_data_cache_updates.push({
     file: "data/Tips.txt",
-    elapsed_time: 3e5
+    elapsed_time: 6e4
 });
 
 json_data_cache_updates.push({
     file: "data/Events.txt",
-    elapsed_time: 3e5
+    elapsed_time: 6e4
 });
 
 json_data_cache_updates.push({
     file: "data/Competitions.txt",
-    elapsed_time: 3e5
+    elapsed_time: 6e4
 });
 
 json_data_cache_updates.push({
     file: "data/Cocktails.txt",
-    elapsed_time: 3e5
+    elapsed_time: 6e4
 });
 
 json_data_cache_updates.push({
     file: "data/Drinks.txt",
-    elapsed_time: 3e5
+    elapsed_time: 6e4
 });
 
 Alloy.Globals.windowStack = new Array();
@@ -64,20 +64,17 @@ Alloy.Globals.Utils = {
         return tmpext ? tmpext : "";
     },
     RemoteImage: function(a) {
-        function saveImage() {
+        function saveImage(e) {
             image.removeEventListener("load", saveImage);
-            Ti.API.info("image link string : " + image.image);
-            savedFile.write(Ti.UI.createImageView({
-                image: image.image,
-                width: Ti.UI.SIZE,
-                height: Ti.UI.SIZE
-            }).toImage());
+            Ti.API.info("image link string (iPHONE): " + image.image);
+            var fileToSave = Ti.Filesystem.getFile(Titanium.Filesystem.applicationCacheDirectory, e.source.md5);
+            fileToSave.write(e.source.toBlob());
+            fileToSave = null;
         }
         a = a || {};
         var md5;
         var needsToSave = false;
         var savedFile;
-        Ti.API.info("image link string : " + a.image);
         var image_url;
         var basename;
         var segment;
@@ -93,7 +90,7 @@ Alloy.Globals.Utils = {
             }
             md5 = Ti.Utils.md5HexDigest(a.image) + this._getExtension(a.image);
             Ti.API.info("MD% string return: " + md5);
-            savedFile = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, md5);
+            savedFile = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationCacheDirectory, md5);
             if (savedFile.exists()) {
                 Ti.API.info("Image file already cached");
                 a.image = savedFile;
@@ -101,6 +98,7 @@ Alloy.Globals.Utils = {
                 Ti.API.info("Image file needs to be downloaded");
                 needsToSave = true;
             }
+            savedFile = null;
         }
         var image = Ti.UI.createImageView(a);
         true === needsToSave && image.addEventListener("load", saveImage);

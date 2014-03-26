@@ -257,6 +257,7 @@ function Controller() {
         layout: "vertical",
         bottom: "0dp",
         width: Ti.UI.FILL,
+        height: Ti.UI.FILL,
         contentWidth: "auto",
         contentHeight: Ti.UI.SIZE,
         disableBounce: true,
@@ -1064,12 +1065,17 @@ function Controller() {
         animation.left = "0dp";
         animation.duration = 700;
         animation.curve = Ti.UI.ANIMATION_CURVE_EASE_IN_OUT;
-        var cocktail_image = Alloy.Globals.Utils.RemoteImage({
-            image: cocktail.image,
-            defaultImage: "images/cocktails/glass.png",
-            height: Ti.UI.FILL
-        });
-        $.recipe_image_ani_view.add(cocktail_image);
+        try {
+            var cocktail_image = Alloy.Globals.Utils.RemoteImage({
+                image: cocktail.image,
+                defaultImage: "images/cocktails/glass.png",
+                height: Ti.UI.FILL,
+                width: Ti.UI.FILL
+            });
+            $.recipe_image_ani_view.add(cocktail_image);
+        } catch (ex) {
+            Ti.API.info("image drawing error: " + ex.toString);
+        }
         setTimeout(function() {
             $.recipe_image_ani_view.animate(animation);
         }, 700);

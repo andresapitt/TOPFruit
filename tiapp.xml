@@ -52,8 +52,9 @@
                 android:name="ie.vstream.perfectmix.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
             <application>
                 <!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
+                <!--<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCJllIekNsMRbfz-XLLw-xD1PiFqEK3P-Q"/>-->
                 <meta-data
-                    android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCJllIekNsMRbfz-XLLw-xD1PiFqEK3P-Q"/>
+                    android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBSxsckCPhndjxS2QXsNrpf3ks7FdJNAMI"/>
             </application>
         </manifest>
     </android>
@@ -68,8 +69,8 @@
     <modules>
         <module platform="android">facebook</module>
         <module platform="iphone">facebook</module>
-        <module platform="android">ti.map</module>
         <module platform="iphone">ti.map</module>
+        <module platform="android">ti.map</module>
     </modules>
     <deployment-targets>
         <target device="android">true</target>

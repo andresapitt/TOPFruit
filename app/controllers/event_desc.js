@@ -23,7 +23,8 @@ if(args.banner_img_url != null && args.banner_img_url != "")
 	var event_image_view = Alloy.Globals.Utils.RemoteImage({
 	  image: args.banner_img_url,
 	  defaultImage:'/images/placeholders/ph_events.png',
-	  height:new_height
+	  height:new_height,
+	  width:Ti.UI.FILL
 	});
 
 	/*function resetLayout(e){
@@ -84,16 +85,66 @@ else
 
 if(args.longitude != null && args.latitude != null)
 {
+	Ti.API.info('logitude: ' + args.longitude + ", latitude: " + args.latitude);
+	
 	if(Ti.Platform.name == "android" )
 	{
+		
+		/*var MapModule = require('ti.map');
+		var mapview = MapModule.createView({mapType:MapModule.NORMAL_TYPE});
+		$.event_map_view.add(mapview);*/
+		/*
+		
+		var MapModule = require('ti.map');
+
+		var win = Ti.UI.createWindow({backgroundColor: 'white'});
+		
+		var map1 = MapModule.createView({
+		    userLocation: true,
+		    mapType: MapModule.NORMAL_TYPE,
+		    animate: true,
+		    region: {latitude: -33.87365, longitude: 151.20689, latitudeDelta: 0.1, longitudeDelta: 0.1 },
+		    height: '50%',
+		    top: 0,
+		    left: 0,
+		    width: '50%'
+		});
+		
+		win.add(map1);
+		win.open();
+		
+		*/
 		var Map = require('ti.map');
+		
+		/*var rc = Map.isGooglePlayServicesAvailable();
+		switch (rc) {
+		    case Map.SUCCESS:
+		        Ti.API.info('Google Play services is installed.');
+		        break;
+		    case Map.SERVICE_MISSING:
+		        alert('Google Play services is missing. Please install Google Play services from the Google Play store.');
+		        break;
+		    case Map.SERVICE_VERSION_UPDATE_REQUIRED:
+		        alert('Google Play services is out of date. Please update Google Play services.');
+		        break;
+		    case Map.SERVICE_DISABLED:
+		        alert('Google Play services is disabled. Please enable Google Play services.');
+		        break;
+		    case Map.SERVICE_INVALID:
+		        alert('Google Play services cannot be authenticated. Reinstall Google Play services.');
+		        break;
+		    default:
+		        alert('Unknown error.');
+		        break;
+		}
+*/
 		var eventMapPinView = Map.createAnnotation({
-		    latitude:args.latitude,
-		    longitude:args.longitude,
+		    latitude:0,
+		    longitude:0,
 		    title:args.title,
 		    subtitle:args.where,
-		    pincolor:Map.ANNOTATION_RED,
-		    myid:1 // Custom property to uniquely identify this annotation.
+		   pincolor:Map.ANNOTATION_RED,
+		   myid:1 // Custom property to uniquely identify this annotation.
 		});
 		
 		var screenWidth = (Ti.Platform.displayCaps.platformHeight < Ti.Platform.displayCaps.platformWidth) ? Ti.Platform.displayCaps.platformHeight : Ti.Platform.displayCaps.platformWidth;
@@ -103,14 +154,16 @@ if(args.longitude != null && args.latitude != null)
 		
 		var mapview = Map.createView({
 		    mapType: Map.NORMAL_TYPE,
-		    region: {latitude:args.latitude, longitude:args.longitude,
+		    region: {latitude:0, longitude:0,
 		            latitudeDelta:0.01, longitudeDelta:0.01},
-		    animate:true,
-		    regionFit:true,
+		  //  animate:true,
+		 //   regionFit:true,
 		    userLocation:true,
 			annotations:[eventMapPinView],
 		    height:mapHeight,
-		     borderRadius:6,
+		// height:"200dp", 
+		// width:"200dp"
+		  //   borderRadius:6,
 		});
 		$.event_map_view.add(mapview);
 	}
@@ -146,7 +199,7 @@ if(args.longitude != null && args.latitude != null)
 		    longitude:args.longitude,
 		    title:args.title,
 		    subtitle:args.where,
-		    pincolor:Alloy.Globals.Map.ANNOTATION_RED,
+		    pincolor:Map.ANNOTATION_RED,
 		    myid:1 // Custom property to uniquely identify this annotation.
 		});
 		
@@ -230,6 +283,8 @@ $.event_desc.addEventListener('close', function(e){
 $.event_desc.addEventListener('open', function(e){
 	Ti.API.info("event desc opened");
 	Alloy.Globals.windowStack.push($.event_desc);
+	
+	Ti.API.info('is this modal? ' + $.event_desc.modal);
 });
 
 $.event_desc.addEventListener('androidback', function(e){

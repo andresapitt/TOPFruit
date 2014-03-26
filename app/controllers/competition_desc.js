@@ -25,7 +25,8 @@ if(args.banner_img_url != null && args.banner_img_url != "")
 	var competition_image_view = Alloy.Globals.Utils.RemoteImage({
 	  image: args.banner_img_url,
 	  defaultImage:'/images/placeholders/ph_events.png',
-	  height:new_height
+	  height:new_height,
+	  width:Ti.UI.FILL
 	});
 	
 	/*

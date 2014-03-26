@@ -105,6 +105,7 @@ if(cocktail.video != null && cocktail.video != "")
 		  defaultImage:'images/cocktails/glass.png',
 		  checkRetina:false,
 		  height: new_height,
+		  width:Ti.UI.FILL
 		 // height: Ti.UI.FILL
 		});
 	}
@@ -618,7 +619,7 @@ $.cocktail_detailed.addEventListener('open', function(e){
 		  image: cocktail.image,
 		  defaultImage:'images/cocktails/glass.png',
 		  height:Ti.UI.FILL,
-		//  width:Ti.UI.SIZE
+		  width:Ti.UI.FILL
 		});
 		
 		$.recipe_image_ani_view.add(cocktail_image);

@@ -13,6 +13,7 @@ module.exports = [ {
         layout: "vertical",
         bottom: "0dp",
         width: Ti.UI.FILL,
+        height: Ti.UI.FILL,
         contentWidth: "auto",
         contentHeight: Ti.UI.SIZE,
         disableBounce: true,

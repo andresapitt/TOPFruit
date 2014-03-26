@@ -104,6 +104,7 @@ function Controller() {
         layout: "vertical",
         bottom: "0dp",
         width: Ti.UI.FILL,
+        height: Ti.UI.FILL,
         contentWidth: "auto",
         contentHeight: Ti.UI.SIZE,
         disableBounce: true,
@@ -193,7 +194,8 @@ function Controller() {
         var competition_image_view = Alloy.Globals.Utils.RemoteImage({
             image: args.banner_img_url,
             defaultImage: "/images/placeholders/ph_events.png",
-            height: new_height
+            height: new_height,
+            width: Ti.UI.FILL
         });
         $.competition_banner_image.add(competition_image_view);
     }

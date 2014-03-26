@@ -146,7 +146,7 @@ function openEventDescription(e){
 	var event_desc_Win = Alloy.createController('event_desc', e.source.eventData).getView();
 	if(Ti.Platform.name == "android" )
 	{
-		event_desc_Win.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
+		event_desc_Win.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left, modal:false});
 	}
 	else if(Ti.Platform.name == "mobileweb" )
 	{

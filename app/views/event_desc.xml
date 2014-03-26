@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class="container" title="ABOUT EVENT">
+	<Window class="container" title="ABOUT EVENT" modal="false">
 		<View platform="android" height="50dp" width="Ti.UI.FILL" top="0dp">
 			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="1" />
 			<View width="Ti.UI.FILL">
@@ -40,7 +40,7 @@
 				</View>
 			</View>
 			<Label id="location_header_title"  class="event_title_style" width="Ti.UI.FILL" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">LOCATION</Label>
-			<View id="event_map_view" class="event_item" borderRadius="6" />
+			<View id="event_map_view" class="event_item" borderRadius="0" />
 			<Button id="event_visit_site_Btn" class="visitSiteBtn" title="VISIT SITE" />
 		</ScrollView>
 		<RightNavButton platform="ios">
