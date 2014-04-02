@@ -27,17 +27,20 @@
 					<View class="socialBtn_view" id="twitterParent">
 						<Button id="twitterBtn" image="/images/icons/twitterbird.png" platform="ios" class="socialBtn twitter" title="Twitter" />
 						<Button id="twitterBtn" image="/images/icons/twitterbird.png" platform="android" class="socialBtn twitter" title="Twitter" />
-						<Button id="twitterBtn" image="./images/icons/twitterbird.png" platform="mobileweb" class="socialBtn twitter" title="Twitter" />
+						<!--<Button id="twitterBtn" image="./images/icons/twitterbird.png" platform="mobileweb" class="socialBtn twitter" title="Twitter" />-->
+						<Label id="twitterBtn_brandDesc" platform="mobileweb" class="socialBtn twitter"  />
 					</View>
 					<View class="socialBtn_view" id="facebookParent">
 						<Button id="facebookBtn" image="/images/icons/facebookIcon.png" platform="ios" class="socialBtn facebook" title="Facebook" />
 						<Button id="facebookBtn" image="/images/icons/facebookIcon.png" platform="android" class="socialBtn facebook" title="Facebook" />
-						<Button id="facebookBtn" image="./images/icons/facebookIcon.png" platform="mobileweb" class="socialBtn facebook" title="Facebook" />
+						<!--<Button id="facebookBtn" image="./images/icons/facebookIcon.png" platform="mobileweb" class="socialBtn facebook" title="Facebook" />-->
+						<Label id="facebookBtn_brandDesc" platform="mobileweb" class="socialBtn facebook"  />
 					</View>
 					<View class="socialBtn_view" id="websiteParent">
 						<Button id="websiteBtn" image="/images/icons/websiteIcon.png" platform="ios" class="socialBtn website" title="Website" />
 						<Button id="websiteBtn" image="/images/icons/websiteIcon.png" platform="android" class="socialBtn website" title="Website" />
 						<Button id="websiteBtn" image="./images/icons/websiteIcon.png" platform="mobileweb" class="socialBtn website" title="Website" />
+						<!--<Label id="websiteBtn_brandDesc" platform="mobileweb" class="socialBtn website"  />-->
 					</View>
 				</View>
 				<!--<ImageView image="/images/common/chevron.png" class="news_arrow" />-->

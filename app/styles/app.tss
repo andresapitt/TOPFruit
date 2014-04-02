@@ -1,4 +1,4 @@
-".container[platform=ios ]": {
+".container[platform=ios]": {
 	backgroundColor:"white",
 	titleAttributes:{
 		color:Alloy.Globals.PrimaryColor,
@@ -17,23 +17,16 @@
     ],
     translucent:false
 },
-".container[platform=android ]": {
+".container[platform=android]": {
 	backgroundColor:"white",
-	titleAttributes:{
-		color:Alloy.Globals.PrimaryColor,
-		font: {
-			fontFamily:Alloy.Globals.MainFont, 
-			fontSize:"18dp"
-		}
-	},
 	layout:'vertical',
-	tintColor:Alloy.Globals.PrimaryColor,
-	navTintColor:Alloy.Globals.PrimaryColor,
+	height:"100%",
 	orientationModes: [
         Ti.UI.PORTRAIT,
         Ti.UI.UPSIDE_PORTRAIT
     ],
-    navBarHidden:true
+    navBarHidden:true,
+    modal:false
 },
 ".container[platform=mobileweb]": {
 	backgroundColor:"white",

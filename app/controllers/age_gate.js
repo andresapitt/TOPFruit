@@ -209,7 +209,7 @@ function TandCBtnHandler(e){
 	if(Ti.Platform.name == "android")
 	{
 		//terms_and_conditions.open({modal:true, activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
-		terms_and_conditions.open({modal:true, activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+		terms_and_conditions.open({/*modal:true, */activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
 	}
 	else
 	{

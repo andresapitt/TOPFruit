@@ -35,32 +35,38 @@ if(args.banner_img_url != null && args.banner_img_url != "")
 if(args.twitter != null && args.twitter != "" )
 {
 	Ti.API.info("Twitter link exists");
-	$.twitterBtn.addEventListener('click', function(e){
-		if (Titanium.Platform.name != 'android'){
-			var canOpenTwitter = Ti.Platform.canOpenURL("twitter://user?screen_name="+args.twitter);
-			if(canOpenTwitter)
+	if(Titanium.Platform.name != 'mobileweb')
+	{
+		$.twitterBtn.addEventListener('click', function(e){
+			if (Titanium.Platform.name != 'android'){
+				var canOpenTwitter = Ti.Platform.canOpenURL("twitter://user?screen_name="+args.twitter);
+				if(canOpenTwitter)
+				{
+					Ti.Platform.openURL("twitter://user?screen_name="+args.twitter);
+				}
+				else{
+					alert("The twitter app must be installed to open this link.");
+				}
+			}
+			else 
 			{
-				Ti.Platform.openURL("twitter://user?screen_name="+args.twitter);
+				var canOpen = Ti.Platform.openURL("twitter://user?screen_name="+args.twitter);
+				
+				if(canOpen == false)
+				{
+					var dialog = Ti.UI.createAlertDialog({
+					    message: "Sorry, you must first have the twitter app installed on this device to click this button.",
+					    ok: 'Ok, thanks!',
+					    title: 'Twitter Error'
+					  }).show();
+				}
 			}
-			else{
-				alert("The twitter app must be installed to open this link.");
-			}
-		}
-		else 
-		{
-			var canOpen = Ti.Platform.openURL("twitter://user?screen_name="+args.twitter);
 			
-			if(canOpen == false)
-			{
-				var dialog = Ti.UI.createAlertDialog({
-				    message: "Sorry, you must first have the twitter app installed on this device to click this button.",
-				    ok: 'Ok, thanks!',
-				    title: 'Twitter Error'
-				  }).show();
-			}
-		}
-		
-	});
+		});
+	}
+	else{
+		$.twitterBtn_brandDesc.html = '<a href="http://twitter.com/' + args.twitter + '" target="_blank"><div style="height:30px;"><img src="./images/icons/twitterbird@2x.png" style="width:25px;height:20px;top:5px;left:5px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Twitter</span></div></a>';
+	}
 }
 else{
  	$.social_hor_view.remove($.twitterParent);
@@ -70,9 +76,16 @@ else{
 //Facebook btn
 if(args.facebook != null && args.facebook != "" )
 {
-	Ti.API.info("Facebook link exists");
-	$.facebookBtn.addEventListener('click', openFacebookLike);
-	
+	if(Titanium.Platform.name != 'mobileweb')
+	{
+		Ti.API.info("Facebook link exists");
+		$.facebookBtn.addEventListener('click', openFacebookLike);
+	}
+	else
+	{
+		$.facebookBtn_brandDesc.html = '<a href="http://www.facebook.com/' + args.facebook + '" target="_blank"><div style="height:30px;"><img src="./images/icons/facebookIcon@2x.png" style="width:20px;height:25px;left:3px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Facebook</span></div></a>';
+
+	}
 }
 else{
  	$.social_hor_view.remove($.facebookParent);
@@ -94,6 +107,7 @@ else{
 }
 
 function openFacebookLike(e){
+	
 	if (Titanium.Platform.name == 'iPhone OS') {
 		Ti.API.info("facebook like button clicked");
 		var canOpenFacebook = Ti.Platform.canOpenURL("fb://profile/"+args.facebook);

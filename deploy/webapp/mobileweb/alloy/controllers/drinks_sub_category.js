@@ -143,7 +143,7 @@ function Controller() {
         id: "twitterParent_subcategory"
     });
     $.__views.social_hor_view_subcategory.add($.__views.twitterParent_subcategory);
-    $.__views.__alloyId203 = Ti.UI.createButton({
+    $.__views.twitterBtn_subCat = Ti.UI.createLabel({
         width: "105dp",
         height: "34dp",
         backgroundColor: "transparent",
@@ -172,18 +172,16 @@ function Controller() {
                 offset: 1
             } ]
         },
-        image: "/images/icons/twitterbird.png",
-        title: "Twitter",
-        id: "__alloyId203"
+        id: "twitterBtn_subCat"
     });
-    $.__views.twitterParent_subcategory.add($.__views.__alloyId203);
+    $.__views.twitterParent_subcategory.add($.__views.twitterBtn_subCat);
     $.__views.facebookParent_subcategory = Ti.UI.createView({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         id: "facebookParent_subcategory"
     });
     $.__views.social_hor_view_subcategory.add($.__views.facebookParent_subcategory);
-    $.__views.__alloyId204 = Ti.UI.createButton({
+    $.__views.facebookBtn_subCat = Ti.UI.createLabel({
         width: "105dp",
         height: "34dp",
         backgroundColor: "transparent",
@@ -213,11 +211,9 @@ function Controller() {
             } ]
         },
         left: "30dp",
-        image: "/images/icons/facebookIcon.png",
-        title: "Facebook",
-        id: "__alloyId204"
+        id: "facebookBtn_subCat"
     });
-    $.__views.facebookParent_subcategory.add($.__views.__alloyId204);
+    $.__views.facebookParent_subcategory.add($.__views.facebookBtn_subCat);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var sub_category = arguments[0] || {};
@@ -272,10 +268,8 @@ function Controller() {
             single_drink_view.addEventListener("click", openDrinks);
         }
     }
-    null == sub_category.facebook || "" == sub_category.facebook ? $.social_hor_view_subcategory.remove($.facebookParent_subcategory) : $.facebookParent_subcategory.addEventListener("click", function() {
-    });
-    null == sub_category.twitter || "" == sub_category.twitter ? $.social_hor_view_subcategory.remove($.twitterParent_subcategory) : $.twitterParent_subcategory.addEventListener("click", function() {
-    });
+    null == sub_category.facebook || "" == sub_category.facebook ? $.social_hor_view_subcategory.remove($.facebookParent_subcategory) : $.facebookBtn_subCat.html = '<a href="http://www.facebook.com/' + sub_category.facebook + '" target="_blank"><div style="height:30px;"><img src="./images/icons/facebookIcon@2x.png" style="width:20px;height:25px;left:3px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Facebook</span></div></a>';
+    null == sub_category.twitter || "" == sub_category.twitter ? $.social_hor_view_subcategory.remove($.twitterParent_subcategory) : $.twitterBtn_subCat.html = '<a href="http://twitter.com/' + sub_category.twitter + '" target="_blank"><div style="height:30px;"><img src="./images/icons/twitterbird@2x.png" style="width:25px;height:20px;top:5px;left:5px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Twitter</span></div></a>';
     $.drinks_sub_category.addEventListener("close", function() {
         Ti.API.info("drinks subcategory closed");
     });
@@ -299,8 +293,8 @@ function Controller() {
     __defers["$.__views.__alloyId194!click!goToHome"] && $.__views.__alloyId194.addEventListener("click", goToHome);
     __defers["$.__views.__alloyId198!click!closeWindow"] && $.__views.__alloyId198.addEventListener("click", closeWindow);
     __defers["$.__views.__alloyId199!click!goToHome"] && $.__views.__alloyId199.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId206!click!goToHome"] && $.__views.__alloyId206.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId208!click!closeWindow"] && $.__views.__alloyId208.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId208!click!goToHome"] && $.__views.__alloyId208.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId210!click!closeWindow"] && $.__views.__alloyId210.addEventListener("click", closeWindow);
     _.extend($, exports);
 }
 

@@ -81,10 +81,16 @@
 					
 					<View layout="horizontal" id="social_hor_view_recipe" width="Ti.UI.SIZE" height="Ti.UI.SIZE" top="10dp" >
 						<View class="socialBtn_view" id="twitterParent_recipe">
-							<Button id="twitterBtn_recipe" image="/images/icons/twitterbird.png" class="socialBtn twitter" title="Twitter" />
+							<Button id="twitterBtn_recipe" image="/images/icons/twitterbird.png" platform="ios" class="socialBtn twitter" title="Twitter" />
+							<Button id="twitterBtn_recipe" image="/images/icons/twitterbird.png" platform="android" class="socialBtn twitter" title="Twitter" />
+							<!--<Button id="twitterBtn_recipe" image="./images/icons/twitterbird.png" platform="mobileweb"  class="socialBtn twitter" title="Twitter" />-->
+							<Label id="twitterBtn_cocktailDeet" platform="mobileweb" class="socialBtn twitter"  />
 						</View>
 						<View class="socialBtn_view" id="facebookParent_recipe">
-							<Button id="facebookBtn_recipe" image="/images/icons/facebookIcon.png" class="socialBtn facebook" title="Facebook" />
+							<Button id="facebookBtn_recipe" image="/images/icons/facebookIcon.png" platform="ios" class="socialBtn facebook" title="Facebook" />
+							<Button id="facebookBtn_recipe" image="/images/icons/facebookIcon.png" platform="android" class="socialBtn facebook" title="Facebook" />
+							<!--<Button id="facebookBtn_recipe" image="./images/icons/facebookIcon.png" platform="mobileweb" class="socialBtn facebook" title="Facebook" />-->
+							<Label id="facebookBtn_cocktailDeet" platform="mobileweb" class="socialBtn facebook"  />
 						</View>
 					</View>
 				</View>

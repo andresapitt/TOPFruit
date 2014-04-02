@@ -9,11 +9,11 @@
     <copyright>2014 by vocal</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>
-    <analytics>true</analytics>
-    <guid>404a0494-140b-4382-a572-7df8278496d7</guid>
-    <property name="ti.ui.defaultunit" type="string">dp</property>
-    <property name="ti.facebook.appid">183073991901631</property>
     <navbar-hidden>false</navbar-hidden>
+    <analytics>true</analytics>
+    <guid>1ad5ec19-7516-48c3-9e9d-89fe8859c587</guid>
+	<property name="ti.facebook.appid">183073991901631</property>
+    <property name="ti.ui.defaultunit" type="string">dp</property>
     <ios>
         <plist>
             <dict>
@@ -39,7 +39,7 @@
             </dict>
         </plist>
     </ios>
-    <android xmlns:android="http://schemas.android.com/apk/res/android">
+     <android xmlns:android="http://schemas.android.com/apk/res/android">
         <manifest>
             <uses-permission android:name="android.permission.INTERNET"/>
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -66,7 +66,7 @@
         </splash>
         <theme>default</theme>
     </mobileweb>
-    <modules>
+     <modules>
         <module platform="android">facebook</module>
         <module platform="iphone">facebook</module>
         <module platform="iphone">ti.map</module>

@@ -1,41 +1,56 @@
 [
   {
     "Mix": {
-      "id": "17",
+      "id": "1",
       "title": "Mix of the Month",
-      "subtitle": "this is the mix of the month",
-      "type": "1",
-      "image": null,
-      "background": null,
+      "title_font_colour": "#009aff",
+      "subtitle": "MALIBU Sunrise",
+      "subtitle_font_colour": "#a3a310",
+      "type": "3",
+      "image": "http://www.vocal.ie/client/idl/perfect-mix/files/Mixes/1/156182a7f06755bef9c54c5abb46bb5f.png",
+      "background": "http://www.vocal.ie/client/idl/perfect-mix/files/Mixes/1/22c76f85f5637f83db9c4c2b52448c33.png",
       "status": true,
-      "created": "2014-03-13 09:57:13",
-      "modified": "2014-03-14 08:25:15",
-      "image_thumb": null,
-      "thumbRetina": null,
-      "imageRetina": null,
-      "backgroundRetina": null,
+      "created": "2014-03-24 09:00:18",
+      "modified": "2014-04-01 08:41:51",
+      "imageRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Mixes/1/156182a7f06755bef9c54c5abb46bb5f@2x.png",
+      "backgroundRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Mixes/1/22c76f85f5637f83db9c4c2b52448c33@2x.png",
       "cocktails": {
         "Cocktail": {
-          "id": "2",
-          "title": "Tipperary",
-          "description": "A tasty summer cocktail",
-          "ingredients": "50ml Base Spirit, 25 ml Lemon Juice, 12.5 Sugar Syrup, Top with Soda.",
-          "glass": "1",
-          "method": "First three ingredients in a shaker, shake and strain into an iced filled high ball topped with soda.",
-          "garnish": "Orange wheel with a cherry on a stick (sail).",
-          "image": "http://vocal.ie/client/idl/perfect-mix/files/Cocktails/2/e8bc43c59dd92702a185f9e00732fd9a.jpg",
-          "image_thumb": "http://vocal.ie/client/idl/perfect-mix/files/Cocktails/2/tmb_e8bc43c59dd92702a185f9e00732fd9a.jpg",
-          "video": "K85o3T_g7so",
-          "drinks": "",
-          "subcategories": "[\"2\"]",
-          "search_thumb_url": "http://vocal.ie/client/idl/perfect-mix/files/Cocktails/2/search_e8bc43c59dd92702a185f9e00732fd9a.jpg",
+          "id": "4",
+          "title": "Jameson Ginger and Lime",
+          "facebook": "103708403",
+          "twitter": "JAMESONPARTY",
+          "description": "",
+          "ingredients": "50ml of Jameson Irish Whiskey\r\nGood quality bottled ginger ale\r\nLarge wedge of lime",
+          "glass": [
+            {
+              "Glass": {
+                "title": "Highball"
+              }
+            }
+          ],
+          "method": "Fill the glass with ice to the top\r\nPour a shot of Jameson\r\nFill the glass with a good quality bottled ginger ale\r\nStir briefly to mix\r\nTake a large wedge of lime, squeeze it and then drop it into the glass",
+          "garnish": "Large wedge of lime",
+          "image": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/4/bca76977846a77ea52457f279ad3e998.png",
+          "image_thumb": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/4/tmb_bca76977846a77ea52457f279ad3e998.png",
+          "video": "",
+          "drinks": [
+            {
+              "Drink": {
+                "id": "4"
+              }
+            }
+          ],
+          "subcategories": [],
+          "search_thumb_url": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/4/search_bca76977846a77ea52457f279ad3e998.png",
           "status": true,
           "featured": true,
-          "created": "2014-02-21 11:30:16",
-          "modified": "2014-03-06 06:41:29",
-          "thumbRetina": "http://vocal.ie/client/idl/perfect-mix/files/Cocktails/2/tmb_e8bc43c59dd92702a185f9e00732fd9a@2x.jpg",
-          "imageRetina": "http://vocal.ie/client/idl/perfect-mix/files/Cocktails/2/e8bc43c59dd92702a185f9e00732fd9a@2x.jpg",
-          "searchRetina": "http://vocal.ie/client/idl/perfect-mix/files/Cocktails/2/search_e8bc43c59dd92702a185f9e00732fd9a@2x.jpg"
+          "created": "2014-03-21 06:24:53",
+          "modified": "2014-03-28 11:24:35",
+          "rating": 4,
+          "thumbRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/4/tmb_bca76977846a77ea52457f279ad3e998@2x.png",
+          "imageRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/4/bca76977846a77ea52457f279ad3e998@2x.png",
+          "searchRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Cocktails/4/search_bca76977846a77ea52457f279ad3e998@2x.png"
         }
       }
     }

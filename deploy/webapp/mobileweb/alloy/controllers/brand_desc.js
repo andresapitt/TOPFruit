@@ -1,6 +1,4 @@
 function Controller() {
-    function openFacebookLike() {
-    }
     function closeWindow() {
         var a = Alloy.Globals.windowStack.indexOf($.brand_desc);
         Alloy.Globals.windowStack.splice(a, 1);
@@ -182,7 +180,7 @@ function Controller() {
         id: "twitterParent"
     });
     $.__views.social_hor_view.add($.__views.twitterParent);
-    $.__views.twitterBtn = Ti.UI.createButton({
+    $.__views.twitterBtn_brandDesc = Ti.UI.createLabel({
         backgroundColor: "#d1d1d1",
         backgroundGradient: {
             type: "linear",
@@ -211,11 +209,9 @@ function Controller() {
         },
         color: "#fff",
         tintColor: "#fff",
-        id: "twitterBtn",
-        image: "./images/icons/twitterbird.png",
-        title: "Twitter"
+        id: "twitterBtn_brandDesc"
     });
-    $.__views.twitterParent.add($.__views.twitterBtn);
+    $.__views.twitterParent.add($.__views.twitterBtn_brandDesc);
     $.__views.facebookParent = Ti.UI.createView({
         left: "5dp",
         right: "4dp",
@@ -224,7 +220,7 @@ function Controller() {
         id: "facebookParent"
     });
     $.__views.social_hor_view.add($.__views.facebookParent);
-    $.__views.facebookBtn = Ti.UI.createButton({
+    $.__views.facebookBtn_brandDesc = Ti.UI.createLabel({
         backgroundColor: "#d1d1d1",
         backgroundGradient: {
             type: "linear",
@@ -253,11 +249,9 @@ function Controller() {
         },
         color: "#fff",
         tintColor: "#fff",
-        id: "facebookBtn",
-        image: "./images/icons/facebookIcon.png",
-        title: "Facebook"
+        id: "facebookBtn_brandDesc"
     });
-    $.__views.facebookParent.add($.__views.facebookBtn);
+    $.__views.facebookParent.add($.__views.facebookBtn_brandDesc);
     $.__views.websiteParent = Ti.UI.createView({
         left: "5dp",
         right: "4dp",
@@ -321,18 +315,12 @@ function Controller() {
     }
     if (null != args.twitter && "" != args.twitter) {
         Ti.API.info("Twitter link exists");
-        $.twitterBtn.addEventListener("click", function() {
-            var canOpenTwitter = Ti.Platform.canOpenURL("twitter://user?screen_name=" + args.twitter);
-            canOpenTwitter ? Ti.Platform.openURL("twitter://user?screen_name=" + args.twitter) : alert("The twitter app must be installed to open this link.");
-        });
+        $.twitterBtn_brandDesc.html = '<a href="http://twitter.com/' + args.twitter + '" target="_blank"><div style="height:30px;"><img src="./images/icons/twitterbird@2x.png" style="width:25px;height:20px;top:5px;left:5px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Twitter</span></div></a>';
     } else {
         $.social_hor_view.remove($.twitterParent);
         Ti.API.info("Twitter link NULL");
     }
-    if (null != args.facebook && "" != args.facebook) {
-        Ti.API.info("Facebook link exists");
-        $.facebookBtn.addEventListener("click", openFacebookLike);
-    } else {
+    if (null != args.facebook && "" != args.facebook) $.facebookBtn_brandDesc.html = '<a href="http://www.facebook.com/' + args.facebook + '" target="_blank"><div style="height:30px;"><img src="./images/icons/facebookIcon@2x.png" style="width:20px;height:25px;left:3px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Facebook</span></div></a>'; else {
         $.social_hor_view.remove($.facebookParent);
         Ti.API.info("Facebook link NULL");
     }

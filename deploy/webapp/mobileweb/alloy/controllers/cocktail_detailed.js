@@ -711,7 +711,7 @@ function Controller() {
         id: "twitterParent_recipe"
     });
     $.__views.social_hor_view_recipe.add($.__views.twitterParent_recipe);
-    $.__views.twitterBtn_recipe = Ti.UI.createButton({
+    $.__views.twitterBtn_cocktailDeet = Ti.UI.createLabel({
         width: "105dp",
         height: "34dp",
         backgroundColor: "transparent",
@@ -740,18 +740,16 @@ function Controller() {
                 offset: 1
             } ]
         },
-        id: "twitterBtn_recipe",
-        image: "/images/icons/twitterbird.png",
-        title: "Twitter"
+        id: "twitterBtn_cocktailDeet"
     });
-    $.__views.twitterParent_recipe.add($.__views.twitterBtn_recipe);
+    $.__views.twitterParent_recipe.add($.__views.twitterBtn_cocktailDeet);
     $.__views.facebookParent_recipe = Ti.UI.createView({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         id: "facebookParent_recipe"
     });
     $.__views.social_hor_view_recipe.add($.__views.facebookParent_recipe);
-    $.__views.facebookBtn_recipe = Ti.UI.createButton({
+    $.__views.facebookBtn_cocktailDeet = Ti.UI.createLabel({
         width: "105dp",
         height: "34dp",
         backgroundColor: "transparent",
@@ -781,11 +779,9 @@ function Controller() {
             } ]
         },
         left: "30dp",
-        id: "facebookBtn_recipe",
-        image: "/images/icons/facebookIcon.png",
-        title: "Facebook"
+        id: "facebookBtn_cocktailDeet"
     });
-    $.__views.facebookParent_recipe.add($.__views.facebookBtn_recipe);
+    $.__views.facebookParent_recipe.add($.__views.facebookBtn_cocktailDeet);
     $.__views.__alloyId104 = Ti.UI.createView({
         height: "10dp",
         width: "140dp",
@@ -929,7 +925,7 @@ function Controller() {
     if (null != cocktail.glass && "" != cocktail.glass) {
         Ti.API.info("cocktail glassware info: " + cocktail.glass);
         var glassText = "";
-        for (var i = 0; cocktail.glass.length > i; i += 2) glassText += "• " + cocktail.glass[i].Glass.title + "\n";
+        for (var i = 0; cocktail.glass.length > i; i++) glassText += "• " + cocktail.glass[i].Glass.title + "\n";
         $.glassware.text = glassText;
     } else {
         Ti.API.info("No cocktail glass info");
@@ -1004,13 +1000,11 @@ function Controller() {
     var showSocialSection = false;
     if (null == cocktail.facebook || "" == cocktail.facebook) $.social_hor_view_recipe.remove($.facebookParent_recipe); else {
         showSocialSection = true;
-        $.facebookParent_recipe.addEventListener("click", function() {
-        });
+        $.facebookBtn_cocktailDeet.html = '<a href="http://www.facebook.com/' + cocktail.facebook + '" target="_blank"><div style="height:30px;"><img src="./images/icons/facebookIcon@2x.png" style="width:20px;height:25px;left:3px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Facebook</span></div></a>';
     }
     if (null == cocktail.twitter || "" == cocktail.twitter) $.social_hor_view_recipe.remove($.twitterParent_recipe); else {
         showSocialSection = true;
-        $.twitterParent_recipe.addEventListener("click", function() {
-        });
+        $.twitterBtn_cocktailDeet.html = '<a href="http://twitter.com/' + cocktail.twitter + '" target="_blank"><div style="height:30px;"><img src="./images/icons/twitterbird@2x.png" style="width:25px;height:20px;top:5px;left:5px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Twitter</span></div></a>';
     }
     showSocialSection || $.recipe_container_bottom.remove($.recipe_social_container);
     var ratings_star_style = $.createStyle({

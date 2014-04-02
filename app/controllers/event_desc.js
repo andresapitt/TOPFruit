@@ -158,9 +158,10 @@ if(args.longitude != null && args.latitude != null)
 		            latitudeDelta:0.01, longitudeDelta:0.01},
 		  //  animate:true,
 		 //   regionFit:true,
-		    userLocation:true,
+		  //  userLocation:true,
 			annotations:[eventMapPinView],
 		    height:mapHeight,
+		    userLocation:false
 		// height:"200dp", 
 		// width:"200dp"
 		  //   borderRadius:6,
@@ -174,7 +175,7 @@ if(args.longitude != null && args.latitude != null)
 		//var mapHeight = (screenWidth * 0.6) / Ti.Platform.displayCaps.logicalDensityFactor ;
 		
 		var remoteMapImage = Ti.UI.createImageView({
-				image:"http://maps.googleapis.com/maps/api/staticmap?center="+args.latitude+","+args.longitude+"&zoom=14&size=640x400&sensor=false&output=embed",
+			image:"http://maps.googleapis.com/maps/api/staticmap?center="+args.latitude+","+args.longitude+"&zoom=14&size=640x400&sensor=false&output=embed&markers=color:red%7C"+args.latitude+","+args.longitude,
 			width:Ti.UI.FILL, 
 			 height:"200dp",
 			   borderRadius:6,
@@ -209,7 +210,7 @@ if(args.longitude != null && args.latitude != null)
 		            latitudeDelta:0.01, longitudeDelta:0.01},
 		    animate:true,
 		    regionFit:true,
-		    userLocation:true,
+		    userLocation:false,
 		    annotations:[eventMapPinView],
 		    height:"200dp",
 		    backgroundColor:'#fff',

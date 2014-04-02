@@ -4,6 +4,9 @@
 ".menu_row[platform=android]":{
 	height:"20%"
 },
+".menu_row[platform=mobileweb]":{
+	height:"105dp"
+},
 "#mix_title": {
 	width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,

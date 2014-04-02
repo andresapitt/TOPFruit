@@ -122,9 +122,13 @@
 	width:"320dp"
 },
 "#banner_img[platform=android formFactor=tablet]":{
-	top:"20dp",
-	height:"40%",
-	width:Ti.UI.FILL
+	top:"60dp",
+	height:"204dp",
+	width:"640dp",
+	bottom:"60dp"
+//	left:"40dp",
+//	right:"40dp"
+//	width:Ti.UI.FILL
 },
 "#drinkaware_img":{
 	//bottom:"0dp",

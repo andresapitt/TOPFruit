@@ -126,7 +126,7 @@ $.news.addEventListener('close', function(e){
 
 $.news.addEventListener('open', function(e){
 	Ti.API.info('News window opened');
-	
+	Ti.API.info('News window opened, activity? ' + $.news.activity);
 	Alloy.Globals.windowStack.push($.news);
 	
 });

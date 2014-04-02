@@ -52,6 +52,10 @@ function DisplayCompetitions(newJSON)
 		competition_item_view.add(competition_image_view);
 		
 		var competition_arrow_view = Ti.UI.createImageView({image:"/images/common/chevron.png"});
+		if(Ti.Platform.name == "mobileweb")
+		{
+			competition_arrow_view.image = "./images/common/chevron.png" ;
+		}
 		competition_arrow_view.applyProperties(competition_arrow_style);
 		competition_item_view.add(competition_arrow_view);
 		

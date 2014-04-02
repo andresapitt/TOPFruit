@@ -8,7 +8,7 @@ var require = {
 		copyright: "2014 by vocal",
 		deployType: "development",
 		description: "not specified",
-		guid: "404a0494-140b-4382-a572-7df8278496d7",
+		guid: "1ad5ec19-7516-48c3-9e9d-89fe8859c587",
 		id: "ie.vstream.perfectmix",
 		name: "Perfect Mix",
 		names: {},
@@ -17618,7 +17618,7 @@ define(function() {
 
 }});
 require("Ti/App/Properties", function(p) {
-	p.setString("ti.ui.defaultunit","dp");
 	p.setString("ti.facebook.appid","183073991901631");
+	p.setString("ti.ui.defaultunit","dp");
 });
 require(["Ti","Ti/Accelerometer","Ti/Analytics","Ti/BlobStream","Ti/BufferStream","Ti/Facebook/LoginButton","Ti/Filesystem/FileStream","Ti/Map/Annotation","Ti/Map/View","Ti/Media/AudioPlayer","Ti/Media/Sound","Ti/Media/VideoPlayer","Ti/Network/HTTPClient","Ti/Platform/DisplayCaps","Ti/UI/2DMatrix","Ti/UI/ActivityIndicator","Ti/UI/AlertDialog","Ti/UI/Clipboard","Ti/UI/EmailDialog","Ti/UI/OptionDialog","Ti/UI/Picker","Ti/UI/PickerColumn","Ti/UI/PickerRow","Ti/UI/ProgressBar","Ti/UI/ScrollView","Ti/UI/ScrollableView","Ti/UI/Slider","Ti/UI/Switch","Ti/UI/Tab","Ti/UI/TabGroup","Ti/UI/TableView","Ti/UI/TableViewRow","Ti/UI/TableViewSection","Ti/UI/TextArea","Ti/UI/TextField","Ti/UI/WebView","Ti/UI/Window","Ti/XML","Ti/Yahoo","Ti/_/colors","Ti/_/image","Ti/_/text","Ti/_/text!Ti/_/UI/WebViewBridge.js"]);

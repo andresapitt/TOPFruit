@@ -24,24 +24,30 @@ if(Ti.Platform.osname == "iphone")
 {
 	Alloy.Globals.MainFont = "HelveticaNeue-Light";
 	Alloy.Globals.BoldFont = "Helvetica Neue LT";
-	Alloy.Globals.JamesonFontLight = "JJEl-Regular";
-	Alloy.Globals.JamesonFontBold = "JJRg-Regular";
+	//Alloy.Globals.JamesonFontLight = "JJEl-Regular";
+	Alloy.Globals.JamesonFontLight = "JJLt-Regular";
+	//Alloy.Globals.JamesonFontBold = "JJRg-Regular";
+	Alloy.Globals.JamesonFontBold = "JJBl-Regular";
 	Alloy.Globals.AbsolutFontLight = "Absolut Script";
 	Alloy.Globals.AbsolutFontBold = "Absolut Headline";
 	Alloy.Globals.MalibuFontLight = "MalibuSlab-300";
-	Alloy.Globals.MalibuFontBold = "MalibuSlab-700";
+	//Alloy.Globals.MalibuFontBold = "MalibuSlab-700";
+	Alloy.Globals.MalibuFontBold = "MalibuBrushcript-Medium";
 	Alloy.Globals.MainFontSize = "18dp";
 }
 else if(Ti.Platform.name == "mobileweb")
 {
 	Alloy.Globals.MainFont = "'HelveticaNeue-Thin'";
 	Alloy.Globals.BoldFont = "'HelveticaNeueLT-BoldCond'";
-	Alloy.Globals.JamesonFontLight = "'JJEl-Regular'";
-	Alloy.Globals.JamesonFontBold = "'JJRg-Regular'";
+	//Alloy.Globals.JamesonFontLight = "'JJEl-Regular'";
+	Alloy.Globals.JamesonFontLight = "'JJLt-Regular'";
+	//Alloy.Globals.JamesonFontBold = "'JJRg-Regular'";
+	Alloy.Globals.JamesonFontBold = "'JJBl-Regular'";
 	Alloy.Globals.AbsolutFontLight = "'Absolut Script'";
 	Alloy.Globals.AbsolutFontBold = "'Absolut Headline'";
 	Alloy.Globals.MalibuFontLight = "'MalibuSlab-300'";
-	Alloy.Globals.MalibuFontBold = "'MalibuSlab-700'";
+	//Alloy.Globals.MalibuFontBold = "'MalibuSlab-700'";
+	Alloy.Globals.MalibuFontBold = "'MalibuBrushcript-Medium'";
 	Alloy.Globals.MainFontSize = "18dp";
 }
 else{
@@ -49,10 +55,13 @@ else{
 	Alloy.Globals.BoldFont = "HelveticaNeueLT-BoldCond";
 	Alloy.Globals.AbsolutFontLight = "Absolut-Light";
 	Alloy.Globals.AbsolutFontBold = "Absolut-Bold";
-	Alloy.Globals.JamesonFontLight = "Jameson-Light";
-	Alloy.Globals.JamesonFontBold = "Jameson-Bold";
+	//Alloy.Globals.JamesonFontLight = "Jameson-Light";
+	Alloy.Globals.JamesonFontLight = "Jameson-Light-2";
+	//Alloy.Globals.JamesonFontBold = "Jameson-Bold";
+	Alloy.Globals.JamesonFontBold = "Jameson-Bold-3";
 	Alloy.Globals.MalibuFontLight = "MalibuSlab-Light";
-	Alloy.Globals.MalibuFontBold = "MalibuSlab-Bold";
+	//Alloy.Globals.MalibuFontBold = "MalibuSlab-Bold";
+	Alloy.Globals.MalibuFontBold = "MalibuBrush-Medium";
 	Alloy.Globals.MainFontSize = "22dp";
 	
 	if(Ti.Platform.displayCaps.platformHeight >= 1200 && Ti.Platform.displayCaps.platformWidth >= 1200 )
@@ -87,7 +96,7 @@ json_data_cache_updates.push({file:"data/Events.txt", elapsed_time:60000}); // o
 json_data_cache_updates.push({file:"data/Competitions.txt", elapsed_time:60000}); // only update competitions every min
 json_data_cache_updates.push({file:"data/Cocktails.txt", elapsed_time:60000}); // only update cocktails every min
 json_data_cache_updates.push({file:"data/Drinks.txt", elapsed_time:60000}); // only update drinks every min
-
+json_data_cache_updates.push({file:"data/FeaturedMix.txt", elapsed_time:60000});
 Alloy.Globals.windowStack = new Array();
 
 var dir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'data');
@@ -167,6 +176,8 @@ RemoteImage: function(a){
 	    }
 	    image.width = a.width;
 	    image.height = a.height;
+	     image.opacity = a.opacity;
+	      image.touchEnabled = a.touchEnabled;
 		return image;
 	}
 	else if (Ti.Platform.name == "iPhone OS" || Ti.Platform.name == "mobileweb" )
@@ -217,6 +228,10 @@ RemoteImage: function(a){
 	      }
 	      image.addEventListener('load',saveImage);
 	    }
+	    image.width = a.width;
+	    image.height = a.height;
+		image.opacity = a.opacity;
+		image.touchEnabled = a.touchEnabled;
 	    return image;
 	}
 },
@@ -430,6 +445,11 @@ Alloy.Globals.goToHome = function(e){
 	}
 };
 
-
+Ti.Gesture.addEventListener('shake', function(e){
+	if(e.timestamp > 2000){
+		
+		//alert('SHAKE IT BABY');
+	}
+});
 //var winStack = [];
 //Ti.App.Properties.setList('Stack', winStack);

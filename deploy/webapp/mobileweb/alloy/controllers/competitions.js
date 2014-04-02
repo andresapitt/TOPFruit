@@ -43,6 +43,7 @@ function Controller() {
             var competition_arrow_view = Ti.UI.createImageView({
                 image: "/images/common/chevron.png"
             });
+            competition_arrow_view.image = "./images/common/chevron.png";
             competition_arrow_view.applyProperties(competition_arrow_style);
             competition_item_view.add(competition_arrow_view);
             competition_item_view.competitionData = competition_json[i].Competition;

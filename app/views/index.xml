@@ -1,5 +1,5 @@
 <Alloy>
-	<NavigationWindow id="win1" platform="ios" class="win1">
+	<NavigationWindow id="win1" platform="ios">
 		<Window class="container" title="HOME" id="home_window">
 			<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" />
 			<View id="mix_of_month_view" height="202dp" backgroundColor="#ddd">
@@ -59,7 +59,6 @@
 		</LeftNavButton>
 		</Window>
 	</NavigationWindow>
-	
 	<Window exitOnClose="true" class="container" platform="android" title="HOME" id="win1" >
 		<View platform="android" height="50dp" width="Ti.UI.FILL">
 			<View width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" opacity="1" />
@@ -133,10 +132,10 @@
 		</View>
 		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" />
 		<View height="Ti.UI.FILL" width="Ti.UI.FILL" layout="vertical">
-			<View id="mix_of_month_view" height="40%" backgroundColor="#ddd">
-				<View id="mix_banner_image_container" width="Ti.UI.FILL" height="Ti.UI.FILL" />
+			<View id="mix_of_month_view" height="202dp" backgroundColor="#ddd">
+				<View id="mix_banner_image_container" width="320dp" height="202dp" />
 				<View id="mix_bottle_image_container" left="5dp" width="30%" height="Ti.UI.SIZE" />
-				<View id="mix_of_the_month_anim_view" height="Ti.UI.SIZE" layout="vertical" width="60%" right="-25dp" opacity="0">
+				<View id="mix_of_the_month_anim_view" height="Ti.UI.SIZE" layout="vertical" width="60%" right="0dp" opacity="0">
 					<Label id="mix_title">Mix of the Month  bloop bloop lboop blooopb</Label>
 					<Label id="mix_desc">Absolut Citron & Tonic bloop bloop lboop blooopb</Label>
 				</View>

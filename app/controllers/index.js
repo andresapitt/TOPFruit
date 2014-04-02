@@ -18,6 +18,8 @@ else //open home page of app
 }
 
 
+//	Ti.API.info("Is this modal? " + $.win1.modal);
+	
 function indexOpen(e)
 {
 	
@@ -69,7 +71,11 @@ function indexOpen(e)
 			type = "MALIBU";
 		
 		Ti.API.info("Mix of the month type: " + featuredMix[0].Mix.type);
-		
+		var genericBG_Image = "/images/home_screen/mix_month_bg.png";
+		if(Ti.Platform.name == "mobileweb")
+		{
+			genericBG_Image = "."+genericBG_Image;
+		}
 		switch(featuredMix[0].Mix.type)
 		{
 			case "0":
@@ -78,14 +84,20 @@ function indexOpen(e)
 				    font: {
 						fontFamily:Alloy.Globals.BoldFont,
 						fontSize:Alloy.Globals.MainFontSize
-					}
+					},
+					width:Ti.UI.FILL, 
+					textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+					color:featuredMix[0].Mix.title_font_colour
 				});
 				$.mix_title.applyProperties(mix_title_style_font);
 				var mix_subtitle_style_font = $.createStyle({
 				    font: {
 						fontFamily:Alloy.Globals.MainFont,
 						fontSize:Alloy.Globals.MainFontSize
-					}
+					},
+					width:Ti.UI.FILL, 
+					textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+					color:featuredMix[0].Mix.subtitle_font_colour
 				});
 				$.mix_desc.applyProperties(mix_subtitle_style_font);
 				break;
@@ -93,78 +105,133 @@ function indexOpen(e)
 				Ti.API.info('mix of the month type ABSOLUT');
 				var mix_title_style_font = $.createStyle({
 				    font: {
-						fontFamily:Alloy.Globals.AbsolutFontBold,
+						fontFamily:Alloy.Globals.AbsolutFontLight,
 						fontSize:Alloy.Globals.MainFontSize
-					}
+					},
+					width:Ti.UI.FILL, 
+					textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+					color:featuredMix[0].Mix.title_font_colour,
 				});
 				$.mix_title.applyProperties(mix_title_style_font);
 				var mix_subtitle_style_font = $.createStyle({
 				    font: {
-						fontFamily:Alloy.Globals.AbsolutFontLight,
+						fontFamily:Alloy.Globals.AbsolutFontBold,
 						fontSize:Alloy.Globals.MainFontSize
-					}
+					},
+					width:Ti.UI.FILL, 
+					textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+					color:featuredMix[0].Mix.subtitle_font_colour
 				});
 				$.mix_desc.applyProperties(mix_subtitle_style_font);
+				genericBG_Image = "/images/home_screen/absolut_bg.png";
+				if(Ti.Platform.name == "mobileweb")
+				{
+					genericBG_Image = "."+genericBG_Image;
+				}
 				break;
 			case "2":
 			 	Ti.API.info('mix of the month type JAMESON');
 			 	var mix_title_style_font = $.createStyle({
 				    font: {
-						fontFamily:Alloy.Globals.JamesonFontBold,
+						fontFamily:Alloy.Globals.JamesonFontLight,
 						fontSize:Alloy.Globals.MainFontSize,
 					//	fontWeight:'bold'
-					}
+					},
+					width:Ti.UI.FILL, 
+					textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+					color:featuredMix[0].Mix.title_font_colour,
 				});
 				$.mix_title.applyProperties(mix_title_style_font);
 				var mix_subtitle_style_font = $.createStyle({
 				    font: {
-						fontFamily:Alloy.Globals.JamesonFontLight,
+						fontFamily:Alloy.Globals.JamesonFontBold,
 						fontSize:Alloy.Globals.MainFontSize,
 					//	fontWeight:'normal'
-					}
+					},
+					width:Ti.UI.FILL, 
+					textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+					color:featuredMix[0].Mix.subtitle_font_colour
 				});
 				$.mix_desc.applyProperties(mix_subtitle_style_font);
+				genericBG_Image = "/images/home_screen/jameson_bg.png";
+				if(Ti.Platform.name == "mobileweb")
+				{
+					genericBG_Image = "."+genericBG_Image;
+				}
 				break;
 			case "3":
 				Ti.API.info('mix of the month type MALIBU');
 				var mix_title_style_font = $.createStyle({
 				    font: {
-						fontFamily:Alloy.Globals.MalibuFontBold,
+						fontFamily:Alloy.Globals.MalibuFontLight,
 						fontSize:Alloy.Globals.MainFontSize
-					}
+					},
+					width:Ti.UI.FILL, 
+					textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+					color:featuredMix[0].Mix.title_font_colour,
 				});
 				$.mix_title.applyProperties(mix_title_style_font);
 				var mix_subtitle_style_font = $.createStyle({
 				    font: {
-						fontFamily:Alloy.Globals.MalibuFontLight,
+						fontFamily:Alloy.Globals.MalibuFontBold,
 						fontSize:Alloy.Globals.MainFontSize
-					}
+					},
+					width:Ti.UI.FILL, 
+					textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+					color:featuredMix[0].Mix.subtitle_font_colour
 				});
 				$.mix_desc.applyProperties(mix_subtitle_style_font);
+				genericBG_Image = "/images/home_screen/malibu_bg.png";
+				if(Ti.Platform.name == "mobileweb")
+				{
+					genericBG_Image = "."+genericBG_Image;
+				}
 				break;
 		}
 		
 		$.mix_title.text = featuredMix[0].Mix.title;
 		$.mix_desc.text = featuredMix[0].Mix.subtitle;
 		
-		var mix_of_the_month_banner_image_view = Alloy.Globals.Utils.RemoteImage({
-				image: featuredMix[0].Mix.background,
-				defaultImage:'/images/home_screen/mix_month_bg.png',
-				width:Ti.UI.FILL, 
-				height:Ti.UI.FILL,
-				touchEnabled:false
-			});
+		
 		if(Ti.Platform.name == "mobileweb")
 		{
-			mix_of_the_month_banner_image_view.defaultImage = './images/home_screen/mix_month_bg.png';
-			//	mix_of_the_month_banner_image_view.width = '320dp';
-			//	mix_of_the_month_banner_image_view.height = '207dp';
+			if(featuredMix[0].Mix.background != null && featuredMix[0].Mix.background != "")
+			{
+				$.mix_banner_image_container.backgroundImage = featuredMix[0].Mix.background;
+			}
+			else
+			{
+				$.mix_banner_image_container.backgroundImage = genericBG_Image;
+			}
+		}
+		else
+		{
+			if(featuredMix[0].Mix.background != null && featuredMix[0].Mix.background != "")
+			{
+				var mix_of_the_month_banner_image_view = Alloy.Globals.Utils.RemoteImage({
+					image: featuredMix[0].Mix.background,
+					defaultImage:genericBG_Image,
+					width:Ti.UI.FILL, 
+					height:Ti.UI.FILL,
+					touchEnabled:false
+				});
+			}
+			else
+			{
+				var mix_of_the_month_banner_image_view = Alloy.Globals.Utils.RemoteImage({
+					image: genericBG_Image,
+					width:Ti.UI.FILL, 
+					height:Ti.UI.FILL,
+					touchEnabled:false
+				});
+			}
+			$.mix_banner_image_container.add(mix_of_the_month_banner_image_view);
 		}
 			
-		$.mix_banner_image_container.add(mix_of_the_month_banner_image_view);
+		var mix_of_the_month_image_view;
 		if(Ti.Platform.name == "mobileweb" )
 		{
-			var mix_of_the_month_image_view = Alloy.Globals.Utils.RemoteImage({
+			mix_of_the_month_image_view = Alloy.Globals.Utils.RemoteImage({
 				image: featuredMix[0].Mix.image,
 				defaultImage:'./images/cocktails/glass.png',
 				width:Ti.UI.FILL, 
@@ -173,7 +240,7 @@ function indexOpen(e)
 			});
 		}
 		else{
-			var mix_of_the_month_image_view = Alloy.Globals.Utils.RemoteImage({
+			mix_of_the_month_image_view = Alloy.Globals.Utils.RemoteImage({
 				image: featuredMix[0].Mix.image,
 				defaultImage:'/images/cocktails/glass.png',
 				width:Ti.UI.FILL, 
@@ -183,7 +250,7 @@ function indexOpen(e)
 			});
 		}
 		$.mix_bottle_image_container.add(mix_of_the_month_image_view);
-			
+		Ti.API.info('mix of the month bottle opacity: ' + mix_of_the_month_image_view.opacity);
 		//$.mix_of_the_month_anim_view.anchorPoint = {x:0, y:0};
 		var animation = Titanium.UI.createAnimation();
 		animation.right = "5dp";
@@ -207,6 +274,7 @@ function indexOpen(e)
 			var recipeWin = Alloy.createController('cocktail_detailed', featuredMix[0].Mix.cocktails.Cocktail).getView();
 			if(Ti.Platform.name == "android" )
 			{
+				Ti.API.info('android open recipe!');
 				recipeWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 			}
 			else if(Ti.Platform.name == "mobileweb" )
@@ -319,7 +387,21 @@ function openNews(e){
 	var newsWin = Alloy.createController('news').getView();
 	if(Ti.Platform.name == "android" )
 	{
-		newsWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
+		Ti.API.info("ANDROID OPEN NEWS!");
+		newsWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left, animated:true});
+		/*newsWin.open({
+		    activityEnterAnimation: Ti.Android.R.anim.slide_in_left,
+		    activityExitAnimation: Ti.Android.R.anim.slide_out_right,
+		    modal:false
+		});*/
+		//newsWin.open({ activityEnterAnimation: Ti.Android.R.anim.slide_in_left, activityExitAnimation: Ti.Android.R.anim.slide_out_right});
+	
+		/*var win2 = Ti.UI.createWindow();
+		win2.open({
+		    activityEnterAnimation: Ti.Android.R.anim.slide_in_left,
+		    activityExitAnimation: Ti.Android.R.anim.slide_out_right
+		});*/
+
 	}
 	else if(Ti.Platform.name == "mobileweb")
 	{
@@ -337,7 +419,7 @@ function openTandCs(e)
 	var terms_and_conditions = Alloy.createController('terms_and_conditions').getView();
 	if(Ti.Platform.name == "android" )
 	{
-		terms_and_conditions.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
+		terms_and_conditions.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right, animated:true});
 	}
 	else if(Ti.Platform.name == "mobileweb")
 	{

@@ -7,6 +7,8 @@ function Controller() {
             var type = "GENERIC";
             1 == featuredMix[0].Mix.type ? type = "ABSOLUT" : 2 == featuredMix[0].Mix.type ? type = "JAMESON" : 3 == featuredMix[0].Mix.type && (type = "MALIBU");
             Ti.API.info("Mix of the month type: " + featuredMix[0].Mix.type);
+            var genericBG_Image = "/images/home_screen/mix_month_bg.png";
+            genericBG_Image = "." + genericBG_Image;
             switch (featuredMix[0].Mix.type) {
               case "0":
                 Ti.API.info("mix of the month type GENERIC");
@@ -14,14 +16,20 @@ function Controller() {
                     font: {
                         fontFamily: Alloy.Globals.BoldFont,
                         fontSize: Alloy.Globals.MainFontSize
-                    }
+                    },
+                    width: Ti.UI.FILL,
+                    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+                    color: featuredMix[0].Mix.title_font_colour
                 });
                 $.mix_title.applyProperties(mix_title_style_font);
                 var mix_subtitle_style_font = $.createStyle({
                     font: {
                         fontFamily: Alloy.Globals.MainFont,
                         fontSize: Alloy.Globals.MainFontSize
-                    }
+                    },
+                    width: Ti.UI.FILL,
+                    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+                    color: featuredMix[0].Mix.subtitle_font_colour
                 });
                 $.mix_desc.applyProperties(mix_subtitle_style_font);
                 break;
@@ -30,70 +38,84 @@ function Controller() {
                 Ti.API.info("mix of the month type ABSOLUT");
                 var mix_title_style_font = $.createStyle({
                     font: {
-                        fontFamily: Alloy.Globals.AbsolutFontBold,
+                        fontFamily: Alloy.Globals.AbsolutFontLight,
                         fontSize: Alloy.Globals.MainFontSize
-                    }
+                    },
+                    width: Ti.UI.FILL,
+                    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+                    color: featuredMix[0].Mix.title_font_colour
                 });
                 $.mix_title.applyProperties(mix_title_style_font);
                 var mix_subtitle_style_font = $.createStyle({
                     font: {
-                        fontFamily: Alloy.Globals.AbsolutFontLight,
+                        fontFamily: Alloy.Globals.AbsolutFontBold,
                         fontSize: Alloy.Globals.MainFontSize
-                    }
+                    },
+                    width: Ti.UI.FILL,
+                    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+                    color: featuredMix[0].Mix.subtitle_font_colour
                 });
                 $.mix_desc.applyProperties(mix_subtitle_style_font);
+                genericBG_Image = "/images/home_screen/absolut_bg.png";
+                genericBG_Image = "." + genericBG_Image;
                 break;
 
               case "2":
                 Ti.API.info("mix of the month type JAMESON");
                 var mix_title_style_font = $.createStyle({
                     font: {
-                        fontFamily: Alloy.Globals.JamesonFontBold,
+                        fontFamily: Alloy.Globals.JamesonFontLight,
                         fontSize: Alloy.Globals.MainFontSize
-                    }
+                    },
+                    width: Ti.UI.FILL,
+                    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+                    color: featuredMix[0].Mix.title_font_colour
                 });
                 $.mix_title.applyProperties(mix_title_style_font);
                 var mix_subtitle_style_font = $.createStyle({
                     font: {
-                        fontFamily: Alloy.Globals.JamesonFontLight,
+                        fontFamily: Alloy.Globals.JamesonFontBold,
                         fontSize: Alloy.Globals.MainFontSize
-                    }
+                    },
+                    width: Ti.UI.FILL,
+                    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+                    color: featuredMix[0].Mix.subtitle_font_colour
                 });
                 $.mix_desc.applyProperties(mix_subtitle_style_font);
+                genericBG_Image = "/images/home_screen/jameson_bg.png";
+                genericBG_Image = "." + genericBG_Image;
                 break;
 
               case "3":
                 Ti.API.info("mix of the month type MALIBU");
                 var mix_title_style_font = $.createStyle({
                     font: {
-                        fontFamily: Alloy.Globals.MalibuFontBold,
+                        fontFamily: Alloy.Globals.MalibuFontLight,
                         fontSize: Alloy.Globals.MainFontSize
-                    }
+                    },
+                    width: Ti.UI.FILL,
+                    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+                    color: featuredMix[0].Mix.title_font_colour
                 });
                 $.mix_title.applyProperties(mix_title_style_font);
                 var mix_subtitle_style_font = $.createStyle({
                     font: {
-                        fontFamily: Alloy.Globals.MalibuFontLight,
+                        fontFamily: Alloy.Globals.MalibuFontBold,
                         fontSize: Alloy.Globals.MainFontSize
-                    }
+                    },
+                    width: Ti.UI.FILL,
+                    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+                    color: featuredMix[0].Mix.subtitle_font_colour
                 });
                 $.mix_desc.applyProperties(mix_subtitle_style_font);
+                genericBG_Image = "/images/home_screen/malibu_bg.png";
+                genericBG_Image = "." + genericBG_Image;
             }
             $.mix_title.text = featuredMix[0].Mix.title;
             $.mix_desc.text = featuredMix[0].Mix.subtitle;
-            var mix_of_the_month_banner_image_view = Alloy.Globals.Utils.RemoteImage({
-                image: featuredMix[0].Mix.background,
-                defaultImage: "/images/home_screen/mix_month_bg.png",
-                width: Ti.UI.FILL,
-                height: Ti.UI.FILL,
-                touchEnabled: false
-            });
-            mix_of_the_month_banner_image_view.defaultImage = "./images/home_screen/mix_month_bg.png";
-            mix_of_the_month_banner_image_view.width = "320dp";
-            mix_of_the_month_banner_image_view.height = "207dp";
-            $.mix_banner_image_container.add(mix_of_the_month_banner_image_view);
+            $.mix_banner_image_container.backgroundImage = null != featuredMix[0].Mix.background && "" != featuredMix[0].Mix.background ? featuredMix[0].Mix.background : genericBG_Image;
             var mix_of_the_month_image_view;
-            var mix_of_the_month_image_view = Alloy.Globals.Utils.RemoteImage({
+            mix_of_the_month_image_view = Alloy.Globals.Utils.RemoteImage({
                 image: featuredMix[0].Mix.image,
                 defaultImage: "./images/cocktails/glass.png",
                 width: Ti.UI.FILL,
@@ -101,6 +123,7 @@ function Controller() {
                 touchEnabled: false
             });
             $.mix_bottle_image_container.add(mix_of_the_month_image_view);
+            Ti.API.info("mix of the month bottle opacity: " + mix_of_the_month_image_view.opacity);
             var animation = Titanium.UI.createAnimation();
             animation.right = "5dp";
             animation.opacity = 1;
@@ -182,37 +205,37 @@ function Controller() {
         id: "win1"
     });
     $.__views.win1 && $.addTopLevelView($.__views.win1);
-    $.__views.__alloyId297 = Ti.UI.createView({
+    $.__views.__alloyId299 = Ti.UI.createView({
         height: "50dp",
         width: Ti.UI.FILL,
-        id: "__alloyId297"
+        id: "__alloyId299"
     });
-    $.__views.win1.add($.__views.__alloyId297);
-    $.__views.__alloyId298 = Ti.UI.createView({
+    $.__views.win1.add($.__views.__alloyId299);
+    $.__views.__alloyId300 = Ti.UI.createView({
         width: Ti.UI.FILL,
         height: Ti.UI.FILL,
         backgroundColor: "#fff",
         opacity: "1",
-        id: "__alloyId298"
+        id: "__alloyId300"
     });
-    $.__views.__alloyId297.add($.__views.__alloyId298);
-    $.__views.__alloyId299 = Ti.UI.createView({
+    $.__views.__alloyId299.add($.__views.__alloyId300);
+    $.__views.__alloyId301 = Ti.UI.createView({
         width: Ti.UI.FILL,
-        id: "__alloyId299"
+        id: "__alloyId301"
     });
-    $.__views.__alloyId297.add($.__views.__alloyId299);
-    $.__views.__alloyId300 = Ti.UI.createView({
+    $.__views.__alloyId299.add($.__views.__alloyId301);
+    $.__views.__alloyId302 = Ti.UI.createView({
         backgroundImage: "/images/icons/tandc.png",
         left: "10dp",
         top: "10dp",
         bottom: "10dp",
         height: "30dp",
         width: "30dp",
-        id: "__alloyId300"
+        id: "__alloyId302"
     });
-    $.__views.__alloyId299.add($.__views.__alloyId300);
-    openTandCs ? $.__views.__alloyId300.addEventListener("click", openTandCs) : __defers["$.__views.__alloyId300!click!openTandCs"] = true;
-    $.__views.__alloyId301 = Ti.UI.createLabel({
+    $.__views.__alloyId301.add($.__views.__alloyId302);
+    openTandCs ? $.__views.__alloyId302.addEventListener("click", openTandCs) : __defers["$.__views.__alloyId302!click!openTandCs"] = true;
+    $.__views.__alloyId303 = Ti.UI.createLabel({
         color: "#313646",
         font: {
             fontFamily: Alloy.Globals.MainFont,
@@ -222,33 +245,33 @@ function Controller() {
         left: "50dp",
         right: "50dp",
         text: "HOME",
-        id: "__alloyId301"
+        id: "__alloyId303"
     });
-    $.__views.__alloyId299.add($.__views.__alloyId301);
-    $.__views.__alloyId302 = Ti.UI.createView({
+    $.__views.__alloyId301.add($.__views.__alloyId303);
+    $.__views.__alloyId304 = Ti.UI.createView({
         height: "1dp",
         width: Ti.UI.FILL,
         backgroundImage: "/images/common/color_sep.png",
-        id: "__alloyId302"
+        id: "__alloyId304"
     });
-    $.__views.win1.add($.__views.__alloyId302);
-    $.__views.__alloyId303 = Ti.UI.createView({
+    $.__views.win1.add($.__views.__alloyId304);
+    $.__views.__alloyId305 = Ti.UI.createView({
         height: Ti.UI.FILL,
         width: Ti.UI.FILL,
         layout: "vertical",
-        id: "__alloyId303"
+        id: "__alloyId305"
     });
-    $.__views.win1.add($.__views.__alloyId303);
+    $.__views.win1.add($.__views.__alloyId305);
     $.__views.mix_of_month_view = Ti.UI.createView({
         id: "mix_of_month_view",
-        height: "40%",
+        height: "202dp",
         backgroundColor: "#ddd"
     });
-    $.__views.__alloyId303.add($.__views.mix_of_month_view);
+    $.__views.__alloyId305.add($.__views.mix_of_month_view);
     $.__views.mix_banner_image_container = Ti.UI.createView({
         id: "mix_banner_image_container",
-        width: Ti.UI.FILL,
-        height: Ti.UI.FILL
+        width: "320dp",
+        height: "202dp"
     });
     $.__views.mix_of_month_view.add($.__views.mix_banner_image_container);
     $.__views.mix_bottle_image_container = Ti.UI.createView({
@@ -263,7 +286,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         layout: "vertical",
         width: "60%",
-        right: "-25dp",
+        right: "0dp",
         opacity: "0"
     });
     $.__views.mix_of_month_view.add($.__views.mix_of_the_month_anim_view);
@@ -294,22 +317,22 @@ function Controller() {
         id: "mix_desc"
     });
     $.__views.mix_of_the_month_anim_view.add($.__views.mix_desc);
-    $.__views.__alloyId304 = Ti.UI.createView({
+    $.__views.__alloyId306 = Ti.UI.createView({
         height: "1dp",
         width: Ti.UI.FILL,
         backgroundColor: "#f00",
         backgroundImage: "/images/common/color_sep.png",
-        id: "__alloyId304"
+        id: "__alloyId306"
     });
-    $.__views.__alloyId303.add($.__views.__alloyId304);
+    $.__views.__alloyId305.add($.__views.__alloyId306);
     $.__views.menu_row_1 = Ti.UI.createView({
-        height: "100dp",
+        height: "105dp",
         id: "menu_row_1",
         backgroundColor: "#fff",
         layout: "horizontal",
         width: Ti.UI.FILL
     });
-    $.__views.__alloyId303.add($.__views.menu_row_1);
+    $.__views.__alloyId305.add($.__views.menu_row_1);
     $.__views.cocktails_home_btn = Ti.UI.createView({
         width: "160dp",
         backgroundColor: "#fff",
@@ -321,19 +344,19 @@ function Controller() {
     });
     $.__views.menu_row_1.add($.__views.cocktails_home_btn);
     openDrinks ? $.__views.cocktails_home_btn.addEventListener("click", openDrinks) : __defers["$.__views.cocktails_home_btn!click!openDrinks"] = true;
-    $.__views.__alloyId305 = Ti.UI.createView({
+    $.__views.__alloyId307 = Ti.UI.createView({
         height: Ti.UI.SIZE,
         layout: "vertical",
-        id: "__alloyId305"
+        id: "__alloyId307"
     });
-    $.__views.cocktails_home_btn.add($.__views.__alloyId305);
-    $.__views.__alloyId306 = Ti.UI.createImageView({
+    $.__views.cocktails_home_btn.add($.__views.__alloyId307);
+    $.__views.__alloyId308 = Ti.UI.createImageView({
         height: "30%",
         image: "./images/icons/drinks.png",
-        id: "__alloyId306"
+        id: "__alloyId308"
     });
-    $.__views.__alloyId305.add($.__views.__alloyId306);
-    $.__views.__alloyId307 = Ti.UI.createLabel({
+    $.__views.__alloyId307.add($.__views.__alloyId308);
+    $.__views.__alloyId309 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.MainFont,
@@ -341,9 +364,9 @@ function Controller() {
         },
         top: "5dp",
         text: "Cocktails",
-        id: "__alloyId307"
+        id: "__alloyId309"
     });
-    $.__views.__alloyId305.add($.__views.__alloyId307);
+    $.__views.__alloyId307.add($.__views.__alloyId309);
     $.__views.search_home_btn = Ti.UI.createView({
         width: "160dp",
         backgroundColor: "#fff",
@@ -355,19 +378,19 @@ function Controller() {
     });
     $.__views.menu_row_1.add($.__views.search_home_btn);
     openSearch ? $.__views.search_home_btn.addEventListener("click", openSearch) : __defers["$.__views.search_home_btn!click!openSearch"] = true;
-    $.__views.__alloyId308 = Ti.UI.createView({
+    $.__views.__alloyId310 = Ti.UI.createView({
         height: Ti.UI.SIZE,
         layout: "vertical",
-        id: "__alloyId308"
+        id: "__alloyId310"
     });
-    $.__views.search_home_btn.add($.__views.__alloyId308);
-    $.__views.__alloyId309 = Ti.UI.createImageView({
+    $.__views.search_home_btn.add($.__views.__alloyId310);
+    $.__views.__alloyId311 = Ti.UI.createImageView({
         height: "30%",
         image: "./images/icons/search.png",
-        id: "__alloyId309"
+        id: "__alloyId311"
     });
-    $.__views.__alloyId308.add($.__views.__alloyId309);
-    $.__views.__alloyId310 = Ti.UI.createLabel({
+    $.__views.__alloyId310.add($.__views.__alloyId311);
+    $.__views.__alloyId312 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.MainFont,
@@ -375,17 +398,17 @@ function Controller() {
         },
         top: "5dp",
         text: "Search",
-        id: "__alloyId310"
+        id: "__alloyId312"
     });
-    $.__views.__alloyId308.add($.__views.__alloyId310);
+    $.__views.__alloyId310.add($.__views.__alloyId312);
     $.__views.menu_row_2 = Ti.UI.createView({
-        height: "100dp",
+        height: "105dp",
         id: "menu_row_2",
         backgroundColor: "#fff",
         layout: "horizontal",
         width: Ti.UI.FILL
     });
-    $.__views.__alloyId303.add($.__views.menu_row_2);
+    $.__views.__alloyId305.add($.__views.menu_row_2);
     $.__views.tips_home_btn = Ti.UI.createView({
         width: "160dp",
         backgroundColor: "#fff",
@@ -397,19 +420,19 @@ function Controller() {
     });
     $.__views.menu_row_2.add($.__views.tips_home_btn);
     openTips ? $.__views.tips_home_btn.addEventListener("click", openTips) : __defers["$.__views.tips_home_btn!click!openTips"] = true;
-    $.__views.__alloyId311 = Ti.UI.createView({
+    $.__views.__alloyId313 = Ti.UI.createView({
         height: Ti.UI.SIZE,
         layout: "vertical",
-        id: "__alloyId311"
+        id: "__alloyId313"
     });
-    $.__views.tips_home_btn.add($.__views.__alloyId311);
-    $.__views.__alloyId312 = Ti.UI.createImageView({
+    $.__views.tips_home_btn.add($.__views.__alloyId313);
+    $.__views.__alloyId314 = Ti.UI.createImageView({
         height: "30%",
         image: "./images/icons/tips.png",
-        id: "__alloyId312"
+        id: "__alloyId314"
     });
-    $.__views.__alloyId311.add($.__views.__alloyId312);
-    $.__views.__alloyId313 = Ti.UI.createLabel({
+    $.__views.__alloyId313.add($.__views.__alloyId314);
+    $.__views.__alloyId315 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.MainFont,
@@ -417,9 +440,9 @@ function Controller() {
         },
         top: "5dp",
         text: "Top Tips",
-        id: "__alloyId313"
+        id: "__alloyId315"
     });
-    $.__views.__alloyId311.add($.__views.__alloyId313);
+    $.__views.__alloyId313.add($.__views.__alloyId315);
     $.__views.favourites_home_btn = Ti.UI.createView({
         width: "160dp",
         backgroundColor: "#fff",
@@ -431,19 +454,19 @@ function Controller() {
     });
     $.__views.menu_row_2.add($.__views.favourites_home_btn);
     openFavourites ? $.__views.favourites_home_btn.addEventListener("click", openFavourites) : __defers["$.__views.favourites_home_btn!click!openFavourites"] = true;
-    $.__views.__alloyId314 = Ti.UI.createView({
+    $.__views.__alloyId316 = Ti.UI.createView({
         height: Ti.UI.SIZE,
         layout: "vertical",
-        id: "__alloyId314"
+        id: "__alloyId316"
     });
-    $.__views.favourites_home_btn.add($.__views.__alloyId314);
-    $.__views.__alloyId315 = Ti.UI.createImageView({
+    $.__views.favourites_home_btn.add($.__views.__alloyId316);
+    $.__views.__alloyId317 = Ti.UI.createImageView({
         height: "30%",
         image: "./images/icons/fav.png",
-        id: "__alloyId315"
+        id: "__alloyId317"
     });
-    $.__views.__alloyId314.add($.__views.__alloyId315);
-    $.__views.__alloyId316 = Ti.UI.createLabel({
+    $.__views.__alloyId316.add($.__views.__alloyId317);
+    $.__views.__alloyId318 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.MainFont,
@@ -451,41 +474,41 @@ function Controller() {
         },
         top: "5dp",
         text: "Favourites",
-        id: "__alloyId316"
+        id: "__alloyId318"
     });
-    $.__views.__alloyId314.add($.__views.__alloyId316);
+    $.__views.__alloyId316.add($.__views.__alloyId318);
     $.__views.menu_row_3 = Ti.UI.createView({
-        height: "100dp",
+        height: "105dp",
         id: "menu_row_3",
         backgroundColor: "#fff",
         layout: "horizontal",
         width: Ti.UI.FILL
     });
-    $.__views.__alloyId303.add($.__views.menu_row_3);
-    $.__views.__alloyId317 = Ti.UI.createView({
+    $.__views.__alloyId305.add($.__views.menu_row_3);
+    $.__views.__alloyId319 = Ti.UI.createView({
         width: "160dp",
         backgroundColor: "#fff",
         height: Ti.UI.FILL,
         borderRadius: 0,
         borderColor: "#b0b0b0",
         borderWidth: 1,
-        id: "__alloyId317"
-    });
-    $.__views.menu_row_3.add($.__views.__alloyId317);
-    openNews ? $.__views.__alloyId317.addEventListener("click", openNews) : __defers["$.__views.__alloyId317!click!openNews"] = true;
-    $.__views.__alloyId318 = Ti.UI.createView({
-        height: Ti.UI.SIZE,
-        layout: "vertical",
-        id: "__alloyId318"
-    });
-    $.__views.__alloyId317.add($.__views.__alloyId318);
-    $.__views.__alloyId319 = Ti.UI.createImageView({
-        height: "30%",
-        image: "./images/icons/news.png",
         id: "__alloyId319"
     });
-    $.__views.__alloyId318.add($.__views.__alloyId319);
-    $.__views.__alloyId320 = Ti.UI.createLabel({
+    $.__views.menu_row_3.add($.__views.__alloyId319);
+    openNews ? $.__views.__alloyId319.addEventListener("click", openNews) : __defers["$.__views.__alloyId319!click!openNews"] = true;
+    $.__views.__alloyId320 = Ti.UI.createView({
+        height: Ti.UI.SIZE,
+        layout: "vertical",
+        id: "__alloyId320"
+    });
+    $.__views.__alloyId319.add($.__views.__alloyId320);
+    $.__views.__alloyId321 = Ti.UI.createImageView({
+        height: "30%",
+        image: "./images/icons/news.png",
+        id: "__alloyId321"
+    });
+    $.__views.__alloyId320.add($.__views.__alloyId321);
+    $.__views.__alloyId322 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.MainFont,
@@ -493,33 +516,33 @@ function Controller() {
         },
         top: "5dp",
         text: "News",
-        id: "__alloyId320"
+        id: "__alloyId322"
     });
-    $.__views.__alloyId318.add($.__views.__alloyId320);
-    $.__views.__alloyId321 = Ti.UI.createView({
+    $.__views.__alloyId320.add($.__views.__alloyId322);
+    $.__views.__alloyId323 = Ti.UI.createView({
         width: "160dp",
         backgroundColor: "#fff",
         height: Ti.UI.FILL,
         borderRadius: 0,
         borderColor: "#b0b0b0",
         borderWidth: 1,
-        id: "__alloyId321"
-    });
-    $.__views.menu_row_3.add($.__views.__alloyId321);
-    openBrands ? $.__views.__alloyId321.addEventListener("click", openBrands) : __defers["$.__views.__alloyId321!click!openBrands"] = true;
-    $.__views.__alloyId322 = Ti.UI.createView({
-        height: Ti.UI.SIZE,
-        layout: "vertical",
-        id: "__alloyId322"
-    });
-    $.__views.__alloyId321.add($.__views.__alloyId322);
-    $.__views.__alloyId323 = Ti.UI.createImageView({
-        height: "30%",
-        image: "./images/icons/ourbrands.png",
         id: "__alloyId323"
     });
-    $.__views.__alloyId322.add($.__views.__alloyId323);
-    $.__views.__alloyId324 = Ti.UI.createLabel({
+    $.__views.menu_row_3.add($.__views.__alloyId323);
+    openBrands ? $.__views.__alloyId323.addEventListener("click", openBrands) : __defers["$.__views.__alloyId323!click!openBrands"] = true;
+    $.__views.__alloyId324 = Ti.UI.createView({
+        height: Ti.UI.SIZE,
+        layout: "vertical",
+        id: "__alloyId324"
+    });
+    $.__views.__alloyId323.add($.__views.__alloyId324);
+    $.__views.__alloyId325 = Ti.UI.createImageView({
+        height: "30%",
+        image: "./images/icons/ourbrands.png",
+        id: "__alloyId325"
+    });
+    $.__views.__alloyId324.add($.__views.__alloyId325);
+    $.__views.__alloyId326 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.MainFont,
@@ -527,9 +550,9 @@ function Controller() {
         },
         top: "5dp",
         text: "Our Brands",
-        id: "__alloyId324"
+        id: "__alloyId326"
     });
-    $.__views.__alloyId322.add($.__views.__alloyId324);
+    $.__views.__alloyId324.add($.__views.__alloyId326);
     exports.destroy = function() {};
     _.extend($, $.__views);
     Alloy.Globals.parent = $.win1;
@@ -545,21 +568,21 @@ function Controller() {
     __defers["$.__views.favourites_home_btn!click!openFavourites"] && $.__views.favourites_home_btn.addEventListener("click", openFavourites);
     __defers["$.__views.news_home_btn!click!openNews"] && $.__views.news_home_btn.addEventListener("click", openNews);
     __defers["$.__views.brand_home_image!click!openBrands"] && $.__views.brand_home_image.addEventListener("click", openBrands);
-    __defers["$.__views.__alloyId268!click!openTandCs"] && $.__views.__alloyId268.addEventListener("click", openTandCs);
-    __defers["$.__views.__alloyId272!click!openTandCs"] && $.__views.__alloyId272.addEventListener("click", openTandCs);
+    __defers["$.__views.__alloyId270!click!openTandCs"] && $.__views.__alloyId270.addEventListener("click", openTandCs);
+    __defers["$.__views.__alloyId274!click!openTandCs"] && $.__views.__alloyId274.addEventListener("click", openTandCs);
     __defers["$.__views.cocktails_home_btn!click!openDrinks"] && $.__views.cocktails_home_btn.addEventListener("click", openDrinks);
     __defers["$.__views.search_home_btn!click!openSearch"] && $.__views.search_home_btn.addEventListener("click", openSearch);
     __defers["$.__views.tips_home_btn!click!openTips"] && $.__views.tips_home_btn.addEventListener("click", openTips);
     __defers["$.__views.favourites_home_btn!click!openFavourites"] && $.__views.favourites_home_btn.addEventListener("click", openFavourites);
-    __defers["$.__views.__alloyId289!click!openNews"] && $.__views.__alloyId289.addEventListener("click", openNews);
-    __defers["$.__views.__alloyId293!click!openBrands"] && $.__views.__alloyId293.addEventListener("click", openBrands);
-    __defers["$.__views.__alloyId300!click!openTandCs"] && $.__views.__alloyId300.addEventListener("click", openTandCs);
+    __defers["$.__views.__alloyId291!click!openNews"] && $.__views.__alloyId291.addEventListener("click", openNews);
+    __defers["$.__views.__alloyId295!click!openBrands"] && $.__views.__alloyId295.addEventListener("click", openBrands);
+    __defers["$.__views.__alloyId302!click!openTandCs"] && $.__views.__alloyId302.addEventListener("click", openTandCs);
     __defers["$.__views.cocktails_home_btn!click!openDrinks"] && $.__views.cocktails_home_btn.addEventListener("click", openDrinks);
     __defers["$.__views.search_home_btn!click!openSearch"] && $.__views.search_home_btn.addEventListener("click", openSearch);
     __defers["$.__views.tips_home_btn!click!openTips"] && $.__views.tips_home_btn.addEventListener("click", openTips);
     __defers["$.__views.favourites_home_btn!click!openFavourites"] && $.__views.favourites_home_btn.addEventListener("click", openFavourites);
-    __defers["$.__views.__alloyId317!click!openNews"] && $.__views.__alloyId317.addEventListener("click", openNews);
-    __defers["$.__views.__alloyId321!click!openBrands"] && $.__views.__alloyId321.addEventListener("click", openBrands);
+    __defers["$.__views.__alloyId319!click!openNews"] && $.__views.__alloyId319.addEventListener("click", openNews);
+    __defers["$.__views.__alloyId323!click!openBrands"] && $.__views.__alloyId323.addEventListener("click", openBrands);
     _.extend($, exports);
 }
 

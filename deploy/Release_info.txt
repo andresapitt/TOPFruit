@@ -1,9 +1,0 @@
-Android keystore password: vStream523
-Alias: perfectmix
-
-FB app ID: 183073991901631
-Bundle ID: ie.vstream.perfectmix
-
-Android FB key hashes: 
-	- F3IRJMyW3Us7MJ6wclv8Cudt3EA= (release) 
-	- 1YjQ8eRCqlNnx7KdP5T9csF+fs4= (dev computer)

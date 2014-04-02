@@ -37,38 +37,38 @@ function Controller() {
         id: "event_desc"
     });
     $.__views.event_desc && $.addTopLevelView($.__views.event_desc);
-    $.__views.__alloyId215 = Ti.UI.createView({
+    $.__views.__alloyId217 = Ti.UI.createView({
         height: "50dp",
         width: Ti.UI.FILL,
         top: "0dp",
-        id: "__alloyId215"
+        id: "__alloyId217"
     });
-    $.__views.event_desc.add($.__views.__alloyId215);
-    $.__views.__alloyId216 = Ti.UI.createView({
+    $.__views.event_desc.add($.__views.__alloyId217);
+    $.__views.__alloyId218 = Ti.UI.createView({
         width: Ti.UI.FILL,
         height: Ti.UI.FILL,
         backgroundColor: "#fff",
         opacity: "1",
-        id: "__alloyId216"
+        id: "__alloyId218"
     });
-    $.__views.__alloyId215.add($.__views.__alloyId216);
-    $.__views.__alloyId217 = Ti.UI.createView({
+    $.__views.__alloyId217.add($.__views.__alloyId218);
+    $.__views.__alloyId219 = Ti.UI.createView({
         width: Ti.UI.FILL,
-        id: "__alloyId217"
+        id: "__alloyId219"
     });
-    $.__views.__alloyId215.add($.__views.__alloyId217);
-    $.__views.__alloyId218 = Ti.UI.createView({
+    $.__views.__alloyId217.add($.__views.__alloyId219);
+    $.__views.__alloyId220 = Ti.UI.createView({
         backgroundImage: "/images/icons/back.png",
         left: "10dp",
         top: "10dp",
         bottom: "10dp",
         height: "30dp",
         width: "30dp",
-        id: "__alloyId218"
+        id: "__alloyId220"
     });
-    $.__views.__alloyId217.add($.__views.__alloyId218);
-    closeWindow ? $.__views.__alloyId218.addEventListener("click", closeWindow) : __defers["$.__views.__alloyId218!click!closeWindow"] = true;
-    $.__views.__alloyId219 = Ti.UI.createLabel({
+    $.__views.__alloyId219.add($.__views.__alloyId220);
+    closeWindow ? $.__views.__alloyId220.addEventListener("click", closeWindow) : __defers["$.__views.__alloyId220!click!closeWindow"] = true;
+    $.__views.__alloyId221 = Ti.UI.createLabel({
         color: "#313646",
         font: {
             fontFamily: Alloy.Globals.MainFont,
@@ -78,28 +78,28 @@ function Controller() {
         left: "50dp",
         right: "50dp",
         text: "ABOUT EVENT",
-        id: "__alloyId219"
+        id: "__alloyId221"
     });
-    $.__views.__alloyId217.add($.__views.__alloyId219);
-    $.__views.__alloyId220 = Ti.UI.createView({
+    $.__views.__alloyId219.add($.__views.__alloyId221);
+    $.__views.__alloyId222 = Ti.UI.createView({
         backgroundImage: "/images/icons/home.png",
         right: "10dp",
         top: "10dp",
         bottom: "10dp",
         height: "30dp",
         width: "30dp",
-        id: "__alloyId220"
+        id: "__alloyId222"
     });
-    $.__views.__alloyId217.add($.__views.__alloyId220);
-    goToHome ? $.__views.__alloyId220.addEventListener("click", goToHome) : __defers["$.__views.__alloyId220!click!goToHome"] = true;
-    $.__views.__alloyId221 = Ti.UI.createView({
+    $.__views.__alloyId219.add($.__views.__alloyId222);
+    goToHome ? $.__views.__alloyId222.addEventListener("click", goToHome) : __defers["$.__views.__alloyId222!click!goToHome"] = true;
+    $.__views.__alloyId223 = Ti.UI.createView({
         height: "1dp",
         width: Ti.UI.FILL,
         backgroundImage: "/images/common/color_sep.png",
         top: "0dp",
-        id: "__alloyId221"
+        id: "__alloyId223"
     });
-    $.__views.event_desc.add($.__views.__alloyId221);
+    $.__views.event_desc.add($.__views.__alloyId223);
     $.__views.event_decs_scrollview = Ti.UI.createScrollView({
         top: "0dp",
         layout: "vertical",
@@ -159,7 +159,7 @@ function Controller() {
         width: Ti.UI.FILL
     });
     $.__views.event_desc_parent.add($.__views.event_where_view);
-    $.__views.__alloyId222 = Ti.UI.createLabel({
+    $.__views.__alloyId224 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.BoldFont,
@@ -170,9 +170,9 @@ function Controller() {
         top: "5dp",
         height: Ti.UI.SIZE,
         text: "WHERE",
-        id: "__alloyId222"
+        id: "__alloyId224"
     });
-    $.__views.event_where_view.add($.__views.__alloyId222);
+    $.__views.event_where_view.add($.__views.__alloyId224);
     $.__views.event_where_text = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
@@ -196,7 +196,7 @@ function Controller() {
         width: Ti.UI.FILL
     });
     $.__views.event_desc_parent.add($.__views.event_when_view);
-    $.__views.__alloyId223 = Ti.UI.createLabel({
+    $.__views.__alloyId225 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.BoldFont,
@@ -207,9 +207,9 @@ function Controller() {
         top: "5dp",
         height: Ti.UI.SIZE,
         text: "WHEN",
-        id: "__alloyId223"
+        id: "__alloyId225"
     });
-    $.__views.event_when_view.add($.__views.__alloyId223);
+    $.__views.event_when_view.add($.__views.__alloyId225);
     $.__views.event_when_text = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
@@ -233,7 +233,7 @@ function Controller() {
         width: Ti.UI.FILL
     });
     $.__views.event_desc_parent.add($.__views.event_admission_view);
-    $.__views.__alloyId224 = Ti.UI.createLabel({
+    $.__views.__alloyId226 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.BoldFont,
@@ -244,9 +244,9 @@ function Controller() {
         top: "5dp",
         height: Ti.UI.SIZE,
         text: "ADMISSION",
-        id: "__alloyId224"
+        id: "__alloyId226"
     });
-    $.__views.event_admission_view.add($.__views.__alloyId224);
+    $.__views.event_admission_view.add($.__views.__alloyId226);
     $.__views.event_admission_text = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
@@ -270,7 +270,7 @@ function Controller() {
         width: Ti.UI.FILL
     });
     $.__views.event_desc_parent.add($.__views.event_desc_view);
-    $.__views.__alloyId225 = Ti.UI.createLabel({
+    $.__views.__alloyId227 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
             fontFamily: Alloy.Globals.BoldFont,
@@ -281,9 +281,9 @@ function Controller() {
         top: "5dp",
         height: Ti.UI.SIZE,
         text: "DESCRIPTION",
-        id: "__alloyId225"
+        id: "__alloyId227"
     });
-    $.__views.event_desc_view.add($.__views.__alloyId225);
+    $.__views.event_desc_view.add($.__views.__alloyId227);
     $.__views.event_desc_text = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
@@ -376,7 +376,7 @@ function Controller() {
     if (null != args.longitude && null != args.latitude) {
         Ti.API.info("logitude: " + args.longitude + ", latitude: " + args.latitude);
         var remoteMapImage = Ti.UI.createImageView({
-            image: "http://maps.googleapis.com/maps/api/staticmap?center=" + args.latitude + "," + args.longitude + "&zoom=14&size=640x400&sensor=false&output=embed",
+            image: "http://maps.googleapis.com/maps/api/staticmap?center=" + args.latitude + "," + args.longitude + "&zoom=14&size=640x400&sensor=false&output=embed&markers=color:red%7C" + args.latitude + "," + args.longitude,
             width: Ti.UI.FILL,
             height: "200dp",
             borderRadius: 6
@@ -402,12 +402,12 @@ function Controller() {
         var a = Alloy.Globals.windowStack.indexOf($.event_desc);
         Alloy.Globals.windowStack.splice(a, 1);
     });
-    __defers["$.__views.__alloyId212!click!closeWindow"] && $.__views.__alloyId212.addEventListener("click", closeWindow);
-    __defers["$.__views.__alloyId214!click!goToHome"] && $.__views.__alloyId214.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId218!click!closeWindow"] && $.__views.__alloyId218.addEventListener("click", closeWindow);
-    __defers["$.__views.__alloyId220!click!goToHome"] && $.__views.__alloyId220.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId227!click!goToHome"] && $.__views.__alloyId227.addEventListener("click", goToHome);
-    __defers["$.__views.__alloyId229!click!closeWindow"] && $.__views.__alloyId229.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId214!click!closeWindow"] && $.__views.__alloyId214.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId216!click!goToHome"] && $.__views.__alloyId216.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId220!click!closeWindow"] && $.__views.__alloyId220.addEventListener("click", closeWindow);
+    __defers["$.__views.__alloyId222!click!goToHome"] && $.__views.__alloyId222.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId229!click!goToHome"] && $.__views.__alloyId229.addEventListener("click", goToHome);
+    __defers["$.__views.__alloyId231!click!closeWindow"] && $.__views.__alloyId231.addEventListener("click", closeWindow);
     _.extend($, exports);
 }
 

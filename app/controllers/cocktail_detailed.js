@@ -13,7 +13,7 @@ if(cocktail.glass != null && cocktail.glass != "")
 	Ti.API.info("cocktail glassware info: " + cocktail.glass);
 	var glassText = "";
 	
-	for(var i = 0; i < cocktail.glass.length; i += 2)
+	for(var i = 0; i < cocktail.glass.length; i++)
 	{
 		glassText +=  "\u2022" + " " + cocktail.glass[i].Glass.title + "\n";
 	}
@@ -178,33 +178,40 @@ if(cocktail.facebook == null || cocktail.facebook == "")
 }
 else{
 	showSocialSection = true;
-	$.facebookParent_recipe.addEventListener('click', function(e)
+	if(Titanium.Platform.name != 'mobileweb')
 	{
-		if (Titanium.Platform.name == 'iPhone OS') {
-			Ti.API.info("facebook home button clicked");
-			var canOpenFacebook = Ti.Platform.canOpenURL("fb://profile/"+cocktail.facebook);
-			if(canOpenFacebook)
-			{
-				Ti.Platform.openURL("fb://profile/"+cocktail.facebook);
+		$.facebookParent_recipe.addEventListener('click', function(e)
+		{
+			if (Titanium.Platform.name == 'iPhone OS') {
+				Ti.API.info("facebook home button clicked");
+				var canOpenFacebook = Ti.Platform.canOpenURL("fb://profile/"+cocktail.facebook);
+				if(canOpenFacebook)
+				{
+					Ti.Platform.openURL("fb://profile/"+cocktail.facebook);
+				}
+				else{
+					//alert("The facebook app must be installed to open this link.");
+					Ti.Platform.openURL("http://www.facebook.com/"+cocktail.facebook);
+				}
 			}
-			else{
-				//alert("The facebook app must be installed to open this link.");
-				Ti.Platform.openURL("http://www.facebook.com/"+cocktail.facebook);
+			else if (Titanium.Platform.name == 'android'){
+				var canOpen = Ti.Platform.openURL("fb://profile/"+cocktail.facebook);
+				
+				if(canOpen == false)
+				{
+					var dialog = Ti.UI.createAlertDialog({
+					    message: "Sorry, you must first have the facebook app installed on this device to click this button.",
+					    ok: 'Ok, thanks!',
+					    title: 'Facebook Error'
+					  }).show();
+				}
 			}
-		}
-		else if (Titanium.Platform.name == 'android'){
-			var canOpen = Ti.Platform.openURL("fb://profile/"+cocktail.facebook);
-			
-			if(canOpen == false)
-			{
-				var dialog = Ti.UI.createAlertDialog({
-				    message: "Sorry, you must first have the facebook app installed on this device to click this button.",
-				    ok: 'Ok, thanks!',
-				    title: 'Facebook Error'
-				  }).show();
-			}
-		}
-	});
+		});
+	}
+	else
+	{
+		$.facebookBtn_cocktailDeet.html = '<a href="http://www.facebook.com/' + cocktail.facebook + '" target="_blank"><div style="height:30px;"><img src="./images/icons/facebookIcon@2x.png" style="width:20px;height:25px;left:3px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Facebook</span></div></a>';
+	}
 }
 
 if(cocktail.twitter == null || cocktail.twitter == "")
@@ -213,32 +220,39 @@ if(cocktail.twitter == null || cocktail.twitter == "")
 }
 else{
 	showSocialSection = true;
-	$.twitterParent_recipe.addEventListener('click', function(e){
-		if (Titanium.Platform.name == 'iPhone OS') {
-			Ti.API.info("twitter home button clicked");
-			var canOpenTwitter = Ti.Platform.canOpenURL("twitter:///user?id="+cocktail.twitter);
-			Ti.API.info("twitter home button clicked");
-			
-			if(canOpenTwitter)
-			{
-				Ti.Platform.openURL("twitter:///user?id="+cocktail.twitter);
+	if(Titanium.Platform.name != 'mobileweb')
+	{
+		$.twitterParent_recipe.addEventListener('click', function(e){
+			if (Titanium.Platform.name == 'iPhone OS') {
+				Ti.API.info("twitter home button clicked");
+				var canOpenTwitter = Ti.Platform.canOpenURL("twitter:///user?id="+cocktail.twitter);
+				Ti.API.info("twitter home button clicked");
+				
+				if(canOpenTwitter)
+				{
+					Ti.Platform.openURL("twitter:///user?id="+cocktail.twitter);
+				}
+				else{
+					alert("The twitter app must be installed to open this link.");
+				}
 			}
-			else{
-				alert("The twitter app must be installed to open this link.");
+			else if (Titanium.Platform.name == 'android'){
+				var canOpen = Ti.Platform.openURL("twitter://user?user_id="+cocktail.twitter);
+				if(canOpen == false)
+				{
+						var dialog = Ti.UI.createAlertDialog({
+						    message: "Sorry, you must first have the twitter app installed on this device to click this button.",
+						    ok: 'Ok, thanks!',
+						    title: 'Twitter Error'
+						  }).show();
+				}
 			}
-		}
-		else if (Titanium.Platform.name == 'android'){
-			var canOpen = Ti.Platform.openURL("twitter://user?user_id="+cocktail.twitter);
-			if(canOpen == false)
-			{
-					var dialog = Ti.UI.createAlertDialog({
-					    message: "Sorry, you must first have the twitter app installed on this device to click this button.",
-					    ok: 'Ok, thanks!',
-					    title: 'Twitter Error'
-					  }).show();
-			}
-		}
-	});
+		});
+	}
+	else
+	{
+		$.twitterBtn_cocktailDeet.html = '<a href="http://twitter.com/' + cocktail.twitter + '" target="_blank"><div style="height:30px;"><img src="./images/icons/twitterbird@2x.png" style="width:25px;height:20px;top:5px;left:5px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Twitter</span></div></a>';
+	}
 }
 
 if(!showSocialSection){

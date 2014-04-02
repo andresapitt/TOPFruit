@@ -1,10 +1,10 @@
 android/ATTR_MINIFY=true
-android/ATTR_PROJECT_NAME=Perfect_Mix_Web
+android/ATTR_PROJECT_NAME=Perfect_Mix_3.2.2
 android/abi=x86
-android/distribute_path=/Users/vocal/Development/Appcelerator/Perfect_Mix_Web/deploy
+android/distribute_path=/Users/vocal/Development/Appcelerator/Perfect_Mix_3.2.2/deploy
 android/keystore_alias=perfectmix
 android/keystore_password=vStream523
-android/keystore_path=/Users/vocal/Development/Appcelerator/Perfect_Mix_Web/deploy/perfect_mix_android_key.keystore
-android/recent_output=/Users/vocal/Development/Appcelerator/Perfect_Mix_Web/deploy
+android/keystore_path=/Users/vocal/Development/Appcelerator/Perfect_Mix_3.2.2/deploy/perfect_mix_android_key.keystore
+android/recent_output=/Users/vocal/Development/Appcelerator/Perfect_Mix_3.2.2/deploy
 android/sdk_version=2.3.3
 eclipse.preferences.version=1

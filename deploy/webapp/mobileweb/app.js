@@ -10,9 +10,9 @@ Alloy.Globals.MainFont = "'HelveticaNeue-Thin'";
 
 Alloy.Globals.BoldFont = "'HelveticaNeueLT-BoldCond'";
 
-Alloy.Globals.JamesonFontLight = "'JJEl-Regular'";
+Alloy.Globals.JamesonFontLight = "'JJLt-Regular'";
 
-Alloy.Globals.JamesonFontBold = "'JJRg-Regular'";
+Alloy.Globals.JamesonFontBold = "'JJBl-Regular'";
 
 Alloy.Globals.AbsolutFontLight = "'Absolut Script'";
 
@@ -20,7 +20,7 @@ Alloy.Globals.AbsolutFontBold = "'Absolut Headline'";
 
 Alloy.Globals.MalibuFontLight = "'MalibuSlab-300'";
 
-Alloy.Globals.MalibuFontBold = "'MalibuSlab-700'";
+Alloy.Globals.MalibuFontBold = "'MalibuBrushcript-Medium'";
 
 Alloy.Globals.MainFontSize = "18dp";
 
@@ -48,6 +48,11 @@ json_data_cache_updates.push({
 
 json_data_cache_updates.push({
     file: "data/Drinks.txt",
+    elapsed_time: 6e4
+});
+
+json_data_cache_updates.push({
+    file: "data/FeaturedMix.txt",
     elapsed_time: 6e4
 });
 
@@ -102,6 +107,10 @@ Alloy.Globals.Utils = {
         }
         var image = Ti.UI.createImageView(a);
         true === needsToSave && image.addEventListener("load", saveImage);
+        image.width = a.width;
+        image.height = a.height;
+        image.opacity = a.opacity;
+        image.touchEnabled = a.touchEnabled;
         return image;
     },
     RetrieveJson: function(url, saveFilePath, callback) {
@@ -235,5 +244,9 @@ Alloy.Globals.goToHome = function() {
         Alloy.Globals.windowStack.shift();
     }
 };
+
+Ti.Gesture.addEventListener("shake", function(e) {
+    e.timestamp > 2e3;
+});
 
 Alloy.createController("index");

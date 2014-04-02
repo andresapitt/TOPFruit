@@ -65,6 +65,14 @@ function DisplayEvents(newJSON)
 		}
 	}
 	
+	eventsToShow.sort(function(a, b) {
+	    var dateAString = (a.Event.finish_date.substring(0,10)).split('-');
+	    var dateA = new Date(dateAString[0], dateAString[1]-1, dateAString[2]); 
+	    var dateBString = (b.Event.finish_date.substring(0,10)).split('-');
+	    var dateB = new Date(dateBString[0], dateBString[1]-1, dateBString[2]); 
+	    return (dateA < dateB) ? -1 : (dateA > dateB) ? 1 : 0;
+	});
+	
 	var event_view_style = $.createStyle({
 		classes: ["event_item"],
 	});

@@ -158,7 +158,7 @@ function Controller() {
     $.__views.__alloyId26.add($.__views.best_bars_banner_image_view);
     $.__views.best_bars_banner_image = Ti.UI.createImageView({
         id: "best_bars_banner_image",
-        image: "/images/worldsbestbars/WBB_banner.png",
+        image: "./images/worldsbestbars/WBB_banner.png",
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         bottom: "5dp"

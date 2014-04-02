@@ -20,7 +20,9 @@
 		<ScrollView class="scrollView" >
 			<View class="desc_block" bottom="10dp">
 				<View id="best_bars_banner_image_view" bottom="5dp" width="Ti.UI.FILL" height="Ti.UI.SIZE" >
-					<ImageView id="best_bars_banner_image" image="/images/worldsbestbars/WBB_banner.png" class="brand_image" width="Ti.UI.SIZE" height="Ti.UI.SIZE" bottom="5dp" />
+					<ImageView id="best_bars_banner_image" platform="ios" image="/images/worldsbestbars/WBB_banner.png" class="brand_image" width="Ti.UI.SIZE" height="Ti.UI.SIZE" bottom="5dp" />
+					<ImageView id="best_bars_banner_image" platform="android" image="/images/worldsbestbars/WBB_banner.png" class="brand_image" width="Ti.UI.SIZE" height="Ti.UI.SIZE" bottom="5dp" />
+					<ImageView id="best_bars_banner_image" platform="mobileweb" image="./images/worldsbestbars/WBB_banner.png" class="brand_image" width="Ti.UI.SIZE" height="Ti.UI.SIZE" bottom="5dp" />
 				</View>
 				<Label class="best_bars_desc_text" top="10dp" width="Ti.UI.FILL" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">Think you are one of the World’s Best Bars?</Label>
 				<Button class="visitSiteBtn" onClick="submitBarForConsideration" title="Submit your bar for consideration!" bottom="10dp" top="10dp" />

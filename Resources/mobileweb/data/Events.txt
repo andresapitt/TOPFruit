@@ -1,0 +1,44 @@
+[
+  {
+    "Event": {
+      "id": "1",
+      "title": "ABSOLUT Paddys Day Celebrations",
+      "location": "Various locations across Dublin ",
+      "date": "Thurs 12th Feb - Sun 15th Feb",
+      "description": "Meatball pastrami jowl beef ribs. Bresaola kielbasa venison pancetta shank. Hamburger turkey flank drumstick capicola, ham turducken. Andouille meatloaf drumstick porchetta tail. Biltong ball tip salami corned beef.",
+      "finish_date": "2014-02-24 18:16:00",
+      "banner_img_url": "http://www.vocal.ie/client/idl/perfect-mix/files/Events/1/402af370f3d645e2fedf608496019d5e.jpg",
+      "admission_fee": "£3.00 for adults, £2.00 for students",
+      "more_info_url": "http://www.google.com",
+      "longitude": "-6.656918",
+      "latitude": "-6.2661632",
+      "status": true,
+      "created": "2014-02-24 18:17:37",
+      "modified": "2014-03-12 06:44:00",
+      "thumb_image_url": "http://www.vocal.ie/client/idl/perfect-mix/files/Events/1/tmb_402af370f3d645e2fedf608496019d5e.jpg",
+      "thumbRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Events/1/tmb_402af370f3d645e2fedf608496019d5e@2x.jpg",
+      "imageRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Events/1/402af370f3d645e2fedf608496019d5e@2x.jpg"
+    }
+  },
+  {
+    "Event": {
+      "id": "2",
+      "title": "Jameson Spring Event",
+      "location": "Jameson Irish Distillery, Smithfield, Dublin 3",
+      "date": "Thurs 12th June - Fri 15th June",
+      "description": "Bacon ipsum dolor sit amet short ribs fatback pig ham hock, pastrami leberkas turducken doner meatloaf short loin. Corned beef kevin capicola tail fatback short ribs sirloin tri-tip tenderloin tongue filet mignon prosciutto ribeye pork belly shoulder. \r\n\r\nMeatball pastrami jowl beef ribs. Bresaola kielbasa venison pancetta shank. Hamburger turkey flank drumstick capicola, ham turducken. Andouille meatloaf drumstick porchetta tail. Biltong ball tip salami corned beef.",
+      "finish_date": "2014-06-24 18:16:00",
+      "banner_img_url": "http://www.vocal.ie/client/idl/perfect-mix/files/Events/2/308ba18a4e7af858d46270d0ea74d358.jpg",
+      "admission_fee": "£3.00 for adults, £2.00 for students",
+      "more_info_url": "http://www.google.com",
+      "longitude": "-6.6517526",
+      "latitude": "-6.2768789",
+      "status": true,
+      "created": "2014-02-24 18:19:35",
+      "modified": "2014-03-12 06:45:35",
+      "thumb_image_url": "http://www.vocal.ie/client/idl/perfect-mix/files/Events/2/tmb_308ba18a4e7af858d46270d0ea74d358.jpg",
+      "thumbRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Events/2/tmb_308ba18a4e7af858d46270d0ea74d358@2x.jpg",
+      "imageRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Events/2/308ba18a4e7af858d46270d0ea74d358@2x.jpg"
+    }
+  }
+]

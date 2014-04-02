@@ -1,0 +1,17 @@
+[
+  {
+    "Competition": {
+      "id": "1",
+      "title": "Jameson Competition",
+      "description": "Jameson competition takes place on the 7th of July and runs until the 9th of August. ",
+      "banner_img_url": "http://www.vocal.ie/client/idl/perfect-mix/files/Competitions/1/0bff96be2b69d96a1a5e6fb9ccfa430b.jpg",
+      "thumb_image_url": "http://www.vocal.ie/client/idl/perfect-mix/files/Competitions/1/tmb_0bff96be2b69d96a1a5e6fb9ccfa430b.jpg",
+      "more_info_url": "http://www.jameson.com",
+      "created": "2014-02-26 13:14:20",
+      "modified": "2014-03-06 13:04:05",
+      "status": true,
+      "thumbRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Competitions/1/tmb_0bff96be2b69d96a1a5e6fb9ccfa430b@2x.jpg",
+      "imageRetina": "http://www.vocal.ie/client/idl/perfect-mix/files/Competitions/1/0bff96be2b69d96a1a5e6fb9ccfa430b@2x.jpg"
+    }
+  }
+]
