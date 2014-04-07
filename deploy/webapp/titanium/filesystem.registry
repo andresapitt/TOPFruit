@@ -1,4 +1,4 @@
-ts	1396433273000
+ts	1396544608000
 Default-Landscape.jpg	32729
 Default-Portrait.jpg	24152
 Default.jpg	16382
@@ -12,7 +12,7 @@ alloy
 		best_bars.js	14515
 		brand_desc.js	12817
 		brands.js	10436
-		cocktail_detailed.js	43833
+		cocktail_detailed.js	43827
 		cocktail_results.js	15517
 		competition_desc.js	8932
 		competitions.js	9366
@@ -20,10 +20,10 @@ alloy
 		drinks_sub_category.js	12715
 		event_desc.js	15103
 		events.js	10364
-		index.js	24679
+		index.js	24777
 		news.js	10060
 		search.js	10464
-		terms_and_conditions.js	5583
+		terms_and_conditions.js	5057
 		tips.js	7799
 	styles
 		age_gate.js	5942
@@ -58,7 +58,7 @@ alloy
 				widget.js	4209
 				window.js	4040
 alloy.js	9061
-app.js	10438
+app.js	10586
 appicon.png	4743
 appicon144.png	5445
 apple-touch-icon-114x114-precomposed.png	3658
@@ -74,7 +74,7 @@ data
 	Drinks_old.txt	6954
 	Events.txt	2784
 	FeaturedMix.txt	2697
-	T_and_Cs.txt	9840
+	T_and_Cs.html	5732
 	Tips.txt	1040
 favicon.ico	0
 fonts
@@ -231,7 +231,7 @@ mobileweb
 			best_bars.js	14515
 			brand_desc.js	12817
 			brands.js	10436
-			cocktail_detailed.js	43833
+			cocktail_detailed.js	43827
 			cocktail_results.js	15517
 			competition_desc.js	8932
 			competitions.js	9366
@@ -239,10 +239,10 @@ mobileweb
 			drinks_sub_category.js	12715
 			event_desc.js	15103
 			events.js	10364
-			index.js	24679
+			index.js	24777
 			news.js	10060
 			search.js	10464
-			terms_and_conditions.js	5583
+			terms_and_conditions.js	5057
 			tips.js	7799
 		styles
 			age_gate.js	5942
@@ -277,7 +277,7 @@ mobileweb
 					widget.js	4209
 					window.js	4040
 	alloy.js	9061
-	app.js	10438
+	app.js	10586
 	appicon.png	4743
 	apple_startup_images
 		Default-Landscape.jpg	32729
@@ -295,7 +295,7 @@ mobileweb
 		Drinks_old.txt	6954
 		Events.txt	2784
 		FeaturedMix.txt	2697
-		T_and_Cs.txt	9840
+		T_and_Cs.html	5732
 		Tips.txt	1040
 	fonts
 		Absolut-Bold.otf	27984

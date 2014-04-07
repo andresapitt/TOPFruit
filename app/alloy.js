@@ -99,6 +99,12 @@ json_data_cache_updates.push({file:"data/Drinks.txt", elapsed_time:60000}); // o
 json_data_cache_updates.push({file:"data/FeaturedMix.txt", elapsed_time:60000});
 Alloy.Globals.windowStack = new Array();
 
+Ti.App.addEventListener("openWebURL", function(e){
+	Ti.API.info("URL link to open: " + e.UrlToOpen);
+	Ti.Platform.openURL(e.UrlToOpen);
+});
+
+
 var dir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'data');
 dir.createDirectory();
 

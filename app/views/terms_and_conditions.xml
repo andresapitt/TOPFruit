@@ -17,9 +17,20 @@
 		<View class="color_seperator"  height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" top="0dp" />
 		<ScrollView id="scrollText" showVerticalScrollIndicator="true" showHorizontalScrollIndicator="false">
 			<Label id="TandC_Title" platform="ios">Terms and Conditions</Label>
-			<Label id="TandC_Text" class="small_text">	</Label>
-			<View height="Ti.UI.SIZE" width="Ti.UI.SIZE" left="0dp" >
+			<!--<Label id="TandC_Text" class="small_text" platform="ios" />
+			<Label id="TandC_Text" platform="android" />
+			<Label id="TandC_Text" platform="mobileweb" />-->
+			<WebView id="webview_TandC" url="/data/T_and_Cs.html" platform="android" width="100%" height="Ti.UI.SIZE" enableZoomControls="false" ></WebView>
+			<WebView id="webview_TandC" url="./data/T_and_Cs.html" platform="mobileweb" width="320dp" height="430dp" enableZoomControls="false" ></WebView>
+			<WebView id="webview_TandC" disableBounce="true" scalesPageToFit="true" url="/data/T_and_Cs.html" platform="ios" width="Ti.UI.FILL" height="Ti.UI.SIZE" enableZoomControls="false" />
+			<View height="Ti.UI.SIZE" platform="android" width="Ti.UI.SIZE" left="0dp" >
 				<ImageView id="drinkaware_img" image="/images/age_gate/drinkaware.png" />
+			</View>
+			<View height="Ti.UI.SIZE" platform="ios" width="Ti.UI.SIZE" left="0dp" >
+				<ImageView id="drinkaware_img" image="/images/age_gate/drinkaware.png" />
+			</View>
+			<View height="Ti.UI.SIZE" platform="mobileweb" width="Ti.UI.SIZE" left="0dp" >
+				<ImageView id="drinkaware_img" image="./images/age_gate/drinkaware.png" />
 			</View>
 		</ScrollView>
 		<Button id="close_Btn" onClick="closeBtnHandler" title="Close" platform="ios" />

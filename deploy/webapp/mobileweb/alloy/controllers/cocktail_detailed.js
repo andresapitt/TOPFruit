@@ -639,7 +639,7 @@ function Controller() {
         width: Ti.UI.FILL,
         textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
         touchEnabled: false,
-        text: "Comments",
+        text: "Feedback",
         id: "__alloyId99"
     });
     $.__views.recipe_container_bottom.add($.__views.__alloyId99);
@@ -662,7 +662,7 @@ function Controller() {
         height: "35dp",
         borderRadius: 4,
         textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-        title: "Add Comments / Review",
+        title: "Submit Feedback",
         id: "__alloyId101"
     });
     $.__views.recipe_container_bottom.add($.__views.__alloyId101);

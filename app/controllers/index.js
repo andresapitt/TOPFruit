@@ -10,11 +10,19 @@ var ageGaitSuccess = Ti.App.Properties.getBool('over18', false);
 if(!ageGaitSuccess)
 {
 	var age_gate = Alloy.createController('age_gate').getView();
-	age_gate.open();
+	
+	setTimeout(function(e) {
+	    age_gate.open();
+	}, 2000);
+	
+	//age_gate.open();
 }
 else //open home page of app
 {
-	$.win1.open();
+	//$.win1.open();
+	setTimeout(function(e) {
+	    $.win1.open();
+	}, 2000);
 }
 
 

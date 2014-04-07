@@ -68,6 +68,11 @@ json_data_cache_updates.push({
 
 Alloy.Globals.windowStack = new Array();
 
+Ti.App.addEventListener("openWebURL", function(e) {
+    Ti.API.info("URL link to open: " + e.UrlToOpen);
+    Ti.Platform.openURL(e.UrlToOpen);
+});
+
 var dir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, "data");
 
 dir.createDirectory();

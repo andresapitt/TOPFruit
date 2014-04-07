@@ -1222,7 +1222,7 @@ function Controller() {
             touchEnabled: false
         });
         _.extend(o, {
-            text: "Comments",
+            text: "Feedback",
             textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
             id: "__alloyId99"
         });
@@ -1263,7 +1263,7 @@ function Controller() {
             borderRadius: 8
         });
         _.extend(o, {
-            title: "Add Comments / Review",
+            title: "Submit Feedback",
             id: "__alloyId101"
         });
         return o;

@@ -558,9 +558,13 @@ function Controller() {
     Alloy.Globals.parent = $.win1;
     $.win1.addEventListener("open", indexOpen);
     var ageGaitSuccess = Ti.App.Properties.getBool("over18", false);
-    if (ageGaitSuccess) $.win1.open(); else {
+    if (ageGaitSuccess) setTimeout(function() {
+        $.win1.open();
+    }, 2e3); else {
         var age_gate = Alloy.createController("age_gate").getView();
-        age_gate.open();
+        setTimeout(function() {
+            age_gate.open();
+        }, 2e3);
     }
     __defers["$.__views.cocktails_home_btn!click!openDrinks"] && $.__views.cocktails_home_btn.addEventListener("click", openDrinks);
     __defers["$.__views.search_home_btn!click!openSearch"] && $.__views.search_home_btn.addEventListener("click", openSearch);

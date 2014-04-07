@@ -104,41 +104,14 @@ function Controller() {
         showHorizontalScrollIndicator: "false"
     });
     $.__views.terms_and_conditions.add($.__views.scrollText);
-    $.__views.TandC_Text = Ti.UI.createLabel(function() {
-        var o = {};
-        _.extend(o, {
-            top: "10dp",
-            width: Ti.UI.SIZE,
-            height: Ti.UI.SIZE,
-            left: "10dp",
-            right: "10dp",
-            color: Alloy.Globals.PrimaryColor,
-            textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-            font: {
-                fontSize: "12dp",
-                fontFamily: Alloy.Globals.Mainfont
-            }
-        });
-        Alloy.isTablet && _.extend(o, {
-            top: "10dp",
-            width: Ti.UI.SIZE,
-            height: Ti.UI.SIZE,
-            left: "15dp",
-            right: "15dp",
-            color: Alloy.Globals.PrimaryColor,
-            textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-            font: {
-                fontSize: "14dp",
-                fontFamily: Alloy.Globals.Mainfont
-            }
-        });
-        _.extend(o, {
-            text: "",
-            id: "TandC_Text"
-        });
-        return o;
-    }());
-    $.__views.scrollText.add($.__views.TandC_Text);
+    $.__views.webview_TandC = Ti.UI.createWebView({
+        id: "webview_TandC",
+        url: "/data/T_and_Cs.html",
+        width: "100%",
+        height: Ti.UI.SIZE,
+        enableZoomControls: "false"
+    });
+    $.__views.scrollText.add($.__views.webview_TandC);
     $.__views.__alloyId397 = Ti.UI.createView({
         height: Ti.UI.SIZE,
         width: Ti.UI.SIZE,
@@ -169,19 +142,12 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     Ti.API.info("Terms and Conditions opened");
-    var readFile = Titanium.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, "data/T_and_Cs.txt");
-    var TandC_Text = "";
-    if (readFile.exists()) {
-        Ti.API.info("Terms and Conditions files exists");
-        TandC_Text = readFile.read();
-    } else alert("Terms and Conditions text file not found");
     $.terms_and_conditions.addEventListener("androidback", function() {
         $.terms_and_conditions.close({
             activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left,
             activityExitAnimation: Ti.App.Android.R.anim.slide_out_right
         });
     });
-    $.TandC_Text.text = TandC_Text.text;
     __defers["$.__views.__alloyId389!click!closeBtnHandler"] && $.__views.__alloyId389.addEventListener("click", closeBtnHandler);
     __defers["$.__views.__alloyId394!click!closeBtnHandler"] && $.__views.__alloyId394.addEventListener("click", closeBtnHandler);
     __defers["$.__views.close_Btn!click!closeBtnHandler"] && $.__views.close_Btn.addEventListener("click", closeBtnHandler);
