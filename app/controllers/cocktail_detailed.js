@@ -8,6 +8,12 @@ Ti.API.info("Cocktail category: " + cocktail.title);
 
 $.recipe_title_label.text = cocktail.title;
 
+if(Ti.Platform.name == "mobileweb" )
+{
+	$.recipe_container_bottom.remove($.rating_container);
+}
+
+
 if(cocktail.glass != null && cocktail.glass != "")
 {
 	Ti.API.info("cocktail glassware info: " + cocktail.glass);
@@ -525,7 +531,7 @@ function submitCommentBtnHandler(e){
 	//$.rating_picker.height = Ti.UI.FILL;
 	var emailDialog = Ti.UI.createEmailDialog();
 	emailDialog.subject = "Perfect Mix - Comment: " + cocktail.title;
-	emailDialog.toRecipients = ['lisa@vstream.ie'];
+	emailDialog.toRecipients = [Alloy.Globals.ContactEmail];
 	emailDialog.messageBody = '';
 	emailDialog.open();
 

@@ -82,12 +82,17 @@ function openFacebook(e){
 		//Ti.Platform.openURL("http://www.facebook.com");
 	}
 }
+
+if (Titanium.Platform.name == 'mobileweb'){
+	$.websiteBtn.html = '<a href="mailto:' + Alloy.Globals.ContactEmail + '?Subject=Perfect%20Mix%20-%20Best%20Bars%20Consideration" target="_top"><div style="height:30px;"><img src="./images/icons/websiteIcon@2x.png" style="width:25px;height:20px;top:5px;left:5px"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Email</span></div></a>';
+}
+
 function openEmail(e){
 	Ti.API.info("Submit best bars email");
 	var emailDialog = Ti.UI.createEmailDialog();
 	emailDialog.subject = "Perfect Mix - Best Bars Consideration ";
 	//emailDialog.toRecipients = ['editor@worldsbestbars.com'];
-	emailDialog.toRecipients = ['lisa@vstream.ie'];
+	emailDialog.toRecipients = [Alloy.Globals.ContactEmail];
 	emailDialog.ccRecipients = [];
 	emailDialog.bccRecipients = [];
 	emailDialog.messageBody = '';

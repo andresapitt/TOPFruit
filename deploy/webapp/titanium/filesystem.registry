@@ -1,4 +1,4 @@
-ts	1396544608000
+ts	1398432900000
 Default-Landscape.jpg	32729
 Default-Portrait.jpg	24152
 Default.jpg	16382
@@ -9,10 +9,10 @@ alloy
 	controllers
 		BaseController.js	6531
 		age_gate.js	11799
-		best_bars.js	14515
+		best_bars.js	14571
 		brand_desc.js	12817
 		brands.js	10436
-		cocktail_detailed.js	43827
+		cocktail_detailed.js	44117
 		cocktail_results.js	15517
 		competition_desc.js	8932
 		competitions.js	9366
@@ -28,20 +28,20 @@ alloy
 	styles
 		age_gate.js	5942
 		best_bars.js	4750
-		brand_desc.js	4647
+		brand_desc.js	4656
 		brands.js	3841
-		cocktail_detailed.js	6483
-		cocktail_results.js	3988
+		cocktail_detailed.js	6610
+		cocktail_results.js	3990
 		competition_desc.js	3249
-		competitions.js	3525
+		competitions.js	3526
 		drinks_categories.js	3541
-		drinks_sub_category.js	4159
-		event_desc.js	5009
-		events.js	3687
+		drinks_sub_category.js	4160
+		event_desc.js	5007
+		events.js	3686
 		index.js	3595
-		news.js	3015
+		news.js	3014
 		search.js	3839
-		terms_and_conditions.js	3251
+		terms_and_conditions.js	3250
 		tips.js	3633
 	sync
 		localStorage.js	1913
@@ -58,7 +58,7 @@ alloy
 				widget.js	4209
 				window.js	4040
 alloy.js	9061
-app.js	10586
+app.js	10635
 appicon.png	4743
 appicon144.png	5445
 apple-touch-icon-114x114-precomposed.png	3658
@@ -73,7 +73,7 @@ data
 	Drinks.txt	7133
 	Drinks_old.txt	6954
 	Events.txt	2784
-	FeaturedMix.txt	2697
+	FeaturedMix.txt	2662
 	T_and_Cs.html	5732
 	Tips.txt	1040
 favicon.ico	0
@@ -91,6 +91,7 @@ fonts
 	MalibuSlab-Bold.otf	49928
 	MalibuSlab-Light.otf	47288
 images
+	.DS_Store	6148
 	age_gate
 		age_gate_banner.png	14054
 		age_gate_banner@2x.png	18460
@@ -228,10 +229,10 @@ mobileweb
 		controllers
 			BaseController.js	6531
 			age_gate.js	11799
-			best_bars.js	14515
+			best_bars.js	14571
 			brand_desc.js	12817
 			brands.js	10436
-			cocktail_detailed.js	43827
+			cocktail_detailed.js	44117
 			cocktail_results.js	15517
 			competition_desc.js	8932
 			competitions.js	9366
@@ -247,20 +248,20 @@ mobileweb
 		styles
 			age_gate.js	5942
 			best_bars.js	4750
-			brand_desc.js	4647
+			brand_desc.js	4656
 			brands.js	3841
-			cocktail_detailed.js	6483
-			cocktail_results.js	3988
+			cocktail_detailed.js	6610
+			cocktail_results.js	3990
 			competition_desc.js	3249
-			competitions.js	3525
+			competitions.js	3526
 			drinks_categories.js	3541
-			drinks_sub_category.js	4159
-			event_desc.js	5009
-			events.js	3687
+			drinks_sub_category.js	4160
+			event_desc.js	5007
+			events.js	3686
 			index.js	3595
-			news.js	3015
+			news.js	3014
 			search.js	3839
-			terms_and_conditions.js	3251
+			terms_and_conditions.js	3250
 			tips.js	3633
 		sync
 			localStorage.js	1913
@@ -277,7 +278,7 @@ mobileweb
 					widget.js	4209
 					window.js	4040
 	alloy.js	9061
-	app.js	10586
+	app.js	10635
 	appicon.png	4743
 	apple_startup_images
 		Default-Landscape.jpg	32729
@@ -294,7 +295,7 @@ mobileweb
 		Drinks.txt	7133
 		Drinks_old.txt	6954
 		Events.txt	2784
-		FeaturedMix.txt	2697
+		FeaturedMix.txt	2662
 		T_and_Cs.html	5732
 		Tips.txt	1040
 	fonts
@@ -311,6 +312,7 @@ mobileweb
 		MalibuSlab-Bold.otf	49928
 		MalibuSlab-Light.otf	47288
 	images
+		.DS_Store	6148
 		age_gate
 			age_gate_banner.png	14054
 			age_gate_banner@2x.png	18460

@@ -7,7 +7,7 @@ function Controller() {
         Ti.API.info("Submit best bars email");
         var emailDialog = Ti.UI.createEmailDialog();
         emailDialog.subject = "Perfect Mix - Best Bars Consideration ";
-        emailDialog.toRecipients = [ "lisa@vstream.ie" ];
+        emailDialog.toRecipients = [ Alloy.Globals.ContactEmail ];
         emailDialog.ccRecipients = [];
         emailDialog.bccRecipients = [];
         emailDialog.messageBody = "";
@@ -344,13 +344,14 @@ function Controller() {
             } ]
         },
         id: "websiteBtn",
-        html: '<a href="mailto:lisa@vstream.ie?Subject=Perfect%20Mix%20-%20Best%20Bars%20Consideration" target="_top"><div style="height:30px;"><img src="./images/icons/websiteIcon@2x.png" style="width:25px;height:20px;top:5px;left:5px"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Email</span></div></a>'
+        html: ""
     });
     $.__views.websiteParent.add($.__views.websiteBtn);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var new_height = "160dp";
     $.best_bars_banner_image.height = new_height;
+    $.websiteBtn.html = '<a href="mailto:' + Alloy.Globals.ContactEmail + '?Subject=Perfect%20Mix%20-%20Best%20Bars%20Consideration" target="_top"><div style="height:30px;"><img src="./images/icons/websiteIcon@2x.png" style="width:25px;height:20px;top:5px;left:5px"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Email</span></div></a>';
     $.best_bars.addEventListener("close", function() {
         Ti.API.info("best bars closed");
     });

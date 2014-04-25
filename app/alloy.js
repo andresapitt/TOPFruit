@@ -18,6 +18,7 @@ Ti.API.info("in the alloy.js file");
 //Ti.App.Properties.setBool('over18', false);
 //}
 
+Alloy.Globals.ContactEmail = "lisa@vstream.ie";
 Alloy.Globals.PrimaryColor = "#313646";
 Alloy.Globals.FacebookColor = "#3b5998";
 if(Ti.Platform.osname == "iphone")

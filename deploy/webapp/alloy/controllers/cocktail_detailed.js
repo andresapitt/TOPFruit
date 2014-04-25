@@ -116,7 +116,7 @@ function Controller() {
         Ti.API.info("Submit comment on recipe");
         var emailDialog = Ti.UI.createEmailDialog();
         emailDialog.subject = "Perfect Mix - Comment: " + cocktail.title;
-        emailDialog.toRecipients = [ "lisa@vstream.ie" ];
+        emailDialog.toRecipients = [ Alloy.Globals.ContactEmail ];
         emailDialog.messageBody = "";
         emailDialog.open();
     }
@@ -337,9 +337,9 @@ function Controller() {
     });
     $.__views.how_to_make_it.add($.__views.__alloyId89);
     $.__views.recipe_image_ani_view = Ti.UI.createView({
-        left: "-30%",
+        left: "0dp",
         width: "30%",
-        height: "160dp",
+        height: "240dp",
         top: "10dp",
         id: "recipe_image_ani_view"
     });
@@ -575,6 +575,13 @@ function Controller() {
         id: "recipe_container_bottom"
     });
     $.__views.cocktail_scroll.add($.__views.recipe_container_bottom);
+    $.__views.rating_container = Ti.UI.createView({
+        id: "rating_container",
+        layout: "vertical",
+        width: Ti.UI.SIZE,
+        height: Ti.UI.SIZE
+    });
+    $.__views.recipe_container_bottom.add($.__views.rating_container);
     $.__views.__alloyId96 = Ti.UI.createLabel({
         color: Alloy.Globals.PrimaryColor,
         font: {
@@ -590,20 +597,20 @@ function Controller() {
         text: "Rating",
         id: "__alloyId96"
     });
-    $.__views.recipe_container_bottom.add($.__views.__alloyId96);
+    $.__views.rating_container.add($.__views.__alloyId96);
     $.__views.__alloyId97 = Ti.UI.createView({
         height: "1",
         width: "140dp",
         backgroundColor: "#d1d1d1",
         id: "__alloyId97"
     });
-    $.__views.recipe_container_bottom.add($.__views.__alloyId97);
+    $.__views.rating_container.add($.__views.__alloyId97);
     $.__views.__alloyId98 = Ti.UI.createView({
         layout: "vertical",
         height: Ti.UI.SIZE,
         id: "__alloyId98"
     });
-    $.__views.recipe_container_bottom.add($.__views.__alloyId98);
+    $.__views.rating_container.add($.__views.__alloyId98);
     $.__views.rating_view = Ti.UI.createView({
         id: "rating_view",
         layout: "horizontal",
@@ -922,6 +929,7 @@ function Controller() {
     var cocktail = args || "Category not received";
     Ti.API.info("Cocktail category: " + cocktail.title);
     $.recipe_title_label.text = cocktail.title;
+    $.recipe_container_bottom.remove($.rating_container);
     if (null != cocktail.glass && "" != cocktail.glass) {
         Ti.API.info("cocktail glassware info: " + cocktail.glass);
         var glassText = "";

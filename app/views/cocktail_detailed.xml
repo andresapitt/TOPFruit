@@ -65,11 +65,13 @@
 				<!--<Label class="recipe_subtext" id="video_url_link">VIDEO</Label>-->
 			</View>
 			<View id="recipe_container_bottom" class="recipe_container">
-				<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">Rating</Label>
-				<View height="1" width="140dp" backgroundColor="#d1d1d1" />
-				<View layout="vertical" height="Ti.UI.SIZE">
-					<View id="rating_view" layout="horizontal" height="Ti.UI.SIZE" width="Ti.UI.SIZE" top="5dp"></View>
-					<Label class="recipe_subtext" id="rating_cta" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" top="5dp">Rate this recipe</Label>
+				<View id="rating_container" layout="vertical" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
+					<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">Rating</Label>
+					<View height="1" width="140dp" backgroundColor="#d1d1d1" />
+					<View layout="vertical" height="Ti.UI.SIZE">
+						<View id="rating_view" layout="horizontal" height="Ti.UI.SIZE" width="Ti.UI.SIZE" top="5dp"></View>
+						<Label class="recipe_subtext" id="rating_cta" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" top="5dp">Rate this recipe</Label>
+					</View>
 				</View>
 				<Label class="recipe_subtitle" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">Feedback</Label>
 				<View height="1" width="140dp" backgroundColor="#d1d1d1" />

@@ -2,6 +2,8 @@ var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
 Ti.API.info("in the alloy.js file");
 
+Alloy.Globals.ContactEmail = "lisa@vstream.ie";
+
 Alloy.Globals.PrimaryColor = "#313646";
 
 Alloy.Globals.FacebookColor = "#3b5998";

@@ -316,6 +316,12 @@
 	height:"240dp", 
 	top:"10dp"
 },
+"#recipe_image_ani_view[platform=mobileweb ]":{
+	left:"0dp", 
+	width:"30%", 
+	height:"240dp", 
+	top:"10dp"
+},
 ".tap_to_close":{
 	height:"40dp",
 	backgroundColor: "#eee",
