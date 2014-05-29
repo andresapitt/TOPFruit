@@ -1,6 +1,1 @@
-define(["Ti/_"], function(_) {
-	var match = navigator.userAgent.toLowerCase().match(/(webkit|gecko|trident|presto)/);
-	return _.browser = {
-		runtime: match ? match[0] : "unknown"
-	};
-});
+define(["Ti/_"],function(e){var n=navigator.userAgent.toLowerCase().match(/(webkit|gecko|trident|presto)/);return e.browser={runtime:n?n[0]:"unknown"}});

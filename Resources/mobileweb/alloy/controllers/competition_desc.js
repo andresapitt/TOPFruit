@@ -183,10 +183,8 @@ function Controller() {
     $.__views.comp_scroll_view.add($.__views.competition_visit_site_btn);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Ti.API.info("Opening competition page");
     var args = arguments[0] || {};
-    var compeitition_name = args.title || "Title not received";
-    Ti.API.info("Comp title: " + compeitition_name);
+    args.title || "Title not received";
     $.competition_title.text = args.title || "Title not received";
     if (null != args.banner_img_url && "" != args.banner_img_url) {
         var new_height = "160dp";
@@ -204,11 +202,8 @@ function Controller() {
         Ti.API.info("Competition website button clicked! Go to: " + args.more_info_url);
         Ti.Platform.openURL(args.more_info_url);
     }) : $.comp_scroll_view.remove($.competition_visit_site_btn);
-    $.competition_desc.addEventListener("close", function() {
-        Ti.API.info("Comp desc closed");
-    });
+    $.competition_desc.addEventListener("close", function() {});
     $.competition_desc.addEventListener("open", function() {
-        Ti.API.info("Comp desc opened");
         Alloy.Globals.windowStack.push($.competition_desc);
     });
     $.competition_desc.addEventListener("androidback", function() {

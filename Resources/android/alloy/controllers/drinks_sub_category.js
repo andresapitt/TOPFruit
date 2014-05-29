@@ -270,25 +270,67 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var sub_category = arguments[0] || {};
-    var cocktail_category = sub_category.id || "Category not received";
-    Ti.API.info("Cocktail category: " + cocktail_category);
+    sub_category.id || "Category not received";
     $.drinks_sub_category.title = sub_category.title.toUpperCase();
     $.drinks_sub_category_page_title.text = sub_category.title.toUpperCase();
     var horizontal_drink_view_style = $.createStyle({
         classes: [ "horizontal_drinks_nav_view" ]
     });
+    var divide = 32;
+    var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+    horizontal_drink_view_style.left = Math.floor(pixelWidth).toString() + "px";
+    horizontal_drink_view_style.right = Math.floor(pixelWidth).toString() + "px";
+    horizontal_drink_view_style.top = Math.floor(pixelWidth).toString() + "px";
+    divide = 320 / 90;
+    pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+    var resultAspectRatio = 130 / 90;
+    var pixelHeight = Math.floor(pixelWidth * resultAspectRatio);
+    horizontal_drink_view_style.height = Math.floor(pixelHeight).toString() + "px";
     var single_drink_view_style = $.createStyle({
         classes: [ "drink_single_view" ]
     });
+    var divide = 320 / 90;
+    var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+    single_drink_view_style.width = Math.floor(pixelWidth).toString() + "px";
+    var resultAspectRatio = 130 / 90;
+    var resultHeight = Math.floor(pixelWidth * resultAspectRatio);
+    single_drink_view_style.height = resultHeight.toString() + "px";
+    divide = 64;
+    pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+    single_drink_view_style.left = Math.floor(pixelWidth).toString() + "px";
+    single_drink_view_style.right = Math.floor(pixelWidth).toString() + "px";
     var single_drink_image_style = $.createStyle({
         classes: [ "drink_image" ]
     });
+    var divide = 320 / 90;
+    var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+    single_drink_image_style.width = Math.floor(pixelWidth).toString() + "px";
+    var resultAspectRatio = 95 / 90;
+    var pixelheight = Math.floor(pixelWidth * resultAspectRatio);
+    single_drink_image_style.height = Math.floor(pixelheight).toString() + "px";
+    single_drink_image_style.height.top = 0;
     var single_drink_title_style = $.createStyle({
         classes: [ "drink_title" ]
     });
+    var divide = 320 / 90;
+    var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+    var resultAspectRatio = 95 / 90;
+    var pixelheight = Math.floor(pixelWidth * resultAspectRatio);
+    single_drink_title_style.top = Math.floor(pixelheight + 2).toString() + "px";
+    var fontSizeRatio = 90 / 14;
+    var fontSize = Math.floor(pixelWidth / fontSizeRatio);
+    single_drink_title_style.font = {
+        fontFamily: Alloy.Globals.MainFont,
+        fontSize: fontSize.toString() + "px"
+    };
     var single_drink_image_style_bottle = $.createStyle({
         classes: [ "drink_image_bottle" ]
     });
+    var divide = 320 / 90;
+    var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+    var resultAspectRatio = 95 / 90;
+    var pixelheight = Math.floor(pixelWidth * resultAspectRatio);
+    single_drink_image_style_bottle.height = Math.floor(pixelheight).toString() + "px";
     Ti.API.info("subcategories length: " + sub_category.subcategories.length);
     for (var i = 0; sub_category.subcategories.length > i; i += 3) {
         Ti.API.info("Sub-category: " + i + ", title: " + sub_category.subcategories[i].Subcategory.title);
@@ -322,7 +364,7 @@ function Controller() {
             single_drink_view.addEventListener("click", openDrinks);
         }
     }
-    null == sub_category.facebook || "" == sub_category.facebook ? $.social_hor_view_subcategory.remove($.facebookParent_subcategory) : $.facebookParent_subcategory.addEventListener("click", function() {
+    null == sub_category.facebook || "" == sub_category.facebook || "" == sub_category.facebook.trim() ? $.social_hor_view_subcategory.remove($.facebookParent_subcategory) : $.facebookParent_subcategory.addEventListener("click", function() {
         var canOpen = Ti.Platform.openURL("fb://profile/" + sub_category.facebook);
         false == canOpen && Ti.UI.createAlertDialog({
             message: "Sorry, you must first have the facebook app installed on this device to click this button.",
@@ -330,7 +372,7 @@ function Controller() {
             title: "Facebook Error"
         }).show();
     });
-    null == sub_category.twitter || "" == sub_category.twitter ? $.social_hor_view_subcategory.remove($.twitterParent_subcategory) : $.twitterParent_subcategory.addEventListener("click", function() {
+    null == sub_category.twitter || "" == sub_category.twitter || "" == sub_category.twitter.trim() ? $.social_hor_view_subcategory.remove($.twitterParent_subcategory) : $.twitterParent_subcategory.addEventListener("click", function() {
         var canOpen = Ti.Platform.openURL("twitter://user?user_id=" + sub_category.twitter);
         false == canOpen && Ti.UI.createAlertDialog({
             message: "Sorry, you must first have the twitter app installed on this device to click this button.",
@@ -338,11 +380,8 @@ function Controller() {
             title: "Twitter Error"
         }).show();
     });
-    $.drinks_sub_category.addEventListener("close", function() {
-        Ti.API.info("drinks subcategory closed");
-    });
+    $.drinks_sub_category.addEventListener("close", function() {});
     $.drinks_sub_category.addEventListener("open", function(e) {
-        Ti.API.info("drinks subcategory opened");
         try {
             Alloy.Globals.windowStack.push($.drinks_sub_category);
         } catch (e) {

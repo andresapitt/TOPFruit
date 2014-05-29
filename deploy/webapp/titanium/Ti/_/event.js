@@ -1,18 +1,1 @@
-define({
-	stop: function(e) {
-		if (e) {
-			e.preventDefault && e.preventDefault();
-			e.stopPropagation && e.stopPropagation();
-		}
-	},
-	off: function(handles) {
-		var handles = require.is(handles, "Array") ? handles : [handles],
-			h,
-			i = 0,
-			l = handles.length;
-		while (i < l) {
-			(h = handles[i++]) && h();
-		}
-		handles.splice(0);
-	}
-});
+define({stop:function(e){e&&(e.preventDefault&&e.preventDefault(),e.stopPropagation&&e.stopPropagation())},off:function(e){for(var t,e=require.is(e,"Array")?e:[e],o=0,n=e.length;n>o;)(t=e[o++])&&t();e.splice(0)}});

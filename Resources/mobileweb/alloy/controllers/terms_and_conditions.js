@@ -120,7 +120,6 @@ function Controller() {
     $.__views.__alloyId399.add($.__views.drinkaware_img);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Ti.API.info("Terms and Conditions opened");
     $.terms_and_conditions.addEventListener("androidback", function() {
         $.terms_and_conditions.close({
             activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left,

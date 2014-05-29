@@ -1,14 +1,18 @@
-
-//$.picker.setMaxDate(new Date());
-
+/*
+* Opening App screen - prompts user to enter age or login to the app using facebook
+*/
 
 if(Ti.Platform.name == "android" )
 {
+	//var columns = [];
+	//columns[0] = Ti.UI.createPickerColumn();
+	//columns[1] = Ti.UI.createPickerColumn();
 	//date picker
 	var date_data = [];
 	for(var i = 1;i < 32; i++)
  	{
  		date_data.push(Ti.UI.createPickerRow({title:i}));
+ 		//columns[0].addRow(Ti.UI.createPickerRow({title:i}));
  	}
  	$.day_picker.add(date_data);
 	
@@ -17,9 +21,11 @@ if(Ti.Platform.name == "android" )
 	var months=new Array("January","February","March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
  	for(var i = 0;i < 12; i++)
  	{
- 		month_data.push(Ti.UI.createPickerRow({title:months[i], value:i}));
+ 		month_data.push(Ti.UI.createPickerRow({title:months[i], value:i, fontSize:6, horizontalWrap:true}));
+ 		//columns[1].addRow(Ti.UI.createPickerRow({title:months[i], value:i, fontSize:6, horizontalWrap:true}));
  	}
  	$.month_picker.add(month_data);
+ 	//$.month_picker.setColumns(columns);
  	
  	//date picker
 	var year_data = [];
@@ -223,6 +229,9 @@ function TandCBtnHandler(e){
 //fb.forceDialogAuth = false;
 
 function facebookLoginHandler(e){
+	//var alertString = "FACEBOOK return: ";
+	//alertString += ", code: " + e.code.toString();
+	//alert(alertString);
 	 if (e.success) {
     	//alert('Logged In');
     	 Ti.API.info("FACEBOOK login success: " + e.toString());
@@ -230,6 +239,7 @@ function facebookLoginHandler(e){
          Alloy.Globals.parent.open();
          $.age_gate.close();
          Alloy.Globals.fb.removeEventListener('login', facebookLoginHandler);
+       //  alert('success');
     } else if (e.error) {
     	Ti.API.info("FACEBOOK login error: " + e.toString());
         //alert("Facebook error: " + e.error);
@@ -240,11 +250,17 @@ function facebookLoginHandler(e){
 		  }).show();
     } else if (e.cancelled) {
     	Ti.API.info("FACEBOOK login cancel: " + e.toString());
-       // alert("Canceled");
+        alert("Cancelled");
+    }
+    else if(e.code != 0) // some error has occured, use old login system
+    {
+    	Alloy.Globals.fb.forceDialogAuth = true;
+		Alloy.Globals.fb.authorize();
     }
     else
     {
     	Ti.API.info("FACEBOOK return: " + e.toString());
+    	//alert("FACEBOOK return: " + e.toString());
     }
 }
 
@@ -276,7 +292,17 @@ function facebookBtnHandler(e){
 
 
 	Ti.API.info("FACEBOOK authorise, is it logged in: " + Alloy.Globals.fb.getLoggedIn() );
-	Alloy.Globals.fb.authorize();
+	if(!Alloy.Globals.fb.getLoggedIn())
+	{
+		Alloy.Globals.fb.authorize();
+	}
+	else
+	{
+		Ti.App.Properties.setBool('over18', true);
+         Alloy.Globals.parent.open();
+         $.age_gate.close();
+         Alloy.Globals.fb.removeEventListener('login', facebookLoginHandler);
+	}
 }
 
 

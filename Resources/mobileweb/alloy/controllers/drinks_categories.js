@@ -230,12 +230,9 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var drinks_json_text = "";
-    Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/drinks/drinks/viewjson", "data/Drinks.txt", DisplayDrinks);
-    $.drinks_categories.addEventListener("close", function() {
-        Ti.API.info("Drinks categories closed");
-    });
+    Alloy.Globals.Utils.GetAppData("/client/idl/perfect-mix/drinks/drinks/viewjson", "data/Drinks.txt", DisplayDrinks);
+    $.drinks_categories.addEventListener("close", function() {});
     $.drinks_categories.addEventListener("open", function() {
-        Ti.API.info("Drinks categories opened");
         Alloy.Globals.windowStack.push($.drinks_categories);
     });
     $.drinks_categories.addEventListener("androidback", function() {

@@ -1,11 +1,12 @@
-Ti.API.info("Recipe detail screen opened");
+/*
+ * 
+ * Detailed Cocktail Description Page
+ * 
+ * 
+ */
 
 var args = arguments[0] || {};
 var cocktail = args || 'Category not received';
-
-
-Ti.API.info("Cocktail category: " + cocktail.title);
-
 $.recipe_title_label.text = cocktail.title;
 
 if(Ti.Platform.name == "mobileweb" )
@@ -13,10 +14,22 @@ if(Ti.Platform.name == "mobileweb" )
 	$.recipe_container_bottom.remove($.rating_container);
 }
 
+if(Ti.Platform.name == "android" )
+{
+	var divide = 320 / 310; 
+	var width = Ti.Platform.displayCaps.platformWidth / divide;
+	var imageRatio = 310/25;
+	var imageSize = Math.floor(width/imageRatio);
+	var fav_heart_style = $.createStyle({
+		width:imageSize.toString() + "px",
+		height:imageSize.toString() + "px",
+	});
+	
+	$.fav_heart.applyProperties(fav_heart_style);
+}
 
 if(cocktail.glass != null && cocktail.glass != "")
 {
-	Ti.API.info("cocktail glassware info: " + cocktail.glass);
 	var glassText = "";
 	
 	for(var i = 0; i < cocktail.glass.length; i++)
@@ -26,22 +39,17 @@ if(cocktail.glass != null && cocktail.glass != "")
 	$.glassware.text = glassText;
 }
 else{
-	Ti.API.info("No cocktail glass info");
 	$.how_to_view.remove($.glassware_container);
 }
 if(cocktail.description != null && cocktail.description != "")
 {
-	Ti.API.info("cocktail description info: " + cocktail.description);
 	$.cocktail_desc.text = cocktail.description;
 }
 else{
-	Ti.API.info("No cocktail description info");
 	$.how_to_view.remove($.cocktail_desc_container);
 } 
 if(cocktail.ingredients != null && cocktail.ingredients != "")
 {
-	Ti.API.info("cocktail ingredients info: " + cocktail.ingredients);
-	
 	var parsedIngredients = cocktail.ingredients.replace( /\r\n/g, "\n" ).replace( /\r/g, "\n" ).split( "\n" );
 	
 	$.ingredients.text = "";
@@ -51,13 +59,10 @@ if(cocktail.ingredients != null && cocktail.ingredients != "")
 	}
 }
 else{
-	Ti.API.info("No cocktail ingredients info");
 	$.how_to_view.remove($.ingredients_container);
 }
 if(cocktail.method != null && cocktail.method != "")
 {
-	Ti.API.info("cocktail method info: " + cocktail.method);
-	//$.method.text = cocktail.method;
 	var parsedMethod = cocktail.method.replace( /\r\n/g, "\n" ).replace( /\r/g, "\n" ).split( "\n" );
 	
 	$.method.text = "";
@@ -67,12 +72,10 @@ if(cocktail.method != null && cocktail.method != "")
 	}
 }
 else{
-	Ti.API.info("No cocktail method info");
 	$.how_to_view.remove($.method_container);
 }
 if(cocktail.garnish != null && cocktail.garnish != "")
 {
-	Ti.API.info("cocktail garnish info: " + cocktail.garnish);
 	$.garnish.text = cocktail.garnish;
 	var parsedGarnish = cocktail.garnish.replace( /\r\n/g, "\n" ).replace( /\r/g, "\n" ).split( "\n" );
 	
@@ -83,18 +86,10 @@ if(cocktail.garnish != null && cocktail.garnish != "")
 	}
 }
 else{
-	Ti.API.info("No cocktail garnish info");
 	$.how_to_view.remove($.garnish_container);
 }
 if(cocktail.video != null && cocktail.video != "")
 {
-	Ti.API.info("cocktail video info: " + cocktail.video);
-	/*$.video_url_link.text = cocktail.video_url;
-	$.video_url_link.addEventListener('click', function(e){
-		Ti.API.info("youtube link clicked");
-		Alloy.createWidget('ytPlayer').play(cocktail.video_url);
-	});
-	*/
 	
 	if(Ti.Platform.name == "android" )
 	{
@@ -112,7 +107,6 @@ if(cocktail.video != null && cocktail.video != "")
 		  checkRetina:false,
 		  height: new_height,
 		  width:Ti.UI.FILL
-		 // height: Ti.UI.FILL
 		});
 	}
 	else if(Ti.Platform.name == "mobileweb" )
@@ -123,8 +117,6 @@ if(cocktail.video != null && cocktail.video != "")
 		  checkRetina:false,
 		  width: Ti.UI.FILL,
 		  top:0
-		//  height:'194dp'
-		 // height: Ti.UI.FILL
 		});
 	}
 	else
@@ -133,17 +125,13 @@ if(cocktail.video != null && cocktail.video != "")
 		  image: "http://img.youtube.com/vi/" + cocktail.video + "/hqdefault.jpg",
 		  defaultImage:'images/cocktails/glass.png',
 		  checkRetina:false,
-		  width: Ti.UI.FILL,
-		 // height: Ti.UI.FILL
+		  width: Ti.UI.FILL
 		});
 	}
 	
-	//video_thumbnail_image.width = "100%";
 	$.video_container.add(video_thumbnail_image);
-	//video_thumbnail_image.height = Ti.UI.SIZE;
 	
 	$.video_container.addEventListener('click', function(e){
-		Ti.API.info("youtube link clicked");
 		
 		//if rating is open then close it
 		var animation = Titanium.UI.createAnimation();
@@ -164,16 +152,13 @@ if(cocktail.video != null && cocktail.video != "")
 	}
 	video_play.touchEnabled = false;
 	$.video_container.add(video_play);
-	//video_play.height = "10%";
 	video_play.width = Ti.UI.SIZE;
 	video_play.height = Ti.UI.SIZE;
-	//event_image_view.applyProperties(event_image_style);
 	
 	
 }
 else
 {
-	Ti.API.info("No cocktail video info");
 	$.cocktail_scroll.remove($.video_container);
 }
 
@@ -189,7 +174,6 @@ else{
 		$.facebookParent_recipe.addEventListener('click', function(e)
 		{
 			if (Titanium.Platform.name == 'iPhone OS') {
-				Ti.API.info("facebook home button clicked");
 				var canOpenFacebook = Ti.Platform.canOpenURL("fb://profile/"+cocktail.facebook);
 				if(canOpenFacebook)
 				{
@@ -230,7 +214,6 @@ else{
 	{
 		$.twitterParent_recipe.addEventListener('click', function(e){
 			if (Titanium.Platform.name == 'iPhone OS') {
-				Ti.API.info("twitter home button clicked");
 				var canOpenTwitter = Ti.Platform.canOpenURL("twitter:///user?id="+cocktail.twitter);
 				Ti.API.info("twitter home button clicked");
 				
@@ -268,6 +251,27 @@ if(!showSocialSection){
 var ratings_star_style = $.createStyle({
 		classes: ["star_icon"],
 	});
+	
+	
+if(Ti.Platform.name == "android" )
+{
+	var divide = 320 / 310; 
+	var width = Ti.Platform.displayCaps.platformWidth / divide;
+	var imageRatio = 310/25;
+	var imageSize = Math.floor(width/imageRatio);
+	ratings_star_style.width = imageSize.toString() + "px";
+	ratings_star_style.height = imageSize.toString() + "px";
+	imageRatio = 310/4;
+	imageSize = Math.floor(width/imageRatio);
+	ratings_star_style.left = imageSize.toString() + "px";
+	ratings_star_style.right = imageSize.toString() + "px";
+	$.star_1.applyProperties(ratings_star_style);
+	$.star_2.applyProperties(ratings_star_style);
+	$.star_3.applyProperties(ratings_star_style);
+	$.star_4.applyProperties(ratings_star_style);
+	$.star_5.applyProperties(ratings_star_style);
+}
+
 	
 var cocktail_rating_stars = new Array();
 for(var i = 0; i < 5; i++){
@@ -313,7 +317,6 @@ function updateRatingStars(rating)
 		}
 	}
 }
-//updateRatingStars(cocktail.rating);
 
 function getCocktailData(cocktailsJson)
 {
@@ -327,25 +330,18 @@ function getCocktailData(cocktailsJson)
 		});
 	if(recipe_data_array[0] != null)
 	{
-		Ti.API.info('detailed recipe found: ' + recipe_data_array[0].Cocktail.id );
 		cocktail = recipe_data_array[0].Cocktail;
 		updateRatingStars(cocktail.rating);
 	}
-	else{
-		Ti.API.info('detailed recipe NOT found');
-	}
 }
-Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/cocktails/cocktails/viewjson", "data/Cocktails.txt", getCocktailData);
+Alloy.Globals.Utils.GetAppData("/client/idl/perfect-mix/cocktails/cocktails/viewjson", "data/Cocktails.txt", getCocktailData);
 	
 var currentRatings = Titanium.App.Properties.getList('ratings', new Array());
 var currentFavs = Titanium.App.Properties.getList('favs', new Array());
 
 if(currentRatings == null || currentRatings.length == 0 )
 {
-	Ti.API.info('Current ratings count is 0 or null - allowed to rate');
-	
 	$.rating_view.addEventListener('click', function(e){
-		Ti.API.info("Cocktail rating clicked");
 		var animation = Titanium.UI.createAnimation();
 		animation.bottom = "0dp";
 		animation.duration = 300;
@@ -355,7 +351,6 @@ if(currentRatings == null || currentRatings.length == 0 )
 }
 else if(currentRatings.length > 0)
 {
-	Ti.API.info('Current ratings are greater than one - check if allowed to rate');
 	var canRate = true;
 	for(var i = 0; i < currentRatings.length; i ++)
 	{
@@ -373,7 +368,6 @@ else if(currentRatings.length > 0)
 	}
 	if(canRate){
 		$.rating_view.addEventListener('click', function(e){
-			Ti.API.info("Cocktail rating clicked");
 			var animation = Titanium.UI.createAnimation();
 			animation.bottom = "0dp";
 			animation.duration = 300;
@@ -383,19 +377,9 @@ else if(currentRatings.length > 0)
 	}
 }
 	
-/*
-$.rating_view.addEventListener('click', function(e){
-	Ti.API.info("Cocktail rating clicked");
-	var animation = Titanium.UI.createAnimation();
-	animation.bottom = "0dp";
-	animation.duration = 500;
-	$.rating_picker.animate(animation);
-});
-*/
 var currentRating = 0;
 
 function star_clicked(e){
-	Ti.API.info("Star clicked, id: " + e.source.star_id);
 	
 	switch (e.source.star_id)
 	{
@@ -449,7 +433,6 @@ function star_clicked(e){
 }
 
 function closeRatingHandler(e){
-	Ti.API.info("Close rating handler");
 	var animation = Titanium.UI.createAnimation();
 	if(Ti.Platform.name == "android" )
 	{
@@ -465,7 +448,6 @@ function closeRatingHandler(e){
 }
 
 function submitRatingBtnHandler(e){
-	Ti.API.info("Submit rating handler");
 	if(currentRating == 0)
 	{
 		var dialog = Ti.UI.createAlertDialog({
@@ -502,7 +484,7 @@ function submitRatingBtnHandler(e){
 		}
 		
 		var xhr = Ti.Network.createHTTPClient();
-		xhr.open("GET", "http://vocal.ie/client/idl/perfect-mix/cocktails/cocktails/saverating/hash:35e1b0e0b9bc289cc4d14a1f63ef9263/cocktail_id:" + cocktail.id + "/rating:"+currentRating);
+		xhr.open("GET", Alloy.Globals.BaseUrl+"/client/idl/perfect-mix/cocktails/cocktails/saverating/hash:35e1b0e0b9bc289cc4d14a1f63ef9263/cocktail_id:" + cocktail.id + "/rating:"+currentRating);
 		xhr.onload = function() {
 			Ti.API.info("Text Recieved" + this.responseText);
 		    
@@ -527,8 +509,6 @@ function submitRatingBtnHandler(e){
 }
 
 function submitCommentBtnHandler(e){
-	Ti.API.info("Submit comment on recipe");
-	//$.rating_picker.height = Ti.UI.FILL;
 	var emailDialog = Ti.UI.createEmailDialog();
 	emailDialog.subject = "Perfect Mix - Comment: " + cocktail.title;
 	emailDialog.toRecipients = [Alloy.Globals.ContactEmail];
@@ -544,9 +524,6 @@ function updateFavIcon(){
 		{
 			if(currentFavs[i].id == cocktail.id)
 			{
-				Ti.API.info('cocktail in favorites');
-				
-				//$.fav_heart.image = "/images/favs/heart_full.png";
 				if(Ti.Platform.name == "mobileweb" )
 				{
 					$.fav_heart.image = "./images/favs/heart_full.png";
@@ -571,11 +548,9 @@ function updateFavIcon(){
 updateFavIcon();
 
 function fav_clicked(e){
-	//alert("Favourite  heart clicked!!");
 	Ti.API.info("Fav heart clicked ");
 	if(currentFavs == null || currentFavs.length == 0)
 	{
-		Ti.API.info('No current favourites - add this cocktail to favourites');
 		currentFavs.push({id:cocktail.id});
 	}
 	else
@@ -584,7 +559,6 @@ function fav_clicked(e){
 		{
 			if(currentFavs[i].id == cocktail.id)
 			{
-				Ti.API.info('Cocktail already in favorites - remove from list');
 				currentFavs.splice(i, 1);
 				Titanium.App.Properties.setList('favs', currentFavs);
 				updateFavIcon();
@@ -618,13 +592,9 @@ function goToHome(e)
 }
 
 $.cocktail_detailed.addEventListener('close', function(e){
-	Ti.API.info("cocktail desc closed");
-	//var a = Alloy.Globals.windowStack.indexOf($.cocktail_detailed);
-	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.cocktail_detailed.addEventListener('open', function(e){
-	Ti.API.info("Cocktail desc opened");
 	Alloy.Globals.windowStack.push($.cocktail_detailed);
 	
 	var animation = Titanium.UI.createAnimation();
@@ -653,30 +623,6 @@ $.cocktail_detailed.addEventListener('open', function(e){
 	setTimeout(function(){
 	   $.recipe_image_ani_view.animate(animation);
 	}, 700);
-	
-/*
-	var firstLayout = false;
-	function animateHeight(e){
-		
-		$.how_to_make_it.removeEventListener('postlayout', animateHeight);
-		
-		function PixelsToDPUnits(ThePixels)
-		{
-			return (ThePixels / (Titanium.Platform.displayCaps.dpi / 194));
-		}
-		Ti.API.info('POSTLAYOUT: Height of view: ' + $.how_to_make_it.size.height);
-		Ti.API.info('POSTLAYOUT: Height of device: ' + PixelsToDPUnits(Ti.Platform.displayCaps.platformHeight) );
-		
-		var animation = Titanium.UI.createAnimation();
-		animation.height = "800dp";
-		animation.duration = 4000;
-		animation.curve = Ti.UI.ANIMATION_CURVE_EASE_IN_OUT;
-		 $.how_to_make_it.animate(animation);
-		//$.how_to_make_it.height = Ti.UI.SIZE;
-	}
-	
-	$.how_to_make_it.addEventListener('postlayout', animateHeight);
-	*/
 });
 
 $.cocktail_detailed.addEventListener('androidback', function(e){

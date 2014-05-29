@@ -388,11 +388,6 @@
 ".fav_icon_style":{
 	top:"10dp", 
 	right:"10dp",
-	width:"25dp" 
-},
-".fav_icon_style[platform=android formFactor=tablet]":{
-	top:"10dp", 
-	right:"10dp",
 	width:"25dp",
 	height:"25dp"
 }

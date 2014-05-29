@@ -2,27 +2,21 @@ function Controller() {
     function displayCocktails(newJSON) {
         var drinks_json;
         drinks_json = null != newJSON ? JSON.parse(newJSON) : JSON.parse(drinks_json_text);
-        for (var i = 0; drinks_json.length > i; i++) Ti.API.info("Cocktail " + i + " Title: " + drinks_json[i].Cocktail.title);
         drinks_json.sort(function(a, b) {
             var textA = a.Cocktail.title.toUpperCase();
             var textB = b.Cocktail.title.toUpperCase();
             return textB > textA ? -1 : textA > textB ? 1 : 0;
         });
-        Ti.API.info("AFTER SORT ");
-        for (var i = 0; drinks_json.length > i; i++) Ti.API.info("Cocktail " + i + " Title: " + drinks_json[i].Cocktail.title);
         var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         for (var i = 0; str.length > i; i++) {
             var is_letter_active = false;
             var nextChar = str.charAt(i);
             for (var y = 0; drinks_json.length > y; y++) {
                 var first_char_brand = drinks_json[y].Cocktail.title.charAt(0);
-                if (nextChar == first_char_brand) {
-                    is_letter_active = true;
-                    Ti.API.info("Char active: " + nextChar);
-                }
+                nextChar == first_char_brand && (is_letter_active = true);
             }
             if (is_letter_active) {
-                Ti.API.info("Adding table view: " + nextChar);
+                var hasFirstBeenAdded = false;
                 var headerView = Ti.UI.createView();
                 var style = $.createStyle({
                     classes: [ "table_header" ]
@@ -40,6 +34,12 @@ function Controller() {
                 var header_label_style = $.createStyle({
                     classes: [ "table_header_label" ]
                 });
+                var fontSizeRatio = 20;
+                var fontSize = Math.floor(Ti.Platform.displayCaps.platformWidth / fontSizeRatio);
+                header_label_style.font = {
+                    fontFamily: Alloy.Globals.BoldFont,
+                    fontSize: fontSize.toString() + "px"
+                };
                 header_label.applyProperties(header_label_style);
                 headerView.add(header_label);
                 var bottomSeparator = Ti.UI.createView();
@@ -54,6 +54,12 @@ function Controller() {
                 var row_label_style = $.createStyle({
                     classes: [ "row_label" ]
                 });
+                var fontSizeRatio = 320 / 14;
+                var fontSize = Math.floor(Ti.Platform.displayCaps.platformWidth / fontSizeRatio);
+                row_label_style.font = {
+                    fontFamily: Alloy.Globals.BoldFont,
+                    fontSize: fontSize.toString() + "px"
+                };
                 var row_view_style = $.createStyle({
                     classes: [ "row_view" ]
                 });
@@ -81,7 +87,17 @@ function Controller() {
                         brand_row_view.applyProperties(row_view_style);
                         brand_row.add(brand_row_view);
                         brand_row.cocktailData = drinks_json[y].Cocktail;
+                        if (true && true == hasFirstBeenAdded) {
+                            Ti.API.info("I'm adding bottom seperator");
+                            var bottomSeparator = Ti.UI.createView();
+                            var separator_style_bottom = $.createStyle({
+                                classes: [ "table_separator", "top" ]
+                            });
+                            bottomSeparator.applyProperties(separator_style_bottom);
+                            brand_row.add(bottomSeparator);
+                        }
                         table_view_section.add(brand_row);
+                        hasFirstBeenAdded = true;
                     }
                 }
                 $.search_table.appendSection(table_view_section);
@@ -92,7 +108,6 @@ function Controller() {
     function openRecipe(e) {
         var recipeWin;
         var recipeWin;
-        Ti.API.info("Open detailed recipe! " + e.row.cocktailData.title);
         var recipeWin = Alloy.createController("cocktail_detailed", e.row.cocktailData).getView();
         recipeWin.open({
             activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right,
@@ -230,13 +245,10 @@ function Controller() {
     $.__views.search.add($.__views.search_table);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/cocktails/cocktails/viewjson", "data/Cocktails.txt", displayCocktails);
+    Alloy.Globals.Utils.GetAppData("/client/idl/perfect-mix/cocktails/cocktails/viewjson", "data/Cocktails.txt", displayCocktails);
     var drinks_json_text = "";
-    $.search.addEventListener("close", function() {
-        Ti.API.info("search closed");
-    });
+    $.search.addEventListener("close", function() {});
     $.search.addEventListener("open", function() {
-        Ti.API.info("search open");
         $.searchbar.blur();
         Alloy.Globals.windowStack.push($.search);
     });

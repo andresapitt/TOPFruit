@@ -28,7 +28,7 @@
 				<View id="dob_picker" platform="android"  >
 					<Picker id="day_picker" class="single_picker" selectionIndicator="true" useSpinner="false" />
 					<Picker id="month_picker" class="single_picker" selectionIndicator="true" useSpinner="false" />
-					<Picker id="year_picker" class="single_picker" selectionIndicator="true" useSpinner="false" />
+					<Picker id="year_picker" class="single_picker"  selectionIndicator="true" useSpinner="false" />
 				</View>
 				<View id="dob_picker" platform="mobileweb"  >
 					<Picker id="day_picker" class="single_picker" type="Ti.UI.PICKER_TYPE_PLAIN"   />

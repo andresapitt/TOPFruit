@@ -104,14 +104,14 @@
 	textAlign: Ti.UI.LEFT,
 },
 ".socialBtn_view":{
-	left:"10dp",
-	right:"10dp",
+	//left:"10dp",
+	//right:"10dp",
 	width:Ti.UI.SIZE,
 	height:Ti.UI.SIZE
 }
 ".socialBtn_view[platform=mobileweb]":{
-	left:"5dp",
-	right:"4dp",
+	//left:"5dp",
+	//right:"4dp",
 	width:Ti.UI.SIZE,
 	height:Ti.UI.SIZE
 }
@@ -140,7 +140,8 @@
 	tintColor:"#fff"
 },
 ".socialBtn[platform=android]":{
-	width:Ti.UI.SIZE,
+	//width:Ti.UI.SIZE,
+	width:"85dp",
 	height:"34dp",
 	backgroundColor:"#d1d1d1",
 	borderRadius:4,
@@ -152,6 +153,7 @@
 	tintColor:"#fff"
 },
 ".twitter[platform=android]":{
+	left:'10dp',
 	backgroundColor:"none",
 	backgroundGradient: {
         type: 'linear',
@@ -170,6 +172,7 @@
        }
 },
 ".website[platform=android]":{
+	right:'10dp',
 	backgroundColor:"none",
 	backgroundGradient: {
         type: 'linear',
@@ -179,6 +182,7 @@
        }
 }
 ".twitter[platform=mobileweb]":{
+	left:'10dp',
 	backgroundColor:"none",
 	backgroundGradient: {
         type: 'linear',
@@ -203,9 +207,11 @@
         startPoint: { x: '50%', y: '0%' },
         endPoint: { x: '50%', y: '100%' },
         colors: [ { color: '#414656', offset: 0.0}, { color: '#1e222e', offset: 1.0 } ]
-       }
+      },
+      right:'10dp'
 }
 ".twitter[platform=ios]":{
+	left:'10dp',
 	backgroundColor:"none",
 	backgroundGradient: {
         type: 'linear',
@@ -224,6 +230,7 @@
        }
 },
 ".website[platform=ios]":{
+	right:'10dp',
 	backgroundColor:"none",
 	backgroundGradient: {
         type: 'linear',

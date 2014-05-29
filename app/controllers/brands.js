@@ -1,20 +1,13 @@
-
-Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/brands/brands/viewjson", "data/Brands.txt", DisplayBrands);
-var brands_json_text = ""; 
 /*
-var readFile = Titanium.Filesystem.getFile(Ti.Filesystem.resourcesDirectory , "data/Brands.txt");  
- 
+ * 
+ * Brand List Screen 
+ * Accessed via the 'Our Brands' button in the main menu
+ * 
+ */
+
+Alloy.Globals.Utils.GetAppData("/client/idl/perfect-mix/brands/brands/viewjson", "data/Brands.txt", DisplayBrands);
 var brands_json_text = ""; 
- 
-// If the file exists
-if (readFile.exists()){  
-	Ti.API.info("Brands json local text file exists");
-	brands_json_text = readFile.read();
-}
-else{
-	alert("Brands json local text file not found");
-}
-*/
+
 function DisplayBrands(newJSON)
 {
 	var brands_json;
@@ -32,15 +25,7 @@ function DisplayBrands(newJSON)
 	{
 		Ti.API.info("Brand " + i + " Title: " + brands_json[i].Brand.title);
 	}
-		
-	/*
-	brands_json.brands.sort(function(a, b) {
-	    var textA = a.title.toUpperCase();
-	    var textB = b.title.toUpperCase();
-	    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-	});
-	*/
-	
+
 	brands_json.sort(function(a, b) {
 	    var textA = a.Brand.title.toUpperCase();
 	    var textB = b.Brand.title.toUpperCase();
@@ -59,7 +44,6 @@ function DisplayBrands(newJSON)
 	{
 		var is_letter_active = false;
 		var nextChar = str.charAt(i);
-		//Ti.API.info(" alphbet loop: " + nextChar);
 		for(var y = 0; y < brands_json.length; y++)
 		{
 			var first_char_brand = brands_json[y].Brand.title.charAt(0);
@@ -72,8 +56,6 @@ function DisplayBrands(newJSON)
 		if(is_letter_active)
 		{
 			Ti.API.info("Adding table view: " + nextChar);
-		//	var table_view_section = Ti.UI.createTableViewSection(/*{headerTitle:nextChar + " - header test" }*/);
-		//	$.brand_table.add(table_view_section);
 			var headerView = Ti.UI.createView();
 			var style = $.createStyle({
 	        	classes: ["table_header"],
@@ -117,8 +99,6 @@ function DisplayBrands(newJSON)
 				var first_char_brand = brands_json[y].Brand.title.charAt(0);
 				if(nextChar == first_char_brand)
 				{
-					//is_letter_active = true;
-					//Ti.API.info("Char active: " + nextChar);
 					var brand_row = Ti.UI.createTableViewRow(/*{title:brands_json.brands[y].title}*/ {brand_name:brands_json[y].Brand.title});
 					brand_row.brand_data = brands_json[y].Brand;
 					var brand_row_view = Ti.UI.createView();
@@ -126,10 +106,9 @@ function DisplayBrands(newJSON)
 					brand_row_label.applyProperties(row_label_style);
 					brand_row_view.add(brand_row_label);
 					
-					//var brand_image = Ti.UI.createImageView({image:brands_json.brands[y].thumb_image_url});
 					var brand_image = Alloy.Globals.Utils.RemoteImage({
 				  		image: brands_json[y].Brand.thumb_image_url,
-				  		defaultImage:'images/cocktails/glass.png'
+				  	//	defaultImage:'images/cocktails/glass.png'
 					});
 					brand_image.applyProperties(row_image_style);
 					brand_row_view.add(brand_image);
@@ -150,7 +129,6 @@ function DisplayBrands(newJSON)
 		}
 	}
 	
-	//$.brand_table.filterAttribute ="brand_name";
 	if(Ti.Platform.name != "mobileweb" )
 	{
 		$.brand_table.addEventListener('click', openBrand);
@@ -193,45 +171,12 @@ function closeWindow(e)
 function goToHome(e)
 {
 	Alloy.Globals.goToHome(e);
-	/*
-	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
-	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
-	{
-		if(i == Alloy.Globals.windowStack.length-1)
-		{
-			if(Ti.Platform.name == "android" )
-			{
-				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-		else
-		{
-			if(Ti.Platform.name != "mobileweb" )
-			{
-				Alloy.Globals.windowStack[i].close({animated:false});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-	}*/
 }
 
 $.brands.addEventListener('close', function(e){
-	Ti.API.info("brands closed");
-	//var a = Alloy.Globals.windowStack.indexOf($.brands);
-	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.brands.addEventListener('open', function(e){
-	Ti.API.info("brands opened");
 	if(Ti.Platform.name != "mobileweb")
 	{
 		$.searchbar.blur();

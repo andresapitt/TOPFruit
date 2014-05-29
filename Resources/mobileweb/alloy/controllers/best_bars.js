@@ -217,21 +217,14 @@ function Controller() {
     });
     $.__views.__alloyId26.add($.__views.__alloyId29);
     $.__views.__alloyId30 = Ti.UI.createView({
-        layout: "horizontal",
+        layout: "absolute",
         height: Ti.UI.SIZE,
+        width: Ti.UI.FILL,
         bottom: "20dp",
         top: "10dp",
         id: "__alloyId30"
     });
     $.__views.__alloyId26.add($.__views.__alloyId30);
-    $.__views.twitterParent = Ti.UI.createView({
-        left: "5dp",
-        right: "4dp",
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        id: "twitterParent"
-    });
-    $.__views.__alloyId30.add($.__views.twitterParent);
     $.__views.twitterBtn = Ti.UI.createLabel({
         width: "93dp",
         height: "34dp",
@@ -243,6 +236,7 @@ function Controller() {
         },
         color: "#fff",
         tintColor: "#fff",
+        left: "10dp",
         backgroundGradient: {
             type: "linear",
             startPoint: {
@@ -264,15 +258,7 @@ function Controller() {
         id: "twitterBtn",
         html: '<a href="http://twitter.com/WorldsBestBars" target="_blank"><div style="height:30px;"><img src="./images/icons/twitterbird@2x.png" style="width:25px;height:20px;top:5px;left:5px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Twitter</span></div></a>'
     });
-    $.__views.twitterParent.add($.__views.twitterBtn);
-    $.__views.facebookParent = Ti.UI.createView({
-        left: "5dp",
-        right: "4dp",
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        id: "facebookParent"
-    });
-    $.__views.__alloyId30.add($.__views.facebookParent);
+    $.__views.__alloyId30.add($.__views.twitterBtn);
     $.__views.facebookBtn = Ti.UI.createLabel({
         width: "93dp",
         height: "34dp",
@@ -305,15 +291,7 @@ function Controller() {
         id: "facebookBtn",
         html: '<a href="http://www.facebook.com/149071961796732" target="_blank"><div style="height:30px;"><img src="./images/icons/facebookIcon@2x.png" style="width:20px;height:25px;left:3px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Facebook</span></div></a>'
     });
-    $.__views.facebookParent.add($.__views.facebookBtn);
-    $.__views.websiteParent = Ti.UI.createView({
-        left: "5dp",
-        right: "4dp",
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        id: "websiteParent"
-    });
-    $.__views.__alloyId30.add($.__views.websiteParent);
+    $.__views.__alloyId30.add($.__views.facebookBtn);
     $.__views.websiteBtn = Ti.UI.createLabel({
         width: "93dp",
         height: "34dp",
@@ -343,20 +321,18 @@ function Controller() {
                 offset: 1
             } ]
         },
+        right: "10dp",
         id: "websiteBtn",
         html: ""
     });
-    $.__views.websiteParent.add($.__views.websiteBtn);
+    $.__views.__alloyId30.add($.__views.websiteBtn);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var new_height = "160dp";
     $.best_bars_banner_image.height = new_height;
     $.websiteBtn.html = '<a href="mailto:' + Alloy.Globals.ContactEmail + '?Subject=Perfect%20Mix%20-%20Best%20Bars%20Consideration" target="_top"><div style="height:30px;"><img src="./images/icons/websiteIcon@2x.png" style="width:25px;height:20px;top:5px;left:5px"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Email</span></div></a>';
-    $.best_bars.addEventListener("close", function() {
-        Ti.API.info("best bars closed");
-    });
+    $.best_bars.addEventListener("close", function() {});
     $.best_bars.addEventListener("open", function() {
-        Ti.API.info("best bars opened");
         Alloy.Globals.windowStack.push($.best_bars);
     });
     $.best_bars.addEventListener("androidback", function() {

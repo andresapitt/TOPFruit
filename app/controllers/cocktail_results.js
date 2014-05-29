@@ -1,9 +1,12 @@
-Ti.API.info("In cocktails result section");
+/*
+ * 
+ * Cocktail Results View Screen
+ * Presents the user with clickable thumbnails of various cocktails in certain categories
+ * 
+ */
 
 var args = arguments[0] || {};
 var cocktail_category = args.id || 'Category not received';
-//$.recipeTitle.text = args.title || 'Title not received';
-Ti.API.info("Cocktail category: " + cocktail_category);
 var isTopCategory = true;
 if(cocktail_category != "favourites")
 {
@@ -12,7 +15,6 @@ if(cocktail_category != "favourites")
 	{
 		$.cocktail_results_page_title.text = args.title.toUpperCase();
 	}
-	Ti.API.info("is this a top category? " + args.topCategory);
 	isTopCategory = args.topCategory;
 }
 else if(cocktail_category == "favourites")
@@ -24,32 +26,11 @@ else if(cocktail_category == "favourites")
 	}
 }
 
-Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/cocktails/cocktails/viewjson", "data/Cocktails.txt", displayCocktails);
+Alloy.Globals.Utils.GetAppData("/client/idl/perfect-mix/cocktails/cocktails/viewjson", "data/Cocktails.txt", displayCocktails);
 
-
-/*
-var readFile = Titanium.Filesystem.getFile(Ti.Filesystem.resourcesDirectory , "data/Cocktails.txt");  
- 
-var drinks_json_text = ""; 
- 
-// If the file exists
-if (readFile.exists()){  
-	Ti.API.info("Drinks json local text file exists");
-	drinks_json_text = readFile.read();
-}
-else{
-	alert("Drinks json local text file not found");
-}
-*/
-
-
-//displayCocktails();
 	
 function displayCocktails(newJSON)
 	{
-	//var drinks_json = JSON.parse(drinks_json_text);
-	//var all_cocktails = drinks_json.cocktails;
-	
 	
 	var rel_cocktails = [];
 	var cocktailViews = [];
@@ -68,6 +49,15 @@ function displayCocktails(newJSON)
 	var result_item_view_style = $.createStyle({
 		classes: ["result_item"],
 	});
+	
+	if(Ti.Platform.name == "android" )
+	{
+		var pixelWidth = Ti.Platform.displayCaps.platformWidth * 0.47;
+		var resultAspectRatio = 147 / 152 ;
+		var resultHeight =  Math.floor(pixelWidth * resultAspectRatio);
+		result_item_view_style.height = resultHeight.toString() + "px";
+	}
+	
 	var horizontal_results_view_style = $.createStyle({
 		classes: ["horizontal_results_nav_view"],
 	});
@@ -108,12 +98,9 @@ function displayCocktails(newJSON)
 	}
 	else
 	{
-		Ti.API.info("favourites display");
-		
 		var currentFavs = Titanium.App.Properties.getList('favs', new Array());
 		if(currentFavs.length == 0)
 		{
-			Ti.API.info("No favourites found");
 		}
 		else
 		{
@@ -135,8 +122,6 @@ function displayCocktails(newJSON)
 	
 	if(rel_cocktails.length > 0 )
 	{
-		Ti.API.info("relevant cocktail count: " + rel_cocktails.length);
-		
 		var cocktail_image_style_bottle = $.createStyle({
 			classes: ["cocktail_image_glass"],
 		});
@@ -155,10 +140,6 @@ function displayCocktails(newJSON)
 			{
 				var single_result_item_view = Ti.UI.createView();
 				single_result_item_view.applyProperties(result_item_view_style);
-				
-				/*var cocktail_image = Ti.UI.createImageView({image:"images/cocktails/glass.png"});
-				cocktail_image.applyProperties(cocktail_image_style_bottle);
-				single_result_item_view.add(cocktail_image);*/
 				
 				var cocktail_image = Alloy.Globals.Utils.RemoteImage({
 				  image: rel_cocktails[y].image_thumb,
@@ -192,6 +173,17 @@ function displayCocktails(newJSON)
 					var broken_heart_style = $.createStyle({
 						classes: ["fav_heart_style"],
 					});
+					
+					if(Ti.Platform.name == "android" )
+					{
+						var divide = 320 / 310; 
+						var width = Ti.Platform.displayCaps.platformWidth / divide;
+						var imageRatio = 310/21;
+						var imageSize = Math.floor(width/imageRatio);
+						broken_heart_style.width = imageSize.toString() + "px";
+						broken_heart_style.height = imageSize.toString() + "px";
+					}
+
 					single_result_item_view.ID = rel_cocktails[y].id;
 					var brokenHeart_image = Ti.UI.createImageView();
 					brokenHeart_image.image = "/images/favs/heart_broken.png";
@@ -237,15 +229,11 @@ function displayCocktails(newJSON)
 	$.cocktail_results.addEventListener('focus', function(e){
 		if(cocktail_category == "favourites")
 		{
-			Ti.API.info("favourites page has regained focus");
 			var currentFavs = Titanium.App.Properties.getList('favs', new Array());
 			for(var i = 0; i < cocktailViews.length; i ++)
 			{
-				Ti.API.info("Fav cocktail View: " + i);
 				if(currentFavs.length == 0)
 				{
-					Ti.API.info("Fav cocktail View: " + i + " no longer a favourite" );
-					//cocktailViews[i].broken_heart_image.image = "/images/favs/heart_broken.png";
 					var animation = Titanium.UI.createAnimation();
 					animation.opacity = 0.5;
 					animation.duration = 300;
@@ -254,14 +242,11 @@ function displayCocktails(newJSON)
 				}
 				else
 				{
-					Ti.API.info(currentFavs.length + " favourites found");
 					var isFav = false;
 					for(var y = 0; y < currentFavs.length; y ++)
 					{
 						if( cocktailViews[i].ID == currentFavs[y].id)
 						{
-							Ti.API.info("Cocktail View: " + i + " is a fav");
-							//cocktailViews[i].broken_heart_image.opacity = 0;
 							var animation = Titanium.UI.createAnimation();
 							animation.opacity = 0;
 							animation.duration = 300;
@@ -272,8 +257,6 @@ function displayCocktails(newJSON)
 					}
 					if(!isFav)
 					{
-						Ti.API.info("Fav cocktail View: " + i + " no longer a favourite" );
-						//cocktailViews[i].broken_heart_image.image = "/images/favs/heart_broken.png";
 						var animation = Titanium.UI.createAnimation();
 						animation.opacity = 0.5;
 						animation.duration = 300;
@@ -289,7 +272,6 @@ function displayCocktails(newJSON)
 }
 
 function openRecipeDetailed(e){
-	Ti.API.info("Open detailed recipe! " + e.source.cocktailData.title);
 	
 		var recipeWin = Alloy.createController('cocktail_detailed', e.source.cocktailData).getView();
 		if(Ti.Platform.name == "android" )
@@ -305,9 +287,6 @@ function openRecipeDetailed(e){
 	   		Alloy.Globals.parent.openWindow(recipeWin);
 		}
 }
-
-
-
 
 function closeWindow(e)
 {
@@ -326,45 +305,13 @@ function closeWindow(e)
 function goToHome(e)
 {
 	Alloy.Globals.goToHome(e);
-	/*
-	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
-	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
-	{
-		if(i == Alloy.Globals.windowStack.length-1)
-		{
-			if(Ti.Platform.name == "android" )
-			{
-				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-		else
-		{
-			if(Ti.Platform.name != "mobileweb" )
-			{
-				Alloy.Globals.windowStack[i].close({animated:false});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-	}*/
+	
 }
 
 $.cocktail_results.addEventListener('close', function(e){
-	Ti.API.info("Cocktail results closed");
-	//var a = Alloy.Globals.windowStack.indexOf($.cocktail_results);
-	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.cocktail_results.addEventListener('open', function(e){
-	Ti.API.info("Cocktail results opened");
 	Alloy.Globals.windowStack.push($.cocktail_results);
 });
 

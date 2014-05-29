@@ -22,7 +22,7 @@ function Controller() {
         Ti.API.info("Submit best bars email");
         var emailDialog = Ti.UI.createEmailDialog();
         emailDialog.subject = "Perfect Mix - Best Bars Consideration ";
-        emailDialog.toRecipients = [ "lisa@vstream.ie" ];
+        emailDialog.toRecipients = [ Alloy.Globals.ContactEmail ];
         emailDialog.ccRecipients = [];
         emailDialog.bccRecipients = [];
         emailDialog.messageBody = "";
@@ -321,23 +321,16 @@ function Controller() {
     }());
     $.__views.__alloyId26.add($.__views.__alloyId29);
     $.__views.__alloyId30 = Ti.UI.createView({
-        layout: "horizontal",
+        layout: "absolute",
         height: Ti.UI.SIZE,
+        width: Ti.UI.FILL,
         bottom: "20dp",
         top: "10dp",
         id: "__alloyId30"
     });
     $.__views.__alloyId26.add($.__views.__alloyId30);
-    $.__views.twitterParent = Ti.UI.createView({
-        left: "10dp",
-        right: "10dp",
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        id: "twitterParent"
-    });
-    $.__views.__alloyId30.add($.__views.twitterParent);
     $.__views.twitterBtn = Ti.UI.createButton({
-        width: Ti.UI.SIZE,
+        width: "85dp",
         height: "34dp",
         backgroundColor: "none",
         borderRadius: 4,
@@ -347,6 +340,7 @@ function Controller() {
         },
         color: "#fff",
         tintColor: "#fff",
+        left: "10dp",
         backgroundGradient: {
             type: "linear",
             startPoint: {
@@ -369,18 +363,10 @@ function Controller() {
         image: "/images/icons/twitterbird.png",
         title: "Twitter"
     });
-    $.__views.twitterParent.add($.__views.twitterBtn);
+    $.__views.__alloyId30.add($.__views.twitterBtn);
     openTwitter ? $.__views.twitterBtn.addEventListener("click", openTwitter) : __defers["$.__views.twitterBtn!click!openTwitter"] = true;
-    $.__views.facebookParent = Ti.UI.createView({
-        left: "10dp",
-        right: "10dp",
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        id: "facebookParent"
-    });
-    $.__views.__alloyId30.add($.__views.facebookParent);
     $.__views.facebookBtn = Ti.UI.createButton({
-        width: Ti.UI.SIZE,
+        width: "85dp",
         height: "34dp",
         backgroundColor: "none",
         borderRadius: 4,
@@ -412,18 +398,10 @@ function Controller() {
         image: "/images/icons/facebookIcon.png",
         title: "Facebook"
     });
-    $.__views.facebookParent.add($.__views.facebookBtn);
+    $.__views.__alloyId30.add($.__views.facebookBtn);
     openFacebook ? $.__views.facebookBtn.addEventListener("click", openFacebook) : __defers["$.__views.facebookBtn!click!openFacebook"] = true;
-    $.__views.websiteParent = Ti.UI.createView({
-        left: "10dp",
-        right: "10dp",
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        id: "websiteParent"
-    });
-    $.__views.__alloyId30.add($.__views.websiteParent);
     $.__views.websiteBtn = Ti.UI.createButton({
-        width: Ti.UI.SIZE,
+        width: "85dp",
         height: "34dp",
         backgroundColor: "none",
         borderRadius: 4,
@@ -433,6 +411,7 @@ function Controller() {
         },
         color: "#fff",
         tintColor: "#fff",
+        right: "10dp",
         backgroundGradient: {
             type: "linear",
             startPoint: {
@@ -455,18 +434,34 @@ function Controller() {
         image: "/images/icons/websiteIcon.png",
         title: "Email"
     });
-    $.__views.websiteParent.add($.__views.websiteBtn);
+    $.__views.__alloyId30.add($.__views.websiteBtn);
     openEmail ? $.__views.websiteBtn.addEventListener("click", openEmail) : __defers["$.__views.websiteBtn!click!openEmail"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     var new_height = "160dp";
     new_height = PixelsToDPUnits(160 * (Ti.Platform.displayCaps.platformWidth / 320));
+    var divide = 320 / 85;
+    var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+    $.twitterBtn.width = Math.floor(pixelWidth).toString() + "px";
+    $.facebookBtn.width = Math.floor(pixelWidth).toString() + "px";
+    $.websiteBtn.width = Math.floor(pixelWidth).toString() + "px";
+    var fontSizeRatio = 320 / 14;
+    var fontSize = Math.floor(Ti.Platform.displayCaps.platformWidth / fontSizeRatio);
+    $.twitterBtn.font = {
+        fontFamily: Alloy.Globals.BoldFont,
+        fontSize: fontSize.toString() + "px"
+    };
+    $.facebookBtn.font = {
+        fontFamily: Alloy.Globals.BoldFont,
+        fontSize: fontSize.toString() + "px"
+    };
+    $.websiteBtn.font = {
+        fontFamily: Alloy.Globals.BoldFont,
+        fontSize: fontSize.toString() + "px"
+    };
     $.best_bars_banner_image.height = new_height;
-    $.best_bars.addEventListener("close", function() {
-        Ti.API.info("best bars closed");
-    });
+    $.best_bars.addEventListener("close", function() {});
     $.best_bars.addEventListener("open", function() {
-        Ti.API.info("best bars opened");
         Alloy.Globals.windowStack.push($.best_bars);
     });
     $.best_bars.addEventListener("androidback", function() {

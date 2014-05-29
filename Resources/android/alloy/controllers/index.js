@@ -1,16 +1,12 @@
 function Controller() {
     function indexOpen() {
         function displayMixOfTheMonth(newJSON) {
-            Ti.API.info("I'm in the mix of the month display area");
-            Ti.API.info("Add mix of the month stuff");
             var featuredMix = JSON.parse(newJSON);
             var type = "GENERIC";
             1 == featuredMix[0].Mix.type ? type = "ABSOLUT" : 2 == featuredMix[0].Mix.type ? type = "JAMESON" : 3 == featuredMix[0].Mix.type && (type = "MALIBU");
-            Ti.API.info("Mix of the month type: " + featuredMix[0].Mix.type);
             var genericBG_Image = "/images/home_screen/mix_month_bg.png";
             switch (featuredMix[0].Mix.type) {
               case "0":
-                Ti.API.info("mix of the month type GENERIC");
                 var mix_title_style_font = $.createStyle({
                     font: {
                         fontFamily: Alloy.Globals.BoldFont,
@@ -34,7 +30,6 @@ function Controller() {
                 break;
 
               case "1":
-                Ti.API.info("mix of the month type ABSOLUT");
                 var mix_title_style_font = $.createStyle({
                     font: {
                         fontFamily: Alloy.Globals.AbsolutFontLight,
@@ -59,7 +54,6 @@ function Controller() {
                 break;
 
               case "2":
-                Ti.API.info("mix of the month type JAMESON");
                 var mix_title_style_font = $.createStyle({
                     font: {
                         fontFamily: Alloy.Globals.JamesonFontLight,
@@ -84,7 +78,6 @@ function Controller() {
                 break;
 
               case "3":
-                Ti.API.info("mix of the month type MALIBU");
                 var mix_title_style_font = $.createStyle({
                     font: {
                         fontFamily: Alloy.Globals.MalibuFontLight,
@@ -132,7 +125,6 @@ function Controller() {
                 touchEnabled: false
             });
             $.mix_bottle_image_container.add(mix_of_the_month_image_view);
-            Ti.API.info("mix of the month bottle opacity: " + mix_of_the_month_image_view.opacity);
             var animation = Titanium.UI.createAnimation();
             animation.right = "5dp";
             animation.opacity = 1;
@@ -147,16 +139,14 @@ function Controller() {
             });
             $.mix_of_month_view.cocktailData = featuredMix[0].Mix.cocktails.Cocktail;
             $.mix_of_month_view.addEventListener("click", function() {
-                Ti.API.info("mix of the month clicked");
                 var recipeWin = Alloy.createController("cocktail_detailed", featuredMix[0].Mix.cocktails.Cocktail).getView();
-                Ti.API.info("android open recipe!");
                 recipeWin.open({
                     activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right,
                     activityExitAnimation: Ti.App.Android.R.anim.slide_out_left
                 });
             });
         }
-        Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/mixes/mixes/viewjson", "data/FeaturedMix.txt", displayMixOfTheMonth);
+        Alloy.Globals.Utils.GetAppData("/client/idl/perfect-mix/mixes/mixes/viewjson", "data/FeaturedMix.txt", displayMixOfTheMonth);
     }
     function openFavourites() {
         var drinksFavWin = Alloy.createController("cocktail_results", {
@@ -197,7 +187,6 @@ function Controller() {
     }
     function openNews() {
         var newsWin = Alloy.createController("news").getView();
-        Ti.API.info("ANDROID OPEN NEWS!");
         newsWin.open({
             activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right,
             activityExitAnimation: Ti.App.Android.R.anim.slide_out_left,

@@ -27,27 +27,26 @@
 				<Label class="best_bars_desc_text" top="10dp" width="Ti.UI.FILL" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER">Think you are one of the World’s Best Bars?</Label>
 				<Button class="visitSiteBtn" onClick="submitBarForConsideration" title="Submit your bar for consideration!" bottom="10dp" top="10dp" />
 				<Label class="best_bars_desc_text" width="Ti.UI.FILL" textAlign="Ti.UI.TEXT_ALIGNMENT_CENTER" top="20dp">If you are already on the site, tell us about your new cocktail or menu via</Label>
-				<View layout="horizontal" height="Ti.UI.SIZE" bottom="20dp" top="10dp" >
-					<View class="socialBtn_view" id="twitterParent">
+				<View layout="absolute" height="Ti.UI.SIZE" width="Ti.UI.FILL" bottom="20dp" top="10dp" >
+					<!--<View class="socialBtn_view" id="twitterParent">-->
 						<Button id="twitterBtn" onClick="openTwitter" image="/images/icons/twitterbird.png" platform="ios" class="socialBtn twitter" title="Twitter" />
 						<Button id="twitterBtn" onClick="openTwitter" image="/images/icons/twitterbird.png" platform="android" class="socialBtn twitter" title="Twitter" />
 						<!--<Button id="twitterBtn" onClick="openTwitter" image="./images/icons/twitterbird.png" platform="mobileweb" class="socialBtn twitter" title="Twitter" />-->
 						<Label id="twitterBtn" platform="mobileweb" class="socialBtn twitter" html='<a href="http://twitter.com/WorldsBestBars" target="_blank"><div style="height:30px;"><img src="./images/icons/twitterbird@2x.png" style="width:25px;height:20px;top:5px;left:5px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Twitter</span></div></a>' />
-					
-					</View>
-					<View class="socialBtn_view" id="facebookParent">
+					<!--</View>
+					<View class="socialBtn_view" id="facebookParent">-->
 						<Button id="facebookBtn" onClick="openFacebook" image="/images/icons/facebookIcon.png" platform="ios" class="socialBtn facebook" title="Facebook" />
 						<Button id="facebookBtn" onClick="openFacebook" image="/images/icons/facebookIcon.png" platform="android" class="socialBtn facebook" title="Facebook" />
 						<!--<Button id="facebookBtn" onClick="openFacebook" image="./images/icons/facebookIcon.png" platform="mobileweb" class="socialBtn facebook" title="Facebook" />-->
 						<Label id="facebookBtn" platform="mobileweb" class="socialBtn facebook" html='<a href="http://www.facebook.com/149071961796732" target="_blank"><div style="height:30px;"><img src="./images/icons/facebookIcon@2x.png" style="width:20px;height:25px;left:3px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Facebook</span></div></a>' />
-					</View>
-					<View class="socialBtn_view" id="websiteParent">
+					<!--</View>
+					<View class="socialBtn_view" id="websiteParent">-->
 						<Button id="websiteBtn" onClick="openEmail" image="/images/icons/websiteIcon.png" platform="ios" class="socialBtn website" title="Email" />
 						<Button id="websiteBtn" onClick="openEmail" image="/images/icons/websiteIcon.png" platform="android" class="socialBtn website" title="Email" />
 						<!--<Button id="websiteBtn" onClick="openEmail" image="./images/icons/websiteIcon.png" platform="mobileweb" class="socialBtn website" title="Email" />-->
 						<Label id="websiteBtn" platform="mobileweb" class="socialBtn website" html='' />
 					
-					</View>
+					<!--</View>-->
 				</View>
 			</View>
 		</ScrollView>

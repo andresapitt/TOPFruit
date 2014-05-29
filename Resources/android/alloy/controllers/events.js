@@ -6,11 +6,7 @@ function Controller() {
         for (var i = 0; events_json.length > i; i++) {
             var parts = events_json[i].Event.finish_date.substring(0, 10).split("-");
             var event_finish_date = new Date(parts[0], parts[1] - 1, parts[2]);
-            Ti.API.info("event finish date: " + events_json[i].Event.finish_date.substring(0, 10) + " (parsed) " + event_finish_date.toString());
-            if (new Date() > event_finish_date) Ti.API.info("event " + i + " date is greater than current date"); else {
-                Ti.API.info("event " + i + " date is less or equal to current date");
-                eventsToShow.push(events_json[i]);
-            }
+            new Date() > event_finish_date || eventsToShow.push(events_json[i]);
         }
         eventsToShow.sort(function(a, b) {
             var dateAString = a.Event.finish_date.substring(0, 10).split("-");
@@ -38,7 +34,6 @@ function Controller() {
             classes: [ "event_time" ]
         });
         for (var i = 0; eventsToShow.length > i; i++) {
-            Ti.API.info("Event " + i + " Title: " + eventsToShow[i].Event.title);
             var event_item_view = Ti.UI.createView();
             var vertical_event_container = Ti.UI.createView({
                 layout: "vertical",
@@ -82,7 +77,6 @@ function Controller() {
         }
     }
     function openEventDescription(e) {
-        Ti.API.info("Opening event description, title: " + e.source.eventData.title);
         var event_desc_Win = Alloy.createController("event_desc", e.source.eventData).getView();
         event_desc_Win.open({
             activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right,
@@ -231,13 +225,10 @@ function Controller() {
     $.__views.event_view.add($.__views.event_item_container);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/events/events/viewjson", "data/Events.txt", DisplayEvents);
+    Alloy.Globals.Utils.GetAppData("/client/idl/perfect-mix/events/events/viewjson", "data/Events.txt", DisplayEvents);
     var events_json_text = "";
-    $.events.addEventListener("close", function() {
-        Ti.API.info("Events window closed");
-    });
+    $.events.addEventListener("close", function() {});
     $.events.addEventListener("open", function() {
-        Ti.API.info("Events window opened");
         Alloy.Globals.windowStack.push($.events);
     });
     $.events.addEventListener("androidback", function() {

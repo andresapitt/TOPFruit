@@ -18,7 +18,7 @@
 		</View>
 		<View class="color_seperator" height="1dp" width="Ti.UI.FILL" backgroundImage="/images/common/color_sep.png" />
 		<ScrollView class="scrollView" >
-			<View id="drink_results" layout="vertical" height="Ti.UI.SIZE" bottom="10dp">
+			<View id="drink_results" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL" bottom="10dp">
 				
 			</View>
 		</ScrollView>

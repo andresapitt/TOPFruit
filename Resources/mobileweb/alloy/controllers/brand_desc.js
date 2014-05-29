@@ -296,10 +296,8 @@ function Controller() {
     $.__views.websiteParent.add($.__views.websiteBtn);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Ti.API.info("Opening brand desciption page");
     var args = arguments[0] || {};
-    var brandName = args.title || "Title not received";
-    Ti.API.info("Brand title: " + brandName);
+    args.title || "Title not received";
     $.brand_title.text = args.title || "Title not received";
     $.brand_desc_text.text = args.description || "Description not received";
     if (null != args.banner_img_url && "" != args.banner_img_url) {
@@ -307,38 +305,21 @@ function Controller() {
         Ti.API.info("new height: " + new_height);
         var brand_image_view = Alloy.Globals.Utils.RemoteImage({
             image: args.banner_img_url,
-            defaultImage: "/images/placeholders/ph_events.png",
             height: new_height,
             width: Ti.UI.FILL
         });
         $.brand_banner_image.add(brand_image_view);
     }
-    if (null != args.twitter && "" != args.twitter) {
+    if (null != args.twitter && "" != args.twitter && "" != args.twitter.trim()) {
         Ti.API.info("Twitter link exists");
         $.twitterBtn_brandDesc.html = '<a href="http://twitter.com/' + args.twitter + '" target="_blank"><div style="height:30px;"><img src="./images/icons/twitterbird@2x.png" style="width:25px;height:20px;top:5px;left:5px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Twitter</span></div></a>';
-    } else {
-        $.social_hor_view.remove($.twitterParent);
-        Ti.API.info("Twitter link NULL");
-    }
-    if (null != args.facebook && "" != args.facebook) $.facebookBtn_brandDesc.html = '<a href="http://www.facebook.com/' + args.facebook + '" target="_blank"><div style="height:30px;"><img src="./images/icons/facebookIcon@2x.png" style="width:20px;height:25px;left:3px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Facebook</span></div></a>'; else {
-        $.social_hor_view.remove($.facebookParent);
-        Ti.API.info("Facebook link NULL");
-    }
-    if (null != args.website && "" != args.website) {
-        Ti.API.info("Website link exists");
-        $.websiteBtn.addEventListener("click", function() {
-            Ti.API.info("Website button clicked! Go to: " + args.website);
-            Ti.Platform.openURL(args.website);
-        });
-    } else {
-        $.social_hor_view.remove($.websiteParent);
-        Ti.API.info("Website link NULL");
-    }
-    $.brand_desc.addEventListener("close", function() {
-        Ti.API.info("brands desc closed");
-    });
+    } else $.social_hor_view.remove($.twitterParent);
+    null != args.facebook && "" != args.facebook && "" != args.facebook.trim() ? $.facebookBtn_brandDesc.html = '<a href="http://www.facebook.com/' + args.facebook + '" target="_blank"><div style="height:30px;"><img src="./images/icons/facebookIcon@2x.png" style="width:20px;height:25px;left:3px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Facebook</span></div></a>' : $.social_hor_view.remove($.facebookParent);
+    null != args.website && "" != args.website && "" != args.website.trim() ? $.websiteBtn.addEventListener("click", function() {
+        Ti.Platform.openURL(args.website);
+    }) : $.social_hor_view.remove($.websiteParent);
+    $.brand_desc.addEventListener("close", function() {});
     $.brand_desc.addEventListener("open", function() {
-        Ti.API.info("brand desc opened");
         Alloy.Globals.windowStack.push($.brand_desc);
     });
     $.brand_desc.addEventListener("androidback", function() {

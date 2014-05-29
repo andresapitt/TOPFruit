@@ -321,25 +321,42 @@ function Controller() {
     $.__views.websiteParent.add($.__views.websiteBtn);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Ti.API.info("Opening brand desciption page");
     var args = arguments[0] || {};
-    var brandName = args.title || "Title not received";
-    Ti.API.info("Brand title: " + brandName);
+    args.title || "Title not received";
     $.brand_title.text = args.title || "Title not received";
     $.brand_desc_text.text = args.description || "Description not received";
+    var divide = 320 / 310;
+    var width = Ti.Platform.displayCaps.platformWidth / divide;
+    var fontRatio = 310 / 14;
+    var fontsize = Math.floor(width / fontRatio);
+    var brand_desc_style = $.createStyle({
+        font: {
+            fontFamily: Alloy.Globals.MainFont,
+            fontSize: fontsize.toString() + "px"
+        }
+    });
+    $.brand_desc_text.applyProperties(brand_desc_style);
+    fontRatio = 310 / 18;
+    fontsize = Math.floor(width / fontRatio);
+    var brand_title_style = $.createStyle({
+        font: {
+            fontFamily: Alloy.Globals.BoldFont,
+            fontSize: fontsize.toString() + "px"
+        }
+    });
+    $.brand_title.applyProperties(brand_title_style);
     if (null != args.banner_img_url && "" != args.banner_img_url) {
         var new_height = "160dp";
         new_height = PixelsToDPUnits(160 * (Ti.Platform.displayCaps.platformWidth / 320));
         Ti.API.info("new height: " + new_height);
         var brand_image_view = Alloy.Globals.Utils.RemoteImage({
             image: args.banner_img_url,
-            defaultImage: "/images/placeholders/ph_events.png",
             height: new_height,
             width: Ti.UI.FILL
         });
         $.brand_banner_image.add(brand_image_view);
     }
-    if (null != args.twitter && "" != args.twitter) {
+    if (null != args.twitter && "" != args.twitter && "" != args.twitter.trim()) {
         Ti.API.info("Twitter link exists");
         $.twitterBtn.addEventListener("click", function() {
             var canOpen = Ti.Platform.openURL("twitter://user?screen_name=" + args.twitter);
@@ -349,32 +366,13 @@ function Controller() {
                 title: "Twitter Error"
             }).show();
         });
-    } else {
-        $.social_hor_view.remove($.twitterParent);
-        Ti.API.info("Twitter link NULL");
-    }
-    if (null != args.facebook && "" != args.facebook) {
-        Ti.API.info("Facebook link exists");
-        $.facebookBtn.addEventListener("click", openFacebookLike);
-    } else {
-        $.social_hor_view.remove($.facebookParent);
-        Ti.API.info("Facebook link NULL");
-    }
-    if (null != args.website && "" != args.website) {
-        Ti.API.info("Website link exists");
-        $.websiteBtn.addEventListener("click", function() {
-            Ti.API.info("Website button clicked! Go to: " + args.website);
-            Ti.Platform.openURL(args.website);
-        });
-    } else {
-        $.social_hor_view.remove($.websiteParent);
-        Ti.API.info("Website link NULL");
-    }
-    $.brand_desc.addEventListener("close", function() {
-        Ti.API.info("brands desc closed");
-    });
+    } else $.social_hor_view.remove($.twitterParent);
+    null != args.facebook && "" != args.facebook && "" != args.facebook.trim() ? $.facebookBtn.addEventListener("click", openFacebookLike) : $.social_hor_view.remove($.facebookParent);
+    null != args.website && "" != args.website && "" != args.website.trim() ? $.websiteBtn.addEventListener("click", function() {
+        Ti.Platform.openURL(args.website);
+    }) : $.social_hor_view.remove($.websiteParent);
+    $.brand_desc.addEventListener("close", function() {});
     $.brand_desc.addEventListener("open", function() {
-        Ti.API.info("brand desc opened");
         Alloy.Globals.windowStack.push($.brand_desc);
     });
     $.brand_desc.addEventListener("androidback", function() {

@@ -293,14 +293,20 @@
 	//borderColor:  Alloy.Globals.PrimaryColor,
 	//borderWidth: 2
 },
-".single_picker[platform=android formFactor=handheld]":{
+".single_picker[platform=android]":{
 //	color: Alloy.Globals.PrimaryColor#898989,
 	backgroundColor:"#898989",
-	left:"10dp",
-	right:"10dp",
+	left:"3dp",
+	right:"3dp",
 	height:"40dp",
+	width:Ti.UI.SIZE,
 	borderRadius:6,
 	bottom:"10dp",
+	horizontalWrap:false,
+	font: {
+        fontSize: '10dp',
+        fontFamily: Alloy.Globals.MainFont,
+   }
 	//borderColor:  Alloy.Globals.PrimaryColor,
 	//borderWidth: 2
 },

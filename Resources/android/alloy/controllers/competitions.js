@@ -18,7 +18,6 @@ function Controller() {
             classes: [ "competition_arrow" ]
         });
         for (var i = 0; competition_json.length > i; i++) {
-            Ti.API.info("Competition " + i + " Title: " + competition_json[i].Competition.title);
             var competition_item_view = Ti.UI.createView();
             var vertical_competition_container = Ti.UI.createView({
                 layout: "vertical",
@@ -203,13 +202,10 @@ function Controller() {
     $.__views.__alloyId162.add($.__views.competition_item_container_sc);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/competitions/competitions/viewjson", "data/Competitions.txt", DisplayCompetitions);
+    Alloy.Globals.Utils.GetAppData("/client/idl/perfect-mix/competitions/competitions/viewjson", "data/Competitions.txt", DisplayCompetitions);
     var competitions_json_text = "";
-    $.competitions.addEventListener("close", function() {
-        Ti.API.info("competitions closed");
-    });
+    $.competitions.addEventListener("close", function() {});
     $.competitions.addEventListener("open", function() {
-        Ti.API.info("Competitions opened");
         Alloy.Globals.windowStack.push($.competitions);
     });
     $.competitions.addEventListener("androidback", function() {

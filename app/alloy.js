@@ -18,7 +18,8 @@ Ti.API.info("in the alloy.js file");
 //Ti.App.Properties.setBool('over18', false);
 //}
 
-Alloy.Globals.ContactEmail = "lisa@vstream.ie";
+Alloy.Globals.ContactEmail = "theperfectmixidl@gmail.com";
+Alloy.Globals.BaseUrl = "http://www.vocal.ie";
 Alloy.Globals.PrimaryColor = "#313646";
 Alloy.Globals.FacebookColor = "#3b5998";
 if(Ti.Platform.osname == "iphone")
@@ -75,7 +76,7 @@ if(Ti.Platform.name != "mobileweb")
 {
 	Alloy.Globals.fb = require('facebook');
 	Alloy.Globals.fb.appid = "183073991901631";
-	Alloy.Globals.fb.permissions = ["email"];
+	Alloy.Globals.fb.permissions = ["public_profile", "email", "user_friends"];
 	Alloy.Globals.fb.forceDialogAuth = false;
 }
 //Alloy.Globals.appid = "183073991901631";
@@ -128,63 +129,74 @@ RemoteImage: function(a){
 	{
 		//Ti.API.info("android phone found");
 		if(a.image){
-			if(a.checkRetina != false)
-			{
-				Ti.API.info("density droid: "  + Ti.Platform.displayCaps.density);
-				if( Ti.Platform.displayCaps.density == 'high' || Ti.Platform.displayCaps.density == 'xhigh' || Ti.Platform.displayCaps.density == 'xxhigh')
+			try {
+				if(a.checkRetina != false)
 				{
-			    	var image_url = a.image;
-			    	var basename = image_url.replace(/\\/g,'/').replace( /.*\//, '' );
-			        var segment = basename.split('.');
-			        image_url = image_url.replace(basename, segment[0]+'@2x.'+segment[1]);
-			        Ti.API.info("full image path: " + image_url);
-			        a.image =	image_url;
+					Ti.API.info("density droid: "  + Ti.Platform.displayCaps.density);
+					if( Ti.Platform.displayCaps.density == 'high' || Ti.Platform.displayCaps.density == 'xhigh' || Ti.Platform.displayCaps.density == 'xxhigh')
+					{
+				    	var image_url = a.image;
+				    	var basename = image_url.replace(/\\/g,'/').replace( /.*\//, '' );
+				        var segment = basename.split('.');
+				        image_url = image_url.replace(basename, segment[0]+'@2x.'+segment[1]);
+				        Ti.API.info("full image path: " + image_url);
+				        a.image =	image_url;
+				    }
+				}
+			
+			
+				md5 = Ti.Utils.md5HexDigest(a.image)+"."+this._getExtension(a.image);
+				Ti.API.info("MD% string return: " + md5);
+				savedFile = Ti.Filesystem.getFile(Titanium.Filesystem.applicationCacheDirectory, md5);
+				if(savedFile.exists()){
+					Ti.API.info("DROID: Image file already cached" );
+					a.image = savedFile;
+				} else {
+					Ti.API.info("DROID: Image file needs to be downloaded" );
+					needsToSave = true;
+				}
+				
+				savedFile = null;
+				
+				var image = Ti.UI.createImageView({image:a.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE});
+				if(needsToSave == true){
+					function saveImageDroid(e){
+						Ti.API.info('DROID: in save image handler');
+				        image.removeEventListener('load',saveImage);
+						//load high/low res version of image
+						Ti.API.info("DROID: image link string : " + image.image);
+						Ti.API.info('saving image of width: ' + image.size.width + ' and height: ' + image.size.height);
+						//savedFile.write( Ti.UI.createImageView({image:image.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE}).toBlob() );
+						//var blob = ;
+						/*savedFile.write( */
+						/*Ti.UI.createImageView({image:image.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE}).toImage(function(blob){
+							Ti.API.info('in callback');
+							savedFile.write( blob);
+						} );*/
+						var fileToSave = Ti.Filesystem.getFile(Titanium.Filesystem.applicationCacheDirectory, e.source.md5);
+						fileToSave.write(e.source.toBlob() );
+						fileToSave = null;
+					//	savedFile = null;
+						//blob = null;
+			      }
+			      Ti.API.info('DROID: adding on load image event handler');
+			      image.md5 = md5;
+			      image.addEventListener('load',saveImageDroid);
 			    }
 			}
-		}
-		
-		md5 = Ti.Utils.md5HexDigest(a.image)+"."+this._getExtension(a.image);
-		Ti.API.info("MD% string return: " + md5);
-		savedFile = Ti.Filesystem.getFile(Titanium.Filesystem.applicationCacheDirectory, md5);
-		if(savedFile.exists()){
-			Ti.API.info("DROID: Image file already cached" );
-			a.image = savedFile;
-		} else {
-			Ti.API.info("DROID: Image file needs to be downloaded" );
-			needsToSave = true;
-		}
-		
-		savedFile = null;
-		
-		var image = Ti.UI.createImageView({image:a.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE});
-		if(needsToSave == true){
-			function saveImageDroid(e){
-				Ti.API.info('DROID: in save image handler');
-		        image.removeEventListener('load',saveImage);
-				//load high/low res version of image
-				Ti.API.info("DROID: image link string : " + image.image);
-				Ti.API.info('saving image of width: ' + image.size.width + ' and height: ' + image.size.height);
-				//savedFile.write( Ti.UI.createImageView({image:image.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE}).toBlob() );
-				//var blob = ;
-				/*savedFile.write( */
-				/*Ti.UI.createImageView({image:image.image, width:Ti.UI.SIZE, height:Ti.UI.SIZE}).toImage(function(blob){
-					Ti.API.info('in callback');
-					savedFile.write( blob);
-				} );*/
-				var fileToSave = Ti.Filesystem.getFile(Titanium.Filesystem.applicationCacheDirectory, e.source.md5);
-				fileToSave.write(e.source.toBlob() );
-				fileToSave = null;
-			//	savedFile = null;
-				//blob = null;
-	      }
-	      Ti.API.info('DROID: adding on load image event handler');
-	      image.md5 = md5;
-	      image.addEventListener('load',saveImageDroid);
-	    }
+			catch(err) {
+			    var image = Ti.UI.createImageView({width:Ti.UI.SIZE, height:Ti.UI.SIZE});
+			}
+	   	}
+	   	else
+	   	{
+	   		//image is null
+	   		var image = Ti.UI.createImageView({width:Ti.UI.SIZE, height:Ti.UI.SIZE});
+	   	}
 	    image.width = a.width;
 	    image.height = a.height;
-	     image.opacity = a.opacity;
-	      image.touchEnabled = a.touchEnabled;
+	    image.opacity = a.opacity;
+	    image.touchEnabled = a.touchEnabled;
 		return image;
 	}
 	else if (Ti.Platform.name == "iPhone OS" || Ti.Platform.name == "mobileweb" )
@@ -245,7 +257,7 @@ RemoteImage: function(a){
 RetrieveJson:function(url, saveFilePath, callback){
 	 	Ti.API.info("in json retrieve function, url: " + url);
 	 	var xhr = Ti.Network.createHTTPClient();
-		xhr.open("GET", url);
+		xhr.open("GET", Alloy.Globals.BaseUrl + url);
 		xhr.onload = function() {
 		    Ti.API.info("Text Recieved" + this.responseText);
 		    
@@ -413,7 +425,7 @@ RetrieveJson:function(url, saveFilePath, callback){
 		    f.write(JSON.stringify(fullCocktailsList));
 		  //  Ti.API.info('file saved');
 		}
-		this.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/cocktails/cocktails/viewjson", "data/Cocktails.txt", saveNewRating);
+		this.GetAppData(Alloy.Globals.BaseUrl+"/client/idl/perfect-mix/cocktails/cocktails/viewjson", "data/Cocktails.txt", saveNewRating);
 		
 	}
 

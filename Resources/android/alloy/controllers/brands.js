@@ -83,8 +83,7 @@ function Controller() {
                         brand_row_label.applyProperties(row_label_style);
                         brand_row_view.add(brand_row_label);
                         var brand_image = Alloy.Globals.Utils.RemoteImage({
-                            image: brands_json[y].Brand.thumb_image_url,
-                            defaultImage: "images/cocktails/glass.png"
+                            image: brands_json[y].Brand.thumb_image_url
                         });
                         brand_image.applyProperties(row_image_style);
                         brand_row_view.add(brand_image);
@@ -233,13 +232,10 @@ function Controller() {
     $.__views.brands.add($.__views.brand_table);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/brands/brands/viewjson", "data/Brands.txt", DisplayBrands);
+    Alloy.Globals.Utils.GetAppData("/client/idl/perfect-mix/brands/brands/viewjson", "data/Brands.txt", DisplayBrands);
     var brands_json_text = "";
-    $.brands.addEventListener("close", function() {
-        Ti.API.info("brands closed");
-    });
+    $.brands.addEventListener("close", function() {});
     $.brands.addEventListener("open", function() {
-        Ti.API.info("brands opened");
         $.searchbar.blur();
         Alloy.Globals.windowStack.push($.brands);
     });

@@ -1,11 +1,12 @@
-Ti.API.info("Opening competition page");
+/*
+ * 
+ * Competition Details Screen 
+ * 
+ */
 
 var args = arguments[0] || {};
 var compeitition_name = args.title || 'Title not received';
-Ti.API.info("Comp title: " + compeitition_name);
-
 $.competition_title.text = args.title || 'Title not received';
-//$.competition_desc_text.text = args.description || 'Description not received';
 
 if(args.banner_img_url != null && args.banner_img_url != "")
 {
@@ -28,19 +29,6 @@ if(args.banner_img_url != null && args.banner_img_url != "")
 	  height:new_height,
 	  width:Ti.UI.FILL
 	});
-	
-	/*
-	function resetLayout(e){
-		competition_image_view.removeEventListener('postlayout', resetLayout);
-		Ti.API.info("Image width: " + competition_image_view.size.width);
-		Ti.API.info("Image height: " + competition_image_view.size.height);
-		Ti.API.info("Banner width: " + $.competition_banner_image.size.width);
-		var height_multipler = $.competition_banner_image.size.width / competition_image_view.size.width;
-		Ti.API.info("Height Multiplier: " + height_multipler);
-		competition_image_view.height = competition_image_view.size.height * height_multipler;
-	}*/
-
-	//competition_image_view.addEventListener('postlayout', resetLayout);
 	
 	$.competition_banner_image.add(competition_image_view);
 }
@@ -82,45 +70,12 @@ function closeWindow(e)
 function goToHome(e)
 {
 	Alloy.Globals.goToHome(e);
-	/*
-	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
-	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
-	{
-		if(i == Alloy.Globals.windowStack.length-1)
-		{
-			if(Ti.Platform.name == "android" )
-			{
-				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-		else
-		{
-			if(Ti.Platform.name != "mobileweb" )
-			{
-				Alloy.Globals.windowStack[i].close({animated:false});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-	}*/
 }
 
 $.competition_desc.addEventListener('close', function(e){
-	Ti.API.info("Comp desc closed");
-	//var a = Alloy.Globals.windowStack.indexOf($.competition_desc);
-	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.competition_desc.addEventListener('open', function(e){
-	Ti.API.info("Comp desc opened");
 	Alloy.Globals.windowStack.push($.competition_desc);
 });
 

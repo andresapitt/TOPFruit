@@ -5,18 +5,62 @@ function Controller() {
         var horizontal_drink_view_style = $.createStyle({
             classes: [ "horizontal_drinks_nav_view" ]
         });
+        var divide = 32;
+        var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+        horizontal_drink_view_style.left = Math.floor(pixelWidth).toString() + "px";
+        horizontal_drink_view_style.right = Math.floor(pixelWidth).toString() + "px";
+        horizontal_drink_view_style.top = Math.floor(pixelWidth).toString() + "px";
+        divide = 320 / 90;
+        pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+        var resultAspectRatio = 120 / 90;
+        var pixelHeight = Math.floor(pixelWidth * resultAspectRatio);
+        horizontal_drink_view_style.height = Math.floor(pixelHeight).toString() + "px";
+        Ti.API.info("row left " + horizontal_drink_view_style.left + ", height: " + horizontal_drink_view_style.right);
         var single_drink_view_style = $.createStyle({
             classes: [ "drink_single_view" ]
         });
+        var divide = 320 / 90;
+        var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+        single_drink_view_style.width = Math.floor(pixelWidth).toString() + "px";
+        var resultAspectRatio = 120 / 90;
+        var resultHeight = Math.floor(pixelWidth * resultAspectRatio);
+        single_drink_view_style.height = resultHeight.toString() + "px";
+        divide = 64;
+        pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+        single_drink_view_style.left = Math.floor(pixelWidth).toString() + "px";
+        single_drink_view_style.right = Math.floor(pixelWidth).toString() + "px";
         var single_drink_image_style = $.createStyle({
             classes: [ "drink_image" ]
         });
+        var divide = 320 / 90;
+        var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+        single_drink_image_style.width = Math.floor(pixelWidth).toString() + "px";
+        var resultAspectRatio = 95 / 90;
+        var pixelheight = Math.floor(pixelWidth * resultAspectRatio);
+        single_drink_image_style.height = Math.floor(pixelheight).toString() + "px";
+        single_drink_image_style.height.top = 0;
         var single_drink_title_style = $.createStyle({
             classes: [ "drink_title" ]
         });
+        var divide = 320 / 90;
+        var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+        var resultAspectRatio = 95 / 90;
+        var pixelheight = Math.floor(pixelWidth * resultAspectRatio);
+        single_drink_title_style.top = Math.floor(pixelheight + 2).toString() + "px";
+        var fontSizeRatio = 90 / 14;
+        var fontSize = Math.floor(pixelWidth / fontSizeRatio);
+        single_drink_title_style.font = {
+            fontFamily: Alloy.Globals.MainFont,
+            fontSize: fontSize.toString() + "px"
+        };
         var single_drink_image_style_bottle = $.createStyle({
             classes: [ "drink_image_bottle" ]
         });
+        var divide = 320 / 90;
+        var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+        var resultAspectRatio = 95 / 90;
+        var pixelheight = Math.floor(pixelWidth * resultAspectRatio);
+        single_drink_image_style_bottle.height = Math.floor(pixelheight).toString() + "px";
         for (var i = 0; drinks_json.length > i; i += 3) {
             Ti.API.info("Drink " + i + " Title: " + drinks_json[i].Drink.title);
             var horizontal_drink_view = Ti.UI.createView();
@@ -222,7 +266,7 @@ function Controller() {
                 fontFamily: Alloy.Globals.MainFont,
                 fontSize: "18dp"
             },
-            top: "10dp",
+            top: "2dp",
             height: Ti.UI.SIZE
         });
         Alloy.isTablet && _.extend(o, {
@@ -253,8 +297,8 @@ function Controller() {
             width: "220dp",
             height: "45dp",
             borderRadius: 8,
-            top: "10dp",
-            bottom: "10dp"
+            top: "4dp",
+            bottom: "6dp"
         });
         Alloy.isTablet && _.extend(o, {
             backgroundColor: Alloy.Globals.PrimaryColor,
@@ -281,12 +325,9 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var drinks_json_text = "";
-    Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/drinks/drinks/viewjson", "data/Drinks.txt", DisplayDrinks);
-    $.drinks_categories.addEventListener("close", function() {
-        Ti.API.info("Drinks categories closed");
-    });
+    Alloy.Globals.Utils.GetAppData("/client/idl/perfect-mix/drinks/drinks/viewjson", "data/Drinks.txt", DisplayDrinks);
+    $.drinks_categories.addEventListener("close", function() {});
     $.drinks_categories.addEventListener("open", function() {
-        Ti.API.info("Drinks categories opened");
         Alloy.Globals.windowStack.push($.drinks_categories);
     });
     $.drinks_categories.addEventListener("androidback", function() {

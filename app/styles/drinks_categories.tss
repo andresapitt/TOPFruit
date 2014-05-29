@@ -1,8 +1,3 @@
-".drink_item":{
-	width:"90dp",
-	height:"120dp",
-	backgroundColor:"#fff"
-},
 ".search_button[platform=ios]":{
 	backgroundColor:Alloy.Globals.PrimaryColor,
 	color:"#fff",
@@ -13,9 +8,9 @@
 	width:"220dp",
 	height:"40dp",
 	borderRadius:"4dp",
-	 tintColor:"#fff",
-	 top:"10dp",
-	 bottom:"10dp"
+	tintColor:"#fff",
+	top:"10dp",
+	bottom:"10dp"
 },
 ".search_button[platform=android ]":{
 	backgroundColor:Alloy.Globals.PrimaryColor,
@@ -25,12 +20,10 @@
 			fontSize:"18dp"
 	},
 	width:"220dp",
-	//width:Ti.UI.SIZE,
 	height:"45dp",
 	borderRadius:8,
-	//tintColor:"#fff",
-	top:"10dp",
-	bottom:"10dp"
+	top:"4dp",
+	bottom:"6dp"
 },
 ".search_button[platform=android formFactor=tablet]":{
 	backgroundColor:Alloy.Globals.PrimaryColor,
@@ -40,11 +33,9 @@
 			fontSize:"22dp"
 	},
 	width:"260dp",
-	//width:Ti.UI.SIZE,
 	height:"50dp",
 	borderRadius:8,
 	tintColor:"#fff",
-	//top:"10dp",
 	bottom:"10dp"
 },
 ".search_desc_text":{
@@ -63,7 +54,7 @@
 			fontSize:"18dp"
 	},
 	height:Ti.UI.SIZE,
-	top:"10dp"
+	top:"2dp"
 },
 ".search_desc_text[platform=android formFactor=tablet]":{
 	color: "#747474",
@@ -85,18 +76,10 @@
 ".horizontal_drinks_nav_view[platform=android]":{
 	layout:'horizontal',
 	width:Ti.UI.FILL, 
-	height:Ti.UI.SIZE,
+	height:"120dp",
 	top:"0dp",
-	left:"5%",
-	right:"5%",
-},
-".horizontal_drinks_nav_view[platform=android formFactor=tablet]":{
-	layout:'horizontal',
-	width:Ti.UI.FILL, 
-	height:Ti.UI.SIZE,
-	top:"0dp",
-	left:"5%",
-	right:"5%",
+	left:"10dp",
+	right:"10dp",
 },
 ".drink_single_view":{
 	height:"120dp",
@@ -105,16 +88,10 @@
 	right:"5dp"
 },
 ".drink_single_view[platform=android]":{
-	height:"26%",
-	width:"30%",
-	//left:"5dp",
-	//right:"5dp"
-},
-".drink_single_view[platform=android formFactor=tablet]":{
-	height:"26%",
-	width:"30%",
-	//left:"5dp",
-	//right:"5dp"
+	height:"120dp",
+	width:"90dp",
+	left:"5dp",
+	right:"5dp"
 },
 ".drink_image":{
 	height:"95dp",
@@ -124,15 +101,8 @@
 	touchEnabled:false
 },
 ".drink_image[platform=android]":{
-	height:"60%",
-	width:Ti.UI.SIZE,
-	top:"0dp",
-//	image:"images/common/highlight_circle.png",
-	touchEnabled:false
-},
-".drink_image[platform=android formFactor=tablet]":{
-	height:"60%",
-	width:Ti.UI.SIZE,
+	height:"95dp",
+	width:"90dp",
 	top:"0dp",
 //	image:"images/common/highlight_circle.png",
 	touchEnabled:false
@@ -145,17 +115,9 @@
 	touchEnabled:false
 },
 ".drink_image_bottle[platform=android ]":{
-	height:"60%",
+	height:"95dp",
 	width:Ti.UI.SIZE,
 	top:"0dp",
-//	image:"images/common/highlight_circle.png",
-	touchEnabled:false
-},
-".drink_image_bottle[platform=android formFactor=tablet]":{
-	height:"60%",
-	width:Ti.UI.SIZE,
-	top:"0dp",
-//	image:"images/common/highlight_circle.png",
 	touchEnabled:false
 },
 ".drink_title":{
@@ -171,12 +133,11 @@
 	color: Alloy.Globals.PrimaryColor,
 	font: {
 			fontFamily:Alloy.Globals.MainFont, 
-			fontSize:"16dp"
+			fontSize:"14dp"
 	},
-	top:"60%",
+	top:"97dp",
 	touchEnabled:false
-}
-
+},
 ".drink_title[platform=android formFactor=tablet]":{
 	color: Alloy.Globals.PrimaryColor,
 	font: {

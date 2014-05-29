@@ -23,8 +23,8 @@
 },
 ".table_header":{
 	backgroundColor:"#efefef",
-	layout:'vertical',
-	height:"22dp"
+	layout:'absolute',
+	height:"32dp"
 },
 ".table_header_label":{
 	color:"#757575",
@@ -46,13 +46,15 @@
 	touchEnabled:false
 },
 ".row_brand_image":{
-	width:"70dp",
-	height:"40dp",
-	left:"0dp",
+	width:"41dp",
+	//height:"40dp",
+	height:"67dp",
+	left:"10dp",
 	touchEnabled:false
 },
 ".row_view":{
-	height:"40dp",
+	//height:"40dp",
+	height:"67dp",
 	width:Ti.UI.FILL,
 },
 "#searchbar":{

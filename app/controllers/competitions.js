@@ -1,4 +1,10 @@
-Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/competitions/competitions/viewjson", "data/Competitions.txt", DisplayCompetitions);
+/*
+ * 
+ * Current running competitions display screen
+ * 
+ */
+
+Alloy.Globals.Utils.GetAppData("/client/idl/perfect-mix/competitions/competitions/viewjson", "data/Competitions.txt", DisplayCompetitions);
 var competitions_json_text = ""; 
 
 function DisplayCompetitions(newJSON)
@@ -34,7 +40,6 @@ function DisplayCompetitions(newJSON)
 	
 	for(var i = 0; i < competition_json.length; i++)
 	{
-		Ti.API.info("Competition " + i + " Title: " + competition_json[i].Competition.title);
 		var competition_item_view = Ti.UI.createView();
 		var vertical_competition_container = Ti.UI.createView({layout:'vertical', height:"67dp", left:"72dp", right:"20dp", touchEnabled:false});
 		competition_item_view.add(vertical_competition_container);
@@ -76,7 +81,6 @@ function DisplayCompetitions(newJSON)
 
 function openCompetitionDescription(e){
 	
-	//Ti.API.info("Opening event description, title: " + e.source.eventData.title);
 	var competition_desc_Win = Alloy.createController('competition_desc', e.source.competitionData).getView();
 	if(Ti.Platform.name == "android" )
 	{
@@ -109,45 +113,12 @@ function closeWindow(e)
 function goToHome(e)
 {
 	Alloy.Globals.goToHome(e);
-	/*
-	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
-	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
-	{
-		if(i == Alloy.Globals.windowStack.length-1)
-		{
-			if(Ti.Platform.name == "android" )
-			{
-				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-		else
-		{
-			if(Ti.Platform.name != "mobileweb" )
-			{
-				Alloy.Globals.windowStack[i].close({animated:false});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-	}*/
 }
 
 $.competitions.addEventListener('close', function(e){
-	Ti.API.info("competitions closed");
-	//var a = Alloy.Globals.windowStack.indexOf($.competitions);
-	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.competitions.addEventListener('open', function(e){
-	Ti.API.info("Competitions opened");
 	Alloy.Globals.windowStack.push($.competitions);
 });
 

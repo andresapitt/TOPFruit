@@ -1,15 +1,8 @@
-
-/*function resetLayout(e){
-	$.best_bars_banner_image.removeEventListener('postlayout', resetLayout);
-	Ti.API.info("Image width: " + $.best_bars_banner_image.size.width);
-	Ti.API.info("Image height: " + $.best_bars_banner_image.size.height);
-	Ti.API.info("Banner width: " + $.best_bars_banner_image_view.size.width);
-	var height_multipler = $.best_bars_banner_image_view.size.width / $.best_bars_banner_image.size.width;
-	Ti.API.info("Height Multiplier: " + height_multipler);
-	$.best_bars_banner_image.height = $.best_bars_banner_image.size.height * height_multipler;
-}
-
-$.best_bars_banner_image.addEventListener('postlayout', resetLayout);*/
+/*
+ * 
+ * Best bars screen from inside the news section of the app
+ * 
+ */
 
 var new_height = "160dp";
 if(Ti.Platform.name == "android" )
@@ -20,6 +13,43 @@ if(Ti.Platform.name == "android" )
 	{
 	  return (ThePixels / (Titanium.Platform.displayCaps.dpi / 160));
 	}
+	
+	
+	if(Ti.Platform.name == "android" )
+	{
+		var divide = 320 / 85;
+		var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+		$.twitterBtn.width = Math.floor(pixelWidth).toString() + "px";
+		$.facebookBtn.width = Math.floor(pixelWidth).toString() + "px";
+		$.websiteBtn.width = Math.floor(pixelWidth).toString() + "px";
+		
+		if(Ti.Platform.name == "android"){
+			var fontSizeRatio = 320 / 14;
+			var fontSize = Math.floor(Ti.Platform.displayCaps.platformWidth  / fontSizeRatio);
+			$.twitterBtn.font = { fontFamily:Alloy.Globals.BoldFont, fontSize:fontSize.toString()+"px"};
+			$.facebookBtn.font = { fontFamily:Alloy.Globals.BoldFont, fontSize:fontSize.toString()+"px"};
+			$.websiteBtn.font = { fontFamily:Alloy.Globals.BoldFont, fontSize:fontSize.toString()+"px"};
+			/*var borderRatio = 320/10;
+			var borderSize = Math.floor(Ti.Platform.displayCaps.platformWidth  / fontSizeRatio);
+			$.twitterParent.left = Math.floor(borderSize).toString() + "px";
+			$.twitterParent.right = Math.floor(borderSize).toString() + "px";
+			$.facebookParent.left = Math.floor(borderSize).toString() + "px";
+			$.facebookParent.right = Math.floor(borderSize).toString() + "px";
+			$.websiteParent.left = Math.floor(borderSize).toString() + "px";
+			$.websiteParent.right = Math.floor(borderSize).toString() + "px";*/
+  		}
+	  		
+		/*horizontal_drink_view_style.left = Math.floor(pixelWidth).toString() + "px";
+		horizontal_drink_view_style.right = Math.floor(pixelWidth).toString() + "px";
+		horizontal_drink_view_style.top = Math.floor(pixelWidth).toString() + "px";
+		divide = 320 / 90;
+		pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+		var resultAspectRatio = 120 / 90 ;
+		var pixelHeight =  Math.floor(pixelWidth * resultAspectRatio);
+		horizontal_drink_view_style.height =  Math.floor(pixelHeight).toString() + "px";
+		Ti.API.info("row left " + horizontal_drink_view_style.left + ", height: " + horizontal_drink_view_style.right);*/
+	}
+	
 }
 
 $.best_bars_banner_image.height = new_height;
@@ -133,45 +163,12 @@ function closeWindow(e)
 function goToHome(e)
 {
 	Alloy.Globals.goToHome(e);
-	/*
-	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
-	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
-	{
-		if(i == Alloy.Globals.windowStack.length-1)
-		{
-			if(Ti.Platform.name == "android" )
-			{
-				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-		else
-		{
-			if(Ti.Platform.name != "mobileweb" )
-			{
-				Alloy.Globals.windowStack[i].close({animated:false});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-	}*/
 }
 
 $.best_bars.addEventListener('close', function(e){
-	Ti.API.info("best bars closed");
-	//var a = Alloy.Globals.windowStack.indexOf($.best_bars);
-	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.best_bars.addEventListener('open', function(e){
-	Ti.API.info("best bars opened");
 	Alloy.Globals.windowStack.push($.best_bars);
 });
 

@@ -350,10 +350,8 @@ function Controller() {
     $.__views.event_decs_scrollview.add($.__views.event_visit_site_Btn);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Ti.API.info("Opening event desciption page");
     var args = arguments[0] || {};
-    var eventName = args.title || "Title not received";
-    Ti.API.info("Event title: " + eventName);
+    args.title || "Title not received";
     $.event_title.text = args.title || "Title not received";
     if (null != args.banner_img_url && "" != args.banner_img_url) {
         var new_height = "160dp";
@@ -373,7 +371,7 @@ function Controller() {
     null != args.more_info_url && "" != args.more_info_url ? $.event_visit_site_Btn.addEventListener("click", function() {
         Ti.Platform.openURL(args.more_info_url);
     }) : $.event_decs_scrollview.remove($.event_visit_site_Btn);
-    if (null != args.longitude && null != args.latitude) {
+    if (null != args.longitude && null != args.latitude && "" != args.longitude.trim() && "" != args.latitude.trim()) {
         Ti.API.info("logitude: " + args.longitude + ", latitude: " + args.latitude);
         var remoteMapImage = Ti.UI.createImageView({
             image: "http://maps.googleapis.com/maps/api/staticmap?center=" + args.latitude + "," + args.longitude + "&zoom=14&size=640x400&sensor=false&output=embed&markers=color:red%7C" + args.latitude + "," + args.longitude,
@@ -386,13 +384,9 @@ function Controller() {
         $.event_decs_scrollview.remove($.event_map_view);
         $.event_decs_scrollview.remove($.location_header_title);
     }
-    $.event_desc.addEventListener("close", function() {
-        Ti.API.info("event desc closed");
-    });
+    $.event_desc.addEventListener("close", function() {});
     $.event_desc.addEventListener("open", function() {
-        Ti.API.info("event desc opened");
         Alloy.Globals.windowStack.push($.event_desc);
-        Ti.API.info("is this modal? " + $.event_desc.modal);
     });
     $.event_desc.addEventListener("androidback", function() {
         $.event_desc.close({

@@ -1,4 +1,9 @@
-//Alloy.Globals.parent = $.index;
+/*
+ * 
+ * Main menu / landing page
+ * Opens up the age gate page if not previous logged in
+ * 
+ */
 
 Alloy.Globals.parent = $.win1;
 
@@ -15,25 +20,19 @@ if(!ageGaitSuccess)
 	    age_gate.open();
 	}, 2000);
 	
-	//age_gate.open();
 }
 else //open home page of app
 {
-	//$.win1.open();
 	setTimeout(function(e) {
 	    $.win1.open();
 	}, 2000);
 }
-
-
-//	Ti.API.info("Is this modal? " + $.win1.modal);
 	
 function indexOpen(e)
 {
 	
 	if(Ti.Platform.name == "iPhone OS" &&  Ti.Platform.displayCaps.platformHeight == 480)
 	{
-		Ti.API.info("I'm an iOS device with a 3.5 screen height");
 	
 		var new_menu_btn_style = $.createStyle({
 		    height: '84dp'
@@ -57,17 +56,10 @@ function indexOpen(e)
 		$.mix_of_month_view.applyProperties(new_index_image_style);
 	}
 		
-	//if(Ti.Platform.name != "mobileweb")
-	//{
-		Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/mixes/mixes/viewjson", "data/FeaturedMix.txt", displayMixOfTheMonth);
-	//}
+	Alloy.Globals.Utils.GetAppData("/client/idl/perfect-mix/mixes/mixes/viewjson", "data/FeaturedMix.txt", displayMixOfTheMonth);
 		
 	function displayMixOfTheMonth(newJSON)
 	{
-		Ti.API.info("I'm in the mix of the month display area");
-		//alert('returned JSON!');
-		Ti.API.info("Add mix of the month stuff");
-		
 		var featuredMix = JSON.parse(newJSON);
 		
 		var type = "GENERIC";
@@ -78,7 +70,6 @@ function indexOpen(e)
 		else if( featuredMix[0].Mix.type == 3)
 			type = "MALIBU";
 		
-		Ti.API.info("Mix of the month type: " + featuredMix[0].Mix.type);
 		var genericBG_Image = "/images/home_screen/mix_month_bg.png";
 		if(Ti.Platform.name == "mobileweb")
 		{
@@ -87,7 +78,6 @@ function indexOpen(e)
 		switch(featuredMix[0].Mix.type)
 		{
 			case "0":
-				Ti.API.info('mix of the month type GENERIC');
 				var mix_title_style_font = $.createStyle({
 				    font: {
 						fontFamily:Alloy.Globals.BoldFont,
@@ -110,7 +100,6 @@ function indexOpen(e)
 				$.mix_desc.applyProperties(mix_subtitle_style_font);
 				break;
 			case "1":
-				Ti.API.info('mix of the month type ABSOLUT');
 				var mix_title_style_font = $.createStyle({
 				    font: {
 						fontFamily:Alloy.Globals.AbsolutFontLight,
@@ -138,7 +127,6 @@ function indexOpen(e)
 				}
 				break;
 			case "2":
-			 	Ti.API.info('mix of the month type JAMESON');
 			 	var mix_title_style_font = $.createStyle({
 				    font: {
 						fontFamily:Alloy.Globals.JamesonFontLight,
@@ -168,7 +156,6 @@ function indexOpen(e)
 				}
 				break;
 			case "3":
-				Ti.API.info('mix of the month type MALIBU');
 				var mix_title_style_font = $.createStyle({
 				    font: {
 						fontFamily:Alloy.Globals.MalibuFontLight,
@@ -258,8 +245,6 @@ function indexOpen(e)
 			});
 		}
 		$.mix_bottle_image_container.add(mix_of_the_month_image_view);
-		Ti.API.info('mix of the month bottle opacity: ' + mix_of_the_month_image_view.opacity);
-		//$.mix_of_the_month_anim_view.anchorPoint = {x:0, y:0};
 		var animation = Titanium.UI.createAnimation();
 		animation.right = "5dp";
 		animation.opacity = 1;
@@ -277,12 +262,10 @@ function indexOpen(e)
 		$.mix_of_month_view.cocktailData = featuredMix[0].Mix.cocktails.Cocktail;
 		
 		$.mix_of_month_view.addEventListener('click', function(e){
-			Ti.API.info("mix of the month clicked");
 			//var recipeWin = Alloy.createController('cocktail_detailed', e.source.cocktailData).getView();
 			var recipeWin = Alloy.createController('cocktail_detailed', featuredMix[0].Mix.cocktails.Cocktail).getView();
 			if(Ti.Platform.name == "android" )
 			{
-				Ti.API.info('android open recipe!');
 				recipeWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left});
 			}
 			else if(Ti.Platform.name == "mobileweb" )
@@ -395,21 +378,7 @@ function openNews(e){
 	var newsWin = Alloy.createController('news').getView();
 	if(Ti.Platform.name == "android" )
 	{
-		Ti.API.info("ANDROID OPEN NEWS!");
 		newsWin.open({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_right, activityExitAnimation: Ti.App.Android.R.anim.slide_out_left, animated:true});
-		/*newsWin.open({
-		    activityEnterAnimation: Ti.Android.R.anim.slide_in_left,
-		    activityExitAnimation: Ti.Android.R.anim.slide_out_right,
-		    modal:false
-		});*/
-		//newsWin.open({ activityEnterAnimation: Ti.Android.R.anim.slide_in_left, activityExitAnimation: Ti.Android.R.anim.slide_out_right});
-	
-		/*var win2 = Ti.UI.createWindow();
-		win2.open({
-		    activityEnterAnimation: Ti.Android.R.anim.slide_in_left,
-		    activityExitAnimation: Ti.Android.R.anim.slide_out_right
-		});*/
-
 	}
 	else if(Ti.Platform.name == "mobileweb")
 	{

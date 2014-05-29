@@ -46,17 +46,6 @@
 	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
 	width:Ti.UI.FILL
 },
-".tip_title[platform=android formFactor=tablet]":{
-	//left:"72dp",
-	font: {
-		fontFamily:Alloy.Globals.BoldFont, 
-		fontSize:"18dp"
-	},
-	color:Alloy.Globals.PrimaryColor,
-	touchEnabled:false,
-	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-	width:Ti.UI.FILL
-},
 ".tip_image":{
 	height:"60dp", 
 	width:"60dp",

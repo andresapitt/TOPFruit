@@ -2,7 +2,6 @@ function Controller() {
     function DisplayTips(newJSON) {
         var tips_json;
         tips_json = null != newJSON ? JSON.parse(newJSON) : JSON.parse(tips_json_text);
-        Ti.API.info("tips json length: " + tips_json.length);
         var tip_item_style = $.createStyle({
             classes: [ "tip_item" ]
         });
@@ -19,7 +18,6 @@ function Controller() {
             classes: [ "tip_text_view" ]
         });
         for (var i = 0; tips_json.length > i; i++) {
-            Ti.API.info("Tip " + i + " Title: " + tips_json[i].Tip.title);
             var tip_item_view = Ti.UI.createView();
             tip_item_view.applyProperties(tip_item_style);
             var tip_text_view = Ti.UI.createView();
@@ -170,13 +168,9 @@ function Controller() {
     $.__views.__alloyId413.add($.__views.tip_item_container);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/tips/tips/viewjson", "data/Tips.txt", DisplayTips);
-    Ti.API.info("Tips open");
-    $.tips.addEventListener("close", function() {
-        Ti.API.info("tips closed");
-    });
+    Alloy.Globals.Utils.GetAppData("/client/idl/perfect-mix/tips/tips/viewjson", "data/Tips.txt", DisplayTips);
+    $.tips.addEventListener("close", function() {});
     $.tips.addEventListener("open", function() {
-        Ti.API.info("tips opened");
         Alloy.Globals.windowStack.push($.tips);
     });
     $.tips.addEventListener("androidback", function() {

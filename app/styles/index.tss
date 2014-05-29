@@ -91,7 +91,7 @@
 	font: {
 		fontFamily:Alloy.Globals.MainFont, 
 		fontSize:"16dp"
-	},
+	},                    
 	top:"5dp"
 	//bottom:"20dp"
 },

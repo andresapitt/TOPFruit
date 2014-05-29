@@ -1,32 +1,25 @@
-//var readFile = Titanium.Filesystem.getFile(Ti.Filesystem.resourcesDirectory , "data/Drinks.txt");  
- 
-
 /*
-// If the file exists
-if (readFile.exists()){  
-	Ti.API.info("Drinks json local text file exists");
-	drinks_json_text = readFile.read();
-}
-else{
-	alert("Drinks json local text file not found");
-}*/
+ * 
+ * 
+ * Drinks categories display screen
+ * 
+ * 
+ */
 
 var drinks_categories_images = {
-		whiskey: "images/category_images/whiskey.png", 
-		vodka:"images/category_images/vodka.png", 
-		champagne:"images/category_images/champ.png",
-		rum:"images/category_images/rum.png", 
-		gin:"images/category_images/gin.png", 
-		generics:"images/category_images/generics.png", 
-		classics:"images/category_images/malibu.png", 
-		other:"images/category_images/other.png", 
-		tequila:"images/category_images/tequila.png"
-		};
-
-//DisplayDrinks();
+	whiskey: "images/category_images/whiskey.png", 
+	vodka:"images/category_images/vodka.png", 
+	champagne:"images/category_images/champ.png",
+	rum:"images/category_images/rum.png", 
+	gin:"images/category_images/gin.png", 
+	generics:"images/category_images/generics.png", 
+	classics:"images/category_images/malibu.png", 
+	other:"images/category_images/other.png", 
+	tequila:"images/category_images/tequila.png"
+};
 
 var drinks_json_text = ""; 
-Alloy.Globals.Utils.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/drinks/drinks/viewjson", "data/Drinks.txt", DisplayDrinks);
+Alloy.Globals.Utils.GetAppData("/client/idl/perfect-mix/drinks/drinks/viewjson", "data/Drinks.txt", DisplayDrinks);
 
 function DisplayDrinks(newJSON)
 {
@@ -43,19 +36,80 @@ function DisplayDrinks(newJSON)
 	var horizontal_drink_view_style = $.createStyle({
 		classes: ["horizontal_drinks_nav_view"],
 	});
+	
+	if(Ti.Platform.name == "android" )
+	{
+		var divide = 320 / 10;
+		var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+		horizontal_drink_view_style.left = Math.floor(pixelWidth).toString() + "px";
+		horizontal_drink_view_style.right = Math.floor(pixelWidth).toString() + "px";
+		horizontal_drink_view_style.top = Math.floor(pixelWidth).toString() + "px";
+		divide = 320 / 90;
+		pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+		var resultAspectRatio = 120 / 90 ;
+		var pixelHeight =  Math.floor(pixelWidth * resultAspectRatio);
+		horizontal_drink_view_style.height =  Math.floor(pixelHeight).toString() + "px";
+		Ti.API.info("row left " + horizontal_drink_view_style.left + ", height: " + horizontal_drink_view_style.right);
+	}
+	
 	var single_drink_view_style = $.createStyle({
 		classes: ["drink_single_view"],
 	});
+	
+	if(Ti.Platform.name == "android" )
+	{
+		var divide = 320 / 90;
+		var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+		single_drink_view_style.width = Math.floor(pixelWidth).toString() + "px";
+		var resultAspectRatio = 120 / 90 ;
+		var resultHeight =  Math.floor(pixelWidth * resultAspectRatio);
+		single_drink_view_style.height = resultHeight.toString() + "px";
+		divide = 320 / 5;
+		pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+		single_drink_view_style.left = Math.floor(pixelWidth).toString() + "px";
+		single_drink_view_style.right = Math.floor(pixelWidth).toString() + "px";
+	}
+	
 	var single_drink_image_style = $.createStyle({
 		classes: ["drink_image"],
 	});
+	if(Ti.Platform.name == "android" )
+	{
+		var divide = 320 / 90;
+		var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+		single_drink_image_style.width = Math.floor(pixelWidth).toString() + "px";
+		var resultAspectRatio = 95 / 90 ;
+		var pixelheight =  Math.floor(pixelWidth * resultAspectRatio);
+		single_drink_image_style.height = Math.floor(pixelheight).toString() + "px";
+		single_drink_image_style.height.top = 0;
+	}
+	
 	var single_drink_title_style = $.createStyle({
 		classes: ["drink_title"],
 	});
+	
+	if(Ti.Platform.name == "android" )
+	{
+		var divide = 320 / 90;
+		var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+		var resultAspectRatio = 95 / 90 ;
+		var pixelheight =  Math.floor(pixelWidth * resultAspectRatio);
+		single_drink_title_style.top = Math.floor(pixelheight+2).toString() + "px";
+		var fontSizeRatio = 90 / 14;
+		var fontSize = Math.floor(pixelWidth / fontSizeRatio);
+		single_drink_title_style.font = { fontFamily:Alloy.Globals.MainFont, fontSize:fontSize.toString()+"px"};
+	}
 	var single_drink_image_style_bottle = $.createStyle({
 		classes: ["drink_image_bottle"],
 	});
-	
+	if(Ti.Platform.name == "android" )
+	{
+		var divide = 320 / 90;
+		var pixelWidth = Ti.Platform.displayCaps.platformWidth / divide;
+		var resultAspectRatio = 95 / 90 ;
+		var pixelheight =  Math.floor(pixelWidth * resultAspectRatio);
+		single_drink_image_style_bottle.height = Math.floor(pixelheight).toString() + "px";
+	}
 	
 	
 	for(var i = 0; i < drinks_json.length; i += 3)
@@ -81,29 +135,6 @@ function DisplayDrinks(newJSON)
 			}
 			drink_image.applyProperties(single_drink_image_style);
 			single_drink_view.add(drink_image);
-			
-			/*var overlay_drink_image = Ti.UI.createImageView();
-			
-			overlay_drink_image.applyProperties(single_drink_image_style_bottle);
-	
-			if( Ti.Platform.displayCaps.density == 'high')
-			{
-		    	var image_url = drinks_json.drinks[y].image_thumb;
-		    	var basename = image_url.replace(/\\/g,'/').replace( /.*\//, '' );
-	            var segment = basename.split('.');
-	            image_url = image_url.replace(basename, segment[0]+'@2x.'+segment[1]);
-	            Ti.API.info("full image path: " + image_url);
-	            overlay_drink_image.image =	image_url;
-		    }
-		    else{
-				overlay_drink_image.image =	drinks_json.drinks[y].image_thumb;
-		    }
-			
-			overlay_drink_image.defaultImage = "images/category_images/generic.png";	
-			*/
-			
-			
-			// TESTING FOR ANDROID
 			
 			var overlay_drink_image = Alloy.Globals.Utils.RemoteImage({
 			  image: drinks_json[y].Drink.image,
@@ -217,45 +248,12 @@ function closeWindow(e)
 function goToHome(e)
 {
 	Alloy.Globals.goToHome(e);
-	/*
-	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
-	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
-	{
-		if(i == Alloy.Globals.windowStack.length-1)
-		{
-			if(Ti.Platform.name == "android" )
-			{
-				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-		else
-		{
-			if(Ti.Platform.name != "mobileweb" )
-			{
-				Alloy.Globals.windowStack[i].close({animated:false});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-	}*/
 }
 
 $.drinks_categories.addEventListener('close', function(e){
-	Ti.API.info("Drinks categories closed");
-	//var a = Alloy.Globals.windowStack.indexOf($.drinks_categories);
-	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.drinks_categories.addEventListener('open', function(e){
-	Ti.API.info("Drinks categories opened");
 	Alloy.Globals.windowStack.push($.drinks_categories);
 });
 

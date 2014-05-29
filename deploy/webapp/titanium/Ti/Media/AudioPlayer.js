@@ -1,6 +1,1 @@
-define(["Ti/_/declare", "Ti/_/Evented"], function(declare, Evented) {
-	
-	return declare("Ti.Media.AudioPlayer", Evented, {
-	});
-
-});
+define(["Ti/_/declare","Ti/_/Evented"],function(e,i){return e("Ti.Media.AudioPlayer",i,{})});

@@ -1,17 +1,1 @@
-define(function() {
-	return {
-		normalize: function(name) {
-			return name;
-		},
-
-		load: function(name, require, onLoad, config) {
-			var img = new Image();
-			img.onload = img.onerror = function() {
-				onLoad(img);
-				delete img.onload;
-				delete img.onerror;
-			};
-			img.src = require.toUrl(name);
-		}
-	};
-});
+define(function(){return{normalize:function(n){return n},load:function(n,e,o){var r=new Image;r.onload=r.onerror=function(){o(r),delete r.onload,delete r.onerror},r.src=e.toUrl(n)}}});

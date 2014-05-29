@@ -2,7 +2,9 @@ var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
 Ti.API.info("in the alloy.js file");
 
-Alloy.Globals.ContactEmail = "lisa@vstream.ie";
+Alloy.Globals.ContactEmail = "theperfectmixidl@gmail.com";
+
+Alloy.Globals.BaseUrl = "http://www.vocal.ie";
 
 Alloy.Globals.PrimaryColor = "#313646";
 
@@ -91,6 +93,8 @@ Alloy.Globals.Utils = {
         var basename;
         var segment;
         var image;
+        var image;
+        var image;
         if (a.image) {
             if (false != a.checkRetina && "high" == Ti.Platform.displayCaps.density) {
                 var image_url = a.image;
@@ -123,7 +127,7 @@ Alloy.Globals.Utils = {
     RetrieveJson: function(url, saveFilePath, callback) {
         Ti.API.info("in json retrieve function, url: " + url);
         var xhr = Ti.Network.createHTTPClient();
-        xhr.open("GET", url);
+        xhr.open("GET", Alloy.Globals.BaseUrl + url);
         xhr.onload = function() {
             Ti.API.info("Text Recieved" + this.responseText);
             var validJSON = null;
@@ -234,7 +238,7 @@ Alloy.Globals.Utils = {
             var f = Titanium.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, "data/Cocktails.txt");
             f.write(JSON.stringify(fullCocktailsList));
         }
-        this.GetAppData("http://www.vocal.ie/client/idl/perfect-mix/cocktails/cocktails/viewjson", "data/Cocktails.txt", saveNewRating);
+        this.GetAppData(Alloy.Globals.BaseUrl + "/client/idl/perfect-mix/cocktails/cocktails/viewjson", "data/Cocktails.txt", saveNewRating);
     }
 };
 

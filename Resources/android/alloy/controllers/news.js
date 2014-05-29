@@ -253,13 +253,8 @@ function Controller() {
     $.__views.__alloyId357.add($.__views.__alloyId363);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Ti.API.info("Opening News Page");
-    $.news.addEventListener("close", function() {
-        Ti.API.info("News window closed");
-    });
+    $.news.addEventListener("close", function() {});
     $.news.addEventListener("open", function() {
-        Ti.API.info("News window opened");
-        Ti.API.info("News window opened, activity? " + $.news.activity);
         Alloy.Globals.windowStack.push($.news);
     });
     $.news.addEventListener("androidback", function() {

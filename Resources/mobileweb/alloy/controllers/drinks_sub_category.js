@@ -217,8 +217,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var sub_category = arguments[0] || {};
-    var cocktail_category = sub_category.id || "Category not received";
-    Ti.API.info("Cocktail category: " + cocktail_category);
+    sub_category.id || "Category not received";
     $.drinks_sub_category.title = sub_category.title.toUpperCase();
     var horizontal_drink_view_style = $.createStyle({
         classes: [ "horizontal_drinks_nav_view" ]
@@ -268,13 +267,10 @@ function Controller() {
             single_drink_view.addEventListener("click", openDrinks);
         }
     }
-    null == sub_category.facebook || "" == sub_category.facebook ? $.social_hor_view_subcategory.remove($.facebookParent_subcategory) : $.facebookBtn_subCat.html = '<a href="http://www.facebook.com/' + sub_category.facebook + '" target="_blank"><div style="height:30px;"><img src="./images/icons/facebookIcon@2x.png" style="width:20px;height:25px;left:3px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Facebook</span></div></a>';
-    null == sub_category.twitter || "" == sub_category.twitter ? $.social_hor_view_subcategory.remove($.twitterParent_subcategory) : $.twitterBtn_subCat.html = '<a href="http://twitter.com/' + sub_category.twitter + '" target="_blank"><div style="height:30px;"><img src="./images/icons/twitterbird@2x.png" style="width:25px;height:20px;top:5px;left:5px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Twitter</span></div></a>';
-    $.drinks_sub_category.addEventListener("close", function() {
-        Ti.API.info("drinks subcategory closed");
-    });
+    null == sub_category.facebook || "" == sub_category.facebook || "" == sub_category.facebook.trim() ? $.social_hor_view_subcategory.remove($.facebookParent_subcategory) : $.facebookBtn_subCat.html = '<a href="http://www.facebook.com/' + sub_category.facebook + '" target="_blank"><div style="height:30px;"><img src="./images/icons/facebookIcon@2x.png" style="width:20px;height:25px;left:3px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Facebook</span></div></a>';
+    null == sub_category.twitter || "" == sub_category.twitter || "" == sub_category.twitter.trim() ? $.social_hor_view_subcategory.remove($.twitterParent_subcategory) : $.twitterBtn_subCat.html = '<a href="http://twitter.com/' + sub_category.twitter + '" target="_blank"><div style="height:30px;"><img src="./images/icons/twitterbird@2x.png" style="width:25px;height:20px;top:5px;left:5px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Twitter</span></div></a>';
+    $.drinks_sub_category.addEventListener("close", function() {});
     $.drinks_sub_category.addEventListener("open", function(e) {
-        Ti.API.info("drinks subcategory opened");
         try {
             Alloy.Globals.windowStack.push($.drinks_sub_category);
         } catch (e) {

@@ -1,4 +1,9 @@
-Ti.API.info("Opening News Page");
+/*
+ * 
+ * News screen 
+ * Gives the users the options of viewing events, competitions and Worlds Best Bars
+ * 
+ */
 
 function openEvents(e)
 {
@@ -85,48 +90,13 @@ function closeWindow(e)
 function goToHome(e)
 {
 	Alloy.Globals.goToHome(e);
-	/*
-	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
-	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
-	{
-		if(i == Alloy.Globals.windowStack.length-1)
-		{
-			if(Ti.Platform.name == "android" )
-			{
-				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-		else
-		{
-			if(Ti.Platform.name != "mobileweb" )
-			{
-				Alloy.Globals.windowStack[i].close({animated:false});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-	}*/
 }
 
 
 $.news.addEventListener('close', function(e){
-	Ti.API.info('News window closed');
-	
-	//var a = Alloy.Globals.windowStack.indexOf($.news);
-	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.news.addEventListener('open', function(e){
-	Ti.API.info('News window opened');
-	Ti.API.info('News window opened, activity? ' + $.news.activity);
 	Alloy.Globals.windowStack.push($.news);
 	
 });

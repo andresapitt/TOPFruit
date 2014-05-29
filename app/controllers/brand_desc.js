@@ -1,11 +1,33 @@
-Ti.API.info("Opening brand desciption page");
+/*
+ * 
+ * 
+ * Brand description Screen
+ * 
+ * 
+ */
 
 var args = arguments[0] || {};
 var brandName = args.title || 'Title not received';
-//$.recipeTitle.text = args.title || 'Title not received';
-Ti.API.info("Brand title: " + brandName);
 $.brand_title.text = args.title || 'Title not received';
 $.brand_desc_text.text = args.description || 'Description not received';
+
+if(Ti.Platform.name == "android" )
+{
+	var divide = 320 / 310; 
+	var width = Ti.Platform.displayCaps.platformWidth / divide;
+	var fontRatio = 310/14;
+	var fontsize = Math.floor(width/fontRatio);
+	var brand_desc_style = $.createStyle({
+		font:{ fontFamily:Alloy.Globals.MainFont, fontSize: fontsize.toString() + "px"}
+	});
+	$.brand_desc_text.applyProperties(brand_desc_style);
+	fontRatio = 310/18;
+	fontsize = Math.floor(width/fontRatio);
+	var brand_title_style = $.createStyle({
+		font:{ fontFamily:Alloy.Globals.BoldFont, fontSize: fontsize.toString() + "px"}
+	});
+	$.brand_title.applyProperties(brand_title_style);
+}
 
 if(args.banner_img_url != null && args.banner_img_url != "")
 {
@@ -24,7 +46,6 @@ if(args.banner_img_url != null && args.banner_img_url != "")
 	
 	var brand_image_view = Alloy.Globals.Utils.RemoteImage({
 	  image: args.banner_img_url,
-	  defaultImage:'/images/placeholders/ph_events.png',
 	  height:new_height,
 	  width:Ti.UI.FILL
 	});
@@ -32,7 +53,7 @@ if(args.banner_img_url != null && args.banner_img_url != "")
 }
 
 //Twitter btn
-if(args.twitter != null && args.twitter != "" )
+if(args.twitter != null && args.twitter != "" && args.twitter.trim() != "" )
 {
 	Ti.API.info("Twitter link exists");
 	if(Titanium.Platform.name != 'mobileweb')
@@ -70,46 +91,38 @@ if(args.twitter != null && args.twitter != "" )
 }
 else{
  	$.social_hor_view.remove($.twitterParent);
-	Ti.API.info("Twitter link NULL");
 }
 
 //Facebook btn
-if(args.facebook != null && args.facebook != "" )
+if(args.facebook != null && args.facebook != "" && args.facebook.trim() != "" )
 {
 	if(Titanium.Platform.name != 'mobileweb')
 	{
-		Ti.API.info("Facebook link exists");
 		$.facebookBtn.addEventListener('click', openFacebookLike);
 	}
 	else
 	{
 		$.facebookBtn_brandDesc.html = '<a href="http://www.facebook.com/' + args.facebook + '" target="_blank"><div style="height:30px;"><img src="./images/icons/facebookIcon@2x.png" style="width:20px;height:25px;left:3px;"><span style="color:#fff;font-size:16px;line-height:30px;height:30px !important;vertical-align:top;">Facebook</span></div></a>';
-
 	}
 }
 else{
  	$.social_hor_view.remove($.facebookParent);
-	Ti.API.info("Facebook link NULL");
 }
 
 //Website btn
-if(args.website != null && args.website != "" )
+if(args.website != null && args.website != "" && args.website.trim() != "" )
 {
-	Ti.API.info("Website link exists");
 	$.websiteBtn.addEventListener('click', function(e){
-		Ti.API.info("Website button clicked! Go to: " + args.website);
 		Ti.Platform.openURL(args.website);
 	});
 }
 else{
  	$.social_hor_view.remove($.websiteParent);
-	Ti.API.info("Website link NULL");
 }
 
 function openFacebookLike(e){
 	
 	if (Titanium.Platform.name == 'iPhone OS') {
-		Ti.API.info("facebook like button clicked");
 		var canOpenFacebook = Ti.Platform.canOpenURL("fb://profile/"+args.facebook);
 		if(canOpenFacebook)
 		{
@@ -157,45 +170,13 @@ function closeWindow(e)
 function goToHome(e)
 {
 	Alloy.Globals.goToHome(e);
-	/*
-	Ti.API.info("Go To Home: Stack Count = " + Alloy.Globals.windowStack.length );
-	for(var i = 0; i < Alloy.Globals.windowStack.length; i++)
-	{
-		if(i == Alloy.Globals.windowStack.length-1)
-		{
-			if(Ti.Platform.name == "android" )
-			{
-				Alloy.Globals.windowStack[i].close({ activityEnterAnimation: Ti.App.Android.R.anim.slide_in_left, activityExitAnimation: Ti.App.Android.R.anim.slide_out_right});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-		else
-		{
-			if(Ti.Platform.name != "mobileweb" )
-			{
-				Alloy.Globals.windowStack[i].close({animated:false});
-			}
-			else
-			{
-				Alloy.Globals.windowStack[i].close();
-			}
-			Ti.API.info("Close index: " + i );
-		}
-	}*/
+	
 }
 
 $.brand_desc.addEventListener('close', function(e){
-	Ti.API.info("brands desc closed");
-	//var a = Alloy.Globals.windowStack.indexOf($.brand_desc);
-	//Alloy.Globals.windowStack.splice(a,1);
 });
 
 $.brand_desc.addEventListener('open', function(e){
-	Ti.API.info("brand desc opened");
 	Alloy.Globals.windowStack.push($.brand_desc);
 });
 

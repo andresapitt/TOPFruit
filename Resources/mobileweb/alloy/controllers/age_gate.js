@@ -26,9 +26,36 @@ function Controller() {
             modal: true
         });
     }
+    function facebookLoginHandler(e) {
+        if (e.success) {
+            Ti.API.info("FACEBOOK login success: " + e.toString());
+            Ti.App.Properties.setBool("over18", true);
+            Alloy.Globals.parent.open();
+            $.age_gate.close();
+            Alloy.Globals.fb.removeEventListener("login", facebookLoginHandler);
+        } else if (e.error) {
+            Ti.API.info("FACEBOOK login error: " + e.toString());
+            Ti.UI.createAlertDialog({
+                message: "ERROR: " + e.error,
+                ok: "Ok",
+                title: "Facebook"
+            }).show();
+        } else if (e.cancelled) {
+            Ti.API.info("FACEBOOK login cancel: " + e.toString());
+            alert("Cancelled");
+        } else if (0 != e.code) {
+            Alloy.Globals.fb.forceDialogAuth = true;
+            Alloy.Globals.fb.authorize();
+        } else Ti.API.info("FACEBOOK return: " + e.toString());
+    }
     function facebookBtnHandler() {
         Ti.API.info("FACEBOOK authorise, is it logged in: " + Alloy.Globals.fb.getLoggedIn());
-        Alloy.Globals.fb.authorize();
+        if (Alloy.Globals.fb.getLoggedIn()) {
+            Ti.App.Properties.setBool("over18", true);
+            Alloy.Globals.parent.open();
+            $.age_gate.close();
+            Alloy.Globals.fb.removeEventListener("login", facebookLoginHandler);
+        } else Alloy.Globals.fb.authorize();
     }
     function closeDateHandler() {
         $.picker_view.height = "0dp";

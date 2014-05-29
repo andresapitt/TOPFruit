@@ -52,11 +52,22 @@ function Controller() {
                 ok: "Ok",
                 title: "Facebook"
             }).show();
-        } else e.cancelled ? Ti.API.info("FACEBOOK login cancel: " + e.toString()) : Ti.API.info("FACEBOOK return: " + e.toString());
+        } else if (e.cancelled) {
+            Ti.API.info("FACEBOOK login cancel: " + e.toString());
+            alert("Cancelled");
+        } else if (0 != e.code) {
+            Alloy.Globals.fb.forceDialogAuth = true;
+            Alloy.Globals.fb.authorize();
+        } else Ti.API.info("FACEBOOK return: " + e.toString());
     }
     function facebookBtnHandler() {
         Ti.API.info("FACEBOOK authorise, is it logged in: " + Alloy.Globals.fb.getLoggedIn());
-        Alloy.Globals.fb.authorize();
+        if (Alloy.Globals.fb.getLoggedIn()) {
+            Ti.App.Properties.setBool("over18", true);
+            Alloy.Globals.parent.open();
+            $.age_gate.close();
+            Alloy.Globals.fb.removeEventListener("login", facebookLoginHandler);
+        } else Alloy.Globals.fb.authorize();
     }
     function closeDateHandler() {
         $.picker_view.height = "0dp";
@@ -281,22 +292,26 @@ function Controller() {
     $.__views.__alloyId0.add($.__views.dob_picker);
     $.__views.day_picker = Ti.UI.createPicker(function() {
         var o = {};
-        _.extend(o, {});
+        _.extend(o, {
+            backgroundColor: "#898989",
+            left: "3dp",
+            right: "3dp",
+            height: "40dp",
+            width: Ti.UI.SIZE,
+            borderRadius: 6,
+            bottom: "10dp",
+            horizontalWrap: false,
+            font: {
+                fontSize: "10dp",
+                fontFamily: Alloy.Globals.MainFont
+            }
+        });
         Alloy.isTablet && _.extend(o, {
             backgroundColor: "#898989",
             left: "10dp",
             right: "10dp",
             height: "50dp",
             borderRadius: 8,
-            bottom: "10dp"
-        });
-        _.extend(o, {});
-        Alloy.isHandheld && _.extend(o, {
-            backgroundColor: "#898989",
-            left: "10dp",
-            right: "10dp",
-            height: "40dp",
-            borderRadius: 6,
             bottom: "10dp"
         });
         _.extend(o, {
@@ -309,22 +324,26 @@ function Controller() {
     $.__views.dob_picker.add($.__views.day_picker);
     $.__views.month_picker = Ti.UI.createPicker(function() {
         var o = {};
-        _.extend(o, {});
+        _.extend(o, {
+            backgroundColor: "#898989",
+            left: "3dp",
+            right: "3dp",
+            height: "40dp",
+            width: Ti.UI.SIZE,
+            borderRadius: 6,
+            bottom: "10dp",
+            horizontalWrap: false,
+            font: {
+                fontSize: "10dp",
+                fontFamily: Alloy.Globals.MainFont
+            }
+        });
         Alloy.isTablet && _.extend(o, {
             backgroundColor: "#898989",
             left: "10dp",
             right: "10dp",
             height: "50dp",
             borderRadius: 8,
-            bottom: "10dp"
-        });
-        _.extend(o, {});
-        Alloy.isHandheld && _.extend(o, {
-            backgroundColor: "#898989",
-            left: "10dp",
-            right: "10dp",
-            height: "40dp",
-            borderRadius: 6,
             bottom: "10dp"
         });
         _.extend(o, {
@@ -337,22 +356,26 @@ function Controller() {
     $.__views.dob_picker.add($.__views.month_picker);
     $.__views.year_picker = Ti.UI.createPicker(function() {
         var o = {};
-        _.extend(o, {});
+        _.extend(o, {
+            backgroundColor: "#898989",
+            left: "3dp",
+            right: "3dp",
+            height: "40dp",
+            width: Ti.UI.SIZE,
+            borderRadius: 6,
+            bottom: "10dp",
+            horizontalWrap: false,
+            font: {
+                fontSize: "10dp",
+                fontFamily: Alloy.Globals.MainFont
+            }
+        });
         Alloy.isTablet && _.extend(o, {
             backgroundColor: "#898989",
             left: "10dp",
             right: "10dp",
             height: "50dp",
             borderRadius: 8,
-            bottom: "10dp"
-        });
-        _.extend(o, {});
-        Alloy.isHandheld && _.extend(o, {
-            backgroundColor: "#898989",
-            left: "10dp",
-            right: "10dp",
-            height: "40dp",
-            borderRadius: 6,
             bottom: "10dp"
         });
         _.extend(o, {
@@ -524,7 +547,9 @@ function Controller() {
     var months = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
     for (var i = 0; 12 > i; i++) month_data.push(Ti.UI.createPickerRow({
         title: months[i],
-        value: i
+        value: i,
+        fontSize: 6,
+        horizontalWrap: true
     }));
     $.month_picker.add(month_data);
     var year_data = [];
